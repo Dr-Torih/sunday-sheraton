@@ -52,3 +52,11 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 ## Image/data/privacy
 
 Never substitute stock people/photos for actual documented classroom moments, invent quotes, imply officially issued AASTMT credentials, or publish identifiable student material without consent. Protect base design and educational content hashes against incidental edits.
+
+## Lecture-first navigation design decision — review candidate 2026-10-22
+
+Owner-approved visible structure: AASTMT original emblem, academy identity, instructor and **Marketing Course** always recognizable in the sticky header; nearby Lecture 01/02 selector and a Print Lecture action. Three primary destinations only: Concept Scenes, Practice/Quiz and Project. The glossary remains always accessible as an existing overlay. Remove the redundant Home/Start tab and separate Concept Map tab from top navigation; preserve the actual approved educational content.
+
+Within Concept Scenes, retain the existing unit-grouped/searchable Concept Map in the reading sidebar and a visible map shortcut. On mobile use the existing accessible expand/collapse behavior; on desktop show one map beside a spacious reading column. Current concept, completed concept and not-completed concept must be distinguishable by labels and not color alone. Keep approved Alexandria/DM Sans, AASTMT image, existing palette, high contrast, language/theme controls and original concept/quiz reader.
+
+Print belongs in the header and operates on the selected lecture only. Printed pages are built from frozen course data, not the current on-screen single concept. CSS may optimize paginated whitespace but must never sacrifice approved text or separate self-assessment certificate print.

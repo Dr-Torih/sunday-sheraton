@@ -66,3 +66,9 @@ The v3.1 construction prior to GitHub handoff was reported browser-tested for Ne
 ## GitHub handoff status
 
 Documentation PR #1 was merged into `main` on 22 Oct 2026. GitHub Actions **Study Book Integrity** passed on merge commit `afffab347d34bc2d9267ae3e3dc4a25dcc105466`. The existing `main` index.html was not overwritten; it includes the same lesson data, CSS and runtime logic plus later Open Graph metadata. GitHub Pages deployment has its own workflow/status and should be checked separately.
+
+## New required release gate — lecture-first Portal (2026-10-22)
+
+Owner authorized **PR-only** navigation improvements: header chapter selection + book print, header course identity, no standalone Home, one integrated Concept Map in Study, three primary section views, legacy route redirects, preserved original glossary and all quizzes. The previous five QA defects (Moments, Decision Lab feedback, print whitespace, academic map design, missing Course title) require browser and visual proof, not just a merged commit.
+
+The PR adds `tests/portal_browser_qa.py` (real headless Chromium, 320–1440 responsive, Arabic/English, theme, chapter switch, concept traversal, persisted understanding, map expand, original Decision Lab, quiz and back/forward, browser PDF render of each lecture) and extends CI to upload QA screenshots/PDFs. Inspect actual CI result and artifacts; missing/failed steps remain **BLOCKED**. Only a separately approved merge may subsequently trigger public GitHub Pages launch; perform real live phone/desktop acceptance after such a merge, never claim that live QA occurred from a PR.

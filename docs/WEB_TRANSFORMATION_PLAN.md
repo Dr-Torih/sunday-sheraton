@@ -58,3 +58,9 @@ At Concept Reader desktop, use a narrow unobtrusive Course Map / unit list next 
 
 ## Decision boundary
 Owner has authorized **beginning the transformation** and specialist-led design analysis, not a blind replacement of the current student site. This document does not pretend that an external committee or unbuilt design prototype has already reviewed or approved finished screens. Governance master: `Dr-Torih/student-learning-portal/docs/PORTAL_WEB_ROADMAP.md`.
+
+## Scope adjustment approved 2026-10-22 — lecture-first review PR
+
+The currently planned external physical multi-page approach is superseded **for this Sunday cohort release** by an approved smaller change to its single cumulative site: one active lecture selected in the header, three coherent independent site views (Study, Review/Quiz, Project), integrated Concept Map and contextual Glossary. No standalone redundant start or map pages; do not create a second parallel site. Current original same-document `index.html` model is retained as the minimal reliable solution rather than a new route deployment/migration.
+
+**Execution checkpoints:** baseline immutable CSS/L01/L02 content → minimal header/router/CSS patch → static hashes and JS syntax → real Chromium browser tests at 320/390/768/1024/1440 with AR/EN, Light/Dark, completion persistence, Decision Lab feedback, quiz, legacy links and back/forward → real A4 print-to-PDF for both lectures → owner PR review → merge/deployment and REAL live desktop/mobile verification only after additional owner authorization. No website publication is authorized in the current PR.

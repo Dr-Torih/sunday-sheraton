@@ -2,7 +2,7 @@
 
 **Course:** Marketing — AASTMT Sheraton, Sunday group  
 **Instructor:** Dr. Ibrahim Torih  
-**Current handoff candidate:** v3.1 (22 Oct 2026)  
+**Current documented release:** v3.1 (22 Oct 2026); handoff documentation merged to main  
 **Source of truth for the runnable student book:** `index.html` in this cohort repository  
 **Cross-cohort education governance (separate, private):** [student-learning-portal](https://github.com/Dr-Torih/student-learning-portal).
 
@@ -50,4 +50,4 @@ This repository's `main` branch may be configured as a GitHub Pages source. **Ne
 
 **Append the next approved lecture to the EXISTING bilingual single-file study book, preserve every previously approved content byte and all runtime behavior, document the change, and prove the regression checks passed.**
 
-_This README documents what was verified on 22 Oct 2026. It does not claim that this handoff branch has been merged or published._
+_Handoff documentation merged to main on 22 Oct 2026. The existing main index.html was preserved, including newer Open Graph metadata. GitHub Pages deployment is monitored separately and must not be assumed complete merely from a merge._

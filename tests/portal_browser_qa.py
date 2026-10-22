@@ -121,9 +121,11 @@ def run():
             for lecture in (1, 2):
                 page.goto(base + f"?page=study#lecture-0{lecture}", wait_until="domcontentloaded")
                 page.locator("#header-lecture-select").select_option(str(lecture))
-                page.evaluate("window.__printCount=0;window.print=()=>window.__printCount++")
+                page.evaluate("window.__printCount=0;window.__printStacks=[];window.print=()=>{window.__printCount++;window.__printStacks.push(new Error().stack)}")
                 page.locator("#header-print-book").click()
                 count = page.evaluate("window.__printCount")
+                if count != 1:
+                    print(f"PRINT TRACES: {page.evaluate('window.__printStacks')}", flush=True)
                 check(count == 1, f"Header print count expected 1, observed {count!r}")
                 page.emulate_media(media="print")
                 check(page.locator("#print-book").is_visible(), "Full study book not visible in print")

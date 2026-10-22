@@ -697,6 +697,30 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
 
 </style>
 
+
+<style id="ux31-navigation-styles">
+/* v3.1: navigation + mobile learning-map only; legacy typography intact. */
+#scene-title:focus{outline:none}
+#scene-title:focus-visible{outline:2px solid var(--cyan);outline-offset:6px;border-radius:3px}
+.ux31-map-toggle{display:none}
+@media(max-width:790px){
+  .reading-sidebar .sidebar-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px 10px;padding:15px 16px}
+  .reading-sidebar .sidebar-overline{grid-column:1/-1}
+  .reading-sidebar .sidebar-top h3{grid-column:1;margin:0;min-width:0}
+  .reading-sidebar .search-box{grid-column:1/-1;margin-top:10px}
+  .ux31-map-toggle{grid-column:2;display:inline-flex;align-items:center;justify-content:center;min-height:40px;min-width:102px;padding:8px 13px;border:1px solid var(--border);background:var(--soft);color:var(--blue);font:800 11px var(--ff);border-radius:9px;white-space:nowrap;cursor:pointer}
+  .ux31-map-toggle:hover{background:var(--surface);border-color:var(--cyan)}
+  .ux31-map-toggle:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+  .reading-sidebar.ux31-map-collapsed .search-box,
+  .reading-sidebar.ux31-map-collapsed .concept-list,
+  .reading-sidebar.ux31-map-collapsed .sidebar-foot{display:none!important}
+  .reading-sidebar .concept-list{max-height:min(46dvh,340px);overflow:auto}
+  .reading-sidebar.ux31-map-collapsed{border-bottom:1px solid var(--border)}
+  /* Top-bar progress already communicates completion on narrow screens. */
+  .reading-section-heading .progress-area{display:none}
+}
+@media(prefers-reduced-motion:reduce){.ux31-map-toggle{transition:none}}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -867,6 +891,24 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
    if(changed){parts.push(document.createTextNode(text.slice(from)));const fragment=document.createDocumentFragment();parts.forEach(x=>fragment.appendChild(x));node.replaceWith(fragment)}
   }
  }
+
+ // v3.1 · One destination for previous / next / map / resume / concept links.
+ // Wait for the chapter's layout to settle before scrolling: focus and scroll
+ // are deliberate, not delegated to an anchor higher in the document.
+ let pendingConceptFrame=0;
+ function navigateToCurrentConcept(){
+  if(pendingConceptFrame)cancelAnimationFrame(pendingConceptFrame);
+  pendingConceptFrame=requestAnimationFrame(()=>{
+   pendingConceptFrame=0;
+   const title=$('scene-title'),sticky=$('sticky-header');
+   if(!title||!sticky)return;
+   title.setAttribute('tabindex','-1');
+   const top=Math.max(0,window.scrollY+title.getBoundingClientRect().top-sticky.getBoundingClientRect().bottom-24);
+   // A long animated return from a later concept feels like losing one's place.
+   window.scrollTo({top,behavior:'instant'});
+   title.focus({preventScroll:true});
+  });
+ }
  function startScene(index, scroll=true){
   sceneIndex=Math.max(0,Math.min(D.scenes.length-1,index));storage.write('lastscene',sceneIndex);
   const s=D.scenes[sceneIndex];expandedUnit=s.unit;
@@ -897,7 +939,7 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
   drawConceptList($('scene-search').value);
   drawUnitMap();
   if(typeof renderLearningUI==='function'){renderLearningUI();renderCase();}
-  if(scroll)document.getElementById('study').scrollIntoView({block:'start',behavior:'smooth'});
+  if(scroll)navigateToCurrentConcept();
  }
  function updateProgress(){
   const total=done.size,pct=total/D.scenes.length*100;
@@ -1047,7 +1089,7 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
  }
  $('lecture-links').addEventListener('click',event=>{const button=event.target.closest('[data-lecture]');if(button){event.preventDefault();switchLecture(Number(button.dataset.lecture));}});
  window.addEventListener('popstate',()=>{const n=location.hash==='#lecture-02'?2:1;if(n!==CURRENT_LECTURE)switchLecture(n,{updateHistory:false});});
- $('header-progress').addEventListener('click',()=>document.getElementById('study').scrollIntoView({behavior:'smooth',block:'start'}));
+ $('header-progress').addEventListener('click',()=>navigateToCurrentConcept());
  $('scene-terms').addEventListener('click',()=>openOverlay('glossary-panel'));
  $('scene-content').addEventListener('click',e=>{
   const term=e.target.closest('[data-term-index]');if(term){showTerm(Number(term.dataset.termIndex));return}
@@ -1323,6 +1365,36 @@ const priorRefreshLocale=refreshLocale;
 refreshLocale=function(){priorRefreshLocale();refreshSavedCertAccess();const heading=document.querySelector('.reading-sidebar h3');heading.dataset.ar='خريطة الأفكار';heading.dataset.en='Your concept map';heading.textContent=label(heading.dataset.ar,heading.dataset.en);drawUnitTakeaways()};
 const oldDrawQuiz=drawQuiz;
 drawQuiz=function(){oldDrawQuiz();const labelNext=$('quiz-next'),labelResult=$('exam-view-result'),labelSubmit=$('submit-quiz'),labelReset=$('reset-quiz');labelNext.textContent=label('السؤال التالي','Next question');labelResult.textContent=label('عرض النتيجة','View result');labelSubmit.textContent=label('تسليم الاختبار وعرض النتيجة','Submit quiz & see result');labelReset.textContent=label('محاولة جديدة','Try again')};
+
+
+ // v3.1 · Keep the full concept map on desktop, compact it on smaller screens.
+ // This changes presentation only, not the lecture data or any lesson text.
+ function setupCompactConceptMap(){
+  const sidebar=document.querySelector('.reading-sidebar');
+  const title=sidebar?.querySelector('.sidebar-top h3');
+  const search=sidebar?.querySelector('.sidebar-top .search-box');
+  if(!sidebar||!title||!search)return;
+  const toggle=document.createElement('button');
+  toggle.type='button';toggle.id='ux31-map-toggle';toggle.className='ux31-map-toggle';
+  toggle.setAttribute('aria-controls','concept-list');
+  title.after(toggle);
+  let expanded=false;
+  const update=()=>{
+   sidebar.classList.toggle('ux31-map-collapsed',!expanded);
+   toggle.setAttribute('aria-expanded',String(expanded));
+   toggle.dataset.ar=expanded?'إخفاء الخريطة':'افتح الخريطة';
+   toggle.dataset.en=expanded?'Hide map':'Open map';
+   toggle.textContent=label(toggle.dataset.ar,toggle.dataset.en);
+  };
+  toggle.addEventListener('click',()=>{expanded=!expanded;update()});
+  $('concept-list').addEventListener('click',event=>{
+   if(event.target.closest('[data-open-scene]')&&window.matchMedia('(max-width: 790px)').matches){expanded=false;update()}
+  });
+  // update the control when the user changes Arabic / English.
+  $('lang-toggle').addEventListener('click',update);
+  update();
+ }
+ setupCompactConceptMap();
 
  refreshLocale();
 })();

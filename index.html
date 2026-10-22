@@ -741,6 +741,21 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
 <!-- GA4 educational tracking: Sunday Sheraton only -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJT7SS21NT"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-WJT7SS21NT',{'send_page_view':true});</script>
+<style id="unified-website-routes">
+/* Structural presentation only: original branded CSS, bilingual learning text and script untouched. */
+body[data-site-page="home"] main > section:not(#overview):not(.lecture-strip):not(#moments),
+body[data-site-page="map"] main > section:not(#map-section),
+body[data-site-page="study"] main > section:not(#study),
+body[data-site-page="review"] main > section:not(#review),
+body[data-site-page="project"] main > section:not(#project) {display:none!important}
+body[data-site-page="home"] main > section.lecture-strip{display:block}
+body[data-site-page] #site-nav .site-nav-inner a[data-route-active="true"] {color:var(--cyan)!important}
+body[data-site-page] #site-nav .site-nav-inner a[data-route-active="true"]::after {content:"";position:absolute;inset-inline:12px;bottom:-2px;height:3px;background:var(--cyan)}
+body[data-site-page] #site-nav .navlink{position:relative;cursor:pointer}
+body[data-site-page] #site-nav .navlink:not([disabled]):hover{color:var(--cyan)}
+body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body[data-site-page="review"] #review,body[data-site-page="project"] #project{padding-top:34px;min-height:64vh}
+@media print{body[data-site-page] main > section{display:block!important}}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -1389,7 +1404,61 @@ function openExplanationTab(idx,questionIdx){
  const s=D.scenes[idx];if(!s)return;
  const q=D.quiz[questionIdx]||D.quiz.find(x=>Number(x.concept.match(/C(\d+)/)?.[1]||0)-1===idx),question=q?.[lang]?.question||'',explanation=q?.explanation?.[lang]||'';
  const esc=escapeHtml;
- const documentHtml=`<!doctype html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(s.title[lang])} · ${label('شرح المفهوم','Concept explanation')}</title><style>@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');:root{--arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;--latin:'Manrope','Avenir Next',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#f7f9fa;color:#172544;font-family:${lang==='ar'?'var(--arabic)':'var(--latin)'};line-height:2.1}header{background:#26255f;color:#fff;padding:21px clamp(18px,5vw,60px);font:800 13px var(--latin)}main{max-width:900px;margin:28px auto 55px;padding:clamp(22px,5vw,58px);background:#fff;border:1px solid #dfe5e9;border-top:7px solid #15c3cb}h1{font-size:clamp(24px,3vw,35px);line-height:1.65;color:#081b50}h2{font-size:16px;color:#0769c3}p{margin:0 0 16px}strong{color:#081b50}section.feedback{background:#eaf4f6;padding:20px;border-inline-start:4px solid #15c3cb;margin-bottom:29px;border-radius:7px}section.feedback p{font-size:14px}article{font-size:16px}article p{margin-bottom:20px}article h4{color:#10255c;font-size:18px}article blockquote{border-inline-start:4px solid #15c3cb;padding:12px;background:#f0f5f6;margin:15px 0}article table{border-collapse:collapse;max-width:100%;font-size:13px}article td,article th{border:1px solid #dfe5e9;padding:9px}footer{text-align:center;margin:26px;color:#667186;font-size:11px}button{background:#0769c3;color:#fff;border:0;padding:10px 17px;cursor:pointer}@media print{header,footer,button{display:none}main{border:0;margin:0;padding:0}}</style></head><body><header>AASTMT · SHERATON SUNDAY · MARKETING · LECTURE 0${CURRENT_LECTURE}</header><main>${q?`<section class="feedback"><h2>${label('السؤال والتفسير','Question and explanation')}</h2><p><strong>${esc(question)}</strong></p><p>${esc(explanation)}</p></section>`:''}<h1>${esc(s.title[lang])}</h1><article>${s.html[lang]}</article></main><footer>${label('النافذة دي مستقلة، والاختبار ما زال مفتوحًا على تبويبه الأصلي.','This is a separate page. Your quiz stays open in its original tab.')}</footer></body></html>`;
+ const documentHtml=`<!doctype html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(s.title[lang])} · ${label('شرح المفهوم','Concept explanation')}</title><style>@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');:root{--arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;--latin:'Manrope','Avenir Next',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#f7f9fa;color:#172544;font-family:${lang==='ar'?'var(--arabic)':'var(--latin)'};line-height:2.1}header{background:#26255f;color:#fff;padding:21px clamp(18px,5vw,60px);font:800 13px var(--latin)}main{max-width:900px;margin:28px auto 55px;padding:clamp(22px,5vw,58px);background:#fff;border:1px solid #dfe5e9;border-top:7px solid #15c3cb}h1{font-size:clamp(24px,3vw,35px);line-height:1.65;color:#081b50}h2{font-size:16px;color:#0769c3}p{margin:0 0 16px}strong{color:#081b50}section.feedback{background:#eaf4f6;padding:20px;border-inline-start:4px solid #15c3cb;margin-bottom:29px;border-radius:7px}section.feedback p{font-size:14px}article{font-size:16px}article p{margin-bottom:20px}article h4{color:#10255c;font-size:18px}article blockquote{border-inline-start:4px solid #15c3cb;padding:12px;background:#f0f5f6;margin:15px 0}article table{border-collapse:collapse;max-width:100%;font-size:13px}article td,article th{border:1px solid #dfe5e9;padding:9px}footer{text-align:center;margin:26px;color:#667186;font-size:11px}button{background:#0769c3;color:#fff;border:0;padding:10px 17px;cursor:pointer}@media print{header,footer,button{display:none}main{border:0;margin:0;padding:0}}</style></head><body><header>AASTMT · SHERATON SUNDAY · MARKETING · LECTURE 0${CURRENT_LECTURE}</header><main>${q?`<section class="feedback"><h2>${label('السؤال والتفسير','Question and explanation')}</h2><p><strong>${esc(question)}</strong></p><p>${esc(explanation)}</p></section>`:''}<h1>${esc(s.title[lang])}</h1><article>${s.html[lang]}</article></main><footer>${label('النافذة دي مستقلة، والاختبار ما زال مفتوحًا على تبويبه الأصلي.','This is a separate page. Your quiz stays open in its original tab.')}</footer><script id="unified-site-router">
+/* Website navigation: all original learning sections stay in their source DOM and existing runtime. */
+(function(){
+'use strict';
+const views={overview:'home','map-section':'map',study:'study',review:'review',project:'project',moments:'home'};
+const labels={home:{ar:'الرئيسية',en:'Home'},map:{ar:'خريطة الكورس',en:'Course Map'},study:{ar:'الكتاب الدراسي',en:'Study Book'},review:{ar:'المراجعة والاختبار',en:'Review & Quiz'},project:{ar:'مشروع المجموعة',en:'Group Project'}};
+const valid=['home','map','study','review','project'];
+const getPage=()=>{const q=new URLSearchParams(location.search).get('page');return valid.includes(q)?q:'home'};
+const href=(p)=>{const url=new URL(location.href);url.searchParams.set('page',p);return url.pathname+url.search+url.hash};
+let active='';
+function apply(p,opt={history:true,scroll:true}){
+ if(!valid.includes(p))p='home';
+ const changed=active!==p;
+ active=p;
+ document.body.dataset.sitePage=p;
+ const lang=document.documentElement.lang==='en'?'en':'ar';
+ document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{
+  const view=views[a.getAttribute('href').slice(1)];
+  if(!view)return;
+  const selected=view===p;
+  a.dataset.routeActive=String(selected);
+  if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+ });
+ if(opt.history && (changed||getPage()!==p)){
+  history.pushState({...history.state,portalPage:p},'',href(p));
+  if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title});
+ }
+ if(opt.scroll){requestAnimationFrame(()=>{
+  const id={home:'overview',map:'map-section',study:'study',review:'review',project:'project'}[p];
+  const target=document.getElementById(id);
+  if(!target)return;
+  const header=document.getElementById('sticky-header');
+  const offset=(header?.getBoundingClientRect().height||80)+18;
+  window.scrollTo({top:Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset),behavior:'instant'});
+ });}
+}
+document.addEventListener('click',e=>{
+ const nav=e.target.closest('#site-nav a[href^="#"]');
+ if(nav){
+  const p=views[nav.getAttribute('href').slice(1)];
+  if(p){e.preventDefault();apply(p);return}
+ }
+ const scene=e.target.closest('[data-open-scene],#next-scene,#prev-scene,#start-reading,#continue-reading,[data-jb-go],#mark-done');
+ if(scene){const old=active;if(old!=='study')apply('study',{scroll:false});return}
+ const lecture=e.target.closest('[data-lecture]');
+ if(lecture && active!=='home')apply('home',{scroll:false});
+},true);
+window.addEventListener('popstate',()=>apply(getPage(),{history:false}));
+window.addEventListener('hashchange',()=>{if(location.hash==='#study')apply('study',{history:false});if(location.hash==='#review')apply('review',{history:false})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.activeElement?.closest('#site-nav'))document.activeElement.blur()});
+apply(getPage(),{history:false,scroll:false});
+window.__courseWebsite={open:page=>apply(page),page:()=>active};
+})();
+</script>
+</body></html>`;
  const blob=new Blob([documentHtml],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob);
  const tab=window.open(url,'_blank');
  if(!tab){URL.revokeObjectURL(url);alert(label('المتصفح منع فتح التبويب. اسمح بفتح النوافذ المنبثقة وحاول مرة أخرى.','Your browser blocked the new tab. Please allow pop-ups and retry.'));return}

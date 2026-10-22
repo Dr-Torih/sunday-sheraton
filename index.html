@@ -1123,22 +1123,28 @@ const learningTelemetry=(()=>{
  }
  function wireSceneSpecial(){
   const n=sceneIndex+1;
-  if(labs[n]){
-   const btn=$('lab-submit');
+  if(!labs[n])return;
+  // The same lab markup exists in the reading scene and in the modal.
+  // Bind each button to its own container; never query duplicate IDs globally.
+  [$('scene-special'),$('lab-modal-content')].forEach(root=>{
+   if(!root)return;
+   const btn=root.querySelector('#lab-submit');
    if(!btn)return;
    btn.addEventListener('click',()=>{
-    const selected=$('lab-modal-content').querySelector('input[name=labchoice]:checked');
-    const reason=$('lab-reason');
+    const selected=root.querySelector('input[name=labchoice]:checked');
+    const box=root.querySelector('#lab-result');
+    if(!box)return;
+    box.hidden=false;
     if(!selected){
-     const box=$('lab-result');box.hidden=false;box.textContent=label('اختار إجابة الأول علشان يظهر التفسير.','Select an answer first to view the explanation.');return;
+     box.textContent=label('اختار إجابة الأول علشان يظهر التفسير.','Select an answer first to view the explanation.');
+     return;
     }
     const v=labs[n],ok=Number(selected.value)===v.correct;
-    $('lab-result').hidden=false;
-    $('lab-result').innerHTML=`<strong>${ok?label('الاختيار مناسب','Sound choice'):label('راجع قرارك','Reconsider your choice')}</strong><p>${escapeHtml(v[lang].note)}</p>`;
+    box.innerHTML=`<strong>${ok?label('الاختيار مناسب','Sound choice'):label('راجع قرارك','Reconsider your choice')}</strong><p>${escapeHtml(v[lang].note)}</p>`;
     btn.disabled=true;
     if(ok&&typeof recordLabSuccess==='function')recordLabSuccess();
    });
-  }
+  });
  }
  function drawTakeaways(){ $('takeaways').textContent=''; }
  function drawProject(){

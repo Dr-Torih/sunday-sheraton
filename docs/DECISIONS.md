@@ -14,6 +14,15 @@ Last recorded: **2026-10-22**. This ledger describes OWNER-APPROVED Sunday group
 | v3.1 navigation/UX | Next/Prev/Continue/Map/Unit open the next concept TITLE under sticky header. Mobile map collapses, reduced motion and keyboard focus supported | Fix navigation, not text; legacy CSS/data unchanged |
 | v3.1 GitHub handoff | Preserve exact reviewed v3.1 build in history; merge Architecture/Design/Learning/QA/next-Agent docs and CI via PR #1 | Main's later Open Graph/social metadata preserved; site index unchanged by documentation merge |
 
+## GA4 learning instrumentation — scoped candidate (2026-10-22)
+
+**Owner provided:** Google Analytics 4 Web Stream `sunday-sheraton` · Measurement ID `G-WJT7SS21NT` for the existing Sunday cohort site. Owner authorized preparing the code on a separate branch without changing the design, content or deployed site until QA and review.
+
+- **Implementation candidate, not live:** added GA4 base tag and minimal educational events into the existing `index.html` to observe explicit lecture/concept navigation and quiz interactions. Details, semantics and privacy/release checks are in [GA4_ANALYTICS.md](GA4_ANALYTICS.md).
+- **Protected invariants:** both embedded lessons, base CSS, fonts, logos, layout, and original UX/quiz logic are not to change. PR review and real-browser production event validation remain pending.
+- **Important limits:** a forwarded cohort URL is not authentication. GA4 sessions are not known student identities, and repeated concept visits do not establish comprehension or difficulty. No raw answers, scores, certificate names or student identifiers are attached to custom events.
+- **Separate future scope:** a real protected Admin dashboard, cross-cohort analytics and Trainer Studio integration are not delivered by this single-cohort GA4 patch.
+
 ## Concurrent main-branch social-preview addition (observed on 2026-10-22)
 
 While preparing the handoff, the public `main` already gained Open Graph/Twitter card metadata including `og:image` linking to `aastmt_round_logo.png`. Verification showed same L01/L02 embedded data, base CSS and runtime JavaScript as the handoff snapshot; the newer main has additional sharing metadata. The docs-only PR must **preserve** the newer main content, never replace it with an older `index.html`.

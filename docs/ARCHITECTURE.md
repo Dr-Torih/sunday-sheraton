@@ -61,6 +61,14 @@ No backend, independent identity verification, server grades or cross-device pro
 
 GitHub Pages can serve root `index.html` after merging into the configured source. External Google Fonts import is present; later CSS declarations make Alexandria and DM Sans effective, with system fallbacks. Current main also references the root `aastmt_round_logo.png` in Open Graph preview tags, so preserve that asset and metadata during merges. No external library/framework or remote API is needed for learning logic.
 
+## GA4 custom educational telemetry — optional adjunct (2026-10-22 feature branch)
+
+The **current reviewed branch candidate** adds Google's Web Stream `G-WJT7SS21NT` plus a small in-page `learningTelemetry` helper inside the same existing JavaScript IIFE. It emits events only from successful navigation, marking, and quiz interactions; it neither owns student progress nor alters chapter JSON/CSS or quiz grading. See [GA4_ANALYTICS.md](GA4_ANALYTICS.md) for event names, scope, privacy and the requirement for actual post-deployment verification.
+
+The default GA4 `page_view` covers page loads, while custom `lecture_open` covers initial and later chapter selection inside the same document. `concept_view` is tied to intentional concept navigation and does **not** fire on language/theme re-rendering. Client-side sessions cannot establish student identity or persistent cross-device revisits; the concept engagement threshold is a declared proxy rather than an observed knowledge outcome.
+
+This is an **unmerged change request**, not evidence that GA4 is sending production data. Do not merge until relevant privacy/consent controls and browser/network tests are reviewed.
+
 ## Expansion warning
 
 Several collections and labels explicitly support only 1 and 2: `chapters`, `lectureLabs`, `CHECKPOINTS`, `UNIT_CASES`, `STUDY_TAKEAWAYS`, `CURRENT_LECTURE`, chapter switch/URL hash, lecture hero/title/date and six lecture buttons. Update every dependency for L03 while leaving the existing payloads and functionality unchanged. Never create `lecture-03.html`.

@@ -59,7 +59,7 @@ No backend, independent identity verification, server grades or cross-device pro
 
 ## Static delivery
 
-GitHub Pages can serve root `index.html` after merging into the configured source. External Google Fonts import is present, although actual style stacks use additional fallbacks. No external library/framework or remote API is needed for learning logic.
+GitHub Pages can serve root `index.html` after merging into the configured source. External Google Fonts import is present; later CSS declarations make Alexandria and DM Sans effective, with system fallbacks. Current main also references the root `aastmt_round_logo.png` in Open Graph preview tags, so preserve that asset and metadata during merges. No external library/framework or remote API is needed for learning logic.
 
 ## Expansion warning
 

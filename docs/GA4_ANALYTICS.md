@@ -41,3 +41,8 @@ All custom events send `cohort_id=sunday-sheraton`, `course_id=marketing`, `lect
 - Central [private governance](https://github.com/Dr-Torih/student-learning-portal) contains the universal Four Laws and future separate secure Admin / Trainer Studio integration. This small GA4 pilot is NOT that full authenticated analytics backend.
 
 **Official documentation:** [Google: Set up events](https://developers.google.com/analytics/devguides/collection/ga4/events) · [Google: Event parameters and custom dimensions](https://developers.google.com/analytics/devguides/collection/ga4/event-parameters).
+
+
+## Deployment update — 2026-10-22 (supersedes original candidate status)
+
+**GA4 PR #3 was merged and code published** to the Sunday GitHub Pages site. The owner opened GA4 Realtime and confirmed activity appeared on **2026-10-22**. Status: **LIVE TRAFFIC RECEIPT CONFIRMED BY OWNER**. This supersedes the “branch-only/not deployed” wording in the older sections above. It does NOT independently demonstrate that each custom educational event was received or that custom dimensions are registered, nor is it a student-level tracking system. Website transformation next steps: [WEB_TRANSFORMATION_PLAN.md](WEB_TRANSFORMATION_PLAN.md). Preserve `G-WJT7SS21NT` across the migration, validate old/new page_view semantics and avoid duplicate events.

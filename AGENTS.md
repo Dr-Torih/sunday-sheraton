@@ -49,4 +49,4 @@ This is a **PUBLIC** cohort repository. Do not upload: trainer private files, ra
 
 ## 6. Fast start for the next Agent
 
-Open `docs/NEXT_LECTURE.md` and read the exact `chapters` runtime and `embedded-course-data-l02` structure in `index.html`. Add new approved chapter to the cumulative model; make chapter selector dynamic rather than building another web page; retain all existing checks. Treat the handoff branch as **proposed**, not deployed, until its PR is merged.
+Open `docs/NEXT_LECTURE.md` and read the exact `chapters` runtime and `embedded-course-data-l02` structure in `index.html`. Add new approved chapter to the cumulative model; make chapter selector dynamic rather than building another web page; retain all existing checks. The original v3.1 handoff documentation PR #1 was merged on 22 Oct 2026. Follow the current main branch as canonical and inspect new commits; the main site also contains more recent social-preview metadata. Any new lecture or substantive UI change requires a fresh PR and review.

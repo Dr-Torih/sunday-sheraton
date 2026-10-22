@@ -1565,7 +1565,7 @@ document.addEventListener('click',e=>{
 },true);
 const lectureSelect=document.getElementById('header-lecture-select');
 lectureSelect.addEventListener('change',()=>{const target=document.querySelector('#lecture-links [data-lecture="'+lectureSelect.value+'"]');if(target){target.click();apply('study')}else{lectureSelect.value=document.querySelector('#lecture-links .lecture-chip.active')?.dataset.lecture||'1'}});
-document.getElementById('header-print-book').addEventListener('click',()=>document.getElementById('print-full').click());
+document.getElementById('header-print-book').addEventListener('click',()=>window.print());
 document.getElementById('concept-map-shortcut').addEventListener('click',()=>{
  const sidebar=document.querySelector('.reading-sidebar'),toggle=document.getElementById('ux31-map-toggle');
  if(!sidebar)return;

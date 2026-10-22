@@ -787,6 +787,10 @@ body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body
  #print-book a{text-decoration:none}
 }
 </style>
+<style id="ltr-concept-sequence-fix">
+/* Preserve scientific step order and arrow direction in both RTL and LTR layouts. */
+.concept-flow-ltr{direction:ltr;unicode-bidi:isolate;white-space:normal;font-family:var(--latin);text-align:start}
+</style>
 <style id="lecture-first-ux">
 /* Lecture-first UX: no change to academic content or original design tokens. */
 .header-course-name{display:block;font-size:15px;font-weight:800;color:var(--navy);line-height:1.35}
@@ -1011,7 +1015,28 @@ const learningTelemetry=(()=>{
   $('term-modal').hidden=false;document.body.style.overflow='hidden';
   $('close-term').focus();
  }
- function linkLessonTerms(){
+ /* P0 RTL/LTR display correction: isolate literal English flows before glossary enrichment.
+   Presentation only: academic source strings are never modified. */
+function isolateConceptFlows(root){
+ if(!root)return;
+ const flow=/\b(?:Data\s*→\s*Pattern\s*→\s*Insight\s*→\s*Decision|Data\s*→\s*Pattern|Pattern\s*→\s*Insight|Insight\s*→\s*Decision|SWOT\s*→\s*TOWS)\b/g;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ for(const node of nodes){
+  if(!node.parentElement||node.parentElement.closest('bdi,.concept-flow-ltr,script,style,code,pre,textarea'))continue;
+  const value=node.nodeValue;if(!value)continue;
+  flow.lastIndex=0;if(!flow.test(value))continue;
+  flow.lastIndex=0;let hit,offset=0;const frag=document.createDocumentFragment();
+  while((hit=flow.exec(value))!==null){
+   if(hit.index>offset)frag.appendChild(document.createTextNode(value.slice(offset,hit.index)));
+   const bdi=document.createElement('bdi');bdi.className='concept-flow-ltr';bdi.dir='ltr';bdi.textContent=hit[0];
+   frag.appendChild(bdi);offset=hit.index+hit[0].length;
+  }
+  if(offset<value.length)frag.appendChild(document.createTextNode(value.slice(offset)));
+  node.replaceWith(frag);
+ }
+}
+function linkLessonTerms(){
   const root=$('scene-content');
   const candidates=D.glossary.map((entry,i)=>({term:entry.t,index:i})).filter(x=>x.term.length>=4);
   candidates.sort((a,b)=>b.term.length-a.term.length);
@@ -1064,6 +1089,8 @@ const learningTelemetry=(()=>{
   $('scene-unit').textContent=`UNIT ${String(s.unit).padStart(2,'0')} / ${D.units[s.unit-1][lang]}`;
   $('scene-position').textContent=`${String(sceneIndex+1).padStart(2,'0')} / ${D.scenes.length}`;
   $('scene-content').innerHTML=s.html[lang];
+  isolateConceptFlows($('scene-content'));
+  isolateConceptFlows($('scene-title'));isolateConceptFlows($('scene-unit'));
   linkLessonTerms();
   [...$('scene-content').querySelectorAll('table')].forEach(t=>{const w=document.createElement('div');w.className='table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)});
   [...$('scene-content').querySelectorAll('p')].forEach(p=>{
@@ -1133,7 +1160,8 @@ const learningTelemetry=(()=>{
   $('unit-map').innerHTML=D.units.map((u,i)=>{
    const count=D.scenes.filter(s=>s.unit===u.id).length;
    return `<button class="unit-card ${D.scenes[sceneIndex].unit===u.id?'active':''}" data-open-unit="${u.id}" aria-label="${escapeHtml(u[lang])}"><span class="unit-icon u${u.id}" aria-hidden="true"></span><span class="unit-text"><small>UNIT ${String(u.id).padStart(2,'0')}</small><strong>${escapeHtml(u[lang])}</strong><em>${count} ${label('مشاهد','scenes')}</em></span></button>`
-  }).join('')
+  }).join('');
+  isolateConceptFlows($('unit-map'));
  }
  function drawConceptList(query=''){
   const q=query.trim().toLowerCase();let output='';
@@ -1151,6 +1179,7 @@ const learningTelemetry=(()=>{
    output+='</div></div>';
   }
   $('concept-list').innerHTML=output||label('لا توجد نتائج مطابقة.','No matching concepts.');
+  isolateConceptFlows($('concept-list'));
  }
  let labs=lectureLabs[CURRENT_LECTURE];
 
@@ -1243,6 +1272,7 @@ const learningTelemetry=(()=>{
   const n=CURRENT_LECTURE,date=n===1?'11':'18';
   const sections=['ar','en'].map(l=>`<div class="print-lang-${l}"><div class="print-cover"><img src="${document.querySelector('.brand-logo').src}" alt="AASTMT Logo"><h1>${l==='ar'?'مبادئ التسويق — المحاضرة '+(n===1?'الأولى':'الثانية'):'Marketing — Lecture 0'+n}</h1><p>AASTMT · Sheraton · ${date} October 2026 · Dr. Ibrahim Torih</p></div>${D.scenes.map((s,i)=>`<div class="print-scene"><small>LECTURE 0${n} · ${String(i+1).padStart(2,'0')} / ${D.scenes.length}</small><h2>${escapeHtml(s.title[l])}</h2><div>${s.html[l]}</div></div>`).join('')}</div>`);
   $('print-book').innerHTML=sections.join('');
+  isolateConceptFlows($('print-book'));
  }
  $('lecture-links').addEventListener('click',event=>{const button=event.target.closest('[data-lecture]');if(button){event.preventDefault();switchLecture(Number(button.dataset.lecture));}});
  window.addEventListener('popstate',()=>{const n=location.hash==='#lecture-02'?2:1;if(n!==CURRENT_LECTURE)switchLecture(n,{updateHistory:false});});
@@ -1350,6 +1380,7 @@ function renderLearningUI(){
  $('lp-level').textContent=label(rank[1],rank[2]);
  $('lp-footnote').textContent=label('Learning Points بتكافئ المذاكرة والتطبيق. نتيجة الاختبار مستقلة عن نقاط التقدم، وبياناتك محفوظة على الجهاز ده فقط.','Learning Points reward study and practice. Quiz accuracy is reported separately. Your progress is stored only on this device.');
  $('lp-units').innerHTML=D.units.map(u=>{const p=unitTotals(u.id),pct=Math.round(p.completed/p.total*100),passed=Boolean(quickProgress[String(Object.keys(CHECKPOINTS[CURRENT_LECTURE]).find(i=>D.scenes[Number(i)-1].unit===u.id))]?.solved);return `<button type="button" data-lp-unit="${u.id}" class="lp-unit ${p.completed===p.total?'lp-finished':''}" aria-label="${escapeHtml(u[lang])}: ${p.completed} / ${p.total}"><span class="lp-unit-num">${String(u.id).padStart(2,'0')}</span><span class="lp-unit-name">${escapeHtml(u[lang])}</span><span class="lp-unit-status">${p.completed} / ${p.total}${passed?' · ✓':''}</span><span class="lp-rail"><span style="width:${pct}%"></span></span></button>`}).join('');
+ isolateConceptFlows($('lp-units'));
  const s=D.scenes[sceneIndex];
  $('study-meta').innerHTML=`<span>${label('قراءة تقريبية','Approx. reading')} · ${readMinutes(s)} ${label('دقائق','min')}</span><span>${label('الفكرة','Concept')} ${sceneIndex+1} / ${D.scenes.length}</span>`;
  const resume=D.scenes.findIndex((s,i)=>i>=sceneIndex&&!done.has(i));
@@ -1412,6 +1443,7 @@ function renderCase(){
  if(first!==sceneIndex){container.hidden=true;container.innerHTML='';return}
  const c=UNIT_CASES[CURRENT_LECTURE][unit],t=c[lang],state=caseProgress[String(unit)];container.hidden=false;
  container.innerHTML=`<div class="mc-overline">${label('CASE STUDY · من نقاشات المحاضرة','CASE STUDY · CLASSROOM DISCUSSION')} · UNIT ${String(unit).padStart(2,'0')}</div><h4>${escapeHtml(t.title)}</h4><p>${escapeHtml(t.body)}</p><div class="mc-choices">${t.choices.map((x,i)=>`<button type="button" data-mc-pick="${i}" class="mc-choice ${state!==undefined&&i===c.answer?'mc-correct':''} ${state!==undefined&&i===state&&state!==c.answer?'mc-wrong':''}" ${state!==undefined?'disabled':''}>${escapeHtml(x)}</button>`).join('')}</div>${state!==undefined?`<div class="mc-feedback" role="status"><b>${state===c.answer?label('قرار مناسب','Sound decision'):label('راجع السبب','Review the reasoning')}</b><p>${escapeHtml(t.feedback)}</p></div>`:''}<p class="mc-note">${label('الموقف للتفكير والتطبيق، مش درجة امتحان.','A reflective practice case, not an examination grade.')}</p>`;
+ isolateConceptFlows(container);
 }
 function printStudyRecord(){
  const score=bestQuiz,all=done.size===D.scenes.length;

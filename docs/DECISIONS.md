@@ -14,6 +14,10 @@ Last recorded: **2026-10-22**. This ledger describes OWNER-APPROVED Sunday group
 | v3.1 navigation/UX | Next/Prev/Continue/Map/Unit open the next concept TITLE under sticky header. Mobile map collapses, reduced motion and keyboard focus supported | Fix navigation, not text; legacy CSS/data unchanged |
 | v3.1 GitHub handoff | Snapshot exact approved v3.1 single-file build in feature branch and document Architecture/Design/Learning/QA/next-Agent flow | Branch PR first; don't silently publish to public `main` |
 
+## Concurrent main-branch social-preview addition (observed on 2026-10-22)
+
+While preparing the handoff, the public `main` already gained Open Graph/Twitter card metadata including `og:image` linking to `aastmt_round_logo.png`. Verification showed same L01/L02 embedded data, base CSS and runtime JavaScript as the handoff snapshot; the newer main has additional sharing metadata. The docs-only PR must **preserve** the newer main content, never replace it with an older `index.html`.
+
 ## UX issue corrected in v3.1
 
 Prior Next button used `#study` as scroll destination. On smaller mobile devices the map and preceding information pushed the new concept heading far below viewport. The approved fix uses one shared heading-based destination with sticky-header clearance (~24px), proper focus, reduced-motion handling and map collapse. Fix ALL entry paths, not only Next.

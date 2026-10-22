@@ -1,0 +1,34 @@
+name: Study Book Integrity
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'tests/**'
+      - '.github/workflows/study-book-checks.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'tests/**'
+      - '.github/workflows/study-book-checks.yml'
+jobs:
+  content-and-js:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify content freeze and base CSS
+        run: python3 tests/verify_study_book.py index.html
+      - name: Extract and syntax-check site JavaScript
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path('index.html').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script[^>]*>(.*?)</script>',html,re.DOTALL|re.IGNORECASE)
+          assert len(scripts)>=3, 'Missing embedded scripts or runtime'
+          Path('/tmp/sunday-runtime.js').write_text(scripts[-1],encoding='utf-8')
+          PY
+          node --check /tmp/sunday-runtime.js

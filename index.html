@@ -761,6 +761,32 @@ body[data-site-page] #site-nav .navlink:not([disabled]):hover{color:var(--cyan)}
 body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body[data-site-page="review"] #review,body[data-site-page="project"] #project{padding-top:34px;min-height:64vh}
 @media print{body[data-site-page] main > section{display:block!important}}
 </style>
+<style id="qa-five-fixes">
+/* Never display unavailable classroom imagery or its placeholder, across all website views. */
+#moments,#moments[hidden]{display:none!important}
+/* QA: improve navigability of concept map; unchanged original lesson data and sequence. */
+#map-section .unit-map{align-items:stretch}
+#map-section .unit-card{min-height:135px;transition:border-color .15s,box-shadow .15s,transform .15s}
+#map-section .unit-card:focus-visible{outline:3px solid #079fa9;outline-offset:3px}
+#map-section .unit-card:hover{border-color:#079fa9;transform:translateY(-2px)}
+#map-section .unit-card.active{border-color:var(--cyan);box-shadow:inset 0 0 0 2px var(--cyan)}
+#lab-result:not([hidden]){display:block!important;margin-top:16px;padding:14px 18px;border-inline-start:4px solid var(--cyan);background:var(--soft);color:var(--ink);white-space:normal}
+#lab-result:not([hidden]) p{line-height:1.9}
+@media print{
+ @page{size:A4;margin:12mm 14mm}
+ body[data-site-page] main>section{display:none!important}
+ #moments{display:none!important}
+ #print-book{display:block!important}
+ #print-book .print-cover{break-after:avoid-page;page-break-after:avoid}
+ #print-book .print-scene{break-before:auto!important;page-break-before:auto!important;break-after:auto;page-break-after:auto;min-height:0!important;padding:3mm 0 5mm!important;margin:0 0 5mm!important}
+ #print-book .print-scene h2{break-after:avoid;page-break-after:avoid;margin:0 0 3mm}
+ #print-book .print-scene p,#print-book .print-scene li{orphans:3;widows:3}
+ #print-book .print-scene table,#print-book .print-scene figure,#print-book .print-scene svg{break-inside:avoid-page;page-break-inside:avoid}
+ #print-book .print-scene *{max-width:100%}
+ #print-book .print-lang-ar,#print-book .print-lang-en{break-before:auto}
+ #print-book a{text-decoration:none}
+}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -830,7 +856,7 @@ body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body
   <div class="hero-art-caption">CONCEPT · CLARITY · CONNECTION</div>
  </div>
 </section>
-<section class="lecture-strip shell" aria-label="Course lectures"><div class="strip-head"><span data-ar="المحاضرات" data-en="Course Lectures">المحاضرات</span><small data-ar="Lecture 01 وLecture 02 متاحين الآن" data-en="Lectures 01 &amp; 02 available now">Lecture 01 وLecture 02 متاحين الآن</small></div><div id="lecture-links" class="lecture-links"></div></section>
+<section class="lecture-strip shell" aria-label="Course lectures"><div class="strip-head"><span data-ar="كورس التسويق · Marketing" data-en="Marketing Course">كورس التسويق · Marketing</span><small data-ar="Lecture 01 وLecture 02 متاحين الآن" data-en="Lectures 01 &amp; 02 available now">Lecture 01 وLecture 02 متاحين الآن</small></div><div id="lecture-links" class="lecture-links"></div></section>
 <section class="map-section shell" id="map-section"><div class="section-label"><span class="label-number">01 / THE CONNECTIONS</span><h2 data-ar="خريطة المحاضرة" data-en="The Concept Map">خريطة المحاضرة</h2><p data-ar="كل مجموعة أفكار بتبني على اللي قبلها. اختار محورًا للانتقال لأول مشهد فيه." data-en="Each unit builds on what came before. Select a unit to open its first concept.">كل مجموعة أفكار بتبني على اللي قبلها. اختار محورًا للانتقال لأول مشهد فيه.</p></div><div id="unit-map" class="unit-map"></div></section>
 <section class="reading-section shell" id="study"><div class="reading-section-heading"><div><div class="section-label"><span class="label-number">02 / THE STUDY BOOK</span><h2 data-ar="المحاضرة، فكرة ورا فكرة" data-en="One concept at a time">المحاضرة، فكرة ورا فكرة</h2><p data-ar="شرح حقيقي ومترابط. أنت اللي تختار إمتى تنتقل للمشهد التالي." data-en="A connected, substantial explanation. You decide when to move on.">شرح حقيقي ومترابط. أنت اللي تختار إمتى تنتقل للمشهد التالي.</p></div></div><div class="progress-area"><div class="progress-numbers"><strong id="progress-number">0 / 25</strong><span data-ar="مشهد مكتمل" data-en="scenes completed">مشهد مكتمل</span></div><div class="progress-rail"><div id="progress-bar" class="progress-fill"></div></div></div></div>
  <div class="reading-layout">
@@ -839,7 +865,7 @@ body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body
  </div></section>
 <section class="practice-section shell" id="review"><div class="section-label"><span class="label-number">03 / RETRIEVAL & PRACTICE</span><h2 data-ar="فاكر الفكرة؟ جرّب الأول" data-en="Retrieve before you reveal">فاكر الفكرة؟ جرّب الأول</h2><p data-ar="دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير." data-en="These are prompts for genuine recall. Write your answer first, then reveal feedback.">دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير.</p></div><div class="practice-layout"><div class="takeaways-column"><div class="subheading"><span class="subheading-icon yellow-bg">✳</span><h3>KEY TAKEAWAYS</h3><span id="kt-counter" class="quiet-count">12</span></div><div class="takeaway-list" id="takeaways"></div></div><div class="quiz-column"><div class="quiz-intro"><div class="quiz-geo"><span></span><span></span><span></span><span></span></div><span class="eyebrow light-on-dark">END OF LECTURE QUIZ</span><h3 data-ar="اختبر فهمك للمحاضرة" data-en="Test your understanding">اختبر فهمك للمحاضرة</h3><p data-ar="18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة." data-en="16 questions spanning the lecture. Get explanatory feedback after submission and retry whenever you like.">18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة.</p><button id="open-quiz" class="cta quiz-cta"><span data-ar="ابدأ الاختبار" data-en="Start the quiz">ابدأ الاختبار</span><svg class="svg-icon"><use href="#i-arrow"/></svg></button><div class="quiz-meta"><span data-ar="تقييم ذاتي خاص بك" data-en="Private self-assessment">تقييم ذاتي خاص بك</span><span>18 MCQs</span></div></div></div></div></section>
 <section class="project-section shell" id="project"><div class="project-layout"><div class="project-heading"><span class="label-number">04 / FROM CLASS TO PROJECT</span><h2 data-ar="من المحاضرة لمشروع مجموعتك" data-en="Your Group Project Companion">من المحاضرة لمشروع مجموعتك</h2><p data-ar="طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها." data-en="Turn your learning into your team's Marketing Plan. Check off each task as you complete it.">طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها.</p><div class="project-note" data-ar="متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر." data-en="Binding submission details and dates come from the instructor's final approved announcement.">متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر.</div></div><div class="project-checklist"><div class="check-top"><strong data-ar="قائمة مراجعة المشروع" data-en="Project checklist">قائمة مراجعة المشروع</strong><span id="project-progress">0 / 10</span></div><div id="checklist-items"></div></div></div></section>
-<section class="moments-section shell" id="moments"><div class="moments-art"><div class="picture-shape"><div class="picture-geometry"><i></i><i></i><i></i><i></i></div><svg class="svg-icon moment-svg"><use href="#i-book"/></svg></div></div><div class="moments-copy"><span class="label-number">05 / CLASS MOMENTS</span><h2 data-ar="لحظات من المحاضرة" data-en="Class Moments">لحظات من المحاضرة</h2><p data-ar="هنضيف الصورة الأصلية للمجموعة هنا لما يتأكد إذن نشرها. لحد وقتها مش هنستخدم صور أشخاص افتراضية أو ننسبها للمحاضرة." data-en="The original group photograph can be added after publication consent is confirmed. No invented student images or misattributed classroom photos.">هنضيف الصورة الأصلية للمجموعة هنا لما يتأكد إذن نشرها. لحد وقتها مش هنستخدم صور أشخاص افتراضية أو ننسبها للمحاضرة.</p></div></section>
+<section class="moments-section shell" id="moments" hidden aria-hidden="true"><div class="moments-art"><div class="picture-shape"><div class="picture-geometry"><i></i><i></i><i></i><i></i></div><svg class="svg-icon moment-svg"><use href="#i-book"/></svg></div></div><div class="moments-copy"><span class="label-number">05 / CLASS MOMENTS</span><h2 data-ar="لحظات من المحاضرة" data-en="Class Moments">لحظات من المحاضرة</h2><p data-ar="هنضيف الصورة الأصلية للمجموعة هنا لما يتأكد إذن نشرها. لحد وقتها مش هنستخدم صور أشخاص افتراضية أو ننسبها للمحاضرة." data-en="The original group photograph can be added after publication consent is confirmed. No invented student images or misattributed classroom photos.">هنضيف الصورة الأصلية للمجموعة هنا لما يتأكد إذن نشرها. لحد وقتها مش هنستخدم صور أشخاص افتراضية أو ننسبها للمحاضرة.</p></div></section>
 <footer class="footer shell"><span class="footer-mark"></span><p>AASTMT · Sheraton · 11 OCT 2026</p><p data-ar="إعداد المادة العلمية: د. إبراهيم طريح · دليل الطالب للمحاضرة الأولى" data-en="Academic instructor: Dr. Ibrahim Torih · Lecture 01 Study Book">إعداد المادة العلمية: د. إبراهيم طريح · دليل الطالب للمحاضرة الأولى</p><button id="print-full" class="footer-print"><svg class="svg-icon"><use href="#i-print"/></svg><span data-ar="طباعة كتاب المحاضرة" data-en="Print the study book">طباعة كتاب المحاضرة</span></button><p class="academic-refs">مراجع أكاديمية إضافية / Academic references: <a target="_blank" rel="noopener noreferrer" href="https://www.ama.org/the-definition-of-marketing-what-is-marketing/">American Marketing Association</a> · <a target="_blank" rel="noopener noreferrer" href="https://openstax.org/books/principles-marketing/pages/1-5-determining-consumer-needs-and-wants">OpenStax · Consumer Needs &amp; Wants</a></p></footer>
 </main>
 <!-- Fully self-contained reading book for browser print/PDF export. -->
@@ -1097,20 +1123,28 @@ const learningTelemetry=(()=>{
  }
  function wireSceneSpecial(){
   const n=sceneIndex+1;
-  if(labs[n]){
-   const btn=$('lab-submit');
+  if(!labs[n])return;
+  // The same lab markup exists in the reading scene and in the modal.
+  // Bind each button to its own container; never query duplicate IDs globally.
+  [$('scene-special'),$('lab-modal-content')].forEach(root=>{
+   if(!root)return;
+   const btn=root.querySelector('#lab-submit');
    if(!btn)return;
    btn.addEventListener('click',()=>{
-    const selected=document.querySelector('input[name=labchoice]:checked');
-    const reason=$('lab-reason');
-    if(!selected||!reason||!reason.value.trim())return;
+    const selected=root.querySelector('input[name=labchoice]:checked');
+    const box=root.querySelector('#lab-result');
+    if(!box)return;
+    box.hidden=false;
+    if(!selected){
+     box.textContent=label('اختار إجابة الأول علشان يظهر التفسير.','Select an answer first to view the explanation.');
+     return;
+    }
     const v=labs[n],ok=Number(selected.value)===v.correct;
-    $('lab-result').hidden=false;
-    $('lab-result').innerHTML=`<strong>${ok?label('الاختيار مناسب','Sound choice'):label('راجع قرارك','Reconsider your choice')}</strong><p>${escapeHtml(v[lang].note)}</p>`;
+    box.innerHTML=`<strong>${ok?label('الاختيار مناسب','Sound choice'):label('راجع قرارك','Reconsider your choice')}</strong><p>${escapeHtml(v[lang].note)}</p>`;
     btn.disabled=true;
     if(ok&&typeof recordLabSuccess==='function')recordLabSuccess();
    });
-  }
+  });
  }
  function drawTakeaways(){ $('takeaways').textContent=''; }
  function drawProject(){

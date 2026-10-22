@@ -58,3 +58,7 @@ At Concept Reader desktop, use a narrow unobtrusive Course Map / unit list next 
 
 ## Decision boundary
 Owner has authorized **beginning the transformation** and specialist-led design analysis, not a blind replacement of the current student site. This document does not pretend that an external committee or unbuilt design prototype has already reviewed or approved finished screens. Governance master: `Dr-Torih/student-learning-portal/docs/PORTAL_WEB_ROADMAP.md`.
+
+## Approved scope adjustment — 2026-10-22
+
+Owner explicitly selects **incremental lecture-first simplification of the original single-site study engine** rather than building a second multi-page parallel UI. Header lecture selection and Print, persistent course name, Study-integrated Concept Map and three top-level sections take precedence over earlier standalone Home/Course Map designs for this Sunday cohort. Reuse original `index.html`, storage and contents, with review branch/PR and actual browser + print QA as hard release gates. Future route architecture for other cohorts remains separate and is not silently deployed by this patch.

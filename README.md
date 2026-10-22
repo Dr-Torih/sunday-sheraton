@@ -41,8 +41,8 @@ The approved experience includes contextual explanations, verified classroom cas
 
 This repository's `main` branch may be configured as a GitHub Pages source. **Never change `main` merely to save a draft.** Prepare changes on a branch, verify, open a Pull Request, and merge only after review. A PR is saved on GitHub but does not automatically publish the new version.
 
-- Current site file is embedded and self-contained (including the header image as a data URI). The existing `aastmt_round_logo.png` may remain but is not needed to run the v3.1 HTML.
-- The interface imports Alexandria and DM Sans via Google Fonts, while actual font-family stacks also include Noto Kufi Arabic/Noto Sans Arabic and Manrope fallbacks. Do not silently replace the font stacks or CSS tokens.
+- Current site file is embedded and self-contained (including the header image as a data URI). The existing `aastmt_round_logo.png` is used for public Open Graph/social preview on the newer main branch even though the in-page logo is embedded as a data URI. Preserve it.
+- The approved editorial-geometric CSS cascade renders **Alexandria** (Arabic) and **DM Sans** (Latin), with system fallbacks; historic Noto Kufi/Manrope declarations appear earlier but are overridden. See the effective CSS tokens in docs/DESIGN_UX.md; never silently change font stacks.
 - Learner progress uses device/browser `localStorage`; it is not synchronized across devices or backed by a database.
 - Printing a quiz certificate is **a self-assessment achievement record**, not an officially accredited AASTMT award.
 

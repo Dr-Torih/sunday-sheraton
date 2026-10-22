@@ -55,3 +55,7 @@ This repository's `main` branch may be configured as a GitHub Pages source. **Ne
 **Append the next approved lecture to the EXISTING bilingual single-file study book, preserve every previously approved content byte and all runtime behavior, document the change, and prove the regression checks passed.**
 
 _Handoff documentation merged to main on 22 Oct 2026. The existing main index.html was preserved, including newer Open Graph metadata. GitHub Pages deployment is monitored separately and must not be assumed complete merely from a merge._
+
+## Lecture-first Portal — approved change under review (2026-10-22)
+
+The owner approved removing the standalone start view; selecting Lecture 01/02 and printing from the sticky header; making the existing reader's concept sidebar the sole visible Concept Map; and retaining three section routes (Study, Review/Quiz, Project) plus the glossary modal. This is a **PR-only candidate**, not a public release until explicit merge approval. Earlier `?page=home` / `?page=map` deep links map to `study`. Original study data, assessment, branding and site URL stay intact. See [the change and browser acceptance log](docs/PORTAL_LECTURE_FIRST_QA.md).

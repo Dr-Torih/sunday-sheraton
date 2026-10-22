@@ -1,6 +1,6 @@
 # Decision & Release Ledger — Sunday Sheraton
 
-Last recorded: **2026-10-22**. This ledger describes OWNER-APPROVED Sunday group product decisions and observed handoffs. It does not claim the v3.1 branch has been merged to `main`.
+Last recorded: **2026-10-22**. This ledger describes OWNER-APPROVED Sunday group product decisions and observed handoffs. The v3.1 documentation PR #1 was merged into `main` on 2026-10-22; the existing current main index.html was preserved.
 
 | Milestone | Approved decision / outcome | Guardrail |
 |---|---|---|
@@ -12,7 +12,7 @@ Last recorded: **2026-10-22**. This ledger describes OWNER-APPROVED Sunday group
 | v3 KEY TAKEAWAYS | Important educational summaries integrated at end of each unit rather than extra answer prompts | Quiz/Quick Checks remain true evaluation tools |
 | v3 certificate | Name entered by student; print/save one-page PDF with course, instructor, chapter and practice-quiz score; passing threshold >=80% (15/18) | Self-assessment certificate only, not officially accredited; saved pass accessible after leaving exam |
 | v3.1 navigation/UX | Next/Prev/Continue/Map/Unit open the next concept TITLE under sticky header. Mobile map collapses, reduced motion and keyboard focus supported | Fix navigation, not text; legacy CSS/data unchanged |
-| v3.1 GitHub handoff | Snapshot exact approved v3.1 single-file build in feature branch and document Architecture/Design/Learning/QA/next-Agent flow | Branch PR first; don't silently publish to public `main` |
+| v3.1 GitHub handoff | Preserve exact reviewed v3.1 build in history; merge Architecture/Design/Learning/QA/next-Agent docs and CI via PR #1 | Main's later Open Graph/social metadata preserved; site index unchanged by documentation merge |
 
 ## Concurrent main-branch social-preview addition (observed on 2026-10-22)
 

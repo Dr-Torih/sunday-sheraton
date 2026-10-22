@@ -52,4 +52,4 @@ The v3.1 construction prior to GitHub handoff was reported browser-tested for Ne
 
 ## GitHub handoff status
 
-The handoff is a branch + Pull Request candidate to be reviewed before merging to `main`. The current public site may still show the older build until an authorized merge and Pages publication.
+Documentation PR #1 was merged into `main` on 22 Oct 2026. GitHub Actions **Study Book Integrity** passed on merge commit `afffab347d34bc2d9267ae3e3dc4a25dcc105466`. The existing `main` index.html was not overwritten; it includes the same lesson data, CSS and runtime logic plus later Open Graph metadata. GitHub Pages deployment has its own workflow/status and should be checked separately.

@@ -1556,7 +1556,7 @@ document.addEventListener('click',e=>{
   const p=views[nav.getAttribute('href').slice(1)];
   if(p){e.preventDefault();apply(p);return}
  }
- const scene=e.target.closest('[data-open-scene],#next-scene,#prev-scene,#start-reading,#continue-reading,[data-jb-go],#mark-done');
+ const scene=e.target.closest('[data-open-scene],[data-open-unit],#next-scene,#prev-scene,#start-reading,#start-learning,#continue-reading,[data-jb-go],#mark-done');
  if(scene){const old=active;if(old!=='study')apply('study',{scroll:false});return}
  const lecture=e.target.closest('[data-lecture]');
  if(lecture && active!=='home')apply('home',{scroll:false});

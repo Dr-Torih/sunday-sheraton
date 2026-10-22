@@ -788,18 +788,46 @@ body[data-site-page="map"] #map-section,body[data-site-page="study"] #study,body
 }
 </style>
 <style id="lecture-first-ux">
-/* Approved navigation-only update: existing study content, layout tokens and embedded lesson data untouched. */
-.header-course-name{display:block;font-size:13px;font-weight:800;color:var(--navy);line-height:1.45}
+/* Lecture-first UX: no change to academic content or original design tokens. */
+.header-course-name{display:block;font-size:15px;font-weight:800;color:var(--navy);line-height:1.35}
 .global-actions{flex-wrap:wrap;justify-content:flex-end}
 .header-lecture-control{display:flex;align-items:center;gap:7px;font-weight:700;font-size:12px;color:var(--ink)}
 #header-lecture-select{min-width:120px;max-width:150px;padding:9px 7px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--ink);font:600 12px var(--latin)}
-#header-lecture-select:focus-visible,#header-print:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+#header-lecture-select:focus-visible,#header-print:focus-visible,#progress-details-toggle:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
 #header-print{display:inline-flex;gap:6px;align-items:center}
 #overview,#map-section,#moments,.lecture-strip{display:none!important}
 body[data-site-page="study"] main > section:not(#study),body[data-site-page="review"] main > section:not(#review),body[data-site-page="project"] main > section:not(#project){display:none!important}
 body[data-site-page="study"] #study{display:block!important}
 body[data-theme="dark"] .header-course-name{color:var(--ink)}
-@media(max-width:790px){.top-bar-inner{flex-wrap:wrap}.global-actions{width:100%;justify-content:space-between;gap:6px}.header-lecture-control{flex:1;min-width:140px}#header-lecture-select{min-width:90px;flex:1}.header-print span{display:none}}
+/* Keep the original learning-point/unit-progress feature but avoid a second permanent Unit Map before the lesson. */
+#learning-path.portal-progress-compact{padding:14px 18px;margin:12px 0}
+#learning-path.portal-progress-compact .lp-overline{font-size:9px}
+#learning-path.portal-progress-compact .lp-top{margin:6px 0}
+#learning-path.portal-progress-compact .lp-top h3{font-size:15px}
+#learning-path.portal-progress-compact .lp-units,#learning-path.portal-progress-compact .lp-footnote{display:none}
+#learning-path.portal-progress-compact.portal-progress-expanded .lp-units{display:grid}
+#learning-path.portal-progress-compact.portal-progress-expanded .lp-footnote{display:block}
+#progress-details-toggle{display:inline-flex;align-items:center;margin-top:5px;padding:8px 10px;border:1px solid var(--border);color:var(--blue);background:var(--surface);font:700 12px var(--arabic);cursor:pointer}
+@media(max-width:790px){
+  .top-bar-inner{display:flex!important;flex-direction:column!important;align-items:stretch!important;flex-wrap:nowrap!important;min-height:0!important;gap:9px!important;padding:10px 0 12px}
+  .top-bar-inner>.brand{order:0;width:100%!important;max-width:100%!important;min-width:0!important;display:flex!important;align-items:center!important;gap:10px!important}
+  .brand-logo{width:58px!important;height:58px!important;flex:0 0 58px!important}
+  .brand-name{display:flex!important;flex-direction:column!important;max-width:calc(100% - 68px)!important;min-width:0!important;gap:2px!important}
+  .brand-name strong{font-size:10.5px!important;line-height:1.35!important;max-width:100%!important;white-space:normal!important}
+  .brand-name>.brand-instructor{font-size:15px!important;line-height:1.25!important;white-space:normal!important}
+  .brand-name>span:not(.brand-instructor):not(.header-course-name){font-size:8px!important;line-height:1.3!important;letter-spacing:0!important}
+  .brand-name>.header-course-name{font-size:13px!important;line-height:1.4!important}
+  .top-bar-inner>.global-actions{order:1;display:flex!important;flex-wrap:nowrap!important;justify-content:space-between!important;align-items:center!important;width:100%!important;min-width:0!important;gap:5px!important}
+  .header-lecture-control{flex:1 1 auto!important;min-width:0!important;gap:4px!important;font-size:10px!important}
+  .header-lecture-control>span{white-space:nowrap}
+  #header-lecture-select{flex:1!important;width:100%!important;max-width:none!important;min-width:0!important;height:36px!important;padding:5px 3px!important;font-size:10px!important}
+  #header-print{height:36px!important;flex:0 0 38px!important;justify-content:center!important;padding:0 6px!important}
+  .header-print span{display:none!important}
+  .global-actions>#lang-toggle,.global-actions>#theme-toggle,.global-actions>#menu-toggle{flex:0 0 auto!important;min-width:0!important;height:36px!important}
+  .top-bar-inner>.header-progress{order:2;width:100%!important;min-width:0!important;margin:0!important;max-width:none!important}
+  #learning-path.portal-progress-compact{padding:13px}
+  #learning-path.portal-progress-compact .lp-top{gap:8px}
+}
 @media print{#overview,#map-section,#moments,.lecture-strip{display:none!important}#print-book{display:block!important}#print-book .print-scene{break-before:auto!important;page-break-before:auto!important;break-inside:auto!important;padding:2mm 0 3mm!important;margin:0 0 3mm!important}#print-book .print-cover{padding:2mm 0 5mm!important;margin:0 0 5mm!important}#print-book .print-scene h2{break-after:avoid-page!important;page-break-after:avoid!important}#print-book .print-scene :is(p,li){orphans:3;widows:3}}
 </style>
 </head>
@@ -1559,6 +1587,17 @@ function syncLecture(){const selected=lectureLinks?.querySelector('[data-lecture
 lectureSelect.addEventListener('change',()=>{const chosen=lectureLinks.querySelector('[data-lecture="'+lectureSelect.value+'"]');if(chosen){chosen.click();apply('study',{scroll:false});requestAnimationFrame(()=>{document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'})})}});
 if(lectureLinks)new MutationObserver(syncLecture).observe(lectureLinks,{childList:true});
 syncLecture();
+/* One primary Concept Map remains in Study sidebar; original progress tiles available on demand. */
+const progress=document.getElementById('learning-path');
+if(progress){
+ progress.classList.add('portal-progress-compact');
+ const toggle=document.createElement('button');
+ toggle.id='progress-details-toggle';toggle.type='button';toggle.setAttribute('aria-controls','lp-units');toggle.setAttribute('aria-expanded','false');
+ const redraw=()=>{const en=document.documentElement.lang==='en',expanded=progress.classList.contains('portal-progress-expanded');toggle.textContent=en?(expanded?'Hide detailed progress':'View detailed progress'):(expanded?'إخفاء تفاصيل التقدم':'عرض تفاصيل التقدم');toggle.setAttribute('aria-expanded',String(expanded))};
+ toggle.addEventListener('click',()=>{progress.classList.toggle('portal-progress-expanded');redraw()});
+ progress.querySelector('.lp-top')?.after(toggle);redraw();
+ document.getElementById('lang-toggle')?.addEventListener('click',()=>requestAnimationFrame(redraw));
+}
 document.getElementById('header-print').addEventListener('click',()=>document.getElementById('print-full').click());
 apply(page(),{history:false,scroll:false});
 window.__courseWebsite={open:apply,page:()=>active};

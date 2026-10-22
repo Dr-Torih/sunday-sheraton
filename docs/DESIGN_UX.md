@@ -4,21 +4,26 @@
 
 **Elegant academic interactive study book plus restrained, meaningful gamification.** Formal-friendly Egyptian Arabic, English Marketing terms preserved, whitespace, visual linked reasoning, minimal distractions. No artificial confetti, toy-like badges, excessive emoji or bogus mastery claims.
 
-## Identity tokens (from the actual approved CSS)
+## Approved actual identity — respect CSS cascade
+
+The FIRST `<style>` already includes both the historical token declarations **and a later owner-selected "Editorial Geometry V2" override**. Do not mistake the first declaration for the actual effective style.
+
+**Current effective light-theme `:root` values from the later override:**
 
 ```css
---navy:#081b50; --deep:#11163b;
---blue:#0863bd; --bright:#066bc6; --cyan:#15c3cb;
---yellow:#ffe33c; --green:#7dd700; --red:#ff321c;
---paper:#f7f9fa; --surface:#fff; --ink:#15213b;
---muted:#667186; --soft:#edf2f6; --border:#dfe5e9;
---curve:22px;
---arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;
---latin:'Manrope','Avenir Next',Arial,sans-serif;
---ff:var(--arabic); --copy-size:16px;
+--paper:#eef1f5; --surface:#fffefa; --ink:#242751; --muted:#65708a;
+--navy:#26255f; --deep:#1b1c49; --blue:#292a67; --bright:#0a5e9a;
+--cyan:#16bfc7; --yellow:#ffbf27; --green:#7ad414; --red:#f83035;
+--soft:#f2f4f7; --border:#d4dbe5;
+--shadow:none; --curve:0px;
+--arabic:'Alexandria','IBM Plex Sans Arabic','Tahoma',sans-serif;
+--latin:'DM Sans','Avenir Next',Arial,sans-serif;
+--ff:var(--arabic); --copy-size:15.5px;
 ```
 
-Current CSS also imports Google Fonts **Alexandria** and **DM Sans**. Imported font families and effective CSS stacks are NOT identical; don't silently "fix" or change typography, don't claim fonts are bundled. Any design-token change requires explicit owner sign-off. Retain current academy logo, geometric hero art, light/dark themes, subtle hover interactions and responsive layout.
+The baseline historical root nearer the beginning defines navy #081b50 / Noto Kufi Arabic / Manrope, but it is OVERRIDDEN by the later scoped design layer above. CSS imports Alexandria and DM Sans via Google Fonts; no font binaries are bundled. Responsive breakpoints can override copy size locally. **Do not change, reorder, "clean up", or swap those font stacks or tokens without owner sign-off.** The entire first CSS block is fingerprinted in `docs/RELEASE_QA.md` to prevent accidental changes.
+
+Current `main` also contains approved-looking Open Graph/social-share metadata (e.g. WhatsApp image referencing `aastmt_round_logo.png`); the feature branch site snapshot was preserved exactly and must not overwrite those concurrent main-branch metadata additions. Keep both the embedded in-page logo and the external social-preview image URL working.
 
 ## Educational flow
 

@@ -77,3 +77,13 @@ Several collections and labels explicitly support only 1 and 2: `chapters`, `lec
 ## Forward architecture decision (2026-10-22)
 
 The owner's **new instruction** is a professional **multi-page** website, not a landing page. The legacy single-file restriction documented above remains true only as a description of **current v3.1 runtime**; it is superseded as a future output constraint once the new architecture is designed, approved and tested. Keep **one cumulative site per cohort**, the stable public cohort URL, approved texts/fonts/quizzes, historic deep links, browser progress and GA4. The change requires site-wide UI prototypes and testable GitHub Pages route strategy before implementation. See [WEB_TRANSFORMATION_PLAN.md](WEB_TRANSFORMATION_PLAN.md). GA4 is now deployed and basic Realtime visit collection was confirmed by the owner, but individual educational events remain separately unverified.
+
+## Approved lecture-first IA — review branch (2026-10-22, not yet published)
+
+The owner chose one cohesive site with three **visible** section views: `study` (Concept Reader + a single inline sidebar Concept Map), `review` (Key Takeaways + Quiz), and `project`; the glossary remains a modal. The original Home/hero and detached Course Map are no longer public navigation destinations, but their retained DOM/handlers support legacy anchors until cleanup is separately approved. No second web app or lecture-per-file structure.
+
+`#header-lecture-select` uses the EXISTING `#lecture-links` delegated chapter handler, and `#header-print-book` delegates to the EXISTING `#print-full` print action. The preexisting live `drawLectureLinks` synchronizes selector state, and `switchLecture` persists `sunday-selected-lecture` in localStorage. `#lecture-01` / `#lecture-02` deep links take priority; the most recently selected lecture is the fallback. Original per-lecture progress keys and tests remain protected.
+
+The router maps old `?page=home` and `?page=map` to `?page=study`, and `#map-section` to the in-reader Concept Map. `#concept-map-shortcut` reveals the existing `ux31` collapsible sidebar on mobile; desktop uses the same sidebar with search/unit headings. Next/Previous, Quiz, Decision Lab, Theme, AR/EN, GA4 and print are retained. Avoid additional sources of truth or HTML duplication.
+
+**Release caveat:** these are review-branch changes, NOT evidence of live published QA. The true acceptance record is in [PORTAL_LECTURE_FIRST_QA.md](PORTAL_LECTURE_FIRST_QA.md).

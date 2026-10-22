@@ -72,3 +72,8 @@ This is an **unmerged change request**, not evidence that GA4 is sending product
 ## Expansion warning
 
 Several collections and labels explicitly support only 1 and 2: `chapters`, `lectureLabs`, `CHECKPOINTS`, `UNIT_CASES`, `STUDY_TAKEAWAYS`, `CURRENT_LECTURE`, chapter switch/URL hash, lecture hero/title/date and six lecture buttons. Update every dependency for L03 while leaving the existing payloads and functionality unchanged. Never create `lecture-03.html`.
+
+
+## Forward architecture decision (2026-10-22)
+
+The owner's **new instruction** is a professional **multi-page** website, not a landing page. The legacy single-file restriction documented above remains true only as a description of **current v3.1 runtime**; it is superseded as a future output constraint once the new architecture is designed, approved and tested. Keep **one cumulative site per cohort**, the stable public cohort URL, approved texts/fonts/quizzes, historic deep links, browser progress and GA4. The change requires site-wide UI prototypes and testable GitHub Pages route strategy before implementation. See [WEB_TRANSFORMATION_PLAN.md](WEB_TRANSFORMATION_PLAN.md). GA4 is now deployed and basic Realtime visit collection was confirmed by the owner, but individual educational events remain separately unverified.

@@ -50,3 +50,8 @@ Prior Next button used `#study` as scroll destination. On smaller mobile devices
 ## Source precedence
 
 Owner's most recent explicit Sunday-site decision and the verified current `index.html` behavior govern Sunday implementation; central private Handbook/Blueprint governs academic/privacy standards. If instructions conflict, stop and surface the concrete conflict rather than rewriting approved content.
+
+
+## 2026-10-22: confirmed GA4 + approved direction for professional website
+
+The owner confirmed visible activity in GA4 Realtime for Sunday Sheraton (stream `G-WJT7SS21NT`) following the PR #3 production merge. Mark basic visit tracking **operational**, not all custom event reports verified. The owner directed a premium, multi-page **student website**, keeping the existing editorial identity, Alexandria/DM Sans, bilingual educational content, games/checks/quizzes/certificates and privacy. The earlier “single cumulative `index.html`” stays a snapshot of the current deployed release, **not a binding future technical constraint**; the lasting rule is one evolving website per cohort. No student PIN/password at this stage; proper admin/OAuth postponed until backend platform. Review site IA/design with specialized disciplines using the four laws before any production change. [Plan](WEB_TRANSFORMATION_PLAN.md). No code/content design release is authorized solely by this planning entry.

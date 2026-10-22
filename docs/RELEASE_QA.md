@@ -35,6 +35,19 @@ The integrity test is `python3 tests/verify_study_book.py index.html`. Run after
 | Browser | JavaScript no errors; modal/print/deeplink/history/popstate and dynamic lecture switching |
 | Publication | Human-approved PR; no silent merge to public main |
 
+## GA4 PR acceptance requirements (2026-10-22)
+
+For the review branch implementing stream `G-WJT7SS21NT`, preserve the frozen original CSS/L01/L02 hashes and existing quiz, navigation, print/certificate and sharing metadata. Required additional gates:
+
+- Syntax/integrity checks on `index.html` and no change in approved chapter data, CSS or learning interactions.
+- Verify GA4 `page_view` arrives from the deployed HTTPS site; open each lecture and concept, revisit, complete 20 visible seconds and submit quiz; verify corresponding events, IDs and no unintended duplicates in GA4 Realtime/DebugView.
+- Confirm changing language/theme does not artificially count a `concept_view`. Assess desktop and mobile Safari, mobile Chrome and normal browser conditions with tracking protections; distinguish blocked telemetry from application faults.
+- Ensure custom events contain no student names, certificate names, email addresses, quiz responses, grades or private class contents. Review GA4 cookie/consent notice, data retention and local privacy requirements before public rollout.
+- Confirm `lecture_completed` only records self-marked completion and does not represent graded educational mastery.
+- Owner-controlled merge and GitHub Pages deployment; observe actual live data before declaring the “Data collection isn't active” warning resolved.
+
+**Status:** this is the PR test plan; no production analytics QA is claimed by this documentation.
+
 ## Regression incidents learned
 
 - **Split-page mistake:** Lecture 02 was once put in separate HTML; rejected. Use one cumulative `index.html`.

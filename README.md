@@ -37,6 +37,10 @@ The approved experience includes contextual explanations, verified classroom cas
 7. [docs/NEXT_LECTURE.md](docs/NEXT_LECTURE.md): exact process for adding future lectures.
 8. Refer to the private central Handbook/Blueprint when permissions permit.
 
+## GA4 educational analytics candidate (2026-10-22)
+
+The owner created a distinct GA4 web stream `sunday-sheraton` with Measurement ID `G-WJT7SS21NT`. A **review-branch-only** instrumentation candidate records lecture, concept, engagement and quiz events without adding student accounts or changing the approved design/content. It is not active on the public site until reviewed and deployed. See [GA4 event specification and QA plan](docs/GA4_ANALYTICS.md).
+
 ## Deployment / workflow
 
 This repository's `main` branch may be configured as a GitHub Pages source. **Never change `main` merely to save a draft.** Prepare changes on a branch, verify, open a Pull Request, and merge only after review. A PR is saved on GitHub but does not automatically publish the new version.

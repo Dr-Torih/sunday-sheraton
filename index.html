@@ -1487,7 +1487,7 @@ drawQuiz=function(){oldDrawQuiz();const labelNext=$('quiz-next'),labelResult=$('
 const views={overview:'home','map-section':'map',study:'study',review:'review',project:'project',moments:'home'};
 const labels={home:{ar:'الرئيسية',en:'Home'},map:{ar:'خريطة الكورس',en:'Course Map'},study:{ar:'الكتاب الدراسي',en:'Study Book'},review:{ar:'المراجعة والاختبار',en:'Review & Quiz'},project:{ar:'مشروع المجموعة',en:'Group Project'}};
 const valid=['home','map','study','review','project'];
-const getPage=()=>{const q=new URLSearchParams(location.search).get('page');return valid.includes(q)?q:'home'};
+const getPage=()=>{const q=new URLSearchParams(location.search).get('page');if(valid.includes(q))return q;return views[location.hash.slice(1)]||'home'};
 const href=(p)=>{const url=new URL(location.href);url.searchParams.set('page',p);return url.pathname+url.search+url.hash};
 let active='';
 function apply(p,opt={history:true,scroll:true}){

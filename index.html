@@ -743,6 +743,11 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-WJT7SS21NT',{'send_page_view':true});</script>
 <style id="unified-website-routes">
 /* Structural presentation only: original branded CSS, bilingual learning text and script untouched. */
+/* A completed concept must have persistent high-contrast state in both themes. */
+#mark-done.complete,#mark-done.complete:hover{background:#167d50!important;border-color:#167d50!important;color:#fff!important;box-shadow:0 0 0 2px rgba(22,125,80,.18)}
+#mark-done.complete span,#mark-done.complete svg{color:#fff!important}
+#mark-done:not(.complete){transition:background-color .18s,border-color .18s,color .18s}
+body[data-site-page="study"] #scene-title{scroll-margin-top:120px}
 body[data-site-page="home"] main > section:not(#overview):not(.lecture-strip):not(#moments),
 body[data-site-page="map"] main > section:not(#map-section),
 body[data-site-page="study"] main > section:not(#study),
@@ -1005,6 +1010,7 @@ const learningTelemetry=(()=>{
   wireSceneSpecial();
   $('scene-done-state').textContent=done.has(sceneIndex)?label('تمت مراجعة هذه الفكرة','Concept completed'):label('لما تخلص الفكرة، سجّل تقدمك.','Mark when you finish this concept.');
   $('mark-done').classList.toggle('complete',done.has(sceneIndex));
+  $('mark-done').setAttribute('aria-pressed',String(done.has(sceneIndex)));
   const btn=$('mark-done').querySelector('span');btn.textContent=done.has(sceneIndex)?label('إلغاء علامة الاكتمال','Mark as not completed'):label('فهمت الفكرة · سجّل التقدم',"I've understood · Mark complete");
   updateProgress();
   drawConceptList($('scene-search').value);

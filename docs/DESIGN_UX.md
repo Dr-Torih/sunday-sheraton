@@ -52,3 +52,7 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 ## Image/data/privacy
 
 Never substitute stock people/photos for actual documented classroom moments, invent quotes, imply officially issued AASTMT credentials, or publish identifiable student material without consent. Protect base design and educational content hashes against incidental edits.
+
+## Owner-approved layout simplification — candidate 2026-10-22
+
+**Lecture-first:** the sticky AASTMT/instructor identity now also displays `Marketing Course`, Lecture selector and visible Print action; there is no standalone Start/Landing page for student navigation. Default entry is Study, showing the preserved one-concept-at-a-time Learning Scene. Top navigation has Concept Scenes, Review & Quiz and Project, with Glossary always accessible as a dialog. Remove separate Concept Map top tab and retain the already built internal, searchable Unit/Concept sidebar in the scene; it remains collapsible on mobile. No course-wide redundant intermediate selection; progress remains local to each lecture. Light/Dark and AR/EN must be audited at the original test widths. Do not interpret green “understood” state as verified mastery.

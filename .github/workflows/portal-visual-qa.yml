@@ -1,0 +1,29 @@
+name: Portal Visual QA (PR only)
+on:
+  pull_request:
+    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','.github/workflows/portal-visual-qa.yml']
+jobs:
+  visual-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install playwright pymupdf
+      - run: python -m playwright install --with-deps chromium
+      - name: Launch local preview and run automated browser QA
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/portal-http.log 2>&1 &
+          sleep 3
+          python3 tests/qa_portal_browser.py
+          python3 tests/qa_portal_release.py
+      - name: Save screenshots, PDF samples and result report for owner review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-preview-and-print-qa
+          path: qa-artifacts/
+          if-no-files-found: warn

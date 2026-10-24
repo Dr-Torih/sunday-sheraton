@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""Stage 1 Project Companion browser QA. Run via local HTTP server only; no student submissions."""
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+import json
+BASE="http://127.0.0.1:8765/"
+OUT=Path("qa-artifacts")
+OUT.mkdir(exist_ok=True)
+results=[]
+def check(name, cond):
+    results.append({"check":name,"ok":bool(cond)})
+    if not cond:raise AssertionError(name)
+
+with sync_playwright() as p:
+    browser=p.chromium.launch(headless=True,args=["--no-sandbox"])
+    for width in [320,390,768,1024,1440]:
+        page=browser.new_page(viewport={"width":width,"height":870})
+        errs=[]
+        page.on('pageerror',lambda e:errs.append(str(e)))
+        page.goto(BASE+"?page=project",wait_until="networkidle")
+        check(f"{width} Project Guide visible",page.locator("#project-guide-heading").is_visible())
+        check(f"{width} Project Companion visible",page.locator("#project-companion-heading").is_visible())
+        check(f"{width} two sections are separate",page.locator("#project-guide-summary").count()==1 and page.locator("#project-companion-overview").count()==1)
+        check(f"{width} original guide link",page.locator('a.pc-main-link').get_attribute("href")=="project-guide.html")
+        check(f"{width} five deep-linked guide areas",page.locator(".pc-guide-links a").count()==5)
+        check(f"{width} summary mentions original totals",all(page.locator("#project-guide-summary").inner_text().find(val)>=0 for val in ["15–20","10–12","30+","10+"]))
+        check(f"{width} six mapped worked examples",page.locator(".pc-card").count()==6)
+        check(f"{width} original checklist remains",page.locator("#checklist-items [data-project-index]").count()==10)
+        check(f"{width} no horizontal overflow",page.evaluate("document.documentElement.scrollWidth<=window.innerWidth+2"))
+        page.screenshot(path=str(OUT/f"project-stage1-{width}-ar.png"),full_page=True)
+        page.locator("#lang-toggle").click()
+        check(f"{width} English Guide and Companion",page.locator("#project-guide-heading").inner_text()=="Project Guide & Submission Requirements" and page.locator("#project-companion-heading").inner_text()=="From Lecture to Your Group Project")
+        page.locator("#theme-toggle").click()
+        check(f"{width} dark theme persists",page.locator("body").get_attribute("data-theme")=="dark")
+        check(f"{width} dark layout no overflow",page.evaluate("document.documentElement.scrollWidth<=window.innerWidth+2"))
+        if width==390:page.screenshot(path=str(OUT/"project-stage1-mobile-en-dark.png"),full_page=True)
+        if width==1440:page.screenshot(path=str(OUT/"project-stage1-desktop-en-dark.png"),full_page=True)
+        check(f"{width} no JS errors",not errs)
+        page.close()
+
+    page=browser.new_page(viewport={"width":1440,"height":900})
+    page.goto(BASE+"?page=study",wait_until="networkidle")
+    check("unrelated L01-C01 has no Project Application",not page.locator("#project-application").is_visible())
+    for _ in range(4):page.locator("#next-scene").click()
+    check("L01-C05 mapped application appears",page.locator("#project-application").is_visible())
+    page.locator("[data-project-show]").click()
+    check("application leads to Project view",page.locator("body").get_attribute("data-site-page")=="project")
+    check("application opens matching worked example",page.locator("#pc-L01-C05.pc-selected").count()==1)
+    page.locator('#pc-L02-C19 [data-project-open]').click()
+    check("cross-lecture link switches L02",page.locator("#header-lecture-select").input_value()=="2")
+    check("cross-lecture link selects concept 19",page.locator("#scene-position").inner_text().startswith("19 / 30"))
+    check("cross-lecture link restores study",page.locator("body").get_attribute("data-site-page")=="study")
+    check("L02-C19 application visible",page.locator("#project-application").is_visible())
+    check("L02-C19 original scientific flow intact","Data → Pattern → Insight → Decision" in page.locator("#scene-content").inner_text())
+    page.locator('[data-project-show="L02-C19"]').click()
+    check("L02-C19 worked example visible",page.locator("#pc-L02-C19.pc-selected").count()==1)
+    check("worked example separates interpretation","Insight" in page.locator("#pc-L02-C19").inner_text())
+    url=page.locator('#pc-L02-C19 a').get_attribute('href')
+    check("worked example points to original template",url=="project-guide.html#plan")
+    check("progress checklist not submitted", "مش تسليم" in page.locator(".pc-checkbox-warning").inner_text())
+    page.close()
+    guide=browser.new_page()
+    response=guide.goto(BASE+"project-guide.html#plan",wait_until="domcontentloaded")
+    check("guide original served",response.status==200)
+    check("guide original plan anchor",guide.locator("#plan").count()==1)
+    check("guide has six native template bodies",guide.locator("[id^=tpl]").count()==6)
+    check("guide retains final submission checklist",guide.locator("#audit").count()==1)
+    guide.close()
+    browser.close()
+(OUT/"qa-project-companion.json").write_text(json.dumps(results,ensure_ascii=False,indent=2))
+print(json.dumps({"total":len(results),"passed":sum(x["ok"] for x in results),"failed":[x["check"] for x in results if not x["ok"]]},ensure_ascii=False))

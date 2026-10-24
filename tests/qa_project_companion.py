@@ -112,7 +112,7 @@ with sync_playwright() as p:
     check("new accessible contrast component mounted",page.locator("#pc-application-contrast-v2").count()==1)
     for lecture,total in [(1,25),(2,30)]:
         page.locator("#header-lecture-select").select_option(str(lecture))
-        page.wait_for_function("(n)=>document.querySelector('#header-lecture-select').value===String(n)",lecture)
+        page.wait_for_function("(n)=>document.querySelector('#header-lecture-select').value===String(n)",arg=lecture)
         for n in range(1,total+1):
             if n>1:
                 page.locator("#next-scene").click()

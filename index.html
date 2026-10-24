@@ -739,6 +739,20 @@ body[data-theme=dark] #saved-cert-modal h3{color:var(--ink)}
 @media(prefers-reduced-motion:reduce){.ux31-map-toggle{transition:none}}
 </style>
 <!-- GA4 educational tracking: Sunday Sheraton only -->
+<!-- Owner/dev browser opt-out: set before Google tag loads; no IP or identity collected. -->
+<script id="sunday-ga4-owner-optout">
+(function(){
+ const key='sunday-ga4-optout-v1',id='G-WJT7SS21NT';
+ const mode=new URLSearchParams(window.location.search).get('analytics');
+ let disabled=mode==='off';
+ try{
+  if(mode==='off')window.localStorage.setItem(key,'1');
+  else if(mode==='on')window.localStorage.removeItem(key);
+  if(mode!=='on')disabled=disabled||window.localStorage.getItem(key)==='1';
+ }catch(_){ /* Private-mode storage may be unavailable; current ?analytics=off still works. */ }
+ window['ga-disable-'+id]=disabled;
+})();
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJT7SS21NT"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-WJT7SS21NT',{'send_page_view':true});</script>
 <style id="unified-website-routes">
@@ -972,6 +986,8 @@ const learningTelemetry=(()=>{
    if(++seconds>=20){send('concept_engaged',{concept_id:id,engagement_seconds:20});stop();}
   },1000);
  };
+ const glossaryOpen=()=>send('glossary_open');
+ const glossaryTermOpen=index=>send('glossary_term_open',{term_index:index+1});
  const quizOpen=()=>{if(quizSubmitted||quizStarted)return;quizStarted=true;quizReported=false;send('quiz_started');};
  const quizSubmit=()=>{if(quizReported)return;quizReported=true;send('quiz_submitted');};
  const quizReset=()=>{quizStarted=false;quizReported=false;quizOpen();};
@@ -981,7 +997,7 @@ const learningTelemetry=(()=>{
   try{if(sessionStorage.getItem(k)==='1')return;sessionStorage.setItem(k,'1')}catch{}
   send('lecture_completed',{completion_method:'self_marked'});
  };
- return {lectureOpen,conceptOpen,quizOpen,quizSubmit,quizReset,chapterMarkedComplete};
+ return {lectureOpen,conceptOpen,glossaryOpen,glossaryTermOpen,quizOpen,quizSubmit,quizReset,chapterMarkedComplete};
 })();
 
  const storage={read(k,fallback){try{const v=localStorage.getItem('L0'+CURRENT_LECTURE+'-Sunday-v1-'+k);return v===null?fallback:JSON.parse(v)}catch{return fallback}},write(k,v){try{localStorage.setItem('L0'+CURRENT_LECTURE+'-Sunday-v1-'+k,JSON.stringify(v))}catch{}}};
@@ -1010,6 +1026,7 @@ const learningTelemetry=(()=>{
  function formatCount(x){return lang==='ar'?Number(x).toLocaleString('ar-EG'):String(x)}
  function showTerm(index){
   const record=D.glossary[index];if(!record)return;
+  if($('term-modal').hidden)learningTelemetry.glossaryTermOpen(index);
   $('term-dialog-title').textContent=record.t;
   $('term-dialog-definition').textContent=record[lang];
   $('term-modal').hidden=false;document.body.style.overflow='hidden';
@@ -1266,7 +1283,7 @@ function linkLessonTerms(){
  }
  function examMoveTo(i){clearTimeout(examMoveTimer);quizStep=Math.max(0,Math.min(D.quiz.length,i));drawQuiz();const sc=$('quiz-modal').querySelector('.quiz-scroll');if(sc)sc.scrollTop=0;}
  function refreshLocale(){applyLocale();if(!$('term-modal').hidden){const term=$('term-dialog-title').textContent;const found=D.glossary.find(g=>g.t===term);if(found)$('term-dialog-definition').textContent=found[lang]}drawLectureLinks();startScene(sceneIndex,false);drawTakeaways();drawProject();drawGlossary($('glossary-search').value);if(!$('quiz-modal').hidden)drawQuiz();renderPrintBook()}
- function openOverlay(id){const x=$(id);x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz()}}
+ function openOverlay(id){const x=$(id);if(id==='glossary-panel'&&x.hidden)learningTelemetry.glossaryOpen();x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz()}}
  function closeOverlay(id){$(id).hidden=true;document.body.style.overflow=''}
  function renderPrintBook(){
   const n=CURRENT_LECTURE,date=n===1?'11':'18';

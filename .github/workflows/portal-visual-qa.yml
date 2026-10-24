@@ -22,6 +22,11 @@ jobs:
           python3 tests/qa_portal_release.py
           python3 tests/qa_bidi_concept_flow.py
           python3 tests/qa_project_companion.py
+      - name: Package owner-review offline website preview
+        if: always()
+        run: |
+          mkdir -p qa-artifacts
+          zip -j qa-artifacts/Sunday-Sheraton-Project-Companion-Stage1.zip index.html project-companion.js project-guide.html aastmt_round_logo.png
       - name: Save screenshots, PDF samples and result report for owner review
         if: always()
         uses: actions/upload-artifact@v4

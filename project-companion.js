@@ -71,6 +71,7 @@
   });
 
   const guideSections=[
+    ['start','مقدمة المشروع','Project Overview'],
     ['idea','فكرة المشروع','Project Idea'],
     ['journey','رحلة المشروع','Project Journey'],
     ['deliverables','التسليمات','Deliverables'],

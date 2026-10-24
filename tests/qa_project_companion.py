@@ -19,6 +19,7 @@ with sync_playwright() as p:
         page.on('pageerror',lambda e:errs.append(str(e)))
         page.goto(BASE+"?page=project",wait_until="networkidle")
         check(f"{width} Project Guide visible",page.locator("#project-guide-heading").is_visible())
+        check(f"{width} unified Guide styles in real document head",page.locator("head > style#pc-native-guide-styles").count()==1)
         check(f"{width} Project Companion visible",page.locator("#project-companion-heading").is_visible())
         check(f"{width} two sections are separate",page.locator("#project-guide-summary").count()==1 and page.locator("#project-companion-overview").count()==1)
         check(f"{width} native guide CTA",page.locator('button#pc-guide-expand-all').count()==1)

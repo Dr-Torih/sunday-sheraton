@@ -24,11 +24,11 @@ with sync_playwright() as p:
         check(f"{width} native guide CTA",page.locator('button#pc-guide-expand-all').count()==1)
         check(f"{width} five native guide navigation buttons",page.locator(".pc-guide-links button[data-guide-open]").count()==5)
         try:
-            page.wait_for_function("document.querySelectorAll('#pc-guide-detailed details').length===9",timeout=6000)
+            page.wait_for_function("document.querySelectorAll('#pc-guide-detailed > details').length===9",timeout=6000)
         except Exception:
-            print("GUIDE MOUNT DIAGNOSTIC",json.dumps({"errors":errs,"guideText":page.locator("#pc-guide-detailed").inner_text()[:550],"details":page.locator("#pc-guide-detailed details").count(),"route":page.locator("body").get_attribute("data-site-page")},ensure_ascii=False))
+            print("GUIDE MOUNT DIAGNOSTIC",json.dumps({"errors":errs,"guideText":page.locator("#pc-guide-detailed").inner_text()[:550],"details":page.locator("#pc-guide-detailed > details").count(),"route":page.locator("body").get_attribute("data-site-page")},ensure_ascii=False))
             raise
-        check(f"{width} guide nine original sections mounted",page.locator("#pc-guide-detailed details").count()==9)
+        check(f"{width} guide nine original sections mounted",page.locator("#pc-guide-detailed > details").count()==9)
         check(f"{width} no guide new-tab navigation",page.locator('#project-guide-summary a[target="_blank"],.pc-card a[target="_blank"]').count()==0)
         check(f"{width} summary mentions original totals",all(page.locator("#project-guide-summary").inner_text().find(val)>=0 for val in ["15–20","10–12","30+","10+"]))
         check(f"{width} six mapped worked examples",page.locator(".pc-card").count()==6)

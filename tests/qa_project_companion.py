@@ -3,10 +3,13 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import json
+import hashlib
 BASE="http://127.0.0.1:8765/"
 OUT=Path("qa-artifacts")
 OUT.mkdir(exist_ok=True)
 results=[]
+original_bytes=Path("project-guide.html").read_bytes()
+assert hashlib.sha256(original_bytes).hexdigest()=="410a5b4fca8fad25d9a418447d04ca4d7d34326aacbfdb1e75627c6dbddf2e1b","Original supplied Project Guide was modified"
 def check(name, cond):
     results.append({"check":name,"ok":bool(cond)})
     if not cond:raise AssertionError(name)

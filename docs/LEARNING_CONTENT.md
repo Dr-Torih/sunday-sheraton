@@ -2,7 +2,7 @@
 
 ## Mission and source hierarchy
 
-Learner-facing content must faithfully reconstruct the **lecture actually delivered** in this Sunday cohort. Academic reference provides concept accuracy; classroom transcript, delivered teaching material and recorded discussion provide the specific lesson chronology. **Never mix sources into a fictional event.**
+Learner-facing content must faithfully reconstruct the **lecture actually delivered** in this Sunday cohort. Academic reference provides concept accuracy; classroom transcript, delivered teaching material and recorded discussion provide the specific lesson chronology. **Permanent scientific-review law (owner-approved 24 Oct 2026): every new or revised learner-facing academic statement, example or project connection must pass an explicit literature-based accuracy review BEFORE publication, centered on Pearson / Philip Kotler / Gary Armstrong.** Attribute exact published claims only to evidence actually accessible; never attribute invented teaching cases, raw numbers or a lecturer mnemonic to a textbook. Review Arabic/English equivalence, assumptions vs facts, sample quality, causal inference, and content traceability. The six detailed worked cases and all 49 additional one-to-one academically checked concept-to-project prompts are documented once in the active [PROJECT_COMPANION.md](PROJECT_COMPANION.md). No student-visible prompt should be inferred to be a Pearson quote or an empirically validated finding. Future lectures must maintain their own equivalent review evidence. A passing programming test never substitutes for academic accuracy. **Never mix sources into a fictional event.**
 
 Source preference:
 1. Instructor-approved lesson scope/material and actual classroom delivery.

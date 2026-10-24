@@ -51,7 +51,7 @@ with sync_playwright() as p:
 
     page=browser.new_page(viewport={"width":1440,"height":900})
     page.goto(BASE+"?page=study",wait_until="networkidle")
-    check("unrelated L01-C01 has no Project Application",not page.locator("#project-application").is_visible())
+    check("L01-C01 now has a purpose-built Project Application",page.locator("#project-application").is_visible() and "L01-C01" in page.locator("#project-application .pc-app-id").inner_text())
     for _ in range(4):page.locator("#next-scene").click()
     check("L01-C05 mapped application appears",page.locator("#project-application").is_visible())
     page.locator("[data-project-show]").click()

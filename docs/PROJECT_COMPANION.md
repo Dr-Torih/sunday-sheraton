@@ -12,8 +12,10 @@ The original owner-supplied bilingual HTML is preserved *verbatim* at `/project-
 
 ## Stage 1 — Lightweight integration (AUTHORIZED)
 
-1. Add a **Project Guide** card inside the existing `?page=project` view, linking the preserved `project-guide.html` in a new tab. Label it clearly as the reference for official requirements and templates. Keep the current lecture-specific 10-item checklist intact, with explicit clarification that checking a box does **not** submit a project or verify its evidence.
-2. Add a single **Project Application** insert inside the existing Concept Scene (no new concept, separate tab, quiz, or edited approved explanation) for a limited, authored mapping:
+1. Give the existing `?page=project` view **two explicitly named, independently readable internal sections**, without adding new top-level navigation tabs:
+   - **01 Project Guide | دليل المشروع ومتطلبات التسليم** — show the exact key requirements and links to named sections of the preserved `project-guide.html`: deliverables, research evidence, plan/templates, grades, final checklist. The original guide is the official source of detail; users can open its entire document in a new tab. No invented submission mechanism or deadline.
+   - **02 Project Companion | من المحاضرة لمشروعك** — a clear scene-to-project bridge: for every selected Stage-1 scene show **how the concept serves the project, a worked illustrative example, a reflection question and the relevant original template**. Only mapped scenes get a lightweight contextual shortcut in the reader pointing back to this section. Keep the current lecture-specific 10-item checklist as the existing third, subordinate self-tracking area with explicit non-submission disclaimer.
+2. Add a **Project Application** insert inside the existing Concept Scene (no new concept, primary top-level tab, quiz, or edited approved explanation) for a limited, authored mapping:
    - L01-C05 — Need / Want / Demand → customer problem and usage context; guide `#idea`.
    - L01-C17 — actual competitors, substitutes, No Action → market alternatives; guide `#idea`.
    - L01-C24 — measurable objective versus vague growth wish → draft objective; guide `#plan`.

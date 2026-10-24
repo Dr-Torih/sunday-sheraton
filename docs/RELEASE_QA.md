@@ -98,3 +98,11 @@ Reported screen: Lecture 02 · Unit 05 / Concept 19; source stores `Data → Pat
 - [GitHub Actions Integrity run 39839726055](https://github.com/Dr-Torih/sunday-sheraton/actions/runs/39839726055): PASSED.
 - The frozen embedded L01/L02 educational payloads are byte-identical in code review; the only runtime differences are markup wrappers created for display. Do not modify answer keys/lesson content to fix direction.
 - P0 requires GitHub Pages build success and a fresh public-page check after merge. Browser tests are Chromium and do not certify physical Safari devices.
+
+## Stage 1 Project Companion — Release acceptance (2026-10-24)
+
+- New source: unchanged owner-supplied `project-guide.html`, and a small independent `project-companion.js` enhancement to the existing Project and Learning Scene DOM; the original L01/L02 embedded lecture JSON and quiz payload are immutable.
+- Two visible sub-sections under `?page=project`: canonical **Project Guide** (links to original deliverables, evidence, plan/templates, grades, audit, full guide) and **Project Companion** (six concept-to-project worked examples). Existing per-lecture checklist remains present and is explicitly not a submission mechanism.
+- Contextual link only on L01-C05 / C17 / C24 and L02-C14 / C18 / C19; example material is hypothetical, not approved lecture content, new score or real market data. Navigate Study → relevant Companion card → original Concept and retain lecture independence.
+- Test `tests/qa_project_companion.py` at 320/390/768/1024/1440 with AR/EN, Light/Dark, source guide HTTP & deep links, original checklist, no viewport overflow, preserved quiz/glossary/print, and cross-lecture navigation. CI evidence must be recorded before owner visual acceptance.
+- **Status: branch preview and PR only; not deployed to students or merged without owner release approval.**

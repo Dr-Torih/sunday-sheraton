@@ -97,6 +97,7 @@ with sync_playwright() as p:
     check("portal English language activated",page.locator("html").get_attribute("lang")=="en")
     visibleEnglish=page.locator('#pc-guide-audit .en').first.evaluate("(el)=>getComputedStyle(el).display!=='none'")
     hiddenArabic=page.locator('#pc-guide-audit .ar').first.evaluate("(el)=>getComputedStyle(el).display==='none'")
+    print("GUIDE LANG CHECK",json.dumps({"lang":page.locator("html").get_attribute("lang"),"enVisible":visibleEnglish,"arHidden":hiddenArabic,"enCss":page.locator("#pc-guide-audit .en").first.evaluate("(e)=>getComputedStyle(e).display"),"arCss":page.locator("#pc-guide-audit .ar").first.evaluate("(e)=>getComputedStyle(e).display"),"enParent":page.locator("#pc-guide-audit .en").first.evaluate("(e)=>e.parentElement.outerHTML.slice(0,250)")},ensure_ascii=False))
     check("native guide original English visible/Arabic hidden",visibleEnglish and hiddenArabic)
     check("native guide layout no overflow in English",page.evaluate("document.documentElement.scrollWidth<=innerWidth+2"))
     page.close()

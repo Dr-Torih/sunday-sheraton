@@ -874,6 +874,51 @@ body[data-theme="dark"] .pc-main-link{background:var(--cyan);color:#10183b}
 @media(max-width:355px){.pc-requirements{gap:6px}.pc-requirement{padding:10px 7px}.pc-requirement strong{font-size:20px}.pc-guide-links a{width:100%}}
 @media print{#project-guide-summary,#project-companion-overview,#project-application{display:none!important}}
 </style>
+<style id="pc-native-guide-styles">
+/* Full original Project Guide displayed as native sections under the current portal identity. */
+.pc-guide-links button{padding:10px 12px;font-size:12px;font-weight:700;border:1px solid var(--border);background:var(--soft);color:var(--ink);text-align:start;cursor:pointer}
+.pc-guide-links button:hover,.pc-guide-links button:focus-visible{border-color:var(--cyan)}
+.pc-guide-detailed{margin-top:20px;min-width:0}
+.pc-guide-detailed details{border:1px solid var(--border);background:var(--surface);margin:10px 0;min-width:0}
+.pc-guide-detailed summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:var(--soft);color:var(--ink);font-weight:750;line-height:1.7}
+.pc-guide-detailed summary::-webkit-details-marker{display:none}
+.pc-guide-detailed summary:after{content:"+";font-size:22px;color:var(--bright);font-family:var(--latin)}
+.pc-guide-detailed details[open]>summary:after{content:"−"}
+.pc-guide-content{padding:18px;min-width:0;color:var(--ink);line-height:1.85;font-size:14px}
+.pc-guide-content section{margin:0;padding:0;border:0;background:none;min-width:0}
+.pc-guide-content .section-head{margin:0 0 16px;padding:0 0 12px;border-bottom:1px solid var(--border)}
+.pc-guide-content h1,.pc-guide-content h2,.pc-guide-content h3,.pc-guide-content h4{color:var(--ink);line-height:1.65;overflow-wrap:anywhere;margin:9px 0}
+.pc-guide-content h2{font-size:20px}.pc-guide-content h3{font-size:15px}.pc-guide-content p{line-height:1.85;margin:8px 0 14px}
+.pc-guide-content .grid,.pc-guide-content .gradegrid,.pc-guide-content .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.pc-guide-content .card,.pc-guide-content .deliver,.pc-guide-content .grade,.pc-guide-content .metric,.pc-guide-content .flow-step,.pc-guide-content .callout{padding:15px;background:var(--soft);border:1px solid var(--border);min-width:0;margin-bottom:10px}
+.pc-guide-content .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
+.pc-guide-content .flow-step{display:flex;flex-direction:column;gap:6px}
+.pc-guide-content .grade strong,.pc-guide-content .metric strong{font-family:var(--latin);font-size:24px;color:var(--bright)}
+.pc-guide-content ul,.pc-guide-content ol{padding-inline-start:25px;margin:8px 0 16px}
+.pc-guide-content li{margin:8px 0;line-height:1.75}
+.pc-guide-content .tag,.pc-guide-content .section-index{color:var(--bright);font:700 11px var(--latin)}
+.pc-guide-content .template{margin:13px 0;border:1px solid var(--border);background:var(--soft)}
+.pc-guide-content .template>summary{padding:13px;background:var(--soft);cursor:pointer;font-weight:700}
+.pc-guide-content .template-body{padding:13px;background:var(--surface)}
+.pc-guide-content .code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;border:1px solid var(--border);padding:14px;line-height:1.85;background:var(--soft)}
+.pc-guide-content .copy{background:var(--navy);color:#fff;padding:10px 16px;margin-top:10px;border:1px solid var(--navy);font-weight:700}
+.pc-guide-content .audit-row{display:flex;align-items:flex-start;gap:10px;padding:13px 8px;border-bottom:1px solid var(--border);font-size:13px;line-height:1.8}
+.pc-guide-content .audit-row input{flex:0 0 auto;margin-top:7px;accent-color:var(--cyan)}
+.pc-guide-content .audit-row span{flex:1}
+html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{display:none!important}
+.pc-guide-content :is(table,img,pre){max-width:100%}
+.pc-guide-content table{display:block;overflow-x:auto;border-collapse:collapse}
+.pc-guide-content th,.pc-guide-content td{padding:9px;border:1px solid var(--border)}
+.pc-guide-detailed [hidden]{display:none!important}
+.pc-inline-application{margin-top:14px!important;margin-bottom:16px!important;border-inline-start-width:5px}
+.pc-inline-application .pc-inline-note{font-size:13px;color:var(--ink);line-height:1.95}
+.pc-inline-application .pc-inline-disclaimer{font-size:11px;color:var(--muted);line-height:1.8}
+.pc-inline-application strong{font-weight:800}
+.pc-inline-application .pc-inline-link{background:none;border:none;border-bottom:1px solid var(--cyan);padding:5px 0;color:var(--bright);font-size:12px;cursor:pointer;font-weight:700}
+.pc-guide-detailed:empty{display:none}
+@media(max-width:520px){.pc-guide-content{padding:12px}.pc-guide-detailed summary{padding:13px}.pc-guide-content .grid,.pc-guide-content .gradegrid{grid-template-columns:1fr}}
+@media print{#pc-guide-detailed,#project-application{display:none!important}}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -1582,51 +1627,7 @@ function openExplanationTab(idx,questionIdx){
  const s=D.scenes[idx];if(!s)return;
  const q=D.quiz[questionIdx]||D.quiz.find(x=>Number(x.concept.match(/C(\d+)/)?.[1]||0)-1===idx),question=q?.[lang]?.question||'',explanation=q?.explanation?.[lang]||'';
  const esc=escapeHtml;
- const documentHtml=`<!doctype html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(s.title[lang])} · ${label('شرح المفهوم','Concept explanation')}</title><style>@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');:root{--arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;--latin:'Manrope','Avenir Next',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#f7f9fa;color:#172544;font-family:${lang==='ar'?'var(--arabic)':'var(--latin)'};line-height:2.1}header{background:#26255f;color:#fff;padding:21px clamp(18px,5vw,60px);font:800 13px var(--latin)}main{max-width:900px;margin:28px auto 55px;padding:clamp(22px,5vw,58px);background:#fff;border:1px solid #dfe5e9;border-top:7px solid #15c3cb}h1{font-size:clamp(24px,3vw,35px);line-height:1.65;color:#081b50}h2{font-size:16px;color:#0769c3}p{margin:0 0 16px}strong{color:#081b50}section.feedback{background:#eaf4f6;padding:20px;border-inline-start:4px solid #15c3cb;margin-bottom:29px;border-radius:7px}section.feedback p{font-size:14px}article{font-size:16px}article p{margin-bottom:20px}article h4{color:#10255c;font-size:18px}article blockquote{border-inline-start:4px solid #15c3cb;padding:12px;background:#f0f5f6;margin:15px 0}article table{border-collapse:collapse;max-width:100%;font-size:13px}article td,article th{border:1px solid #dfe5e9;padding:9px}footer{text-align:center;margin:26px;color:#667186;font-size:11px}button{background:#0769c3;color:#fff;border:0;padding:10px 17px;cursor:pointer}@media print{header,footer,button{display:none}main{border:0;margin:0;padding:0}}</style><style id="pc-native-guide-styles">
-/* Full original Project Guide displayed as native sections under the current portal identity. */
-.pc-guide-links button{padding:10px 12px;font-size:12px;font-weight:700;border:1px solid var(--border);background:var(--soft);color:var(--ink);text-align:start;cursor:pointer}
-.pc-guide-links button:hover,.pc-guide-links button:focus-visible{border-color:var(--cyan)}
-.pc-guide-detailed{margin-top:20px;min-width:0}
-.pc-guide-detailed details{border:1px solid var(--border);background:var(--surface);margin:10px 0;min-width:0}
-.pc-guide-detailed summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:var(--soft);color:var(--ink);font-weight:750;line-height:1.7}
-.pc-guide-detailed summary::-webkit-details-marker{display:none}
-.pc-guide-detailed summary:after{content:"+";font-size:22px;color:var(--bright);font-family:var(--latin)}
-.pc-guide-detailed details[open]>summary:after{content:"−"}
-.pc-guide-content{padding:18px;min-width:0;color:var(--ink);line-height:1.85;font-size:14px}
-.pc-guide-content section{margin:0;padding:0;border:0;background:none;min-width:0}
-.pc-guide-content .section-head{margin:0 0 16px;padding:0 0 12px;border-bottom:1px solid var(--border)}
-.pc-guide-content h1,.pc-guide-content h2,.pc-guide-content h3,.pc-guide-content h4{color:var(--ink);line-height:1.65;overflow-wrap:anywhere;margin:9px 0}
-.pc-guide-content h2{font-size:20px}.pc-guide-content h3{font-size:15px}.pc-guide-content p{line-height:1.85;margin:8px 0 14px}
-.pc-guide-content .grid,.pc-guide-content .gradegrid,.pc-guide-content .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
-.pc-guide-content .card,.pc-guide-content .deliver,.pc-guide-content .grade,.pc-guide-content .metric,.pc-guide-content .flow-step,.pc-guide-content .callout{padding:15px;background:var(--soft);border:1px solid var(--border);min-width:0;margin-bottom:10px}
-.pc-guide-content .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
-.pc-guide-content .flow-step{display:flex;flex-direction:column;gap:6px}
-.pc-guide-content .grade strong,.pc-guide-content .metric strong{font-family:var(--latin);font-size:24px;color:var(--bright)}
-.pc-guide-content ul,.pc-guide-content ol{padding-inline-start:25px;margin:8px 0 16px}
-.pc-guide-content li{margin:8px 0;line-height:1.75}
-.pc-guide-content .tag,.pc-guide-content .section-index{color:var(--bright);font:700 11px var(--latin)}
-.pc-guide-content .template{margin:13px 0;border:1px solid var(--border);background:var(--soft)}
-.pc-guide-content .template>summary{padding:13px;background:var(--soft);cursor:pointer;font-weight:700}
-.pc-guide-content .template-body{padding:13px;background:var(--surface)}
-.pc-guide-content .code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;border:1px solid var(--border);padding:14px;line-height:1.85;background:var(--soft)}
-.pc-guide-content .copy{background:var(--navy);color:#fff;padding:10px 16px;margin-top:10px;border:1px solid var(--navy);font-weight:700}
-.pc-guide-content .audit-row{display:flex;align-items:flex-start;gap:10px;padding:13px 8px;border-bottom:1px solid var(--border);font-size:13px;line-height:1.8}
-.pc-guide-content .audit-row input{flex:0 0 auto;margin-top:7px;accent-color:var(--cyan)}
-.pc-guide-content .audit-row span{flex:1}
-html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{display:none!important}
-.pc-guide-content :is(table,img,pre){max-width:100%}
-.pc-guide-content table{display:block;overflow-x:auto;border-collapse:collapse}
-.pc-guide-content th,.pc-guide-content td{padding:9px;border:1px solid var(--border)}
-.pc-guide-detailed [hidden]{display:none!important}
-.pc-inline-application{margin-top:14px!important;margin-bottom:16px!important;border-inline-start-width:5px}
-.pc-inline-application .pc-inline-note{font-size:13px;color:var(--ink);line-height:1.95}
-.pc-inline-application .pc-inline-disclaimer{font-size:11px;color:var(--muted);line-height:1.8}
-.pc-inline-application strong{font-weight:800}
-.pc-inline-application .pc-inline-link{background:none;border:none;border-bottom:1px solid var(--cyan);padding:5px 0;color:var(--bright);font-size:12px;cursor:pointer;font-weight:700}
-.pc-guide-detailed:empty{display:none}
-@media(max-width:520px){.pc-guide-content{padding:12px}.pc-guide-detailed summary{padding:13px}.pc-guide-content .grid,.pc-guide-content .gradegrid{grid-template-columns:1fr}}
-@media print{#pc-guide-detailed,#project-application{display:none!important}}
-</style>
+ const documentHtml=`<!doctype html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(s.title[lang])} · ${label('شرح المفهوم','Concept explanation')}</title><style>@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');:root{--arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;--latin:'Manrope','Avenir Next',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#f7f9fa;color:#172544;font-family:${lang==='ar'?'var(--arabic)':'var(--latin)'};line-height:2.1}header{background:#26255f;color:#fff;padding:21px clamp(18px,5vw,60px);font:800 13px var(--latin)}main{max-width:900px;margin:28px auto 55px;padding:clamp(22px,5vw,58px);background:#fff;border:1px solid #dfe5e9;border-top:7px solid #15c3cb}h1{font-size:clamp(24px,3vw,35px);line-height:1.65;color:#081b50}h2{font-size:16px;color:#0769c3}p{margin:0 0 16px}strong{color:#081b50}section.feedback{background:#eaf4f6;padding:20px;border-inline-start:4px solid #15c3cb;margin-bottom:29px;border-radius:7px}section.feedback p{font-size:14px}article{font-size:16px}article p{margin-bottom:20px}article h4{color:#10255c;font-size:18px}article blockquote{border-inline-start:4px solid #15c3cb;padding:12px;background:#f0f5f6;margin:15px 0}article table{border-collapse:collapse;max-width:100%;font-size:13px}article td,article th{border:1px solid #dfe5e9;padding:9px}footer{text-align:center;margin:26px;color:#667186;font-size:11px}button{background:#0769c3;color:#fff;border:0;padding:10px 17px;cursor:pointer}@media print{header,footer,button{display:none}main{border:0;margin:0;padding:0}}</style>
 </head><body><header>AASTMT · SHERATON SUNDAY · MARKETING · LECTURE 0${CURRENT_LECTURE}</header><main>${q?`<section class="feedback"><h2>${label('السؤال والتفسير','Question and explanation')}</h2><p><strong>${esc(question)}</strong></p><p>${esc(explanation)}</p></section>`:''}<h1>${esc(s.title[lang])}</h1><article>${s.html[lang]}</article></main><footer>${label('النافذة دي مستقلة، والاختبار ما زال مفتوحًا على تبويبه الأصلي.','This is a separate page. Your quiz stays open in its original tab.')}</footer>
 </body></html>`;
  const blob=new Blob([documentHtml],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob);

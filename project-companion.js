@@ -99,10 +99,12 @@
           const sum=document.createElement('summary');sum.innerHTML='<span>'+esc(t(ar,en))+'</span>';
           const content=document.createElement('div');content.className='pc-guide-content';
           /* Use canonical owner-approved guide content in DOM, never copy or reinterpret it. */
-          content.append(section.cloneNode(true));outer.append(sum,content);guideContainer.append(outer);
+          /* Only clone canonical SECTION CONTENT: avoid importing the old guide's hero/section layout classes. */
+          for(const child of section.childNodes)content.appendChild(child.cloneNode(true));
+          outer.append(sum,content);guideContainer.append(outer);
         }
         const audits=guideContainer.querySelectorAll('#auditList input[type="checkbox"]');
-        try{const state=JSON.parse(localStorage.getItem('projectSubmissionChecklist')||'[]');audits.forEach((input,i)=>input.checked===Boolean(state[i])||(input.checked=Boolean(state[i])))}catch{}
+        try{const state=JSON.parse(localStorage.getItem('projectSubmissionChecklist')||'[]');audits.forEach((input,i)=>{input.checked=Boolean(state[i])})}catch{}
         return true;
       }catch(error){
         guideContainer.innerHTML='<p role="alert">'+esc(t('تعذر تحميل الدليل من نفس الموقع. جرّب إعادة تحميل الصفحة عند الاتصال بالإنترنت.','The guide could not load from this site. Reload while connected to the internet.'))+'</p>';

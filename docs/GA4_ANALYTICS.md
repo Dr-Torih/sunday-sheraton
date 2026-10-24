@@ -46,3 +46,11 @@ All custom events send `cohort_id=sunday-sheraton`, `course_id=marketing`, `lect
 ## Deployment update — 2026-10-22 (supersedes original candidate status)
 
 **GA4 PR #3 was merged and code published** to the Sunday GitHub Pages site. The owner opened GA4 Realtime and confirmed activity appeared on **2026-10-22**. Status: **LIVE TRAFFIC RECEIPT CONFIRMED BY OWNER**. This supersedes the “branch-only/not deployed” wording in the older sections above. It does NOT independently demonstrate that each custom educational event was received or that custom dimensions are registered, nor is it a student-level tracking system. Website transformation next steps: [WEB_TRANSFORMATION_PLAN.md](WEB_TRANSFORMATION_PLAN.md). Preserve `G-WJT7SS21NT` across the migration, validate old/new page_view semantics and avoid duplicate events.
+
+## 2026-10-24 update — Issue #16 (review branch)
+
+Existing GA4 events from PR #3 remain unchanged. This review adds `glossary_open` for opening the full glossary and `glossary_term_open` for opening a contextual term, with a numeric `term_index` parameter. No term text is transmitted.
+
+An early browser-level switch supports `?analytics=off` (persistent on this device/browser using localStorage) and `?analytics=on` (resume). It uses Google's `ga-disable-G-WJT7SS21NT` setting before the tag loads. These controls require PR deployment before they work on the live site and are not a GA4 Admin IP filter.
+
+The separate Internal Traffic Filter, if ever used, requires verifying the public IP in GA4 Admin and starting in **Testing**; never exclude an entire city. Permanent Active exclusion needs separate owner approval. The focused local contract test is `python3 tests/qa_ga4_telemetry.py index.html`. GA4 Realtime and browser QA remain pending.

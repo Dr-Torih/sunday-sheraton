@@ -63,3 +63,15 @@ Owner explicitly approved: remove standalone Home/Overview step; select lecture 
 ## 2026-10-22 — P0 mixed-direction text policy (Issue #14)
 
 **Decision:** On bilingual student-facing pages, English concept chains with directional arrows must render as isolated **LTR visual sequences** inside an Arabic RTL sentence, using `bdi[dir=ltr]` rather than reversing the source text or translating English terminology. The approved wording, arrows and order remain unchanged; glossary links remain interactive inside the isolate. Apply consistent rendering to Scene, Case feedback, maps and print output. Run regression at mobile and desktop, in Arabic/English and Light/Dark, before release. This is a presentation/accessibility correction only; no academic edits.
+
+
+## 2026-10-24 — GA4 completion without redefining student identity (Issue #16)
+
+**Owner request:** implement educational event tracking and prevent instructor test traffic from distorting student analytics, observing all four decision laws.
+
+- **Critical Thinking:** live events from PR #3 already exist; do not duplicate or rename existing `quiz_submitted`. The missing observable behavior was full/contextual glossary opening. The report's city cannot identify the instructor.
+- **Systems Thinking:** keep the original single-source lecture data, quizzes, local progress, print, AR/EN, theme and all URL states unchanged; add only observation hooks. The early opt-out flag also affects initial and virtual page views.
+- **Practical Decision:** reuse `learningTelemetry` and Google's supported per-browser `ga-disable` switch. GA4 IP-based Internal Traffic Filter cannot be safely configured from site source and is not activated.
+- **Resource Efficiency:** no dependency, login system, new reporting backend, separate student build or duplicate event taxonomy. Existing regression workflow plus one focused contract test.
+
+**Release boundary:** a review PR only; no change to `main`, no GA4 Admin filter settings, and no conclusion about actual student understanding. Instructor-only browser exclusions take effect only after deployment and activation on each browser. See `GA4_ANALYTICS.md` and `RELEASE_QA.md`.

@@ -98,3 +98,17 @@ Reported screen: Lecture 02 · Unit 05 / Concept 19; source stores `Data → Pat
 - [GitHub Actions Integrity run 39839726055](https://github.com/Dr-Torih/sunday-sheraton/actions/runs/39839726055): PASSED.
 - The frozen embedded L01/L02 educational payloads are byte-identical in code review; the only runtime differences are markup wrappers created for display. Do not modify answer keys/lesson content to fix direction.
 - P0 requires GitHub Pages build success and a fresh public-page check after merge. Browser tests are Chromium and do not certify physical Safari devices.
+
+
+## 2026-10-24 — GA4 glossary telemetry and owner-browser opt-out (Issue #16)
+
+**Changed on isolated review branch only:** one early opt-out bootstrap before the GA4 tag; two additional `learningTelemetry` actions invoked only on real glossary/term-dialog opening. Standard events, content payloads, learning UX and original CSS were not deliberately modified.
+
+**Checks in PR CI:**
+- `python3 tests/verify_study_book.py index.html` — verify frozen baseline CSS and L01/L02 hashes.
+- `python3 tests/qa_ga4_telemetry.py index.html` — opt-out executed via real Node VM with mock per-browser storage (normal, off, persisted, on, blocked storage), no repeated tag configuration, glossary hook placement, existing seven event names.
+- Existing JS syntax and mobile/desktop browser/PDF regression workflows run on PR updates.
+
+**Not yet verified from this workspace:** an actual hosted browser session, GA4 Realtime/DebugView receiving either new event, property Custom dimensions, consent/retention configuration, or an IP Internal Traffic filter in Testing state. Do not mark this PR released until checks are green and owner authorizes merge; do not equate self-marked reading with mastery.
+
+**Manual acceptance after deployment:** from an ordinary visitor browser, verify initial page_view, open L01/L02 and one term + full glossary, submit a test quiz, inspect event names and parameters; in a separate instructor browser visit `?analytics=off`, verify no GA4 hits on first or later loads, then use `?analytics=on` to restore. Repeat on mobile and with browser reloads. No student's PII may be sent.

@@ -21,6 +21,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify content freeze and base CSS
         run: python3 tests/verify_study_book.py index.html
+      - name: Validate GA4 opt-out and glossary event contracts
+        run: python3 tests/qa_ga4_telemetry.py index.html
       - name: Extract and syntax-check site JavaScript
         run: |
           python3 - <<'PY'

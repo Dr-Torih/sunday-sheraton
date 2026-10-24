@@ -55,3 +55,8 @@ This repository's `main` branch may be configured as a GitHub Pages source. **Ne
 **Append the next approved lecture to the EXISTING bilingual single-file study book, preserve every previously approved content byte and all runtime behavior, document the change, and prove the regression checks passed.**
 
 _Handoff documentation merged to main on 22 Oct 2026. The existing main index.html was preserved, including newer Open Graph metadata. GitHub Pages deployment is monitored separately and must not be assumed complete merely from a merge._
+
+
+### GA4 status update (24 Oct 2026)
+
+PR #3's seven learning events were merged and basic GA4 visit collection was confirmed on 22 Oct; older *candidate* language above is historical. Issue #16 tracks the narrower **review-only** addition of `glossary_open` / `glossary_term_open` and optional per-browser instructor testing opt-out. It does not activate a GA4 IP filter or publish until a new owner-approved merge. Refer to `docs/GA4_ANALYTICS.md`.

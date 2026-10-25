@@ -40,6 +40,10 @@ Prior Next button used `#study` as scroll destination. On smaller mobile devices
 5. No public release without academic, UX, functional, security/privacy and regression checks.
 6. The public Sunday code and private cross-cohort governance are DISTINCT repos. Do not move private training records into public GitHub.
 
+## H01 Light-mode active navigation contrast — owner approved (2026-10-25)
+
+Following the staged UX audit and owner authorization to proceed to the next item, change the active top-navigation **text contrast only**. Current feature specification: [`DESIGN_UX.md`](DESIGN_UX.md#navigation-and-current-state-ux). PR is isolated from C01, unmerged, and has a browser regression gate. No lecture copy, assessment, Dark Mode, branding underline or publication changes.
+
 ## Known technical debt / next improvements, NOT automatic permission
 
 - Existing all-in-one HTML is large; future code modularity may help development, but **delivery artifact remains one file** until owner explicitly changes requirement.

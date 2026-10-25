@@ -22,7 +22,7 @@ The integrity test is `python3 tests/verify_study_book.py index.html`. Run after
 | Content | Frozen L01/L02 payloads unchanged; bilingual meaning/terminology and verified examples |
 | Concept ↔ quiz | Every quiz question resolves to the intended teaching concept; both languages, feedback and answer key reviewed |
 | Design | Base CSS unchanged; header/logo/font stacks/brand tokens; responsive layouts in Light/Dark |
-| Navigation | NEXT/PREVIOUS, Continue, Map and Unit land at new concept heading (not start of #study) under sticky header |
+| Navigation | NEXT/PREVIOUS, Continue, Map and Unit land at new concept heading (not start of #study) under sticky header; `python3 tests/qa_nav_single_active.py` confirms exactly one active top-nav label and underline after route clicks, direct URL and Back/Forward |
 | Mobile | 320, 390, 768 widths; map collapses; touch targets usable; no horizontal overflow |
 | Desktop | 1024 and 1440 widths; clear side map and concept reading |
 | Accessibility | Keyboard focus moves to current heading; visible focus; reduced-motion honored; AR/EN RTL/LTR |

@@ -34,6 +34,7 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 - NEXT/PREVIOUS, Continue, Unit and Concept Map must all land at the NEW concept heading, not the top of Study. Allow ~24px clearance below the sticky header.
 - Keyboard focus must follow newly displayed heading. Honor `prefers-reduced-motion`.
 - Map collapses/expands on mobile. Desktop retains useful map. Maintain a clear but nonduplicative progress indicator.
+- **H02 — one active top-navigation item:** exactly one of Study, Review or Project must carry the `.active` class, `data-route-active="true"`, `aria-current="page"` and the cyan active underline. The four markers must follow the same route on direct URL entry, clicks, Back/Forward, AR/EN, Light/Dark and mobile menu navigation. The existing route handler `apply()` is the sole writer of these states; do not hardcode a persistent active class. Keep the approved colors, layout and text unchanged.
 - Ready lecture buttons: visibly clickable on hover/focus; active lecture: approved accent underline; future chapters: disabled, visually distinct.
 - No horizontal scrolling, obscured content, broken buttons, lost place or modal focus trapping failure on narrow devices.
 

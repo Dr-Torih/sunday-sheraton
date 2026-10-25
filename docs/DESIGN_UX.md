@@ -35,6 +35,7 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 - Keyboard focus must follow newly displayed heading. Honor `prefers-reduced-motion`.
 - Map collapses/expands on mobile. Desktop retains useful map. Maintain a clear but nonduplicative progress indicator.
 - Ready lecture buttons: visibly clickable on hover/focus; active lecture: approved accent underline; future chapters: disabled, visually distinct.
+- **H01 — active top-navigation contrast (owner-approved 2026-10-25):** in Light Mode only, active Study/Review/Project link text uses the already-approved `--bright` deep blue (#0a5e9a) against `--surface` (#fffefa), with ≥4.5:1 normal-text contrast. Keep the original cyan `--cyan` underline/indicator and unchanged Dark Mode, nonactive links, typography, routes and mobile navigation. Do not alter the protected base CSS or academic content. The source of truth for this feature is this bullet.
 - No horizontal scrolling, obscured content, broken buttons, lost place or modal focus trapping failure on narrow devices.
 
 ## Quiz and certificate

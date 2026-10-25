@@ -29,8 +29,9 @@ with sync_playwright() as p:
                     page = browser.new_page(viewport={"width": width, "height": 860})
                     errors = []
                     page.on("pageerror", lambda error: errors.append(str(error)))
-                    page.goto(BASE, wait_until="domcontentloaded", timeout=30000)
-                    page.locator("#header-lecture-select").select_option(str(lecture))
+                    page.goto(BASE + ("#lecture-02" if lecture == 2 else ""), wait_until="domcontentloaded", timeout=30000)
+                    check(f"{width}px L0{lecture} selected", page.locator("#header-lecture-select").input_value() == str(lecture))
+                    check(f"{width}px L0{lecture} review route", page.locator("body").get_attribute("data-site-page") == "review")
                     if page.locator("html").get_attribute("lang") != lang:
                         page.locator("#lang-toggle").click()
                     if page.locator("body").get_attribute("data-theme") != theme:

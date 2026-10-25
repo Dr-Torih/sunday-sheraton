@@ -48,6 +48,18 @@ with sync_playwright() as p:
                     for i in range(35):
                         page.keyboard.press("Tab")
                         check(label + f" tab {i+1} contained", focus_in_quiz(page))
+                    # A keyboard answer re-renders the current question, then auto-advances.
+                    # Focus must remain in the modal throughout both DOM replacements.
+                    page.locator('#quiz-questions input[type="radio"]').first.focus()
+                    page.keyboard.press("Space")
+                    check(label + " radio answer keeps focus", page.evaluate(
+                        "document.activeElement?.matches('#quiz-questions input[type=radio]:checked')"))
+                    page.wait_for_timeout(550)
+                    check(label + " automatic next question", page.locator(
+                        '#quiz-questions .quiz-question[data-qnum="1"]').count() == 1)
+                    check(label + " next question input focused", page.evaluate(
+                        "document.activeElement === document.querySelector('#quiz-questions input[type=radio]')"))
+                    check(label + " after answer tab stays in quiz", focus_in_quiz(page))
                     if width == 390 and lecture == 2 and lang == "ar" and theme == "dark":
                         page.screenshot(path=str(OUT / "c01-mobile-ar-dark-quiz.png"), full_page=False)
                     if width == 1440 and lecture == 1 and lang == "en" and theme == "light":

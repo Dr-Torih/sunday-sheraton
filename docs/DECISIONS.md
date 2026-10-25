@@ -31,6 +31,10 @@ While preparing the handoff, the public `main` already gained Open Graph/Twitter
 
 Prior Next button used `#study` as scroll destination. On smaller mobile devices the map and preceding information pushed the new concept heading far below viewport. The approved fix uses one shared heading-based destination with sticky-header clearance (~24px), proper focus, reduced-motion handling and map collapse. Fix ALL entry paths, not only Next.
 
+## H02 nav active-state correction — 25 Oct 2026
+
+Owner authorized moving to the next Product Design finding. The single current-route top-navigation behavior is specified in [DESIGN_UX.md](DESIGN_UX.md#navigation-and-current-state-ux). The isolated H02 draft PR changes only active-state synchronization in `apply()` and tests it in Chromium; C01/H01 remain independent. No automatic merge or deployment.
+
 ## Owner-protected invariants
 
 1. No content editing without explicit instructor approval, including Arabic and English examples, correct answers, explanations and learning takeaways.

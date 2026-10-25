@@ -60,3 +60,22 @@ Never substitute stock people/photos for actual documented classroom moments, in
 ## Project Application card — staged and scoped (25 Oct 2026)
 
 Owner-approved contrast treatment for the Context → Project bridge only: a pale-aqua/deep-ink card in Light Mode and petrol/off-white in Dark Mode. Existing site brand colors and Alexandria/DM Sans are preserved. Unique scene ID, short call-to-action and non-graded disclosure are prominent. Min action height 44px; keyboard focus visible, mobile button full-width; no horizontal overflow from 320–1440px. HTML lesson, Decision Lab, print and quiz remain untouched. This scoped feature rule and its detailed color/academic acceptance live in `PROJECT_COMPANION.md` rather than a second specification.
+
+## Product Design audit repair rules — 25 Oct 2026 (PR #22; owner review)
+
+This is the **active source of truth for all Product Design UX repair decisions**. Preserve approved Alexandria/DM Sans, all pre-existing color tokens, the first/base CSS block, institutional branding, bilingual course/assessment payloads, the official original Project Guide and the existing lecture switch/deep links. These rules are confined to the unmerged PR until owner authorization.
+
+- **C01:** trap Tab/Shift+Tab in the live quiz modal, make background inert while it is open, focus the first relevant control after step transitions, return keyboard focus on close, preserve grading/answers. Keyboard QA is mandatory.
+- **H01:** current top-nav text in Light Mode uses the existing `--bright` text token (WCAG AA normal-text contrast ≥4.5:1), while its cyan underline, nonactive states, and Dark Mode remain intact.
+- **H02:** one `.active` CSS class, `data-route-active`, `aria-current` and underline must follow the one current Study/Review/Project route, including History navigation.
+- **H03 + O01:** one short study orientation *inside* the existing Study view, an explicitly named next Concept, optional project action, no mandatory intro/landing page and no mastery claim; redundant progress is collapsed, while detailed LP remains accessible through existing controls.
+- **H04 (academic gate):** keep the existing approved Unit Case, Decision Lab and Quick Check bodies, options and answers intact. Do not claim that source-level pedagogical overlap is eliminated by styling. Distinct scenario/question rewrites require documented Pearson/Kotler/Armstrong review and instructor signoff prior to publication; this is still **OPEN**.
+- **H05:** only presentation-scoped reading measure/type size and line-height adjustments; no deletion, rewriting, or forced hidden paragraphs.
+- **H06:** isolate the already approved five-step English Marketing Process in correct LTR order in both Arabic and English; keep the underlying wording immutable and allow narrow widths to wrap.
+- **H07:** all Lab prompt, choices, reason textarea and feedback must remain within modal bounds in RTL/LTR without invented automated grading.
+- **H08:** visible project shortcuts (Guide / Companion / Checklist), the exact canonical target Guide section name in each Concept's link, current lecture worked examples sorted first with both lectures visible, optional filter to only the current lecture, and a return button that preserves active lecture/concept. Do not clone Guide content into another canonical source.
+- **H09:** completed Concept label and `aria-pressed` stay consistent after AR/EN and theme changes, and main accessible control labels switch language.
+- **O02:** on the first concept of a later Unit, optional delayed recall prompts a learner to write *before* seeing the **unchanged, previously approved** prior-unit Key Takeaways. Ungraded, no timer, no mandatory step or new factual claim.
+- **O03:** current worked cards form 3×2 at desktop where space allows and reflow on mobile; quiz number targets are enlarged without hiding questions or altering assessment state.
+
+Owner gate: full Chromium and content-integrity suite, screenshot review, manual Safari/VoiceOver verification where available, and explicit release authorization. Do not merge this batch merely because checks pass.

@@ -755,6 +755,7 @@ body[data-site-page="review"] main > section:not(#review),
 body[data-site-page="project"] main > section:not(#project) {display:none!important}
 body[data-site-page="home"] main > section.lecture-strip{display:block}
 body[data-site-page] #site-nav .site-nav-inner a[data-route-active="true"] {color:var(--cyan)!important}
+body[data-theme="light"][data-site-page] #site-nav .site-nav-inner a[data-route-active="true"] {color:var(--bright)!important}
 body[data-site-page] #site-nav .site-nav-inner a[data-route-active="true"]::after {content:"";position:absolute;inset-inline:12px;bottom:-2px;height:3px;background:var(--cyan)}
 body[data-site-page] #site-nav .navlink{position:relative;cursor:pointer}
 body[data-site-page] #site-nav .navlink:not([disabled]):hover{color:var(--cyan)}
@@ -873,6 +874,38 @@ body[data-theme="dark"] .pc-main-link{background:var(--cyan);color:#10183b}
 @media(max-width:740px){.pc-requirements{grid-template-columns:repeat(2,minmax(0,1fr))}.pc-card-grid{grid-template-columns:1fr}.project-companion-section{scroll-margin-top:235px}.pc-card{scroll-margin-top:235px}}
 @media(max-width:355px){.pc-requirements{gap:6px}.pc-requirement{padding:10px 7px}.pc-requirement strong{font-size:20px}.pc-guide-links a{width:100%}}
 @media print{#project-guide-summary,#project-companion-overview,#project-application{display:none!important}}
+</style>
+<style id="product-design-ux-repairs">
+#study .progress-area{display:none}
+.study-start-guide{margin:0 0 18px;padding:13px 17px;background:var(--soft);border-inline-start:3px solid var(--cyan);font-size:14px;line-height:1.85;color:var(--ink)}
+#study .article-copy{font-size:clamp(16px,1.24vw,17.5px);line-height:1.95;max-width:76ch;overflow-wrap:break-word}
+#study .article-copy p,#study .article-copy li{line-height:1.95}
+#study .article-copy .insight-inline{font-size:1em}
+#study .scene-navigation .next-strong{flex:1 1 auto;max-width:55%;white-space:normal;text-align:start;overflow-wrap:anywhere}
+.prior-unit-recall{margin:14px 0 24px;border:1px solid var(--border);background:var(--soft);padding:12px 15px;scroll-margin-top:190px}
+.prior-unit-recall[hidden],.prior-recall-answer[hidden]{display:none!important}
+.prior-unit-recall summary{cursor:pointer;color:var(--ink);font-weight:800;line-height:1.85}
+.prior-unit-recall .recall-prompt{display:block;margin:15px 0 8px;font-size:13px;line-height:1.85}
+.prior-unit-recall textarea{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;min-height:90px;padding:12px;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;resize:vertical}
+.prior-unit-recall button{min-height:44px;margin-top:10px;padding:9px 14px;background:var(--surface);color:var(--blue);border:1px solid var(--blue);font:750 12px var(--ff);cursor:pointer}
+.prior-unit-recall button:disabled{opacity:.5;cursor:default}
+.prior-recall-answer{margin:12px 0;background:var(--surface);border-inline-start:3px solid var(--cyan);padding:13px;line-height:1.9}
+.prior-recall-answer ul{padding-inline-start:22px;margin:0}
+.concept-flow-ltr{direction:ltr;unicode-bidi:isolate;white-space:normal;overflow-wrap:normal;max-width:100%}
+#lab-modal .lab-dialog,#lab-modal .lab-modal-content,#lab-modal .lab-options,#lab-modal .lab-reason{min-width:0;box-sizing:border-box}
+#lab-modal .lab-reason{max-width:100%;display:block;overflow-wrap:anywhere}
+#lab-modal .lab-options label,#lab-modal .lab-modal-content label{max-width:100%;overflow-wrap:anywhere;box-sizing:border-box}
+#lab-modal .lab-modal-content{overflow-x:hidden;padding-inline:clamp(15px,3vw,28px)}
+#project-shortcuts{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 16px;scroll-margin-top:180px}
+#project-shortcuts button{min-height:44px;padding:10px 13px;border:1px solid var(--border);background:var(--soft);color:var(--ink);font:700 13px var(--ff);cursor:pointer}
+#project-shortcuts button:hover,#project-shortcuts button:focus-visible{border-color:var(--cyan);outline-offset:2px}
+#project-shortcuts button[aria-pressed="true"]{border-color:var(--cyan);background:var(--surface)}
+#project-companion-cards .pc-card[hidden]{display:none!important}
+@media(min-width:1024px){#project-companion-cards.pc-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:741px) and (max-width:1023px){#project-companion-cards.pc-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#quiz-modal .exam-dot{min-height:34px;height:34px;font-size:11px}
+@media(max-width:620px){#quiz-modal .exam-steps{grid-template-columns:repeat(9,minmax(0,1fr));gap:5px}#quiz-modal .exam-dot{min-height:38px;height:38px}#study .scene-navigation .next-strong{max-width:64%}#project-shortcuts button{flex:1 1 auto}#study .article-copy{font-size:16px}}
+@media(max-width:355px){#quiz-modal .exam-steps{grid-template-columns:repeat(6,minmax(0,1fr))}}
 </style>
 <style id="pc-native-guide-styles">
 /* Full original Project Guide displayed as native sections under the current portal identity. */
@@ -993,12 +1026,12 @@ html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{disp
 <section class="lecture-strip shell" aria-label="Course lectures" hidden aria-hidden="true"><div class="strip-head"><span data-ar="كورس التسويق · Marketing" data-en="Marketing Course">كورس التسويق · Marketing</span><small data-ar="Lecture 01 وLecture 02 متاحين الآن" data-en="Lectures 01 &amp; 02 available now">Lecture 01 وLecture 02 متاحين الآن</small></div><div id="lecture-links" class="lecture-links"></div></section>
 <section class="map-section shell" id="map-section" hidden aria-hidden="true"><div class="section-label"><span class="label-number">01 / THE CONNECTIONS</span><h2 data-ar="خريطة المحاضرة" data-en="The Concept Map">خريطة المحاضرة</h2><p data-ar="كل مجموعة أفكار بتبني على اللي قبلها. اختار محورًا للانتقال لأول مشهد فيه." data-en="Each unit builds on what came before. Select a unit to open its first concept.">كل مجموعة أفكار بتبني على اللي قبلها. اختار محورًا للانتقال لأول مشهد فيه.</p></div><div id="unit-map" class="unit-map"></div></section>
 <section class="reading-section shell" id="study"><div class="reading-section-heading"><div><div class="section-label"><span class="label-number">02 / THE STUDY BOOK</span><h2 data-ar="المحاضرة، فكرة ورا فكرة" data-en="One concept at a time">المحاضرة، فكرة ورا فكرة</h2><p data-ar="شرح حقيقي ومترابط. أنت اللي تختار إمتى تنتقل للمشهد التالي." data-en="A connected, substantial explanation. You decide when to move on.">شرح حقيقي ومترابط. أنت اللي تختار إمتى تنتقل للمشهد التالي.</p></div></div><div class="progress-area"><div class="progress-numbers"><strong id="progress-number">0 / 25</strong><span data-ar="مشهد مكتمل" data-en="scenes completed">مشهد مكتمل</span></div><div class="progress-rail"><div id="progress-bar" class="progress-fill"></div></div></div></div>
- <div class="reading-layout">
+ <p id="study-start-guide" class="study-start-guide" data-ar="ابدأ بالموقف، اقرأ الفكرة، جرّب سؤال الفهم لو موجود، وبعدها كمل للفكرة التالية. ربط المشروع اختياري، وعلامة الاكتمال بتسجّل مراجعتك فقط." data-en="Start with the example, read the concept, try the understanding check if available, then continue. Project links are optional; completing a concept records your review, not mastery.">ابدأ بالموقف، اقرأ الفكرة، جرّب سؤال الفهم لو موجود، وبعدها كمل للفكرة التالية. ربط المشروع اختياري، وعلامة الاكتمال بتسجّل مراجعتك فقط.</p><div class="reading-layout">
   <article class="scene-surface" aria-live="polite" aria-atomic="false"><div class="scene-top"><span class="scene-pill" id="scene-unit">UNIT 01</span><span class="scene-location" id="scene-position">01 / 25</span></div><div class="scene-heading"><span class="scene-deco" aria-hidden="true"><span></span><span></span><span></span><span></span></span><h3 id="scene-title"></h3></div><div id="scene-objective" class="scene-objective"></div><button type="button" id="scene-terms" class="scene-terms-link"><svg class="svg-icon sm"><use href="#i-glossary"/></svg><span data-ar="اضغط على المصطلحات داخل الشرح لمعرفة معناها" data-en="Tap terms in the lesson for definitions">اضغط على المصطلحات داخل الشرح لمعرفة معناها</span></button><div class="scene-intro-line"></div><div id="scene-content" class="article-copy"></div><div id="project-application" class="pc-inline-application" hidden></div><div id="scene-special"></div><div class="scene-completion"><span id="scene-done-state"></span><button class="action-primary" id="mark-done"><svg class="svg-icon"><use href="#i-check"/></svg><span data-ar="فهمت الفكرة · سجّل التقدم" data-en="I've understood · Mark complete">فهمت الفكرة · سجّل التقدم</span></button></div><div class="scene-navigation"><button id="prev-scene" class="next-previous" type="button"><svg class="svg-icon"><use href="#i-chevron"/></svg><span data-ar="الفكرة السابقة" data-en="Previous concept">الفكرة السابقة</span></button><button id="next-scene" class="next-previous next-strong" type="button"><span data-ar="الفكرة التالية" data-en="Next concept">الفكرة التالية</span><svg class="svg-icon rotate180"><use href="#i-chevron"/></svg></button></div></article>
   <aside class="reading-sidebar"><div class="sidebar-top"><div class="sidebar-overline">YOUR LEARNING MAP</div><h3 data-ar="المفاهيم الـ25" data-en="32 connected concepts">المفاهيم الـ25</h3><label for="scene-search" class="visually-hidden">بحث في المشاهد</label><div class="search-box"><svg class="svg-icon"><use href="#i-search"/></svg><input id="scene-search" type="search" placeholder="ابحث عن فكرة..." autocomplete="off"></div></div><div id="concept-list" class="concept-list"></div><div class="sidebar-foot"><span class="side-note-dot"></span><span data-ar="اختار أي مفهوم، وتقدر ترجع تكمّل من مكانك." data-en="Jump to any concept and continue from where you left off.">اختار أي مفهوم، وتقدر ترجع تكمّل من مكانك.</span></div></aside>
  </div></section>
 <section class="practice-section shell" id="review"><div class="section-label"><span class="label-number">03 / RETRIEVAL & PRACTICE</span><h2 data-ar="فاكر الفكرة؟ جرّب الأول" data-en="Retrieve before you reveal">فاكر الفكرة؟ جرّب الأول</h2><p data-ar="دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير." data-en="These are prompts for genuine recall. Write your answer first, then reveal feedback.">دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير.</p></div><div class="practice-layout"><div class="takeaways-column"><div class="subheading"><span class="subheading-icon yellow-bg">✳</span><h3>KEY TAKEAWAYS</h3><span id="kt-counter" class="quiet-count">12</span></div><div class="takeaway-list" id="takeaways"></div></div><div class="quiz-column"><div class="quiz-intro"><div class="quiz-geo"><span></span><span></span><span></span><span></span></div><span class="eyebrow light-on-dark">END OF LECTURE QUIZ</span><h3 data-ar="اختبر فهمك للمحاضرة" data-en="Test your understanding">اختبر فهمك للمحاضرة</h3><p data-ar="18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة." data-en="16 questions spanning the lecture. Get explanatory feedback after submission and retry whenever you like.">18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة.</p><button id="open-quiz" class="cta quiz-cta"><span data-ar="ابدأ الاختبار" data-en="Start the quiz">ابدأ الاختبار</span><svg class="svg-icon"><use href="#i-arrow"/></svg></button><div class="quiz-meta"><span data-ar="تقييم ذاتي خاص بك" data-en="Private self-assessment">تقييم ذاتي خاص بك</span><span>18 MCQs</span></div></div></div></div></section>
-<section class="project-section shell" id="project"><div class="project-companion-section" id="project-guide-summary" aria-labelledby="project-guide-heading">
+<section class="project-section shell" id="project"><nav id="project-shortcuts" aria-label="Project sections"><button type="button" data-project-jump="project-guide-summary" data-ar="دليل المشروع" data-en="Project Guide">دليل المشروع</button><button type="button" data-project-jump="project-companion-overview" data-ar="تطبيق المحاضرة" data-en="Lecture Companion">تطبيق المحاضرة</button><button type="button" data-project-jump="checklist-items" data-ar="متابعة المشروع" data-en="Project checklist">متابعة المشروع</button><button type="button" id="pc-show-all" aria-pressed="false" data-ar="كل أمثلة المحاضرتين" data-en="Show both lectures">كل أمثلة المحاضرتين</button><button type="button" id="back-to-concept" data-ar="العودة إلى فكرتي" data-en="Back to my concept">العودة إلى فكرتي</button></nav><div class="project-companion-section" id="project-guide-summary" aria-labelledby="project-guide-heading">
   <div class="pc-heading"><span class="pc-index">01 · PROJECT GUIDE</span><h3 id="project-guide-heading" data-ar="دليل المشروع ومتطلبات التسليم" data-en="Project Guide & Submission Requirements">دليل المشروع ومتطلبات التسليم</h3><p data-ar="ده المرجع الأساسي اللي يوضح المطلوب من مجموعتك، ومواعيد التسليم والتقييم. الدليل الأصلي هو المرجع النهائي للتفاصيل." data-en="Understand exactly what your team must prepare and submit. The original Project Guide remains the authority for full requirements.">ده المرجع الأساسي اللي يوضح المطلوب من مجموعتك، ومواعيد التسليم والتقييم. الدليل الأصلي هو المرجع النهائي للتفاصيل.</p></div>
   <div class="pc-requirements">
     <div class="pc-requirement"><strong>15–20 <small>A4</small></strong><span data-ar="صفحة Marketing Plan مكتوبة" data-en="Written Marketing Plan pages">صفحة Marketing Plan مكتوبة</span></div>
@@ -1112,6 +1145,14 @@ const learningTelemetry=(()=>{
   $('glossary-search').placeholder=label('ابحث عن مصطلح...','Search a term...');
   document.title=label('المحاضرة '+(CURRENT_LECTURE===1?'الأولى':'الثانية')+' · كتاب التسويق التفاعلي · AASTMT','Lecture 0'+CURRENT_LECTURE+' · Marketing Interactive Study Book · AASTMT');
   $('theme-toggle').innerHTML=svg(dark?'i-sun':'i-moon');
+  const accessible={
+    'theme-toggle':['تبديل المظهر','Toggle color theme'],
+    'lang-toggle':['تبديل اللغة','Switch language'],
+    'menu-toggle':['فتح أو إغلاق القائمة','Open or close navigation'],
+    'close-quiz':['إغلاق الاختبار','Close quiz'],
+    'close-glossary':['إغلاق المصطلحات','Close glossary']
+  };
+  Object.entries(accessible).forEach(([id,values])=>{const node=$(id);if(node)node.setAttribute('aria-label',values[lang==='ar'?0:1])});
  }
  function formatCount(x){return lang==='ar'?Number(x).toLocaleString('ar-EG'):String(x)}
  function showTerm(index){
@@ -1125,7 +1166,7 @@ const learningTelemetry=(()=>{
    Presentation only: academic source strings are never modified. */
 function isolateConceptFlows(root){
  if(!root)return;
- const flow=/\b(?:Data\s*→\s*Pattern\s*→\s*Insight\s*→\s*Decision|Data\s*→\s*Pattern|Pattern\s*→\s*Insight|Insight\s*→\s*Decision|SWOT\s*→\s*TOWS)\b/g;
+ const flow=/\b(?:Data\s*→\s*Pattern\s*→\s*Insight\s*→\s*Decision|Data\s*→\s*Pattern|Pattern\s*→\s*Insight|Insight\s*→\s*Decision|Understand\s*→\s*Create\s*→\s*Deliver\s*→\s*Engage\s*→\s*Capture|SWOT\s*→\s*TOWS)\b/g;
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  for(const node of nodes){
@@ -1205,6 +1246,11 @@ function linkLessonTerms(){
   // Readers can read without links becoming an unwanted scroll to blank anchor.
   $('prev-scene').disabled=sceneIndex===0;
   $('next-scene').disabled=sceneIndex===D.scenes.length-1;
+  const nextTitle=sceneIndex<D.scenes.length-1?D.scenes[sceneIndex+1].title:null;
+  const nextSpan=$('next-scene').querySelector('span');
+  nextSpan.dataset.ar=nextTitle?'التالي: '+nextTitle.ar:'الفكرة التالية';
+  nextSpan.dataset.en=nextTitle?'Next: '+nextTitle.en:'Next concept';
+  nextSpan.textContent=nextSpan.dataset[lang];
   const interactive=sceneSpecial();
   if(labs[sceneIndex+1]){
    $('scene-special').innerHTML=`<div class="lab-launch"><span class="label-number">DECISION LAB</span><strong>${label('جرّب تتخذ القرار بنفسك','Try making the decision yourself')}</strong><button id="open-lab" type="button" class="action-primary">${label('افتح السؤال التفاعلي','Open interactive question')}${svg('i-arrow')}</button></div>`;
@@ -1215,7 +1261,11 @@ function linkLessonTerms(){
   $('scene-done-state').textContent=done.has(sceneIndex)?label('تمت مراجعة هذه الفكرة','Concept completed'):label('لما تخلص الفكرة، سجّل تقدمك.','Mark when you finish this concept.');
   $('mark-done').classList.toggle('complete',done.has(sceneIndex));
   $('mark-done').setAttribute('aria-pressed',String(done.has(sceneIndex)));
-  const btn=$('mark-done').querySelector('span');btn.textContent=done.has(sceneIndex)?label('إلغاء علامة الاكتمال','Mark as not completed'):label('فهمت الفكرة · سجّل التقدم',"I've understood · Mark complete");
+  const btn=$('mark-done').querySelector('span');
+  const marked=done.has(sceneIndex);
+  btn.dataset.ar=marked?'إلغاء علامة الاكتمال':'فهمت الفكرة · سجّل التقدم';
+  btn.dataset.en=marked?'Mark as not completed':"I've understood · Mark complete";
+  btn.textContent=btn.dataset[lang];
   updateProgress();
   drawConceptList($('scene-search').value);
   drawUnitMap();
@@ -1370,10 +1420,46 @@ function linkLessonTerms(){
   $('exam-view-result').hidden=!quizSubmitted||summary;
   if($('assessment-review'))$('assessment-review').hidden=!summary;
  }
- function examMoveTo(i){clearTimeout(examMoveTimer);quizStep=Math.max(0,Math.min(D.quiz.length,i));drawQuiz();const sc=$('quiz-modal').querySelector('.quiz-scroll');if(sc)sc.scrollTop=0;}
+ function focusCurrentQuizStep(){
+  const root=$('quiz-questions');
+  const answer=root.querySelector('input[type="radio"]:not([disabled])');
+  if(answer){answer.focus();return}
+  const heading=root.querySelector('.exam-summary h3');
+  if(heading){heading.tabIndex=-1;heading.focus();return}
+  $('close-quiz').focus();
+ }
+ function examMoveTo(i){clearTimeout(examMoveTimer);quizStep=Math.max(0,Math.min(D.quiz.length,i));drawQuiz();focusCurrentQuizStep();const sc=$('quiz-modal').querySelector('.quiz-scroll');if(sc)sc.scrollTop=0;}
  function refreshLocale(){applyLocale();if(!$('term-modal').hidden){const term=$('term-dialog-title').textContent;const found=D.glossary.find(g=>g.t===term);if(found)$('term-dialog-definition').textContent=found[lang]}drawLectureLinks();startScene(sceneIndex,false);drawTakeaways();drawProject();drawGlossary($('glossary-search').value);if(!$('quiz-modal').hidden)drawQuiz();renderPrintBook()}
- function openOverlay(id){const x=$(id);x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz()}}
- function closeOverlay(id){$(id).hidden=true;document.body.style.overflow=''}
+ /* C01: keyboard focus stays in the active quiz dialog and returns to its opener. */
+ let quizFocusOrigin=null,quizBackgroundInert=[];
+ function quizFocusable(){
+  return [...$('quiz-modal').querySelectorAll('.quiz-panel a[href],.quiz-panel button,.quiz-panel input,.quiz-panel select,.quiz-panel textarea,.quiz-panel [tabindex]')]
+    .filter(el=>!el.disabled&&el.tabIndex>=0&&!el.closest('[hidden]')&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+ }
+ function lockQuizFocus(){
+  quizFocusOrigin=document.activeElement;
+  const modal=$('quiz-modal');
+  quizBackgroundInert=[...document.body.children].filter(el=>el!==modal).map(el=>[el,el.inert]);
+  quizBackgroundInert.forEach(([el])=>{el.inert=true});
+  $('close-quiz').focus();
+ }
+ function unlockQuizFocus(){
+  quizBackgroundInert.forEach(([el,prior])=>{if(el.isConnected)el.inert=prior});
+  quizBackgroundInert=[];
+  const opener=quizFocusOrigin;
+  quizFocusOrigin=null;
+  if(opener&&opener.isConnected&&!opener.closest('[hidden]')&&opener.getClientRects().length)opener.focus();
+ }
+ document.addEventListener('keydown',event=>{
+  if(event.key!=='Tab'||$('quiz-modal').hidden)return;
+  const focusables=quizFocusable();
+  if(!focusables.length){event.preventDefault();$('close-quiz').focus();return}
+  const at=focusables.indexOf(document.activeElement);
+  if(event.shiftKey&&at<=0){event.preventDefault();focusables[focusables.length-1].focus()}
+  else if(!event.shiftKey&&(at===focusables.length-1||at===-1)){event.preventDefault();focusables[0].focus()}
+ },true);
+ function openOverlay(id){const x=$(id);x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz();lockQuizFocus()}}
+ function closeOverlay(id){$(id).hidden=true;document.body.style.overflow='';if(id==='quiz-modal')unlockQuizFocus()}
  function renderPrintBook(){
   const n=CURRENT_LECTURE,date=n===1?'11':'18';
   const sections=['ar','en'].map(l=>`<div class="print-lang-${l}"><div class="print-cover"><img src="${document.querySelector('.brand-logo').src}" alt="AASTMT Logo"><h1>${l==='ar'?'مبادئ التسويق — المحاضرة '+(n===1?'الأولى':'الثانية'):'Marketing — Lecture 0'+n}</h1><p>AASTMT · Sheraton · ${date} October 2026 · Dr. Ibrahim Torih</p></div>${D.scenes.map((s,i)=>`<div class="print-scene"><small>LECTURE 0${n} · ${String(i+1).padStart(2,'0')} / ${D.scenes.length}</small><h2>${escapeHtml(s.title[l])}</h2><div>${s.html[l]}</div></div>`).join('')}</div>`);
@@ -1415,7 +1501,7 @@ function linkLessonTerms(){
  $('quiz-questions').addEventListener('change',e=>{
   const el=e.target.closest('input[type=radio]');if(!el||quizSubmitted)return;
   const p=el.closest('[data-qnum]');if(!p)return;
-  const idx=Number(p.dataset.qnum);quizAnswers[idx]=Number(el.value);drawQuiz();updateProgress();
+  const idx=Number(p.dataset.qnum);quizAnswers[idx]=Number(el.value);drawQuiz();const selected=$('quiz-questions').querySelector('input[type="radio"]:checked');if(selected)selected.focus();updateProgress();
   clearTimeout(examMoveTimer);if(idx<D.quiz.length-1){examMoveTimer=setTimeout(()=>{if(quizStep===idx&&!quizSubmitted)examMoveTo(idx+1)},390)}
  });
  $('quiz-questions').addEventListener('click',e=>{
@@ -1432,7 +1518,7 @@ function linkLessonTerms(){
   examMoveTo(D.quiz.length);updateProgress();renderAssessmentReview();
   $('assessment-review').hidden=false;$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0;
  });
- $('reset-quiz').addEventListener('click',()=>{clearTimeout(examMoveTimer);quizAnswers={};quizSubmitted=false;learningTelemetry.quizReset();quizStep=0;drawQuiz();updateProgress();renderAssessmentReview();$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0});
+ $('reset-quiz').addEventListener('click',()=>{clearTimeout(examMoveTimer);quizAnswers={};quizSubmitted=false;learningTelemetry.quizReset();quizStep=0;drawQuiz();focusCurrentQuizStep();updateProgress();renderAssessmentReview();$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0});
  $('print-full').addEventListener('click',()=>window.print());
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('glossary-panel').hidden)closeOverlay('glossary-panel');if(!$('quiz-modal').hidden)closeOverlay('quiz-modal');if(!$('term-modal').hidden)closeOverlay('term-modal');if(!$('lab-modal').hidden)closeOverlay('lab-modal')}
   if((e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')||!$('quiz-modal').hidden||!$('glossary-panel').hidden||!$('term-modal').hidden||!$('lab-modal').hidden)return;
@@ -1578,9 +1664,20 @@ $('assessment-review').addEventListener('click',e=>{if(e.target.closest('#print-
 
 /* Premium v3, scoped to presentation and student-controlled quiz interactions. */
 const STUDY_TAKEAWAYS={"1":{"1":{"ar":["Marketing مش مجرد إعلان أو بيع؛ الأول نفهم المشكلة وقيمة العميل.","قبل أي Campaign، اسأل عن سبب المشكلة والدليل اللي يثبتها."],"en":["Marketing goes beyond advertising and sales: start with the customer’s problem and value.","Diagnose the actual problem with evidence before launching a campaign."]},"2":{"ar":["Need احتياج أساسي، Want طريقة مفضلة، Demand رغبة مدعومة بقدرة شرائية.","Outside-In يبدأ من السوق، وCustomer-Perceived Value بتختلف من شريحة للتانية."],"en":["Need is fundamental; Want is a preferred solution; Demand adds purchasing ability.","Outside-In begins with the market, and perceived value differs by segment."]},"3":{"ar":["Marketing وSales مترابطين لكن لكل واحدة دور؛ وAdvertising جزء من Promotion.","Digital Marketing أوسع من Social Media، وBrand Promise محتاج أداء حقيقي."],"en":["Marketing and Sales work together, while Advertising is only part of Promotion.","Digital Marketing extends beyond social platforms and brand promises need delivery."]},"4":{"ar":["Customer Journey مستمرة بعد أول Purchase؛ Repeat Purchase مؤشر مهم على التجربة.","افهم أرقام Revenue وOrders وCustomers مع بعض قبل ما تستنتج نجاحًا."],"en":["The customer journey continues after purchase; repeat business signals experience.","Interpret revenue with orders and unique customers, not as an isolated success signal."]},"5":{"ar":["المنافس ممكن يكون بديل مختلف يحقق نفس هدف العميل، أو حتى No Action.","قرار الشريحة لازم يقوم على اختلاف Needs وValue والقدرة على الخدمة."],"en":["Competitors may be different substitutes meeting the same goal, including no action.","Segment choices depend on needs, value and the ability to serve."]},"6":{"ar":["Marketing Myopia بتحصل لما نحب الـFeatures وننسى الـCustomer Value.","أي Action Plan لازم يحدد الهدف والمالك والوقت والمخرجات والموارد ومؤشرات المتابعة."],"en":["Marketing myopia is overvaluing features and losing sight of customer value.","A workable action plan defines objective, owner, time, output, resources and measures."]}},"2":{"1":{"ar":["Marketing Process تبدأ بفهم السوق قبل Create وDeliver وEngage وCapture.","الوعد التسويقي لازم يكون متفق عليه بين Marketing وOperations وSales وFinance."],"en":["The Marketing Process starts with understanding the market before Create, Deliver, Engage and Capture.","The value promise needs alignment across marketing, operations, sales and finance."]},"2":{"ar":["Microenvironment تضم الأطراف القريبة مثل الموردين والعملاء والمنافسين.","Macroenvironment تضم القوى الأوسع؛ المقاطعة مثلًا قد تخلق Opportunity، مش Strength تلقائية."],"en":["Microenvironment covers close actors such as customers, suppliers and competitors.","Macro forces shape the wider market; a boycott may create an opportunity, not an automatic internal strength."]},"3":{"ar":["SWOT تفصل الداخل: Strengths وWeaknesses، عن الخارج: Opportunities وThreats.","TOWS تحوّل التشخيص لاختيارات قابلة للتنفيذ، ومراقبة Market Share مهمة."],"en":["SWOT distinguishes internal strengths and weaknesses from external opportunities and threats.","TOWS turns diagnosis into feasible actions while market-share shifts deserve attention."]},"4":{"ar":["Primary Research بتجمع معرفة مباشرة، وSecondary Research تراجع بيانات منشورة.","قبل التصدير: حدد السؤال، تأكد من HS Code وحداثة المصدر، وقارن الأدلة."],"en":["Primary research gathers first-hand evidence; secondary research uses existing information.","For exports, define the question, verify the HS code and recency, and triangulate sources."]},"5":{"ar":["Data وحدها مش Insight؛ تابع Pattern ثم اختبر تفسيره قبل القرار.","دورات الشراء في B2B ممكن ترتبط بالمخزون وLead Time، مش بمرتب آخر الشهر."],"en":["Data alone is not insight; find patterns, test explanations, then decide.","B2B buying cycles may follow stock and lead time rather than payday."]},"6":{"ar":["Buying Motive يشرح «ليه يشتري»، وTrigger يشرح «ليه دلوقتي».","Consumer Behavior يتأثر بعوامل Cultural وSocial وPersonal وPsychological، والقرار مستمر بعد الشراء."],"en":["Buying motive explains why customers want an offer; trigger explains why now.","Cultural, social, personal and psychological factors shape buying, including post-purchase responses."]}}};
+const priorRecallDraft={};
+const priorRecallRevealed=new Set();
 function drawUnitTakeaways(){
  const host=$('unit-keytakeaways');if(!host)return;
  const unit=D.scenes[sceneIndex].unit,atEnd=sceneIndex===D.scenes.length-1||D.scenes[sceneIndex+1].unit!==unit;
+ const recall=$('prior-unit-recall'),startOfUnit=sceneIndex>0&&D.scenes[sceneIndex-1].unit!==unit;
+ if(recall){
+   recall.hidden=unit<=1||!startOfUnit;
+   if(!recall.hidden){
+     const key=CURRENT_LECTURE+'-'+(unit-1),draft=priorRecallDraft[key]||'';
+     const summary=STUDY_TAKEAWAYS[CURRENT_LECTURE][unit-1][lang];
+     recall.innerHTML='<details class="recall-details"><summary>'+label('استرجاع اختياري: افتكر المحور السابق قبل كشف ملخصه','Optional recall: remember the previous unit before revealing its summary')+'</summary><label class="recall-prompt" for="prior-unit-attempt">'+label('من ذاكرتك، اكتب أهم فكرتين من المحور السابق. ده تدريب من غير درجات.','From memory, write two key ideas from the previous unit. Ungraded practice.')+'</label><textarea id="prior-unit-attempt" data-prior-recall-draft="'+key+'" rows="3" placeholder="'+label('اكتب اللي فاكره هنا...','Write what you remember...')+'">'+escapeHtml(draft)+'</textarea><button type="button" data-prior-recall-reveal="'+key+'" '+(draft.trim()?'':'disabled')+'>'+label('قارن بالملخص المعتمد','Compare with the approved summary')+'</button><div class="prior-recall-answer" '+(priorRecallRevealed.has(key)?'':'hidden')+'><ul>'+summary.map(t=>'<li>'+escapeHtml(t)+'</li>').join('')+'</ul></div></details>';
+   }
+ }
  host.hidden=!atEnd;if(!atEnd){host.textContent='';return}
  const entries=STUDY_TAKEAWAYS[CURRENT_LECTURE][unit][lang];
  host.innerHTML=`<span class="uk-overline">KEY TAKEAWAYS · UNIT ${String(unit).padStart(2,'0')}</span><h4>${label('أهم ما تتذكره من المحور','What to retain from this unit')}</h4><ul>${entries.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
@@ -1588,6 +1685,19 @@ function drawUnitTakeaways(){
 function setupNewExperience(){
  const host=document.createElement('section');host.id='unit-keytakeaways';host.className='unit-keytakeaways';host.hidden=true;
  $('unit-checkpoint').after(host);
+ const recall=document.createElement('section');recall.id='prior-unit-recall';recall.className='prior-unit-recall';recall.hidden=true;host.after(recall);
+ recall.addEventListener('input',event=>{
+   const field=event.target.closest('[data-prior-recall-draft]');
+   if(!field)return;
+   priorRecallDraft[field.dataset.priorRecallDraft]=field.value;
+   recall.querySelector('[data-prior-recall-reveal]').disabled=!field.value.trim();
+ });
+ recall.addEventListener('click',event=>{
+   const button=event.target.closest('[data-prior-recall-reveal]');
+   if(!button||button.disabled)return;
+   priorRecallRevealed.add(button.dataset.priorRecallReveal);
+   recall.querySelector('.prior-recall-answer').hidden=false;
+ });
  const panel=$('quiz-modal').querySelector('.quiz-panel');
  const progress=document.createElement('div');progress.className='exam-progress';progress.id='exam-progress';
  progress.innerHTML='<div class="exam-progress-top"><span id="exam-progress-text"></span><span id="exam-progress-answered"></span></div><div class="exam-progress-track"><i id="exam-progress-fill"></i></div><div class="exam-steps" id="exam-steps" aria-label="Question navigation"></div>';
@@ -1711,11 +1821,15 @@ function apply(p,{history=true,scroll=true}={}){
  if(!valid.includes(p))p='study';
  const changed=active!==p;active=p;
  document.body.dataset.sitePage=p;
- document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{const selected=a.getAttribute('href')==='#'+p;a.dataset.routeActive=String(selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{const selected=a.getAttribute('href')==='#'+p;a.classList.toggle('active',selected);a.dataset.routeActive=String(selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  if(history&&(changed||page()!==p)){window.history.pushState({...window.history.state,portalPage:p},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
  if(scroll)requestAnimationFrame(()=>{const t=document.getElementById(p),h=document.getElementById('sticky-header');if(t)window.scrollTo({top:Math.max(0,window.scrollY+t.getBoundingClientRect().top-(h?.getBoundingClientRect().height||80)-18),behavior:'instant'})});
 }
 document.addEventListener('click',e=>{
+ const shortcut=e.target.closest('[data-project-jump]');
+ if(shortcut){e.preventDefault();document.getElementById(shortcut.dataset.projectJump)?.scrollIntoView({block:'start',behavior:'instant'});return}
+ if(e.target.closest('#back-to-concept')){e.preventDefault();apply('study',{scroll:false});requestAnimationFrame(()=>document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'}));return}
+ if(e.target.closest('#pc-show-all')){e.preventDefault();const button=document.getElementById('pc-show-all');button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'));window.refreshCompanionScope?.();return}
  const nav=e.target.closest('#site-nav a[href^="#"]');if(nav){const p=nav.getAttribute('href').slice(1);if(valid.includes(p)){e.preventDefault();apply(p);return}}
  if(e.target.closest('[data-open-scene],[data-open-unit],#next-scene,#prev-scene,#start-reading,#start-learning,#continue-reading,[data-jb-go],#mark-done')){if(active!=='study')apply('study',{scroll:false})}
 },true);
@@ -1740,6 +1854,27 @@ if(progress){
 document.getElementById('header-print').addEventListener('click',()=>document.getElementById('print-full').click());
 apply(page(),{history:false,scroll:false});
 window.__courseWebsite={open:apply,page:()=>active};
+const companionCards=document.getElementById('project-companion-cards');
+function refreshCompanionScope(){
+ const scope=document.getElementById('pc-show-all');
+ const onlyCurrent=scope?.getAttribute('aria-pressed')==='true';
+ const ar=document.documentElement.lang==='ar';
+ if(scope){
+   scope.dataset.ar=onlyCurrent?'عرض المحاضرتين':'أمثلة محاضرتي فقط';
+   scope.dataset.en=onlyCurrent?'Show both lectures':'Only my lecture';
+   scope.textContent=scope.dataset[ar?'ar':'en'];
+ }
+ const current=String(document.getElementById('header-lecture-select')?.value||'1').padStart(2,'0');
+ companionCards?.querySelectorAll('.pc-card[id^="pc-L"]').forEach(card=>{
+   const inCurrent=card.id.startsWith('pc-L'+current+'-');
+   card.hidden=onlyCurrent&&!inCurrent;
+   card.style.order=inCurrent?'0':'1';
+ });
+}
+window.refreshCompanionScope=refreshCompanionScope;
+if(companionCards)new MutationObserver(refreshCompanionScope).observe(companionCards,{childList:true});
+document.getElementById('header-lecture-select')?.addEventListener('change',()=>requestAnimationFrame(refreshCompanionScope));
+refreshCompanionScope();
 })();
 </script>
 <script src="project-companion.js" defer></script>

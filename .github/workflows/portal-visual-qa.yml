@@ -1,7 +1,7 @@
 name: Portal Visual QA (PR only)
 on:
   pull_request:
-    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
+    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_quiz_focus.py','tests/qa_nav_contrast.py','tests/qa_nav_single_active.py','tests/qa_product_design_batch.py','tests/qa_offline_preview.py','tests/build_offline_preview.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
 jobs:
   visual-review:
     runs-on: ubuntu-latest
@@ -14,6 +14,8 @@ jobs:
           python-version: '3.11'
       - run: pip install playwright pymupdf
       - run: python -m playwright install --with-deps chromium
+      - name: Build owner preview as a standalone HTML file
+        run: python3 tests/build_offline_preview.py
       - name: Launch local preview and run automated browser QA
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/portal-http.log 2>&1 &
@@ -22,11 +24,16 @@ jobs:
           python3 tests/qa_portal_release.py
           python3 tests/qa_bidi_concept_flow.py
           python3 tests/qa_project_companion.py
-      - name: Package owner-review offline website preview
+          python3 tests/qa_quiz_focus.py
+          python3 tests/qa_nav_contrast.py
+          python3 tests/qa_nav_single_active.py
+          python3 tests/qa_product_design_batch.py
+          python3 tests/qa_offline_preview.py
+      - name: Package single-file owner browser preview
         if: always()
         run: |
           mkdir -p qa-artifacts
-          zip -j qa-artifacts/Sunday-Sheraton-Project-Companion-Stage1.zip index.html project-companion.js project-guide.html aastmt_round_logo.png
+          zip -j qa-artifacts/Sunday-Sheraton-C01-Owner-Preview.zip qa-artifacts/Sunday-Sheraton-C01-Offline-Preview.html
       - name: Save screenshots, PDF samples and result report for owner review
         if: always()
         uses: actions/upload-artifact@v4

@@ -882,6 +882,15 @@ body[data-theme="dark"] .pc-main-link{background:var(--cyan);color:#10183b}
 #study .article-copy p,#study .article-copy li{line-height:1.95}
 #study .article-copy .insight-inline{font-size:1em}
 #study .scene-navigation .next-strong{flex:1 1 auto;max-width:55%;white-space:normal;text-align:start;overflow-wrap:anywhere}
+.prior-unit-recall{margin:14px 0 24px;border:1px solid var(--border);background:var(--soft);padding:12px 15px;scroll-margin-top:190px}
+.prior-unit-recall[hidden],.prior-recall-answer[hidden]{display:none!important}
+.prior-unit-recall summary{cursor:pointer;color:var(--ink);font-weight:800;line-height:1.85}
+.prior-unit-recall .recall-prompt{display:block;margin:15px 0 8px;font-size:13px;line-height:1.85}
+.prior-unit-recall textarea{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;min-height:90px;padding:12px;border:1px solid var(--border);background:var(--surface);color:var(--ink);font:inherit;resize:vertical}
+.prior-unit-recall button{min-height:44px;margin-top:10px;padding:9px 14px;background:var(--surface);color:var(--blue);border:1px solid var(--blue);font:750 12px var(--ff);cursor:pointer}
+.prior-unit-recall button:disabled{opacity:.5;cursor:default}
+.prior-recall-answer{margin:12px 0;background:var(--surface);border-inline-start:3px solid var(--cyan);padding:13px;line-height:1.9}
+.prior-recall-answer ul{padding-inline-start:22px;margin:0}
 .concept-flow-ltr{direction:ltr;unicode-bidi:isolate;white-space:normal;overflow-wrap:normal;max-width:100%}
 #lab-modal .lab-dialog,#lab-modal .lab-modal-content,#lab-modal .lab-options,#lab-modal .lab-reason{min-width:0;box-sizing:border-box}
 #lab-modal .lab-reason{max-width:100%;display:block;overflow-wrap:anywhere}
@@ -1655,9 +1664,20 @@ $('assessment-review').addEventListener('click',e=>{if(e.target.closest('#print-
 
 /* Premium v3, scoped to presentation and student-controlled quiz interactions. */
 const STUDY_TAKEAWAYS={"1":{"1":{"ar":["Marketing مش مجرد إعلان أو بيع؛ الأول نفهم المشكلة وقيمة العميل.","قبل أي Campaign، اسأل عن سبب المشكلة والدليل اللي يثبتها."],"en":["Marketing goes beyond advertising and sales: start with the customer’s problem and value.","Diagnose the actual problem with evidence before launching a campaign."]},"2":{"ar":["Need احتياج أساسي، Want طريقة مفضلة، Demand رغبة مدعومة بقدرة شرائية.","Outside-In يبدأ من السوق، وCustomer-Perceived Value بتختلف من شريحة للتانية."],"en":["Need is fundamental; Want is a preferred solution; Demand adds purchasing ability.","Outside-In begins with the market, and perceived value differs by segment."]},"3":{"ar":["Marketing وSales مترابطين لكن لكل واحدة دور؛ وAdvertising جزء من Promotion.","Digital Marketing أوسع من Social Media، وBrand Promise محتاج أداء حقيقي."],"en":["Marketing and Sales work together, while Advertising is only part of Promotion.","Digital Marketing extends beyond social platforms and brand promises need delivery."]},"4":{"ar":["Customer Journey مستمرة بعد أول Purchase؛ Repeat Purchase مؤشر مهم على التجربة.","افهم أرقام Revenue وOrders وCustomers مع بعض قبل ما تستنتج نجاحًا."],"en":["The customer journey continues after purchase; repeat business signals experience.","Interpret revenue with orders and unique customers, not as an isolated success signal."]},"5":{"ar":["المنافس ممكن يكون بديل مختلف يحقق نفس هدف العميل، أو حتى No Action.","قرار الشريحة لازم يقوم على اختلاف Needs وValue والقدرة على الخدمة."],"en":["Competitors may be different substitutes meeting the same goal, including no action.","Segment choices depend on needs, value and the ability to serve."]},"6":{"ar":["Marketing Myopia بتحصل لما نحب الـFeatures وننسى الـCustomer Value.","أي Action Plan لازم يحدد الهدف والمالك والوقت والمخرجات والموارد ومؤشرات المتابعة."],"en":["Marketing myopia is overvaluing features and losing sight of customer value.","A workable action plan defines objective, owner, time, output, resources and measures."]}},"2":{"1":{"ar":["Marketing Process تبدأ بفهم السوق قبل Create وDeliver وEngage وCapture.","الوعد التسويقي لازم يكون متفق عليه بين Marketing وOperations وSales وFinance."],"en":["The Marketing Process starts with understanding the market before Create, Deliver, Engage and Capture.","The value promise needs alignment across marketing, operations, sales and finance."]},"2":{"ar":["Microenvironment تضم الأطراف القريبة مثل الموردين والعملاء والمنافسين.","Macroenvironment تضم القوى الأوسع؛ المقاطعة مثلًا قد تخلق Opportunity، مش Strength تلقائية."],"en":["Microenvironment covers close actors such as customers, suppliers and competitors.","Macro forces shape the wider market; a boycott may create an opportunity, not an automatic internal strength."]},"3":{"ar":["SWOT تفصل الداخل: Strengths وWeaknesses، عن الخارج: Opportunities وThreats.","TOWS تحوّل التشخيص لاختيارات قابلة للتنفيذ، ومراقبة Market Share مهمة."],"en":["SWOT distinguishes internal strengths and weaknesses from external opportunities and threats.","TOWS turns diagnosis into feasible actions while market-share shifts deserve attention."]},"4":{"ar":["Primary Research بتجمع معرفة مباشرة، وSecondary Research تراجع بيانات منشورة.","قبل التصدير: حدد السؤال، تأكد من HS Code وحداثة المصدر، وقارن الأدلة."],"en":["Primary research gathers first-hand evidence; secondary research uses existing information.","For exports, define the question, verify the HS code and recency, and triangulate sources."]},"5":{"ar":["Data وحدها مش Insight؛ تابع Pattern ثم اختبر تفسيره قبل القرار.","دورات الشراء في B2B ممكن ترتبط بالمخزون وLead Time، مش بمرتب آخر الشهر."],"en":["Data alone is not insight; find patterns, test explanations, then decide.","B2B buying cycles may follow stock and lead time rather than payday."]},"6":{"ar":["Buying Motive يشرح «ليه يشتري»، وTrigger يشرح «ليه دلوقتي».","Consumer Behavior يتأثر بعوامل Cultural وSocial وPersonal وPsychological، والقرار مستمر بعد الشراء."],"en":["Buying motive explains why customers want an offer; trigger explains why now.","Cultural, social, personal and psychological factors shape buying, including post-purchase responses."]}}};
+const priorRecallDraft={};
+const priorRecallRevealed=new Set();
 function drawUnitTakeaways(){
  const host=$('unit-keytakeaways');if(!host)return;
  const unit=D.scenes[sceneIndex].unit,atEnd=sceneIndex===D.scenes.length-1||D.scenes[sceneIndex+1].unit!==unit;
+ const recall=$('prior-unit-recall'),startOfUnit=sceneIndex>0&&D.scenes[sceneIndex-1].unit!==unit;
+ if(recall){
+   recall.hidden=unit<=1||!startOfUnit;
+   if(!recall.hidden){
+     const key=CURRENT_LECTURE+'-'+(unit-1),draft=priorRecallDraft[key]||'';
+     const summary=STUDY_TAKEAWAYS[CURRENT_LECTURE][unit-1][lang];
+     recall.innerHTML='<details class="recall-details"><summary>'+label('استرجاع اختياري: افتكر المحور السابق قبل كشف ملخصه','Optional recall: remember the previous unit before revealing its summary')+'</summary><label class="recall-prompt" for="prior-unit-attempt">'+label('من ذاكرتك، اكتب أهم فكرتين من المحور السابق. ده تدريب من غير درجات.','From memory, write two key ideas from the previous unit. Ungraded practice.')+'</label><textarea id="prior-unit-attempt" data-prior-recall-draft="'+key+'" rows="3" placeholder="'+label('اكتب اللي فاكره هنا...','Write what you remember...')+'">'+escapeHtml(draft)+'</textarea><button type="button" data-prior-recall-reveal="'+key+'" '+(draft.trim()?'':'disabled')+'>'+label('قارن بالملخص المعتمد','Compare with the approved summary')+'</button><div class="prior-recall-answer" '+(priorRecallRevealed.has(key)?'':'hidden')+'><ul>'+summary.map(t=>'<li>'+escapeHtml(t)+'</li>').join('')+'</ul></div></details>';
+   }
+ }
  host.hidden=!atEnd;if(!atEnd){host.textContent='';return}
  const entries=STUDY_TAKEAWAYS[CURRENT_LECTURE][unit][lang];
  host.innerHTML=`<span class="uk-overline">KEY TAKEAWAYS · UNIT ${String(unit).padStart(2,'0')}</span><h4>${label('أهم ما تتذكره من المحور','What to retain from this unit')}</h4><ul>${entries.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
@@ -1665,6 +1685,19 @@ function drawUnitTakeaways(){
 function setupNewExperience(){
  const host=document.createElement('section');host.id='unit-keytakeaways';host.className='unit-keytakeaways';host.hidden=true;
  $('unit-checkpoint').after(host);
+ const recall=document.createElement('section');recall.id='prior-unit-recall';recall.className='prior-unit-recall';recall.hidden=true;host.after(recall);
+ recall.addEventListener('input',event=>{
+   const field=event.target.closest('[data-prior-recall-draft]');
+   if(!field)return;
+   priorRecallDraft[field.dataset.priorRecallDraft]=field.value;
+   recall.querySelector('[data-prior-recall-reveal]').disabled=!field.value.trim();
+ });
+ recall.addEventListener('click',event=>{
+   const button=event.target.closest('[data-prior-recall-reveal]');
+   if(!button||button.disabled)return;
+   priorRecallRevealed.add(button.dataset.priorRecallReveal);
+   recall.querySelector('.prior-recall-answer').hidden=false;
+ });
  const panel=$('quiz-modal').querySelector('.quiz-panel');
  const progress=document.createElement('div');progress.className='exam-progress';progress.id='exam-progress';
  progress.innerHTML='<div class="exam-progress-top"><span id="exam-progress-text"></span><span id="exam-progress-answered"></span></div><div class="exam-progress-track"><i id="exam-progress-fill"></i></div><div class="exam-steps" id="exam-steps" aria-label="Question navigation"></div>';

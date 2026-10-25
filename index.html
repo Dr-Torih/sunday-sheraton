@@ -1711,7 +1711,7 @@ function apply(p,{history=true,scroll=true}={}){
  if(!valid.includes(p))p='study';
  const changed=active!==p;active=p;
  document.body.dataset.sitePage=p;
- document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{const selected=a.getAttribute('href')==='#'+p;a.dataset.routeActive=String(selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{const selected=a.getAttribute('href')==='#'+p;a.classList.toggle('active',selected);a.dataset.routeActive=String(selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
  if(history&&(changed||page()!==p)){window.history.pushState({...window.history.state,portalPage:p},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
  if(scroll)requestAnimationFrame(()=>{const t=document.getElementById(p),h=document.getElementById('sticky-header');if(t)window.scrollTo({top:Math.max(0,window.scrollY+t.getBoundingClientRect().top-(h?.getBoundingClientRect().height||80)-18),behavior:'instant'})});
 }

@@ -585,8 +585,11 @@
     else{const detail=$('pc-guide-'+id);if(!detail)return;detail.open=true}
     requestAnimationFrame(()=>{
       const dest=all?guideContainer:$('pc-guide-'+id);
-      dest?.scrollIntoView({block:'start',behavior:'instant'});
-      if(!all)dest?.querySelector('summary')?.focus({preventScroll:true});
+      const target=all?dest:dest?.querySelector('summary');
+      if(!window.__courseWebsite?.focusTarget?.(target)){
+        target?.scrollIntoView({block:'start',behavior:'instant'});
+        if(!all)target?.focus({preventScroll:true});
+      }
     });
   }
   $('project')?.addEventListener('click',async event=>{

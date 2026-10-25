@@ -15,6 +15,10 @@ These hashes prevent unintended edits to the approved first two chapters and fou
 
 The integrity test is `python3 tests/verify_study_book.py index.html`. Run after every change. If a deliberate future owner-approved content edit changes a hash, first record approval, source and reason, then update the baseline as an explicit PR change. Never simply regenerate fingerprints to silence a failing test.
 
+## H01 active navigation contrast acceptance (2026-10-25, independent PR)
+
+Actual Chromium computed-style tests: `python3 tests/qa_nav_contrast.py` exercises Study, Review, Project via visible nav links at 320/390/768/1440px × AR/EN × Light/Dark, checks exactly one active routed link, ≥4.5:1 text contrast over actual `#site-nav` background, preserved cyan indicator and no browser page errors. Save two screenshots (1440 Light and 390 Dark), JSON results as GitHub Actions artifacts. Red TDD baseline: original `rgb(22,191,199)` over `rgb(255,254,250)` measured 2.23:1 at 320/ar/light/study, CI initial failure is intentional. Approved fix text-only, defined in [`DESIGN_UX.md`](DESIGN_UX.md#navigation-and-current-state-ux); verify actual CI success before considering reviewer merge. This branch does **not** include or merge C01 PR #19.
+
 ## Required gates (every PR)
 
 | Gate | Required evidence |

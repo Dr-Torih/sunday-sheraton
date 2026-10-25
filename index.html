@@ -1370,10 +1370,46 @@ function linkLessonTerms(){
   $('exam-view-result').hidden=!quizSubmitted||summary;
   if($('assessment-review'))$('assessment-review').hidden=!summary;
  }
- function examMoveTo(i){clearTimeout(examMoveTimer);quizStep=Math.max(0,Math.min(D.quiz.length,i));drawQuiz();const sc=$('quiz-modal').querySelector('.quiz-scroll');if(sc)sc.scrollTop=0;}
+ function focusCurrentQuizStep(){
+  const root=$('quiz-questions');
+  const answer=root.querySelector('input[type="radio"]:not([disabled])');
+  if(answer){answer.focus();return}
+  const heading=root.querySelector('.exam-summary h3');
+  if(heading){heading.tabIndex=-1;heading.focus();return}
+  $('close-quiz').focus();
+ }
+ function examMoveTo(i){clearTimeout(examMoveTimer);quizStep=Math.max(0,Math.min(D.quiz.length,i));drawQuiz();focusCurrentQuizStep();const sc=$('quiz-modal').querySelector('.quiz-scroll');if(sc)sc.scrollTop=0;}
  function refreshLocale(){applyLocale();if(!$('term-modal').hidden){const term=$('term-dialog-title').textContent;const found=D.glossary.find(g=>g.t===term);if(found)$('term-dialog-definition').textContent=found[lang]}drawLectureLinks();startScene(sceneIndex,false);drawTakeaways();drawProject();drawGlossary($('glossary-search').value);if(!$('quiz-modal').hidden)drawQuiz();renderPrintBook()}
- function openOverlay(id){const x=$(id);x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz()}}
- function closeOverlay(id){$(id).hidden=true;document.body.style.overflow=''}
+ /* C01: keyboard focus stays in the active quiz dialog and returns to its opener. */
+ let quizFocusOrigin=null,quizBackgroundInert=[];
+ function quizFocusable(){
+  return [...$('quiz-modal').querySelectorAll('.quiz-panel a[href],.quiz-panel button,.quiz-panel input,.quiz-panel select,.quiz-panel textarea,.quiz-panel [tabindex]')]
+    .filter(el=>!el.disabled&&el.tabIndex>=0&&!el.closest('[hidden]')&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+ }
+ function lockQuizFocus(){
+  quizFocusOrigin=document.activeElement;
+  const modal=$('quiz-modal');
+  quizBackgroundInert=[...document.body.children].filter(el=>el!==modal).map(el=>[el,el.inert]);
+  quizBackgroundInert.forEach(([el])=>{el.inert=true});
+  $('close-quiz').focus();
+ }
+ function unlockQuizFocus(){
+  quizBackgroundInert.forEach(([el,prior])=>{if(el.isConnected)el.inert=prior});
+  quizBackgroundInert=[];
+  const opener=quizFocusOrigin;
+  quizFocusOrigin=null;
+  if(opener&&opener.isConnected&&!opener.closest('[hidden]')&&opener.getClientRects().length)opener.focus();
+ }
+ document.addEventListener('keydown',event=>{
+  if(event.key!=='Tab'||$('quiz-modal').hidden)return;
+  const focusables=quizFocusable();
+  if(!focusables.length){event.preventDefault();$('close-quiz').focus();return}
+  const at=focusables.indexOf(document.activeElement);
+  if(event.shiftKey&&at<=0){event.preventDefault();focusables[focusables.length-1].focus()}
+  else if(!event.shiftKey&&(at===focusables.length-1||at===-1)){event.preventDefault();focusables[0].focus()}
+ },true);
+ function openOverlay(id){const x=$(id);x.hidden=false;document.body.style.overflow='hidden';if(id==='glossary-panel'){$('glossary-search').focus()}if(id==='quiz-modal'){learningTelemetry.quizOpen();quizStep=quizSubmitted?D.quiz.length:Math.max(0,D.quiz.findIndex((q,i)=>quizAnswers[i]===undefined));if(quizStep<0)quizStep=D.quiz.length-1;drawQuiz();lockQuizFocus()}}
+ function closeOverlay(id){$(id).hidden=true;document.body.style.overflow='';if(id==='quiz-modal')unlockQuizFocus()}
  function renderPrintBook(){
   const n=CURRENT_LECTURE,date=n===1?'11':'18';
   const sections=['ar','en'].map(l=>`<div class="print-lang-${l}"><div class="print-cover"><img src="${document.querySelector('.brand-logo').src}" alt="AASTMT Logo"><h1>${l==='ar'?'مبادئ التسويق — المحاضرة '+(n===1?'الأولى':'الثانية'):'Marketing — Lecture 0'+n}</h1><p>AASTMT · Sheraton · ${date} October 2026 · Dr. Ibrahim Torih</p></div>${D.scenes.map((s,i)=>`<div class="print-scene"><small>LECTURE 0${n} · ${String(i+1).padStart(2,'0')} / ${D.scenes.length}</small><h2>${escapeHtml(s.title[l])}</h2><div>${s.html[l]}</div></div>`).join('')}</div>`);
@@ -1415,7 +1451,7 @@ function linkLessonTerms(){
  $('quiz-questions').addEventListener('change',e=>{
   const el=e.target.closest('input[type=radio]');if(!el||quizSubmitted)return;
   const p=el.closest('[data-qnum]');if(!p)return;
-  const idx=Number(p.dataset.qnum);quizAnswers[idx]=Number(el.value);drawQuiz();updateProgress();
+  const idx=Number(p.dataset.qnum);quizAnswers[idx]=Number(el.value);drawQuiz();const selected=$('quiz-questions').querySelector('input[type="radio"]:checked');if(selected)selected.focus();updateProgress();
   clearTimeout(examMoveTimer);if(idx<D.quiz.length-1){examMoveTimer=setTimeout(()=>{if(quizStep===idx&&!quizSubmitted)examMoveTo(idx+1)},390)}
  });
  $('quiz-questions').addEventListener('click',e=>{
@@ -1432,7 +1468,7 @@ function linkLessonTerms(){
   examMoveTo(D.quiz.length);updateProgress();renderAssessmentReview();
   $('assessment-review').hidden=false;$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0;
  });
- $('reset-quiz').addEventListener('click',()=>{clearTimeout(examMoveTimer);quizAnswers={};quizSubmitted=false;learningTelemetry.quizReset();quizStep=0;drawQuiz();updateProgress();renderAssessmentReview();$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0});
+ $('reset-quiz').addEventListener('click',()=>{clearTimeout(examMoveTimer);quizAnswers={};quizSubmitted=false;learningTelemetry.quizReset();quizStep=0;drawQuiz();focusCurrentQuizStep();updateProgress();renderAssessmentReview();$('quiz-modal').querySelector('.quiz-scroll').scrollTop=0});
  $('print-full').addEventListener('click',()=>window.print());
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('glossary-panel').hidden)closeOverlay('glossary-panel');if(!$('quiz-modal').hidden)closeOverlay('quiz-modal');if(!$('term-modal').hidden)closeOverlay('term-modal');if(!$('lab-modal').hidden)closeOverlay('lab-modal')}
   if((e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')||!$('quiz-modal').hidden||!$('glossary-panel').hidden||!$('term-modal').hidden||!$('lab-modal').hidden)return;

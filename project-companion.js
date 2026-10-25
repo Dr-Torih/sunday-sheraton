@@ -496,7 +496,7 @@
         '<h4>'+esc(t('إيه اللي تعملوه في مشروعكم؟','What should your team do?'))+'</h4>'+
         '<p class="pc-inline-note">'+esc(item.note[locale()])+'</p>'+
         '<div class="pc-app-footer"><span class="pc-app-footnote">'+esc(t('للمذاكرة والتطبيق، مش تكليف تسليم إضافي','For learning and application — not an extra graded deliverable'))+'</span>'+
-        '<button class="pc-inline-link" type="button"'+action+'>'+esc(item.worked?t('شوف المثال المحلول والقالب','View worked example and template'):t('افتح القسم المناسب في دليل المشروع','Open the relevant Project Guide section'))+'</button></div>';
+        '<button class="pc-inline-link" type="button"'+action+'>'+esc(item.worked?t('شوف المثال المحلول والقالب','View worked example and template'):t('افتح قسم: ','Open section: ')+(guideSections.find(section=>section[0]===item.guide)?.[locale()==='ar'?1:2]||t('دليل المشروع','Project Guide')))+'</button></div>';
     }
   }
   function revealCard(id){

@@ -1823,11 +1823,18 @@ apply(page(),{history:false,scroll:false});
 window.__courseWebsite={open:apply,page:()=>active};
 const companionCards=document.getElementById('project-companion-cards');
 function refreshCompanionScope(){
- const showAll=document.getElementById('pc-show-all')?.getAttribute('aria-pressed')==='true';
+ const scope=document.getElementById('pc-show-all');
+ const onlyCurrent=scope?.getAttribute('aria-pressed')==='true';
+ const ar=document.documentElement.lang==='ar';
+ if(scope){
+   scope.dataset.ar=onlyCurrent?'عرض المحاضرتين':'أمثلة محاضرتي فقط';
+   scope.dataset.en=onlyCurrent?'Show both lectures':'Only my lecture';
+   scope.textContent=scope.dataset[ar?'ar':'en'];
+ }
  const current=String(document.getElementById('header-lecture-select')?.value||'1').padStart(2,'0');
  companionCards?.querySelectorAll('.pc-card[id^="pc-L"]').forEach(card=>{
    const inCurrent=card.id.startsWith('pc-L'+current+'-');
-   card.hidden=!showAll&&!inCurrent;
+   card.hidden=onlyCurrent&&!inCurrent;
    card.style.order=inCurrent?'0':'1';
  });
 }

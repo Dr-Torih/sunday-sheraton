@@ -899,7 +899,8 @@ body[data-theme="dark"] .pc-main-link{background:var(--cyan);color:#10183b}
 #project-shortcuts{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 16px;scroll-margin-top:180px}
 #project-shortcuts button{min-height:44px;padding:10px 13px;border:1px solid var(--border);background:var(--soft);color:var(--ink);font:700 13px var(--ff);cursor:pointer}
 #project-shortcuts button:hover,#project-shortcuts button:focus-visible{border-color:var(--cyan);outline-offset:2px}
-#project-shortcuts button[aria-pressed="true"]{border-color:var(--cyan);background:var(--surface)}
+#project-shortcuts button:focus-visible{outline:3px solid var(--cyan)}
+#project-guide-heading:focus,#project-companion-heading:focus,#project-checklist-heading:focus{outline:2px solid var(--cyan);outline-offset:6px}
 #project-companion-cards .pc-card[hidden]{display:none!important}
 @media(min-width:1024px){#project-companion-cards.pc-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:741px) and (max-width:1023px){#project-companion-cards.pc-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -1031,7 +1032,7 @@ html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{disp
   <aside class="reading-sidebar"><div class="sidebar-top"><div class="sidebar-overline">YOUR LEARNING MAP</div><h3 data-ar="المفاهيم الـ25" data-en="32 connected concepts">المفاهيم الـ25</h3><label for="scene-search" class="visually-hidden">بحث في المشاهد</label><div class="search-box"><svg class="svg-icon"><use href="#i-search"/></svg><input id="scene-search" type="search" placeholder="ابحث عن فكرة..." autocomplete="off"></div></div><div id="concept-list" class="concept-list"></div><div class="sidebar-foot"><span class="side-note-dot"></span><span data-ar="اختار أي مفهوم، وتقدر ترجع تكمّل من مكانك." data-en="Jump to any concept and continue from where you left off.">اختار أي مفهوم، وتقدر ترجع تكمّل من مكانك.</span></div></aside>
  </div></section>
 <section class="practice-section shell" id="review"><div class="section-label"><span class="label-number">03 / RETRIEVAL & PRACTICE</span><h2 data-ar="فاكر الفكرة؟ جرّب الأول" data-en="Retrieve before you reveal">فاكر الفكرة؟ جرّب الأول</h2><p data-ar="دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير." data-en="These are prompts for genuine recall. Write your answer first, then reveal feedback.">دي مش قائمة إجابات للحفظ. اكتب اللي فهمته من ذاكرتك، وبعدها اكشف التفسير.</p></div><div class="practice-layout"><div class="takeaways-column"><div class="subheading"><span class="subheading-icon yellow-bg">✳</span><h3>KEY TAKEAWAYS</h3><span id="kt-counter" class="quiet-count">12</span></div><div class="takeaway-list" id="takeaways"></div></div><div class="quiz-column"><div class="quiz-intro"><div class="quiz-geo"><span></span><span></span><span></span><span></span></div><span class="eyebrow light-on-dark">END OF LECTURE QUIZ</span><h3 data-ar="اختبر فهمك للمحاضرة" data-en="Test your understanding">اختبر فهمك للمحاضرة</h3><p data-ar="18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة." data-en="16 questions spanning the lecture. Get explanatory feedback after submission and retry whenever you like.">18 سؤالًا تدريبيًا تغطي مفاهيم المحاضرة. هتعرف سبب كل إجابة بعد التسليم، وتقدر تعيد المحاولة.</p><button id="open-quiz" class="cta quiz-cta"><span data-ar="ابدأ الاختبار" data-en="Start the quiz">ابدأ الاختبار</span><svg class="svg-icon"><use href="#i-arrow"/></svg></button><div class="quiz-meta"><span data-ar="تقييم ذاتي خاص بك" data-en="Private self-assessment">تقييم ذاتي خاص بك</span><span>18 MCQs</span></div></div></div></div></section>
-<section class="project-section shell" id="project"><nav id="project-shortcuts" aria-label="Project sections"><button type="button" data-project-jump="project-guide-summary" data-ar="دليل المشروع" data-en="Project Guide">دليل المشروع</button><button type="button" data-project-jump="project-companion-overview" data-ar="تطبيق المحاضرة" data-en="Lecture Companion">تطبيق المحاضرة</button><button type="button" data-project-jump="checklist-items" data-ar="متابعة المشروع" data-en="Project checklist">متابعة المشروع</button><button type="button" id="pc-show-all" aria-pressed="false" data-ar="كل أمثلة المحاضرتين" data-en="Show both lectures">كل أمثلة المحاضرتين</button><button type="button" id="back-to-concept" data-ar="العودة إلى فكرتي" data-en="Back to my concept">العودة إلى فكرتي</button></nav><div class="project-companion-section" id="project-guide-summary" aria-labelledby="project-guide-heading">
+<section class="project-section shell" id="project"><nav id="project-shortcuts" aria-label="أقسام المشروع"><button type="button" data-project-jump="project-guide-summary" aria-controls="project-guide-summary" data-ar="دليل المشروع" data-en="Project Guide">دليل المشروع</button><button type="button" data-project-jump="project-companion-overview" aria-controls="project-companion-overview" data-ar="تطبيق المحاضرة" data-en="Lecture Companion">تطبيق المحاضرة</button><button type="button" data-project-jump="project-checklist" aria-controls="project-checklist" data-ar="متابعة المشروع" data-en="Project checklist">متابعة المشروع</button></nav><div class="project-companion-section" id="project-guide-summary" aria-labelledby="project-guide-heading">
   <div class="pc-heading"><span class="pc-index">01 · PROJECT GUIDE</span><h3 id="project-guide-heading" data-ar="دليل المشروع ومتطلبات التسليم" data-en="Project Guide & Submission Requirements">دليل المشروع ومتطلبات التسليم</h3><p data-ar="ده المرجع الأساسي اللي يوضح المطلوب من مجموعتك، ومواعيد التسليم والتقييم. الدليل الأصلي هو المرجع النهائي للتفاصيل." data-en="Understand exactly what your team must prepare and submit. The original Project Guide remains the authority for full requirements.">ده المرجع الأساسي اللي يوضح المطلوب من مجموعتك، ومواعيد التسليم والتقييم. الدليل الأصلي هو المرجع النهائي للتفاصيل.</p></div>
   <div class="pc-requirements">
     <div class="pc-requirement"><strong>15–20 <small>A4</small></strong><span data-ar="صفحة Marketing Plan مكتوبة" data-en="Written Marketing Plan pages">صفحة Marketing Plan مكتوبة</span></div>
@@ -1052,7 +1053,7 @@ html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{disp
 <div class="project-companion-section" id="project-companion-overview" aria-labelledby="project-companion-heading">
  <div class="pc-heading"><span class="pc-index">02 · PROJECT COMPANION</span><h3 id="project-companion-heading" data-ar="من المحاضرة لمشروع مجموعتك" data-en="From Lecture to Your Group Project">من المحاضرة لمشروع مجموعتك</h3><p data-ar="اختار تطبيق من الأفكار المتصلة بالمشروع: هتلاقي مثالًا توضيحيًا، وسؤالًا تفكر فيه، والقالب الأصلي المناسب. دي أمثلة تدريبية مش بيانات سوق حقيقية ولا تكليفات بدرجات." data-en="Explore a mapped concept, a worked example, a reflection question and the relevant original template. Examples are illustrative, not real market evidence or graded tasks.">اختار تطبيق من الأفكار المتصلة بالمشروع: هتلاقي مثالًا توضيحيًا، وسؤالًا تفكر فيه، والقالب الأصلي المناسب. دي أمثلة تدريبية مش بيانات سوق حقيقية ولا تكليفات بدرجات.</p></div>
  <div id="project-companion-cards" class="pc-card-grid" aria-live="polite"></div>
-</div><div class="project-layout"><div class="project-heading"><span class="label-number">03 / LECTURE PROJECT CHECKLIST</span><h2 data-ar="متابعة مهام مشروع المحاضرة" data-en="Your Lecture Project Checklist">متابعة مهام مشروع المحاضرة</h2><p data-ar="طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها." data-en="Turn your learning into your team's Marketing Plan. Check off each task as you complete it.">طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها.</p><div class="project-note" data-ar="متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر." data-en="Binding submission details and dates come from the instructor's final approved announcement.">متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر.</div></div><div class="project-checklist"><div class="check-top"><strong data-ar="قائمة مراجعة المشروع للمحاضرة" data-en="Lecture project checklist">قائمة مراجعة المشروع للمحاضرة</strong><span id="project-progress">0 / 10</span></div><p class="pc-checkbox-warning" data-ar="العلامات دي لمتابعتك الشخصية على نفس المتصفح فقط، مش تسليم للمشروع أو اعتماد من المحاضر." data-en="These ticks track your private progress on this browser only; they are not submissions or instructor approval.">العلامات دي لمتابعتك الشخصية على نفس المتصفح فقط، مش تسليم للمشروع أو اعتماد من المحاضر.</p><div id="checklist-items"></div></div></div></section>
+</div><div class="project-layout"><div class="project-heading" id="project-checklist"><span class="label-number">03 / LECTURE PROJECT CHECKLIST</span><h2 id="project-checklist-heading" data-ar="متابعة مهام مشروع المحاضرة" data-en="Your Lecture Project Checklist">متابعة مهام مشروع المحاضرة</h2><p data-ar="طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها." data-en="Turn your learning into your team's Marketing Plan. Check off each task as you complete it.">طبّق القرارات على Marketing Plan بتاعت مجموعتك. علم على كل خطوة لما تخلصها.</p><div class="project-note" data-ar="متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر." data-en="Binding submission details and dates come from the instructor's final approved announcement.">متطلبات التسليم التفصيلية وموعده تُؤخذ من الإعلان النهائي المعتمد من المحاضر.</div></div><div class="project-checklist"><div class="check-top"><strong data-ar="قائمة مراجعة المشروع للمحاضرة" data-en="Lecture project checklist">قائمة مراجعة المشروع للمحاضرة</strong><span id="project-progress">0 / 10</span></div><p class="pc-checkbox-warning" data-ar="العلامات دي لمتابعتك الشخصية على نفس المتصفح فقط، مش تسليم للمشروع أو اعتماد من المحاضر." data-en="These ticks track your private progress on this browser only; they are not submissions or instructor approval.">العلامات دي لمتابعتك الشخصية على نفس المتصفح فقط، مش تسليم للمشروع أو اعتماد من المحاضر.</p><div id="checklist-items"></div></div></div></section>
 
 <footer class="footer shell"><span class="footer-mark"></span><p>AASTMT · Sheraton · 11 OCT 2026</p><p data-ar="إعداد المادة العلمية: د. إبراهيم طريح · دليل الطالب للمحاضرة الأولى" data-en="Academic instructor: Dr. Ibrahim Torih · Lecture 01 Study Book">إعداد المادة العلمية: د. إبراهيم طريح · دليل الطالب للمحاضرة الأولى</p><button id="print-full" class="footer-print"><svg class="svg-icon"><use href="#i-print"/></svg><span data-ar="طباعة كتاب المحاضرة" data-en="Print the study book">طباعة كتاب المحاضرة</span></button><p class="academic-refs">مراجع أكاديمية إضافية / Academic references: <a target="_blank" rel="noopener noreferrer" href="https://www.ama.org/the-definition-of-marketing-what-is-marketing/">American Marketing Association</a> · <a target="_blank" rel="noopener noreferrer" href="https://openstax.org/books/principles-marketing/pages/1-5-determining-consumer-needs-and-wants">OpenStax · Consumer Needs &amp; Wants</a></p></footer>
 </main>
@@ -1150,7 +1151,8 @@ const learningTelemetry=(()=>{
     'lang-toggle':['تبديل اللغة','Switch language'],
     'menu-toggle':['فتح أو إغلاق القائمة','Open or close navigation'],
     'close-quiz':['إغلاق الاختبار','Close quiz'],
-    'close-glossary':['إغلاق المصطلحات','Close glossary']
+    'close-glossary':['إغلاق المصطلحات','Close glossary'],
+    'project-shortcuts':['أقسام المشروع','Project sections']
   };
   Object.entries(accessible).forEach(([id,values])=>{const node=$(id);if(node)node.setAttribute('aria-label',values[lang==='ar'?0:1])});
  }
@@ -1825,11 +1827,26 @@ function apply(p,{history=true,scroll=true}={}){
  if(history&&(changed||page()!==p)){window.history.pushState({...window.history.state,portalPage:p},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
  if(scroll)requestAnimationFrame(()=>{const t=document.getElementById(p),h=document.getElementById('sticky-header');if(t)window.scrollTo({top:Math.max(0,window.scrollY+t.getBoundingClientRect().top-(h?.getBoundingClientRect().height||80)-18),behavior:'instant'})});
 }
+function focusSectionHeading(target){
+ if(!target||!target.isConnected)return false;
+ if(!target.matches('summary,button,a,[tabindex]'))target.tabIndex=-1;
+ requestAnimationFrame(()=>{
+   const h=document.getElementById('sticky-header');
+   const headerBottom=h?.getBoundingClientRect().bottom||0;
+   const y=Math.max(0,window.scrollY+target.getBoundingClientRect().top-headerBottom-18);
+   window.scrollTo({top:y,behavior:'instant'});
+   target.focus({preventScroll:true});
+ });
+ return true;
+}
 document.addEventListener('click',e=>{
  const shortcut=e.target.closest('[data-project-jump]');
- if(shortcut){e.preventDefault();document.getElementById(shortcut.dataset.projectJump)?.scrollIntoView({block:'start',behavior:'instant'});return}
- if(e.target.closest('#back-to-concept')){e.preventDefault();apply('study',{scroll:false});requestAnimationFrame(()=>document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'}));return}
- if(e.target.closest('#pc-show-all')){e.preventDefault();const button=document.getElementById('pc-show-all');button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'));window.refreshCompanionScope?.();return}
+ if(shortcut){
+   e.preventDefault();
+   const section=document.getElementById(shortcut.dataset.projectJump);
+   focusSectionHeading(section?.querySelector('h2,h3'));
+   return;
+ }
  const nav=e.target.closest('#site-nav a[href^="#"]');if(nav){const p=nav.getAttribute('href').slice(1);if(valid.includes(p)){e.preventDefault();apply(p);return}}
  if(e.target.closest('[data-open-scene],[data-open-unit],#next-scene,#prev-scene,#start-reading,#start-learning,#continue-reading,[data-jb-go],#mark-done')){if(active!=='study')apply('study',{scroll:false})}
 },true);
@@ -1853,21 +1870,13 @@ if(progress){
 }
 document.getElementById('header-print').addEventListener('click',()=>document.getElementById('print-full').click());
 apply(page(),{history:false,scroll:false});
-window.__courseWebsite={open:apply,page:()=>active};
+window.__courseWebsite={open:apply,page:()=>active,focusTarget:focusSectionHeading};
 const companionCards=document.getElementById('project-companion-cards');
 function refreshCompanionScope(){
- const scope=document.getElementById('pc-show-all');
- const onlyCurrent=scope?.getAttribute('aria-pressed')==='true';
- const ar=document.documentElement.lang==='ar';
- if(scope){
-   scope.dataset.ar=onlyCurrent?'عرض المحاضرتين':'أمثلة محاضرتي فقط';
-   scope.dataset.en=onlyCurrent?'Show both lectures':'Only my lecture';
-   scope.textContent=scope.dataset[ar?'ar':'en'];
- }
  const current=String(document.getElementById('header-lecture-select')?.value||'1').padStart(2,'0');
  companionCards?.querySelectorAll('.pc-card[id^="pc-L"]').forEach(card=>{
    const inCurrent=card.id.startsWith('pc-L'+current+'-');
-   card.hidden=onlyCurrent&&!inCurrent;
+   card.hidden=false;
    card.style.order=inCurrent?'0':'1';
  });
 }

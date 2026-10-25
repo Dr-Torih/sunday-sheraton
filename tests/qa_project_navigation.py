@@ -77,7 +77,15 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={"width":390,"height":900})
     page.goto(ROOT + "?page=project", wait_until="networkidle")
     page.locator('button[data-guide-open="plan"]').click()
-    page.wait_for_function("document.querySelector('#pc-guide-plan')?.open === true")
+    page.wait_for_function("""() => {
+      const section=document.querySelector('#pc-guide-plan');
+      const heading=section?.querySelector('summary');
+      const header=document.querySelector('#sticky-header');
+      if(!section?.open||!heading||!header)return false;
+      const rect=heading.getBoundingClientRect();
+      return rect.top>=header.getBoundingClientRect().bottom+5
+        && rect.top<innerHeight-8 && document.activeElement===heading;
+    }""",timeout=5000)
     guide = page.evaluate("""() => {
       const el=document.querySelector('#pc-guide-plan > summary'),
             r=el.getBoundingClientRect(),h=document.querySelector('#sticky-header').getBoundingClientRect();

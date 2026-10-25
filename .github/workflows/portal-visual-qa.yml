@@ -1,7 +1,7 @@
 name: Portal Visual QA (PR only)
 on:
   pull_request:
-    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
+    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_nav_contrast.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
 jobs:
   visual-review:
     runs-on: ubuntu-latest
@@ -22,6 +22,7 @@ jobs:
           python3 tests/qa_portal_release.py
           python3 tests/qa_bidi_concept_flow.py
           python3 tests/qa_project_companion.py
+          python3 tests/qa_nav_contrast.py
       - name: Package owner-review offline website preview
         if: always()
         run: |

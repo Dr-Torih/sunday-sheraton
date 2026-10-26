@@ -1849,6 +1849,12 @@ function apply(p,{history=true,scroll=true}={}){
  if(history&&(changed||page()!==p)){window.history.pushState({portalPage:p,reader:reader(),scrollY:null},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
  if(scroll)requestAnimationFrame(()=>{const t=document.getElementById(p),h=document.getElementById('sticky-header');if(t)window.scrollTo({top:Math.max(0,window.scrollY+t.getBoundingClientRect().top-(h?.getBoundingClientRect().height||80)-18),behavior:'instant'})});
 }
+function captureProjectStage(button){
+ if(active!=='project')return;
+ const stage=button.closest('[data-journey-stage]');
+ if(!stage)return;
+ window.history.replaceState({...window.history.state,portalPage:'project',projectStage:stage.dataset.journeyStage,stageTop:stage.getBoundingClientRect().top,scrollY:window.scrollY},'',location.href);
+}
 function drillProject(section){
  if(active!=='project')apply('project',{scroll:false});
  const u=new URL(location.href);
@@ -1870,6 +1876,16 @@ window.addEventListener('popstate',event=>{
  const state=event.state||{};
  if(state.reader)window.__courseReader?.restore?.(state.reader);
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  if(page()==='project'&&state.projectStage){
+   const stage=document.querySelector('#project-decision-journey [data-journey-stage="'+state.projectStage+'"]');
+   if(stage){
+     stage.open=true;
+     const offset=Number(state.stageTop);
+     if(Number.isFinite(offset))window.scrollBy({top:stage.getBoundingClientRect().top-offset,behavior:'instant'});
+     else if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
+     return;
+   }
+  }
   if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
   else if(state.projectSection){
    const dest=document.getElementById('pc-guide-'+state.projectSection);
@@ -1897,7 +1913,7 @@ if(progress){
 }
 document.getElementById('header-print').addEventListener('click',()=>document.getElementById('print-full').click());
 apply(page(),{history:false,scroll:false});
-window.__courseWebsite={open:apply,page:()=>active,drillProject};
+window.__courseWebsite={open:apply,page:()=>active,drillProject,captureProjectStage};
 const companionCards=document.getElementById('project-companion-cards');
 function refreshCompanionScope(){
  const scope=document.getElementById('pc-show-all');

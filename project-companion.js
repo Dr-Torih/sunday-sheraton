@@ -491,12 +491,12 @@
       const item=allNotes.find(c=>c.id===currentId());
       slot.hidden=!item;
       if(!item){slot.textContent='';return}
-      const action=item.worked?' data-project-show="'+esc(item.id)+'"':' data-guide-from-note="'+esc(item.guide)+'"';
+      const action=' data-project-journey="true"';
       slot.innerHTML='<div class="pc-app-eyebrow"><span>'+esc(t('تطبيق الفكرة في مشروع مجموعتك','APPLY THIS CONCEPT TO YOUR PROJECT'))+'</span><span class="pc-app-id" dir="ltr">'+esc(item.id)+'</span></div>'+
         '<h4>'+esc(t('إيه اللي تعملوه في مشروعكم؟','What should your team do?'))+'</h4>'+
         '<p class="pc-inline-note">'+esc(item.note[locale()])+'</p>'+
         '<div class="pc-app-footer"><span class="pc-app-footnote">'+esc(t('للمذاكرة والتطبيق، مش تكليف تسليم إضافي','For learning and application — not an extra graded deliverable'))+'</span>'+
-        '<button class="pc-inline-link" type="button"'+action+'>'+esc(item.worked?t('شوف المثال المحلول والقالب','View worked example and template'):t('افتح قسم: ','Open section: ')+(guideSections.find(section=>section[0]===item.guide)?.[locale()==='ar'?1:2]||t('دليل المشروع','Project Guide')))+'</button></div>';
+        '<button class="pc-inline-link" type="button"'+action+'>'+esc(t('افتح المراحل الثمانية للمشروع','Open the eight project stages'))+'</button></div>';
     }
   }
   function revealCard(id){
@@ -508,11 +508,9 @@
     card.scrollIntoView({block:'start',behavior:'instant'});
   }
   $('project-application')?.addEventListener('click',e=>{
-    const guide=e.target.closest('[data-guide-from-note]');
-    if(guide){openGuide(guide.dataset.guideFromNote);return}
-    const button=e.target.closest('[data-project-show]');if(!button)return;
+    const btn=e.target.closest('[data-project-journey]');if(!btn)return;
     window.__courseWebsite?.open('project',{scroll:false});
-    requestAnimationFrame(()=>revealCard(button.dataset.projectShow));
+    requestAnimationFrame(()=>$('project-decision-journey')?.scrollIntoView({block:'start',behavior:'instant'}));
   });
   $('project-companion-cards')?.addEventListener('click',e=>{
     const go=e.target.closest('[data-guide-section]');if(go){openGuide(go.dataset.guideSection);return}
@@ -668,17 +666,7 @@
       const node=originalGuide.querySelector(selector);if(node)extra.appendChild(node);
     }
     originalGuide.appendChild(extra);
-    const advanced=document.createElement('details');
-    advanced.id='pc-extra-resources';
-    const summary=document.createElement('summary');
-    summary.dataset.ar='أمثلة المحاضرات وروابط الـConcepts وقائمة المتابعة القديمة (مراجع إضافية)';
-    summary.dataset.en='Lecture examples, concept links and legacy checklist (optional references)';
-    summary.textContent=t(summary.dataset.ar,summary.dataset.en);
-    advanced.appendChild(summary);
-    if(officialExtra)advanced.appendChild(officialExtra);
-    const oldChecklist=$('project')?.querySelector('.project-layout');
-    if(oldChecklist)advanced.appendChild(oldChecklist);
-    originalGuide.parentNode?.insertBefore(advanced,originalGuide.nextSibling);
+
   }
   compactProjectGuide();
   function refreshStageLabels(){
@@ -708,14 +696,6 @@
     const badge=journeyHost.querySelector('.mdj-count');
     if(badge)badge.textContent=count+' / '+total;
   }
-  journeyHost.addEventListener('click',event=>{
-    const caseLink=event.target.closest('[data-journey-case]');
-    if(caseLink){
-      event.preventDefault();
-      const extras=$('pc-extra-resources');if(extras)extras.open=true;
-      revealCard(caseLink.dataset.journeyCase);
-    }
-  });
   const finalPages=[
     {ar:'Executive Summary',en:'Executive Summary',n:1},
     {ar:'Project Overview + Situation Analysis',en:'Project Overview + Situation Analysis',n:3},
@@ -743,8 +723,7 @@
         const open=exists?opened.includes(String(stage.id)):stage.id===1;
         const checks=stage.check[locale()];
         const checklist=checks.map((value,i)=>'<label><input type="checkbox" data-journey-check="'+stage.id+':'+i+'"'+(hasTick(stage.id,i)?' checked':'')+'><span>'+mixed(value)+'</span></label>').join('');
-        const sourceButtons='<button type="button" data-guide-section="'+esc(stage.guide)+'">'+esc(t('راجع الدليل المعتمد','Open official Guide'))+'</button>'+
-           (stage.cases||[]).map(id=>'<button type="button" data-journey-case="'+esc(id)+'">'+esc(t('شوف مثال تطبيقي','See worked example'))+' · '+esc(id)+'</button>').join('');
+        const sourceButtons='<button type="button" data-guide-section="'+esc(stage.guide)+'">'+esc(t('راجع الدليل المعتمد','Open official Guide'))+'</button>';
         const pagePlan=stage.id!==8?'':'<div class="mdj-page-plan"><h4>'+esc(t('توزيع مقترح لـ18 صفحة داخل التقرير','Suggested allocation for 18 report pages'))+'</h4><dl>'+
            finalPages.map(row=>'<dt>'+esc(label(row))+'</dt><dd>'+row.n+'</dd>').join('')+
            '<dt class="mdj-total">'+esc(t('الإجمالي المقترح','Suggested total'))+'</dt><dd class="mdj-total">18</dd></dl></div>';

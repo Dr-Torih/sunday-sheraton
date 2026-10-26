@@ -952,6 +952,93 @@ html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{disp
 @media(max-width:520px){.pc-guide-content{padding:12px}.pc-guide-detailed summary{padding:13px}.pc-guide-content .grid,.pc-guide-content .gradegrid{grid-template-columns:1fr}}
 @media print{#pc-guide-detailed,#project-application{display:none!important}}
 </style>
+<style id="assessment-ux-20261026">
+/* Compact the one-question quiz without concealing answers, feedback, or navigation. */
+#quiz-modal .quiz-panel:not(.exam-result){width:min(770px,100%);height:min(77dvh,700px);max-height:94dvh}
+#quiz-modal .overlay-head{padding:10px 20px 7px}
+#quiz-modal .overlay-head h2{font-size:clamp(16px,2vw,20px);margin:0}
+#quiz-modal .overlay-head .label-number{font-size:10px}
+#quiz-modal .exam-progress{padding:7px 19px}
+#quiz-modal .exam-progress-track{height:4px;margin:5px 0 7px}
+#quiz-modal .exam-steps{gap:4px}
+#quiz-modal .exam-dot{height:29px;min-height:29px;font-size:10px}
+#quiz-modal .quiz-scroll{padding:8px 20px}
+#quiz-modal .quiz-instructions{font-size:11px;line-height:1.6;margin:0 0 5px}
+#quiz-modal .quiz-question{padding:2px 0 5px;max-width:685px}
+#quiz-modal .quiz-question .q-no{font-size:10px}
+#quiz-modal .quiz-question h3{font-size:clamp(15px,1.65vw,19px);line-height:1.5;margin:5px 0 11px}
+#quiz-modal .quiz-options{gap:7px}
+#quiz-modal .quiz-option{min-height:43px;padding:7px 12px;font-size:clamp(12px,1.1vw,13px);line-height:1.65}
+#quiz-modal .quiz-option input{margin-top:5px}
+#quiz-modal .quiz-footer-actions{padding:9px 18px}
+#quiz-modal .quiz-footer-actions button{min-height:40px;padding:7px 12px}
+#quiz-modal .quiz-feedback{margin:11px 0 0;padding:12px 15px}
+@media(max-width:620px){
+ #quiz-modal.overlay{padding:8px}
+ #quiz-modal .quiz-panel:not(.exam-result){height:min(92dvh,760px);max-height:94dvh}
+ #quiz-modal .overlay-head{padding:8px 12px}
+ #quiz-modal .exam-progress{padding:5px 10px}
+ #quiz-modal .exam-steps{grid-template-columns:repeat(9,minmax(0,1fr));gap:3px}
+ #quiz-modal .exam-dot{height:28px;min-height:28px;font-size:10px}
+ #quiz-modal .quiz-scroll{padding:7px 12px}
+ #quiz-modal .quiz-question h3{font-size:16px;line-height:1.4;margin:1px 0 6px}
+ #quiz-modal .quiz-question .q-no{display:none} /* Question count already available in progress. */
+ #quiz-modal .quiz-instructions{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap} /* Accessible but not repetitive. */
+ #quiz-modal .quiz-option{min-height:44px;padding:7px 9px;font-size:12px}
+ #quiz-modal .quiz-footer-actions{padding:8px 11px}
+}
+@media(max-height:700px){
+ #quiz-modal .quiz-panel:not(.exam-result){height:94dvh}
+ #quiz-modal .overlay-head{padding-block:5px}
+ #quiz-modal .exam-progress{padding-block:4px}
+ #quiz-modal .quiz-option{min-height:38px;padding-block:5px}
+}
+@page achievement-certificate{size:A4 landscape;margin:0}
+@media print{
+ body.cert-print-mode #certificate-print-sheet{page:achievement-certificate;
+  display:block!important;position:relative;overflow:hidden;width:297mm;height:210mm;min-height:0;
+  margin:0;padding:0;border:0;border-radius:0;text-align:start;background:#fff!important;
+  color:#30307f!important;font-family:var(--arabic);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body.cert-print-mode .cert-banner{height:35mm;background:#30307f!important;color:#fff!important;
+  display:flex;align-items:center;justify-content:space-between;padding:7mm 16mm;position:relative;z-index:1}
+ body.cert-print-mode .cert-school{display:flex;align-items:center;gap:5mm}
+ body.cert-print-mode .cert-logo{width:21mm;height:21mm;object-fit:contain;background:white!important;border-radius:50%;padding:1.5mm}
+ body.cert-print-mode .cert-school strong{display:block;font:900 16px var(--latin);color:#fff!important}
+ body.cert-print-mode .cert-school span{display:block;font:650 10px var(--arabic);color:#fff!important}
+ body.cert-print-mode .cert-banner-course{font:700 10px var(--latin);letter-spacing:.1em;color:#fff!important}
+ body.cert-print-mode .cert-pattern{position:absolute;inset-block:35mm 0;inset-inline-end:0;width:34mm;
+  background:repeating-linear-gradient(to bottom,#30307f 0 14mm,#f6b92e 14mm 23mm,#eb7332 23mm 29mm,#79cee0 29mm 38mm)!important}
+ body.cert-print-mode .cert-pattern i{position:absolute;width:30mm;height:30mm;border-radius:50%;border:8mm solid #30307f}
+ body.cert-print-mode .cert-pattern i:nth-child(1){top:1mm;inset-inline-start:-15mm;background:#81d4df}
+ body.cert-print-mode .cert-pattern i:nth-child(2){top:49mm;inset-inline-start:-10mm;background:#f7bf30}
+ body.cert-print-mode .cert-pattern i:nth-child(3){top:100mm;inset-inline-start:-16mm;background:#eb7332}
+ body.cert-print-mode .cert-pattern i:nth-child(4){top:148mm;inset-inline-start:-10mm;background:#80c9df}
+ body.cert-print-mode .cert-main{position:relative;box-sizing:border-box;padding:12mm 51mm 0 17mm;min-height:175mm}
+ body.cert-print-mode .cert-kicker{font:900 29px/1 var(--latin);letter-spacing:.01em;color:#30307f!important;margin:0}
+ body.cert-print-mode .cert-kicker span{display:block;font:700 11px var(--latin);letter-spacing:.2em;color:#dc692e;margin-top:3mm}
+ body.cert-print-mode #certificate-print-sheet h1{font:850 17px/1.45 var(--arabic);color:#30307f!important;margin:6mm 0 4mm}
+ body.cert-print-mode .cert-presented{font:700 10px var(--arabic);color:#525775;margin:0 0 1mm}
+ body.cert-print-mode .cert-name{font:900 23px/1.45 var(--arabic);border:0;border-bottom:1px solid #d7dce8;
+  max-width:190mm;overflow-wrap:anywhere;padding:0 0 3mm;margin:0;color:#30307f!important}
+ body.cert-print-mode .cert-message{font:600 11px/1.8 var(--arabic);max-width:185mm;margin:4mm 0 3mm;color:#303753!important}
+ body.cert-print-mode .cert-topic{font:600 11px var(--arabic);margin:1mm 0}
+ body.cert-print-mode .cert-topic span{font:700 10px var(--arabic);color:#b95b2c;margin-inline-end:3mm}
+ body.cert-print-mode .cert-topic strong{color:#30307f}
+ body.cert-print-mode .cert-award{position:absolute;inset-inline-end:51mm;top:63mm;width:27mm;height:27mm;
+  border:3mm double #30307f;border-radius:50%;color:#30307f!important;background:#ffca40!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-7deg)}
+ body.cert-print-mode .cert-award span{font:900 10px var(--latin)}
+ body.cert-print-mode .cert-award strong{font:900 18px var(--latin)}
+ body.cert-print-mode .cert-details{display:flex;justify-content:space-between;max-width:187mm;gap:4mm;
+  border-top:1px solid #dfe0e7;padding-top:4mm;margin-top:5mm}
+ body.cert-print-mode .cert-details>div{max-width:49%}
+ body.cert-print-mode .cert-details span{display:block;font:800 9px var(--arabic);color:#b95b2c}
+ body.cert-print-mode .cert-details strong{display:block;font:800 11px var(--arabic);color:#30307f}
+ body.cert-print-mode .cert-details small{display:block;font:600 9px var(--latin);color:#565c71}
+ body.cert-print-mode .cert-disclaimer{position:absolute;inset-inline-start:17mm;inset-inline-end:51mm;bottom:6mm;
+  font:500 8px/1.5 var(--arabic);border-top:1px solid #dfe0e7;padding-top:2mm;color:#555e73!important}
+}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -1773,93 +1860,7 @@ function openExplanationTab(idx,questionIdx){
  const q=D.quiz[questionIdx]||D.quiz.find(x=>Number(x.concept.match(/C(\d+)/)?.[1]||0)-1===idx),question=q?.[lang]?.question||'',explanation=q?.explanation?.[lang]||'';
  const esc=escapeHtml;
  const documentHtml=`<!doctype html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(s.title[lang])} · ${label('شرح المفهوم','Concept explanation')}</title><style>@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');:root{--arabic:'Noto Kufi Arabic','Noto Sans Arabic',Tahoma,Arial,sans-serif;--latin:'Manrope','Avenir Next',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#f7f9fa;color:#172544;font-family:${lang==='ar'?'var(--arabic)':'var(--latin)'};line-height:2.1}header{background:#26255f;color:#fff;padding:21px clamp(18px,5vw,60px);font:800 13px var(--latin)}main{max-width:900px;margin:28px auto 55px;padding:clamp(22px,5vw,58px);background:#fff;border:1px solid #dfe5e9;border-top:7px solid #15c3cb}h1{font-size:clamp(24px,3vw,35px);line-height:1.65;color:#081b50}h2{font-size:16px;color:#0769c3}p{margin:0 0 16px}strong{color:#081b50}section.feedback{background:#eaf4f6;padding:20px;border-inline-start:4px solid #15c3cb;margin-bottom:29px;border-radius:7px}section.feedback p{font-size:14px}article{font-size:16px}article p{margin-bottom:20px}article h4{color:#10255c;font-size:18px}article blockquote{border-inline-start:4px solid #15c3cb;padding:12px;background:#f0f5f6;margin:15px 0}article table{border-collapse:collapse;max-width:100%;font-size:13px}article td,article th{border:1px solid #dfe5e9;padding:9px}footer{text-align:center;margin:26px;color:#667186;font-size:11px}button{background:#0769c3;color:#fff;border:0;padding:10px 17px;cursor:pointer}@media print{header,footer,button{display:none}main{border:0;margin:0;padding:0}}</style>
-<style id="assessment-ux-20261026">
-/* Compact the one-question quiz without concealing answers, feedback, or navigation. */
-#quiz-modal .quiz-panel:not(.exam-result){width:min(770px,100%);height:min(77dvh,700px);max-height:94dvh}
-#quiz-modal .overlay-head{padding:10px 20px 7px}
-#quiz-modal .overlay-head h2{font-size:clamp(16px,2vw,20px);margin:0}
-#quiz-modal .overlay-head .label-number{font-size:10px}
-#quiz-modal .exam-progress{padding:7px 19px}
-#quiz-modal .exam-progress-track{height:4px;margin:5px 0 7px}
-#quiz-modal .exam-steps{gap:4px}
-#quiz-modal .exam-dot{height:29px;min-height:29px;font-size:10px}
-#quiz-modal .quiz-scroll{padding:8px 20px}
-#quiz-modal .quiz-instructions{font-size:11px;line-height:1.6;margin:0 0 5px}
-#quiz-modal .quiz-question{padding:2px 0 5px;max-width:685px}
-#quiz-modal .quiz-question .q-no{font-size:10px}
-#quiz-modal .quiz-question h3{font-size:clamp(15px,1.65vw,19px);line-height:1.5;margin:5px 0 11px}
-#quiz-modal .quiz-options{gap:7px}
-#quiz-modal .quiz-option{min-height:43px;padding:7px 12px;font-size:clamp(12px,1.1vw,13px);line-height:1.65}
-#quiz-modal .quiz-option input{margin-top:5px}
-#quiz-modal .quiz-footer-actions{padding:9px 18px}
-#quiz-modal .quiz-footer-actions button{min-height:40px;padding:7px 12px}
-#quiz-modal .quiz-feedback{margin:11px 0 0;padding:12px 15px}
-@media(max-width:620px){
- #quiz-modal.overlay{padding:8px}
- #quiz-modal .quiz-panel:not(.exam-result){height:min(92dvh,760px);max-height:94dvh}
- #quiz-modal .overlay-head{padding:8px 12px}
- #quiz-modal .exam-progress{padding:5px 10px}
- #quiz-modal .exam-steps{grid-template-columns:repeat(9,minmax(0,1fr));gap:3px}
- #quiz-modal .exam-dot{height:28px;min-height:28px;font-size:10px}
- #quiz-modal .quiz-scroll{padding:7px 12px}
- #quiz-modal .quiz-question h3{font-size:16px;line-height:1.4;margin:1px 0 6px}
- #quiz-modal .quiz-question .q-no{display:none} /* Question count already available in progress. */
- #quiz-modal .quiz-instructions{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap} /* Accessible but not repetitive. */
- #quiz-modal .quiz-option{min-height:44px;padding:7px 9px;font-size:12px}
- #quiz-modal .quiz-footer-actions{padding:8px 11px}
-}
-@media(max-height:700px){
- #quiz-modal .quiz-panel:not(.exam-result){height:94dvh}
- #quiz-modal .overlay-head{padding-block:5px}
- #quiz-modal .exam-progress{padding-block:4px}
- #quiz-modal .quiz-option{min-height:38px;padding-block:5px}
-}
-@page achievement-certificate{size:A4 landscape;margin:0}
-@media print{
- body.cert-print-mode #certificate-print-sheet{page:achievement-certificate;
-  display:block!important;position:relative;overflow:hidden;width:297mm;height:210mm;min-height:0;
-  margin:0;padding:0;border:0;border-radius:0;text-align:start;background:#fff!important;
-  color:#30307f!important;font-family:var(--arabic);-webkit-print-color-adjust:exact;print-color-adjust:exact}
- body.cert-print-mode .cert-banner{height:35mm;background:#30307f!important;color:#fff!important;
-  display:flex;align-items:center;justify-content:space-between;padding:7mm 16mm;position:relative;z-index:1}
- body.cert-print-mode .cert-school{display:flex;align-items:center;gap:5mm}
- body.cert-print-mode .cert-logo{width:21mm;height:21mm;object-fit:contain;background:white!important;border-radius:50%;padding:1.5mm}
- body.cert-print-mode .cert-school strong{display:block;font:900 16px var(--latin);color:#fff!important}
- body.cert-print-mode .cert-school span{display:block;font:650 10px var(--arabic);color:#fff!important}
- body.cert-print-mode .cert-banner-course{font:700 10px var(--latin);letter-spacing:.1em;color:#fff!important}
- body.cert-print-mode .cert-pattern{position:absolute;inset-block:35mm 0;inset-inline-end:0;width:34mm;
-  background:repeating-linear-gradient(to bottom,#30307f 0 14mm,#f6b92e 14mm 23mm,#eb7332 23mm 29mm,#79cee0 29mm 38mm)!important}
- body.cert-print-mode .cert-pattern i{position:absolute;width:30mm;height:30mm;border-radius:50%;border:8mm solid #30307f}
- body.cert-print-mode .cert-pattern i:nth-child(1){top:1mm;inset-inline-start:-15mm;background:#81d4df}
- body.cert-print-mode .cert-pattern i:nth-child(2){top:49mm;inset-inline-start:-10mm;background:#f7bf30}
- body.cert-print-mode .cert-pattern i:nth-child(3){top:100mm;inset-inline-start:-16mm;background:#eb7332}
- body.cert-print-mode .cert-pattern i:nth-child(4){top:148mm;inset-inline-start:-10mm;background:#80c9df}
- body.cert-print-mode .cert-main{position:relative;box-sizing:border-box;padding:12mm 51mm 0 17mm;min-height:175mm}
- body.cert-print-mode .cert-kicker{font:900 29px/1 var(--latin);letter-spacing:.01em;color:#30307f!important;margin:0}
- body.cert-print-mode .cert-kicker span{display:block;font:700 11px var(--latin);letter-spacing:.2em;color:#dc692e;margin-top:3mm}
- body.cert-print-mode #certificate-print-sheet h1{font:850 17px/1.45 var(--arabic);color:#30307f!important;margin:6mm 0 4mm}
- body.cert-print-mode .cert-presented{font:700 10px var(--arabic);color:#525775;margin:0 0 1mm}
- body.cert-print-mode .cert-name{font:900 23px/1.45 var(--arabic);border:0;border-bottom:1px solid #d7dce8;
-  max-width:190mm;overflow-wrap:anywhere;padding:0 0 3mm;margin:0;color:#30307f!important}
- body.cert-print-mode .cert-message{font:600 11px/1.8 var(--arabic);max-width:185mm;margin:4mm 0 3mm;color:#303753!important}
- body.cert-print-mode .cert-topic{font:600 11px var(--arabic);margin:1mm 0}
- body.cert-print-mode .cert-topic span{font:700 10px var(--arabic);color:#b95b2c;margin-inline-end:3mm}
- body.cert-print-mode .cert-topic strong{color:#30307f}
- body.cert-print-mode .cert-award{position:absolute;inset-inline-end:51mm;top:63mm;width:27mm;height:27mm;
-  border:3mm double #30307f;border-radius:50%;color:#30307f!important;background:#ffca40!important;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-7deg)}
- body.cert-print-mode .cert-award span{font:900 10px var(--latin)}
- body.cert-print-mode .cert-award strong{font:900 18px var(--latin)}
- body.cert-print-mode .cert-details{display:flex;justify-content:space-between;max-width:187mm;gap:4mm;
-  border-top:1px solid #dfe0e7;padding-top:4mm;margin-top:5mm}
- body.cert-print-mode .cert-details>div{max-width:49%}
- body.cert-print-mode .cert-details span{display:block;font:800 9px var(--arabic);color:#b95b2c}
- body.cert-print-mode .cert-details strong{display:block;font:800 11px var(--arabic);color:#30307f}
- body.cert-print-mode .cert-details small{display:block;font:600 9px var(--latin);color:#565c71}
- body.cert-print-mode .cert-disclaimer{position:absolute;inset-inline-start:17mm;inset-inline-end:51mm;bottom:6mm;
-  font:500 8px/1.5 var(--arabic);border-top:1px solid #dfe0e7;padding-top:2mm;color:#555e73!important}
-}
-</style>
+
 </head><body><header>AASTMT · SHERATON SUNDAY · MARKETING · LECTURE 0${CURRENT_LECTURE}</header><main>${q?`<section class="feedback"><h2>${label('السؤال والتفسير','Question and explanation')}</h2><p><strong>${esc(question)}</strong></p><p>${esc(explanation)}</p></section>`:''}<h1>${esc(s.title[lang])}</h1><article>${s.html[lang]}</article></main><footer>${label('النافذة دي مستقلة، والاختبار ما زال مفتوحًا على تبويبه الأصلي.','This is a separate page. Your quiz stays open in its original tab.')}</footer>
 </body></html>`;
  const blob=new Blob([documentHtml],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob);

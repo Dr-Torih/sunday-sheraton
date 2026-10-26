@@ -131,3 +131,5 @@ Follow-up: the first PR CI run passed all 71 certificate checks, then stopped in
 
 ### Back-navigation test diagnosis — 26 Oct 2026
 The next CI run passed 71/71 certificate and 286/286 owner checks, then failed the reader-position comparison in Project Companion. Browser event tracing showed Locator.click() scrolling the already-visible sticky Project link into the root scroll-padding area before pointerdown: reader top moved from 153px to 568px before navigation. Both main and the PR restored that actual departure position. Updated this test to click the visible link center with the mouse; all reader/lecture/viewport assertions remain. This is a test interaction correction, not a runtime navigation change. Full CI required before merge.
+
+The corrected Back interaction passed in CI. The next exposed assertion found all opened journey stages inherited the same border color from the older `details[open]` rule. Preserve each stage accent with a scoped `.mdj-step[open]` top-border override; no content or navigation behavior changes. Rerun all checks.

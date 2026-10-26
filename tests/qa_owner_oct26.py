@@ -43,7 +43,13 @@ with sync_playwright() as p:
             if not visible:
               print("QUESTION VIEWPORT DIAGNOSTIC",json.dumps(page.locator("#quiz-modal").evaluate("""(modal)=>{
                const sc=modal.querySelector(".quiz-scroll"),r=sc.getBoundingClientRect();
-               return {viewport:innerHeight,panel:modal.querySelector(".quiz-panel").getBoundingClientRect().height,
+               return {viewport:innerHeight,styleNode:!!document.getElementById("assessment-ux-20261026"),screenWidth:innerWidth,
+                instructions:{position:getComputedStyle(modal.querySelector(".quiz-instructions")).position,height:modal.querySelector(".quiz-instructions").getBoundingClientRect().height},
+                questionNum:{display:getComputedStyle(modal.querySelector(".q-no")).display},
+                questionBox:modal.querySelector(".quiz-question").getBoundingClientRect().height,
+                examProgress:modal.querySelector(".exam-progress").getBoundingClientRect().height,
+                head:modal.querySelector(".overlay-head").getBoundingClientRect().height,
+                panel:modal.querySelector(".quiz-panel").getBoundingClientRect().height,
                 scrollTop:sc.scrollTop,clientHeight:sc.clientHeight,scrollHeight:sc.scrollHeight,
                 scrollRect:{top:r.top,bottom:r.bottom},
                 choiceRects:[...modal.querySelectorAll(".quiz-option")].map(x=>({top:x.getBoundingClientRect().top,bottom:x.getBoundingClientRect().bottom,height:x.getBoundingClientRect().height,text:x.textContent.length}))}

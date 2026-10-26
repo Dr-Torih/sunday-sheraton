@@ -192,6 +192,39 @@ with sync_playwright() as p:
     check("browser Forward restores Project view",page.locator("body").get_attribute("data-site-page")=="project")
     page.close()
 
+    # Approved educational redesign: 8 stages are the primary work guide and checklist.
+    # No parallel mandatory submissions or hard-to-find delivery rules.
+    page=browser.new_page(viewport={"width":390,"height":870})
+    page.goto(BASE+"?page=project",wait_until="networkidle")
+    steps=page.locator("#project-decision-journey details[data-journey-stage]")
+    check("journey remains eight practical stages",steps.count()==8)
+    for i in range(1,9):
+        node=page.locator(f"#project-decision-journey details[data-journey-stage='{i}']")
+        node.evaluate("(e)=>e.open=true")
+        check(f"stage {i} includes writing instructions",node.locator(".mdj-how").count()==1)
+        check(f"stage {i} includes own practical checklist",node.locator(".mdj-checklist input[type=checkbox]").count()>=2)
+        check(f"stage {i} says what instructor receives",node.locator(".mdj-deliverable").count()==1)
+        check(f"stage {i} has real evidence or format",node.locator(".mdj-evidence").count()==1)
+        check(f"stage {i} color is distinct",bool(node.get_attribute("data-stage-tone")))
+    check("stage palette uses eight real variants",len(set(steps.evaluate_all("(nodes)=>nodes.map(n=>getComputedStyle(n).borderTopColor)")))==8)
+    check("avoid literally translated Positioning term","التموضع" not in page.locator("#project-decision-journey").inner_text())
+    check("delivery guide is concise default",page.locator("#pc-reference-details").count()==1 and not page.locator("#pc-reference-details").evaluate("(e)=>e.open"))
+    check("official ten sections still in collapsed source",page.locator("#pc-guide-detailed > details").count()==10)
+    check("one concise grade/delivery footer","70" in page.locator("#project-guide-summary").inner_text())
+    check("stage 8 contains final 15–20 page requirement","15–20" in steps.nth(7).inner_text())
+    check("stage 2 contains 30/10/3 evidence requirements",all(v in steps.nth(1).inner_text() for v in ["30","10","3"]))
+    stage=steps.nth(2)
+    cb=stage.locator(".mdj-checklist input[type=checkbox]").first
+    cb.check()
+    page.reload(wait_until="networkidle")
+    stage=page.locator("#project-decision-journey details[data-journey-stage='3']")
+    stage.evaluate("(e)=>e.open=true")
+    check("stage self-checklist persists locally",stage.locator(".mdj-checklist input[type=checkbox]").first.is_checked())
+    page.locator("#lang-toggle").click()
+    check("stage checklist remains checked after language switch",stage.locator(".mdj-checklist input[type=checkbox]").first.is_checked())
+    check("English work instructions are readable","How to write" in stage.inner_text())
+    page.close()
+
     def contrast_ratio(page,fg_sel,bg_sel):
         return page.evaluate("""([fgSel,bgSel])=>{
           const parse=(v)=>v.match(/[0-9.]+/g).slice(0,3).map(Number);

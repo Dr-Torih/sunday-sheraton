@@ -179,6 +179,10 @@ with sync_playwright() as p:
     page.go_back(wait_until="domcontentloaded")
     check("back from guide stays within Project",page.locator("body").get_attribute("data-site-page")=="project")
     check("back from guide returns to same stage",page.locator("#project-decision-journey details[data-journey-stage='3']").get_attribute("open") is not None)
+    print("BACK PROJECT DIAGNOSTIC",json.dumps(page.evaluate("""(before)=>{
+        const el=document.querySelector('#project-decision-journey details[data-journey-stage="3"]');
+        return {before,after:Math.round(el.getBoundingClientRect().top),scroll:Math.round(scrollY),state:history.state,url:location.href,viewport:innerHeight,docHeight:document.documentElement.scrollHeight,open:el.open}
+    }""",before),ensure_ascii=False))
     page.wait_for_function("(y)=>Math.abs(Math.round(document.querySelector('#project-decision-journey details[data-journey-stage=3]').getBoundingClientRect().top)-y)<160",arg=before)
     check("back from guide restores stage viewport",abs(stage3.evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")-before)<160)
     page.goto(BASE+"?page=study",wait_until="networkidle")

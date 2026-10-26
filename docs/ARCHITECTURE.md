@@ -87,3 +87,7 @@ Risks to confirm via hosted/local browser QA: lecture switch with same/different
 ## Project Companion staged feature — 25 Oct 2026
 
 On draft PR #18, the immutable two embedded lecture blocks and the original design cascade are retained. The single lightweight `project-companion.js` adds one-to-one application notes to all 55 original Concept IDs and scoped theme-contrast CSS injected as `#pc-application-contrast-v2`; no new lecture pages or question state. Existing six worked examples remain cards, while 49 additional short project prompts are reachable via two progressive-disclosure lists. Concept position/lecture selector drive scene matching, native Guide anchors remain inside the Project page. All context is editorial and non-graded; no user data transmitted. For normative evidence and acceptance, see the sole active `docs/PROJECT_COMPANION.md` and `tests/qa_project_companion.py`.
+
+## Certificate page selection repair — 26 Oct 2026
+
+Only in `cert-print-mode`, both HTML/body and the certificate sheet use the existing `cert2026page` named A4 landscape page. Keeping the root flow on that page avoids a transition from the ordinary portrait book page before the certificate. Ordinary book printing and certificate markup remain unchanged.

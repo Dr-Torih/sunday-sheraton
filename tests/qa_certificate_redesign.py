@@ -42,9 +42,9 @@ def inspect(page,label,name,lang,score,expectedDate=False):
     ok(label+" clear nonofficial disclaimer",("ليست شهادة" in text or "لا تُعد شهادة" in text) if lang=="ar" else ("not an official" in text))
     ok(label+" correct layout locale",root.locator(".cert2026").get_attribute("dir")==("rtl" if lang=="ar" else "ltr"))
     path=OUT/("certificate-"+label.replace("/","-").replace(" ","-")+".pdf")
-    page.pdf(path=str(path),prefer_css_page_size=True,print_background=True)
+    page.pdf(path=str(path),prefer_css_page_size=True,print_background=True,display_header_footer=True)
     pdf=fitz.open(path)
-    ok(label+" exactly one printable page",len(pdf)==1)
+    ok(label+" exactly one printable page (browser headers enabled)",len(pdf)==1)
     if len(pdf)==1:
         p=pdf[0]
         ok(label+" A4 landscape",p.rect.width>800 and 585<p.rect.height<610)

@@ -628,7 +628,7 @@
   $('project-guide-summary')?.parentNode?.insertBefore(journeyHost,$('project-guide-summary'));
   journeyHost.addEventListener('click',event=>{
     const button=event.target.closest('[data-guide-section]');
-    if(button){event.preventDefault();window.__courseWebsite?.captureProjectStage?.(button);openGuide(button.dataset.guideSection)}
+    if(button){event.preventDefault();event.stopPropagation();window.__courseWebsite?.captureProjectStage?.(button);openGuide(button.dataset.guideSection)}
   });
 
   const stageProgressKey='sheratonProjectEightStagesV2';

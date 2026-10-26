@@ -1469,8 +1469,18 @@ function linkLessonTerms(){
   $('print-book').innerHTML=sections.join('');
   isolateConceptFlows($('print-book'));
  }
+ // Navigation bridge: restores the precise reader without changing lesson grading.
+ window.__courseReader={
+  snapshot:()=>({lecture:CURRENT_LECTURE,scene:sceneIndex}),
+  restore:context=>{
+   const lecture=Number(context?.lecture),scene=Number(context?.scene);
+   if(!chapters[lecture])return;
+   if(lecture!==CURRENT_LECTURE)switchLecture(lecture,{updateHistory:false,scroll:false});
+   if(Number.isInteger(scene)&&scene>=0&&scene<D.scenes.length)startScene(scene,false);
+  }
+ };
  $('lecture-links').addEventListener('click',event=>{const button=event.target.closest('[data-lecture]');if(button){event.preventDefault();switchLecture(Number(button.dataset.lecture));}});
- window.addEventListener('popstate',()=>{const n=Number(location.hash.match(/^#lecture-0([1-6])$/)?.[1]||1);if(chapters[n]&&n!==CURRENT_LECTURE)switchLecture(n,{updateHistory:false});});
+ window.addEventListener('popstate',()=>{const hit=location.hash.match(/^#lecture-0([1-6])$/);if(!hit)return;const n=Number(hit[1]);if(chapters[n]&&n!==CURRENT_LECTURE)switchLecture(n,{updateHistory:false,scroll:false});});
  $('header-progress').addEventListener('click',()=>navigateToCurrentConcept());
  $('scene-terms').addEventListener('click',()=>openOverlay('glossary-panel'));
  $('scene-content').addEventListener('click',e=>{
@@ -1821,26 +1831,54 @@ drawQuiz=function(){oldDrawQuiz();const labelNext=$('quiz-next'),labelResult=$('
 const valid=['study','review','project'];
 const fromHash={'overview':'study','map-section':'study','moments':'study','study':'study','review':'review','project':'project'};
 const page=()=>{const p=new URLSearchParams(location.search).get('page');return valid.includes(p)?p:(fromHash[location.hash.slice(1)]||'study')};
-const urlFor=p=>{const u=new URL(location.href);u.searchParams.set('page',p);if(['#overview','#map-section','#moments','#study','#review','#project'].includes(u.hash))u.hash='';return u.pathname+u.search+u.hash};
-let active='';
+const urlFor=p=>{const u=new URL(location.href);u.searchParams.set('page',p);if(p!=='project')u.searchParams.delete('section');if(['#overview','#map-section','#moments','#study','#review','#project'].includes(u.hash))u.hash='';return u.pathname+u.search+u.hash};
+let active='',lastStudy=null;
+history.scrollRestoration='manual';
+const reader=()=>window.__courseReader?.snapshot?.();
+function rememberCurrent(){
+ if(active==='study')lastStudy={reader:reader(),scrollY:window.scrollY};
+ window.history.replaceState({...window.history.state,portalPage:active||page(),reader:reader(),scrollY:window.scrollY},'',location.href);
+}
 function apply(p,{history=true,scroll=true}={}){
  if(!valid.includes(p))p='study';
- const changed=active!==p;active=p;
+ const changed=active!==p;
+ if(history&&(changed||page()!==p))rememberCurrent();
+ active=p;
  document.body.dataset.sitePage=p;
  document.querySelectorAll('#site-nav a[href^="#"]').forEach(a=>{const selected=a.getAttribute('href')==='#'+p;a.classList.toggle('active',selected);a.dataset.routeActive=String(selected);if(selected)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
- if(history&&(changed||page()!==p)){window.history.pushState({...window.history.state,portalPage:p},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
+ if(history&&(changed||page()!==p)){window.history.pushState({portalPage:p,reader:reader(),scrollY:null},'',urlFor(p));if(typeof window.gtag==='function')window.gtag('event','page_view',{page_location:location.href,page_title:document.title})}
  if(scroll)requestAnimationFrame(()=>{const t=document.getElementById(p),h=document.getElementById('sticky-header');if(t)window.scrollTo({top:Math.max(0,window.scrollY+t.getBoundingClientRect().top-(h?.getBoundingClientRect().height||80)-18),behavior:'instant'})});
+}
+function drillProject(section){
+ if(active!=='project')apply('project',{scroll:false});
+ const u=new URL(location.href);
+ if(u.searchParams.get('section')===section)return;
+ rememberCurrent();
+ u.searchParams.set('page','project');u.searchParams.set('section',section);
+ window.history.pushState({portalPage:'project',reader:reader(),projectSection:section,scrollY:null},'',u.pathname+u.search+u.hash);
 }
 document.addEventListener('click',e=>{
  const shortcut=e.target.closest('[data-project-jump]');
  if(shortcut){e.preventDefault();document.getElementById(shortcut.dataset.projectJump)?.scrollIntoView({block:'start',behavior:'instant'});return}
- if(e.target.closest('#back-to-concept')){e.preventDefault();apply('study',{scroll:false});requestAnimationFrame(()=>document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'}));return}
+ if(e.target.closest('#back-to-concept')){e.preventDefault();const origin=lastStudy;apply('study',{scroll:false});if(origin?.reader)window.__courseReader?.restore?.(origin.reader);requestAnimationFrame(()=>{if(Number.isFinite(origin?.scrollY))window.scrollTo({top:origin.scrollY,behavior:'instant'});else document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'})});return}
  if(e.target.closest('#pc-show-all')){e.preventDefault();const button=document.getElementById('pc-show-all');button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'));window.refreshCompanionScope?.();return}
  const nav=e.target.closest('#site-nav a[href^="#"]');if(nav){const p=nav.getAttribute('href').slice(1);if(valid.includes(p)){e.preventDefault();apply(p);return}}
  if(e.target.closest('[data-open-scene],[data-open-unit],#next-scene,#prev-scene,#start-reading,#start-learning,#continue-reading,[data-jb-go],#mark-done')){if(active!=='study')apply('study',{scroll:false})}
 },true);
-window.addEventListener('popstate',()=>apply(page(),{history:false}));
-window.addEventListener('hashchange',()=>apply(page(),{history:false}));
+window.addEventListener('popstate',event=>{
+ apply(page(),{history:false,scroll:false});
+ const state=event.state||{};
+ if(state.reader)window.__courseReader?.restore?.(state.reader);
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
+  else if(state.projectSection){
+   const dest=document.getElementById('pc-guide-'+state.projectSection);
+   if(dest)dest.scrollIntoView({block:'start',behavior:'instant'});
+  }else if(page()==='study')document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'});
+  else document.getElementById(page())?.scrollIntoView({block:'start',behavior:'instant'});
+ }));
+});
+window.addEventListener('hashchange',()=>apply(page(),{history:false,scroll:false}));
 const lectureSelect=document.getElementById('header-lecture-select'),lectureLinks=document.getElementById('lecture-links');
 function syncLecture(){const selected=lectureLinks?.querySelector('[data-lecture][aria-current="page"]');if(selected)lectureSelect.value=selected.getAttribute('data-lecture')}
 lectureSelect.addEventListener('change',()=>{const chosen=lectureLinks.querySelector('[data-lecture="'+lectureSelect.value+'"]');if(chosen){chosen.click();apply('study',{scroll:false});requestAnimationFrame(()=>{document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'})})}});
@@ -1859,7 +1897,7 @@ if(progress){
 }
 document.getElementById('header-print').addEventListener('click',()=>document.getElementById('print-full').click());
 apply(page(),{history:false,scroll:false});
-window.__courseWebsite={open:apply,page:()=>active};
+window.__courseWebsite={open:apply,page:()=>active,drillProject};
 const companionCards=document.getElementById('project-companion-cards');
 function refreshCompanionScope(){
  const scope=document.getElementById('pc-show-all');

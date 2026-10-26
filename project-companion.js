@@ -468,7 +468,7 @@
         if(select&&select.value!==String(lec)){select.value=String(lec);select.dispatchEvent(new Event('change',{bubbles:true}))}
         window.__courseWebsite?.open('study',{scroll:false});
         $('concept-list')?.querySelector('[data-open-scene="'+idx+'"]')?.click();
-        requestAnimationFrame(()=>window.__courseWebsite?.focusTarget?.($('scene-title')));
+        requestAnimationFrame(()=>$('scene-title')?.scrollIntoView({block:'start',behavior:'instant'}));
       });
     }
     const quick=$('pc-quick-links');
@@ -522,7 +522,7 @@
     window.__courseWebsite?.open('study',{scroll:false});
     const scene=$('concept-list')?.querySelector('[data-open-scene="'+idx+'"]');
     if(scene)scene.click();
-    requestAnimationFrame(()=>window.__courseWebsite?.focusTarget?.($('scene-title')));
+    requestAnimationFrame(()=>$('scene-title')?.scrollIntoView({block:'start',behavior:'instant'}));
   });
 
   const guideSections=[

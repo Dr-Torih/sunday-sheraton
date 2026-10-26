@@ -1039,6 +1039,163 @@ html[lang="ar"] .pc-guide-content .en,html[lang="en"] .pc-guide-content .ar{disp
   font:500 8px/1.5 var(--arabic);border-top:1px solid #dfe0e7;padding-top:2mm;color:#555e73!important}
 }
 </style>
+
+<style id="certificate-redesign-20261026">
+/* Owner-approved candidate: independent academic certificate; scoped to certificate only. */
+#certificate-print-sheet{display:none}
+body.cert-print-mode #certificate-print-sheet *{box-sizing:border-box}
+body.cert-print-mode #certificate-print-sheet .award-canvas{
+ --award-navy:#292a67; --award-ink:#292b50; --award-muted:#515975; --award-line:#d9dfe7;
+ width:100%;height:100%;margin:0;padding:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+ color:var(--award-ink)!important;text-align:center;background:#fffefa!important;
+ direction:inherit;font-family:var(--arabic);letter-spacing:normal;font-weight:500;overflow-wrap:anywhere;
+}
+body.cert-print-mode #certificate-print-sheet .award-head{
+ display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:16px;align-items:center;
+ text-align:start;border-bottom:1px solid var(--award-line);padding-bottom:18px;
+}
+body.cert-print-mode #certificate-print-sheet .award-logo{
+ display:block;width:76px;height:auto;aspect-ratio:481/415;object-fit:contain;
+ max-width:100%;border:0;border-radius:0;background:transparent!important;box-shadow:none;
+}
+body.cert-print-mode #certificate-print-sheet .award-course{
+ min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px;
+}
+body.cert-print-mode #certificate-print-sheet .award-course strong{
+ color:var(--award-navy);font:800 18px/1.3 var(--latin);letter-spacing:.08em;
+}
+body.cert-print-mode #certificate-print-sheet .award-course span{
+ color:var(--award-muted);font:600 11px/1.65 var(--arabic);text-align:start;
+}
+body.cert-print-mode #certificate-print-sheet .award-lecture-label{
+ font:800 11px/1.4 var(--latin);letter-spacing:.14em;color:var(--award-navy);
+ border:1px solid var(--award-line);border-radius:6px;padding:9px 13px;white-space:nowrap;
+}
+body.cert-print-mode #certificate-print-sheet .award-content{
+ display:flex;flex-direction:column;justify-content:center;align-items:center;
+ text-align:center;min-width:0;width:100%;gap:21px;padding:20px 12px 16px;
+}
+body.cert-print-mode #certificate-print-sheet .award-titles{display:grid;gap:5px;justify-items:center}
+body.cert-print-mode #certificate-print-sheet .award-titles h1{
+ margin:0;padding:0;color:var(--award-navy)!important;
+ font:850 27px/1.65 var(--arabic);border:0;text-align:center;
+}
+body.cert-print-mode #certificate-print-sheet .award-english-title{
+ font:750 11px/1.3 var(--latin);letter-spacing:.13em;color:#aa551e;text-align:center;
+}
+body.cert-print-mode #certificate-print-sheet .award-student{
+ width:min(100%,770px);display:grid;justify-items:center;gap:12px;
+}
+body.cert-print-mode #certificate-print-sheet .award-eyebrow{
+ margin:0;font:600 13px/1.75 var(--arabic);color:var(--award-muted);
+}
+body.cert-print-mode #certificate-print-sheet .award-student-name{
+ margin:0;padding:0 0 11px;width:100%;border-bottom:2px solid #12a6b5;
+ color:var(--award-navy)!important;font:800 clamp(24px,3vw,34px)/1.75 var(--arabic);
+ text-align:center;overflow-wrap:anywhere;word-break:normal;hyphens:auto;
+}
+body.cert-print-mode #certificate-print-sheet .award-message{
+ margin:0;max-width:815px;color:var(--award-ink)!important;
+ font:600 13px/2 var(--arabic);text-align:center;overflow-wrap:anywhere;
+}
+body.cert-print-mode #certificate-print-sheet .award-message strong{
+ color:var(--award-navy);font:800 14px/1.6 var(--latin);unicode-bidi:isolate;
+}
+body.cert-print-mode #certificate-print-sheet .award-results{
+ display:grid;grid-template-columns:minmax(0,2.5fr) 1fr 1fr 1.3fr;
+ gap:0;width:min(100%,860px);border:1px solid var(--award-line);
+ border-radius:8px;overflow:hidden;background:#fff;
+}
+body.cert-print-mode #certificate-print-sheet .award-results>div{
+ min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:center;
+ gap:7px;padding:12px 9px;border-inline-start:1px solid var(--award-line);
+}
+body.cert-print-mode #certificate-print-sheet .award-results>div:first-child{border-inline-start:0}
+body.cert-print-mode #certificate-print-sheet .award-results span{
+ font:650 10px/1.5 var(--arabic);color:var(--award-muted);white-space:normal;
+}
+body.cert-print-mode #certificate-print-sheet .award-results strong{
+ font:800 13px/1.65 var(--arabic);color:var(--award-navy);text-align:center;
+}
+body.cert-print-mode #certificate-print-sheet .award-percent strong{
+ font:850 18px/1.3 var(--latin);color:var(--award-navy);direction:ltr;
+}
+body.cert-print-mode #certificate-print-sheet .award-score strong{
+ font:800 16px/1.3 var(--latin);direction:ltr;
+}
+body.cert-print-mode #certificate-print-sheet .award-footer{
+ display:grid;justify-items:center;gap:9px;border-top:1px solid var(--award-line);
+ padding-top:15px;width:100%;text-align:center;
+}
+body.cert-print-mode #certificate-print-sheet .award-instructor{
+ color:var(--award-navy);font:800 13px/1.5 var(--latin);text-align:center;
+}
+body.cert-print-mode #certificate-print-sheet .award-instructor span{
+ color:var(--award-muted);font-weight:500;
+}
+body.cert-print-mode #certificate-print-sheet .award-disclaimer{
+ margin:0;max-width:860px;color:var(--award-muted)!important;
+ font:550 11px/1.8 var(--arabic);text-align:center;
+}
+@page certificate-page-landscape{size:A4 landscape;margin:8mm}
+@media print{
+ html:has(body.cert-print-mode),body.cert-print-mode{margin:0!important;padding:0!important;background:#fff!important}
+ body.cert-print-mode > :not(#certificate-print-sheet){display:none!important}
+ body.cert-print-mode #certificate-print-sheet{
+  page:certificate-page-landscape;display:block!important;position:relative!important;
+  width:281mm!important;height:194mm!important;min-height:0!important;max-height:194mm!important;
+  margin:0!important;padding:10mm 13mm 9mm!important;border:1px solid #d6dce6!important;
+  border-top:3mm solid #292a67!important;border-radius:0!important;box-shadow:none!important;
+  background:#fffefa!important;overflow:visible!important;text-align:center!important;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid!important;
+ }
+ body.cert-print-mode #certificate-print-sheet .award-canvas{height:100%!important}
+ body.cert-print-mode #certificate-print-sheet .award-head{padding-bottom:4mm;grid-template-columns:16mm minmax(0,1fr) auto;gap:4mm}
+ body.cert-print-mode #certificate-print-sheet .award-logo{width:16mm;height:auto}
+ body.cert-print-mode #certificate-print-sheet .award-course strong{font-size:14px}
+ body.cert-print-mode #certificate-print-sheet .award-course span{font-size:9px}
+ body.cert-print-mode #certificate-print-sheet .award-lecture-label{font-size:9px;padding:2mm 3mm}
+ body.cert-print-mode #certificate-print-sheet .award-content{gap:5mm;padding:5mm 2mm 4mm}
+ body.cert-print-mode #certificate-print-sheet .award-titles{gap:1.3mm}
+ body.cert-print-mode #certificate-print-sheet .award-titles h1{font-size:22px;line-height:1.5}
+ body.cert-print-mode #certificate-print-sheet .award-english-title{font-size:9px}
+ body.cert-print-mode #certificate-print-sheet .award-student{gap:1.4mm;max-width:200mm}
+ body.cert-print-mode #certificate-print-sheet .award-eyebrow{font-size:11px}
+ body.cert-print-mode #certificate-print-sheet .award-student-name{
+  font-size:clamp(20px,2.15vw,29px);line-height:1.65;padding-bottom:2.6mm;max-width:200mm;
+ }
+ body.cert-print-mode #certificate-print-sheet .award-message{font-size:11.2px;line-height:1.9;max-width:213mm}
+ body.cert-print-mode #certificate-print-sheet .award-results{max-width:233mm}
+ body.cert-print-mode #certificate-print-sheet .award-results>div{gap:1.4mm;padding:2.7mm 2mm}
+ body.cert-print-mode #certificate-print-sheet .award-results span{font-size:9px}
+ body.cert-print-mode #certificate-print-sheet .award-results strong{font-size:10.5px}
+ body.cert-print-mode #certificate-print-sheet .award-percent strong{font-size:16px}
+ body.cert-print-mode #certificate-print-sheet .award-score strong{font-size:13px}
+ body.cert-print-mode #certificate-print-sheet .award-footer{gap:2mm;padding-top:3.3mm}
+ body.cert-print-mode #certificate-print-sheet .award-instructor{font-size:11px}
+ body.cert-print-mode #certificate-print-sheet .award-disclaimer{font-size:9.3px;line-height:1.7;max-width:225mm}
+}
+@media screen{
+ body.cert-print-mode #certificate-print-sheet{display:block;position:relative;margin:20px auto;
+  width:min(1120px,calc(100vw - 24px));min-height:0;height:auto;aspect-ratio:297/210;
+  padding:36px 44px;border:1px solid #d6dce6;border-top:9px solid #292a67;
+  box-shadow:0 12px 35px #18265519;background:#fffefa}
+ @media(max-width:650px){
+ body.cert-print-mode #certificate-print-sheet{aspect-ratio:auto;min-height:600px;padding:19px 16px}
+ body.cert-print-mode #certificate-print-sheet .award-head{grid-template-columns:54px minmax(0,1fr);gap:12px}
+ body.cert-print-mode #certificate-print-sheet .award-logo{width:54px}
+ body.cert-print-mode #certificate-print-sheet .award-lecture-label{grid-column:2;justify-self:start;padding:5px 7px}
+ body.cert-print-mode #certificate-print-sheet .award-content{gap:14px;padding:19px 0}
+ body.cert-print-mode #certificate-print-sheet .award-titles h1{font-size:20px}
+ body.cert-print-mode #certificate-print-sheet .award-student-name{font-size:24px}
+ body.cert-print-mode #certificate-print-sheet .award-message{font-size:12px;line-height:1.9}
+ body.cert-print-mode #certificate-print-sheet .award-results{grid-template-columns:1fr 1fr}
+ body.cert-print-mode #certificate-print-sheet .award-results>div{border-top:1px solid var(--award-line)}
+ body.cert-print-mode #certificate-print-sheet .award-footer{padding-top:12px}
+ }
+}
+</style>
+
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -1888,20 +2045,31 @@ function printQuizCertificate(){
  const passPct=Math.round(score/D.quiz.length*100),sheet=$('certificate-print-sheet');
  const lecture=String(CURRENT_LECTURE).padStart(2,'0'),logo=document.querySelector('.brand-logo')?.getAttribute('src')||'';
  sheet.dir=lang==='ar'?'rtl':'ltr';
- sheet.innerHTML=`<div class="cert-banner">
- <div class="cert-school">${logo?'<img class="cert-logo" src="'+escapeHtml(logo)+'" alt="AASTMT logo">':''}<div><strong>AASTMT</strong><span>${label('البوابة التعليمية التفاعلية · شيراتون','Interactive Learning Portal · Sheraton')}</span></div></div>
- <span class="cert-banner-course">MARKETING · LECTURE ${lecture}</span></div>
- <div class="cert-pattern" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
- <div class="cert-main"><p class="cert-kicker">CERTIFICATE <span>OF LEARNING ACHIEVEMENT</span></p>
- <h1>${label('شهادة اجتياز تقييم المحاضرة','Certificate of Lecture Assessment')}</h1>
- <p class="cert-presented">${label('تُمنح هذه الشهادة إلى','THIS CERTIFICATE RECOGNIZES')}</p>
- <div class="cert-name" dir="auto">${escapeHtml(name)}</div>
- <p class="cert-message">${label('تقديرًا لاجتياز التقييم الذاتي للمحاضرة رقم','For successfully passing the self-assessment for Lecture')} <strong>${lecture}</strong>
- ${label('في مقرر Marketing، وتحقيق حد الاجتياز المطلوب. ويعكس الأداء فهمًا للمفاهيم والأهداف التعليمية التي قاسها هذا الاختبار، دون أن يعني الإتقان الشامل لكل جوانب المحاضرة.','in the Marketing course and meeting the passing requirement. The result reflects understanding of the concepts and learning objectives assessed in this quiz, without claiming comprehensive mastery of all lecture material.')}</p>
- <p class="cert-topic"><span>${label('الموضوع','LECTURE TOPIC')}</span><strong>${escapeHtml(topic)}</strong></p>
- <div class="cert-award" aria-label="Quiz passed"><span>${label('اجتياز','PASS')}</span><strong>${passPct}%</strong></div>
- <div class="cert-details"><div><span>${label('المحاضر','INSTRUCTOR')}</span><strong>${label('د. إبراهيم طريح','Dr. Ibrahim Torih')}</strong><small>Dr. Ibrahim Torih</small></div><div><span>${label('تاريخ الاجتياز','COMPLETION DATE')}</span><strong>${escapeHtml(date)}</strong><small>${score} / ${D.quiz.length} · ${label('درجة التقييم','ASSESSMENT SCORE')}</small></div></div>
- <p class="cert-disclaimer">${label('شهادة اجتياز اختبار ذاتي يصدرها كتاب المذاكرة التفاعلي؛ وليست شهادة أو اعتمادًا رسميًا صادرًا عن الأكاديمية العربية للعلوم والتكنولوجيا والنقل البحري.','An interactive study-book self-assessment record, not an official certificate or accreditation issued by AASTMT.')}</p></div>`;
+ sheet.innerHTML=`<article class="award-canvas" lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}">
+   <header class="award-head">
+     <img class="award-logo" src="${escapeHtml(logo)}" alt="AASTMT" width="84" height="72">
+     <div class="award-course"><strong>MARKETING</strong><span>${label('سجل اجتياز الاختبار الذاتي','LECTURE SELF-ASSESSMENT')}</span></div>
+     <div class="award-lecture-label" dir="ltr">LECTURE ${lecture}</div>
+   </header>
+   <section class="award-content">
+     <div class="award-titles">
+       <h1>${label('شهادة اجتياز اختبار المحاضرة','LECTURE ASSESSMENT CERTIFICATE')}</h1>
+       <div class="award-english-title" dir="ltr">${label('LECTURE ASSESSMENT CERTIFICATE','شهادة اجتياز اختبار المحاضرة')}</div>
+     </div>
+     <div class="award-student"><p class="award-eyebrow">${label('تُمنح هذه الشهادة إلى','THIS CERTIFICATE IS PRESENTED TO')}</p>
+       <h2 class="award-student-name" dir="auto">${escapeHtml(name)}</h2></div>
+     <p class="award-message">${label('تقديرًا لاجتيازه بنجاح الاختبار الذاتي للمحاضرة رقم','In recognition of successfully passing the self-assessment for Lecture')} <strong dir="ltr">${lecture}</strong> ${label('في مقرر Marketing، بما يعكس فهمه للمفاهيم الأساسية والنقاط التعليمية الرئيسية التي تناولتها المحاضرة، وفقًا لأدائه في الاختبار.','in the Marketing course, reflecting understanding of the core concepts and principal learning points addressed in the lecture, as demonstrated by performance on this assessment.')}</p>
+     <section class="award-results" aria-label="${label('بيانات الاجتياز','Assessment details')}">
+       <div class="award-topic"><span>${label('موضوع المحاضرة','LECTURE TOPIC')}</span><strong>${escapeHtml(topic)}</strong></div>
+       <div class="award-score"><span>${label('النتيجة','SCORE')}</span><strong dir="ltr">${score} / ${D.quiz.length}</strong></div>
+       <div class="award-percent"><span>${label('نسبة الاجتياز','PERCENTAGE')}</span><strong dir="ltr">${passPct}%</strong></div>
+       <div class="award-date"><span>${label('التاريخ','DATE')}</span><strong>${escapeHtml(date)}</strong></div>
+     </section>
+   </section>
+   <footer class="award-footer"><div class="award-instructor" dir="ltr">Dr. Ibrahim Torih <span>— Course Instructor</span></div>
+     <p class="award-disclaimer">${label('شهادة تعلم صادرة عن كتاب المذاكرة التفاعلي لتوثيق اجتياز الاختبار الذاتي للمحاضرة، ولا تُعد شهادة أو اعتمادًا أكاديميًا رسميًا من الأكاديمية.','A learning record from the interactive study book confirming passage of the lecture self-assessment; it is not an official academic certificate or accreditation from AASTMT.')}</p>
+   </footer>
+ </article>`;
  document.body.classList.add('cert-print-mode');
  const clean=()=>{document.body.classList.remove('cert-print-mode');window.removeEventListener('afterprint',clean)};
  window.addEventListener('afterprint',clean,{once:true});

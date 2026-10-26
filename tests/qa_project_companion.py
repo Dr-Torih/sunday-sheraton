@@ -36,6 +36,7 @@ with sync_playwright() as p:
             check("L03 segmentation not falsely marked completed", "مبدئي" in stage3.inner_text() or "بعد الشرح" in stage3.inner_text())
             check("stage 3 points to authentic project evidence", stage3.locator("[data-guide-section='evidence']").count()==1)
             stage3.locator("[data-guide-section='evidence']").click()
+            page.wait_for_function("document.querySelector('#pc-guide-evidence')?.open === true")
             check("stage-to-guide action opens native Evidence",page.locator("#pc-guide-evidence").get_attribute("open") is not None)
             page.locator("#project-decision-journey").scroll_into_view_if_needed()
 

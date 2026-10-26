@@ -39,6 +39,10 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 
 ## Quiz and certificate
 
+**Approved 26 Oct interaction and certificate rule:** This heading is the sole active UI source for quiz presentation and certificate design. Original embedded answer options and grading indices remain scientifically immutable. Browser presentation balances correct-position letters across A/B/C/D per lecture (deterministic, stable on AR/EN toggle) and dynamically remaps the *displayed* correct letter while radio values and grading reference the source index. Keep all answer text untruncated and questions keyboard-operable; for standard 390×844 and 1440×900 viewports, four choices should be visible without scrolling the options on ordinary-length questions. For very long text or review feedback, permit internal scrolling, never hide answers.
+
+The pass certificate is an A4 landscape, restrained institutional student **self-assessment** document inspired by the provided geometric reference: official portal logo, navy/cyan/amber/orange accents, learner-entered name, correct lecture/topic, date, instructor Dr. Ibrahim Torih, exact score and percentage. Explain successful performance on tested lecture concepts and objectives, not comprehensive mastery or official AASTMT accreditation. Preserve the 80% (15/18) threshold, saved pass, correct print/PDF and nonofficial disclaimer. Screenshot/PDF regression in both languages and common desktop/mobile viewport sizes is required.
+
 - One question per centered screen in quiz modal, progress steps above, Back/Next, answer retention and submit.
 - Feedback includes accurate correct explanation and "Review Concept". That link MUST open in a separate tab/window without losing current quiz position.
 - Quiz pass requirement: 80% = 15/18 currently. Student supplies printable display name. PDF certificate includes chapter number/topic, course Marketing, instructor Dr. Ibrahim Torih, date, score, disclaimer that **this is self-assessment, not an accredited AASTMT qualification**.

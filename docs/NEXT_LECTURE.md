@@ -2,6 +2,8 @@
 
 **Goal:** add the next APPROVED Sunday Sheraton lecture to the EXISTING `index.html`. Do not create `lecture-03.html`, change the established colors/fonts, or rewrite either previous lecture.
 
+**Sunday Lecture 03 source review now exists:** [Lecture 03 delivery coverage and privacy-safe content gate](LECTURE_03_COVERAGE.md). This records the source distinction; it does NOT mean the chapter has passed academic approval or been appended to the public site. The instructor-only four-part transcript and 25-page Trainer PDF remain outside the public repository. Keep the pending code changes to the actual chapter in a separate isolated PR with frozen L01/L02 fingerprints.
+
 ## Gate A — gather and verify
 
 Collect instructor-authorized source items in a PRIVATE workspace: latest academic slides/course reference, actual lecture recording/transcript, instructor notes, assessment content, discussion attribution permissions, permitted photos. Keep source data OUT of this public GitHub repo, the private governance-only repo, and the learner build.

@@ -92,6 +92,50 @@ with sync_playwright() as p:
       return {top:r.top,headerBottom:h.bottom,focused:document.activeElement===el};
     }""")
     check("native guide subsection visible and keyboard focus", guide["top"]>=guide["headerBottom"]+5 and guide["focused"], guide)
+
+    # One student action must cause exactly one Guide navigation, not two competing delegated handlers.
+    page.evaluate("""() => {
+        const original=window.__courseWebsite.focusTarget;
+        window.__guideNavigationTargets=[];
+        window.__courseWebsite.focusTarget=(target) => {
+            window.__guideNavigationTargets.push(target?.id||target?.parentElement?.id||'unknown');
+            return original(target);
+        };
+    }""")
+    page.locator('#pc-L02-C19 button[data-guide-section="plan"]').click()
+    page.wait_for_function("window.__guideNavigationTargets.length>0")
+    page.wait_for_timeout(90)
+    targets=page.evaluate("window.__guideNavigationTargets")
+    check("one Guide navigation per worked-example click",len(targets)==1,targets)
+    check("worked example leads to plan guide subsection",page.locator("#pc-guide-plan").get_attribute("open") is not None)
+
+    # The return path is context-specific in the worked card, with the correct lesson and visible concept.
+    page.locator('#pc-L02-C19 button[data-project-open]').click()
+    page.wait_for_function("document.body.dataset.sitePage==='study' && document.querySelector('#scene-position')?.textContent.includes('19')")
+    page.wait_for_timeout(90)
+    state=page.evaluate("""() => {
+        const t=document.getElementById('scene-title').getBoundingClientRect();
+        const h=document.getElementById('sticky-header').getBoundingClientRect();
+        return {top:t.top,header:h.bottom,focused:document.activeElement?.id==='scene-title',
+                lecture:document.getElementById('header-lecture-select').value};
+    }""")
+    check("return to exact L02-C19 and visible focused concept",state["lecture"]=="2" and state["focused"] and state["top"]>=state["header"]+5,state)
+
+    # Same contract for 49 quick Concept links, avoiding a second independent scroll algorithm.
+    page.evaluate("window.__courseWebsite.open('project',{scroll:false})")
+    page.locator('#pc-quick-links details[data-lecture="2"] summary').click()
+    quick=page.locator('#pc-quick-links [data-quick-scene^="L02-"]').first
+    target_id=quick.get_attribute("data-quick-scene")
+    quick.click()
+    page.wait_for_function("document.body.dataset.sitePage==='study'")
+    page.wait_for_timeout(90)
+    state=page.evaluate("""() => {
+        const t=document.getElementById('scene-title').getBoundingClientRect();
+        const h=document.getElementById('sticky-header').getBoundingClientRect();
+        return {top:t.top,header:h.bottom,focused:document.activeElement?.id==='scene-title',
+                lecture:document.getElementById('header-lecture-select').value};
+    }""")
+    check("quick Concept link focuses visible L02 concept",state["lecture"]=="2" and state["focused"] and state["top"]>=state["header"]+5,{"id":target_id,**state})
     page.close()
     browser.close()
 

@@ -27,7 +27,7 @@ with sync_playwright() as p:
           check(tag+" next concept named",page.locator("#next-scene span").inner_text().startswith("التالي:" if lang=="ar" else "Next:"))
           check(tag+" redundant progress collapsed",not page.locator("#study .progress-area").is_visible())
           check(tag+" next CTA usable",page.locator("#next-scene").is_enabled())
-          check(tag+" project optional",page.locator("#project-application").count()==1)
+          check(tag+" no duplicate inline project cards",page.locator("#project-application").count()==0)
           page.locator("#mark-done").click()
           check(tag+" completed state set",page.locator("#mark-done").get_attribute("aria-pressed")=="true")
           page.locator("#theme-toggle").click()

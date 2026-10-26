@@ -1959,7 +1959,9 @@ history.scrollRestoration='manual';
 const reader=()=>window.__courseReader?.snapshot?.();
 function rememberCurrent(){
  if(active==='study')lastStudy={reader:reader(),scrollY:window.scrollY};
- window.history.replaceState({...window.history.state,portalPage:active||page(),reader:reader(),scrollY:window.scrollY},'',location.href);
+ const heading=active==='study'?document.getElementById('scene-title'):null;
+ const readerTop=heading?heading.getBoundingClientRect().top:null;
+ window.history.replaceState({...window.history.state,portalPage:active||page(),reader:reader(),scrollY:window.scrollY,readerTop},'',location.href);
 }
 function apply(p,{history=true,scroll=true}={}){
  if(!valid.includes(p))p='study';
@@ -1993,28 +1995,39 @@ document.addEventListener('click',e=>{
  const nav=e.target.closest('#site-nav a[href^="#"]');if(nav){const p=nav.getAttribute('href').slice(1);if(valid.includes(p)){e.preventDefault();apply(p);return}}
  if(e.target.closest('[data-open-scene],[data-open-unit],#next-scene,#prev-scene,#start-reading,#start-learning,#continue-reading,[data-jb-go],#mark-done')){if(active!=='study')apply('study',{scroll:false})}
 },true);
+let pendingHistoryRestore=0;
 window.addEventListener('popstate',event=>{
  apply(page(),{history:false,scroll:false});
- const state=event.state||{};
+ const state=event.state||{},ticket=++pendingHistoryRestore;
  if(state.reader)window.__courseReader?.restore?.(state.reader);
- requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  if(page()==='project'&&state.projectStage){
-   const stage=document.querySelector('#project-decision-journey [data-journey-stage="'+state.projectStage+'"]');
-   if(stage){
-     stage.open=true;
-     const offset=Number(state.stageTop);
-     if(Number.isFinite(offset))window.scrollBy({top:stage.getBoundingClientRect().top-offset,behavior:'instant'});
-     else if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
-     return;
+ const restorePosition=()=>{
+   if(ticket!==pendingHistoryRestore)return;
+   if(page()==='project'&&state.projectStage){
+     const stage=document.querySelector('#project-decision-journey [data-journey-stage="'+state.projectStage+'"]');
+     if(stage){
+       stage.open=true;
+       const top=state.stageTop;
+       if(typeof top==='number'&&Number.isFinite(top))
+         window.scrollBy({top:stage.getBoundingClientRect().top-top,behavior:'instant'});
+       else if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
+       return;
+     }
    }
-  }
-  if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
-  else if(state.projectSection){
-   const dest=document.getElementById('pc-guide-'+state.projectSection);
-   if(dest)dest.scrollIntoView({block:'start',behavior:'instant'});
-  }else if(page()==='study')document.getElementById('scene-title')?.scrollIntoView({block:'start',behavior:'instant'});
-  else document.getElementById(page())?.scrollIntoView({block:'start',behavior:'instant'});
- }));
+   if(page()==='study'){
+     const heading=document.getElementById('scene-title');
+     if(heading&&typeof state.readerTop==='number'&&Number.isFinite(state.readerTop)){
+       window.scrollBy({top:heading.getBoundingClientRect().top-state.readerTop,behavior:'instant'});
+       return;
+     }
+   }
+   if(Number.isFinite(state.scrollY))window.scrollTo({top:state.scrollY,behavior:'instant'});
+   else if(state.projectSection)document.getElementById('pc-guide-'+state.projectSection)?.scrollIntoView({block:'start',behavior:'instant'});
+   else document.getElementById(page()==='study'?'scene-title':page())?.scrollIntoView({block:'start',behavior:'instant'});
+ };
+ requestAnimationFrame(()=>requestAnimationFrame(restorePosition));
+ // Browser history can re-anchor after layout and chapter content have settled.
+ setTimeout(restorePosition,130);
+ setTimeout(restorePosition,350);
 });
 window.addEventListener('hashchange',()=>apply(page(),{history:false,scroll:false}));
 const lectureSelect=document.getElementById('header-lecture-select'),lectureLinks=document.getElementById('lecture-links');

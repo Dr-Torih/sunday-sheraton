@@ -22,7 +22,7 @@ with sync_playwright() as p:
       page.goto(BASE+"?page=review",wait_until="networkidle")
       for lecture,script in [(1,"embedded-course-data"),(2,"embedded-course-data-l02"),(3,"embedded-course-data-l03")]:
         page.locator("#header-lecture-select").select_option(str(lecture))
-        page.locator('#site-nav a[href="#review"]').click()
+        page.evaluate("window.__courseWebsite.open('review')")
         questions=json.loads(page.locator("#"+script).inner_text())["quiz"]
         page.locator("#open-quiz").click()
         distribution=Counter()

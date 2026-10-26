@@ -500,6 +500,7 @@
     }
   }
   function revealCard(id){
+    const more=$('pc-extra-resources');if(more)more.open=true;
     const card=$('pc-'+id);
     if(!card)return;
     document.querySelectorAll('.pc-card.pc-selected').forEach(n=>n.classList.remove('pc-selected'));
@@ -681,7 +682,7 @@
   }
   compactProjectGuide();
   function refreshStageLabels(){
-    const summary=$('pc-reference-details > summary');
+    const summary=document.querySelector('#pc-reference-details > summary');
     if(summary)summary.textContent=t(summary.dataset.ar,summary.dataset.en);
     const h=$('project-guide-heading'),description=$('project-guide-summary')?.querySelector('.pc-heading p'),note=$('project-guide-summary')?.querySelector('.pc-note');
     for(const node of [h,description,note])if(node)node.textContent=t(node.dataset.ar,node.dataset.en);

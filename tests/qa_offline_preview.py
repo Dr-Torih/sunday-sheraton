@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""C01 owner preview: prove actual inline Concept→Project Guide works on file:// and HTTP."""
+"""C01 offline preview: verify approved eight-stage project and native Guide on file:// and HTTP."""
 from pathlib import Path
 import json
 from playwright.sync_api import sync_playwright
@@ -27,27 +27,23 @@ def run(page, origin, lecture, language, theme):
         page.locator("#lang-toggle").click()
     if page.locator("body").get_attribute("data-theme") != theme:
         page.locator("#theme-toggle").click()
-    found = False
-    for _ in range(30):
-        link = page.locator("#project-application button[data-guide-from-note]")
-        if link.count() and link.is_visible():
-            found = True
-            break
-        if page.locator("#next-scene").is_disabled():
-            break
-        page.locator("#next-scene").click()
-    check(prefix + " mapped Concept action exists", found)
-    dest = link.get_attribute("data-guide-from-note")
-    check(prefix + " links to known Guide section", dest in {
-        "start", "idea", "journey", "deliverables", "evidence", "plan",
-        "grades", "defense", "ai", "audit"
-    })
-    check(prefix + " note is visible before click", page.locator("#project-application").is_visible())
+    # Owner-approved Oct 26 UX has no inline Concept-to-project action.
+    # Project work lives in the eight-stage journey, available on file:// and HTTP.
+    check(prefix + " lesson remains available", page.locator("#scene-content").is_visible())
+    check(prefix + " no superseded Concept project box", page.locator("#project-application").count() == 0)
+    page.evaluate("window.__courseWebsite.open('project')")
+    check(prefix + " navigated using the existing portal router", page.locator("body").get_attribute("data-site-page") == "project")
+    stages = page.locator("#project-decision-journey details[data-journey-stage]")
+    check(prefix + " exactly eight integrated project stages", stages.count() == 8)
+    check(prefix + " stage order 1 to 8", stages.evaluate_all("(nodes)=>nodes.map(n=>n.dataset.journeyStage).join(',')") == "1,2,3,4,5,6,7,8")
+    stage = page.locator("#project-decision-journey details[data-journey-stage='2']")
+    stage.evaluate("(e)=>{e.open=true}")
+    link = stage.locator("[data-guide-section='evidence']")
+    check(prefix + " stage links into actual evidence Guide", link.count() == 1 and link.is_visible())
     link.click()
-    details = page.locator("#pc-guide-" + dest)
+    details = page.locator("#pc-guide-evidence")
     details.wait_for(state="attached", timeout=10000)
-    check(prefix + " native Guide section expanded", details.get_attribute("open") is not None)
-    check(prefix + " navigated to project", page.locator("body").get_attribute("data-site-page") == "project")
+    check(prefix + " native Guide evidence section expanded", details.get_attribute("open") is not None)
     check(prefix + " real Guide content present", len(details.locator(".pc-guide-content").inner_text()) > 100)
     check(prefix + " focus on destination summary", details.locator("summary").evaluate("(el)=>el===document.activeElement"))
     check(prefix + " no JS page errors", not problems)

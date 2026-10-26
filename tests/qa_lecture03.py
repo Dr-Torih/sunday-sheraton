@@ -42,7 +42,7 @@ with sync_playwright() as p:
     for w in (390,1440):
         page=browser.new_page(viewport={'width':w,'height':900})
         page.goto('http://127.0.0.1:8765/?page=study',wait_until='domcontentloaded')
-        page.locator('#lecture-links [data-lecture="3"]').click()
+        page.locator('#header-lecture-select').select_option('3')
         assert page.locator('#scene-title').is_visible()
         assert page.locator('#header-lecture-select').input_value()=='3'
         assert page.locator('#concept-list [data-open-scene]').count()==25

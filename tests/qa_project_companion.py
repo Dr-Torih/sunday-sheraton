@@ -24,6 +24,21 @@ with sync_playwright() as p:
         check(f"{width} Project Guide visible",page.locator("#project-guide-heading").is_visible())
         check(f"{width} unified Guide styles in real document head",page.locator("head > style#pc-native-guide-styles").count()==1)
         check(f"{width} Project Companion visible",page.locator("#project-companion-heading").is_visible())
+        # OWNER DECISION: the practical Marketing Decision Journey has eight stages;
+        # the six-lecture calendar in the original Guide is not the stage count.
+        check(f"{width} eight-stage decision journey",page.locator("#project-decision-journey").is_visible())
+        check(f"{width} exactly eight journey stages",page.locator("#project-decision-journey details[data-journey-stage]").count()==8)
+        check(f"{width} stages use 1–8 ordered identity",page.locator("#project-decision-journey details[data-journey-stage]").evaluate_all("(nodes)=>nodes.map(n=>n.dataset.journeyStage).join(',')")==','.join(map(str,range(1,9))))
+        check(f"{width} journey separate from official guide",page.locator("#project-decision-journey").evaluate("(e)=>e.nextElementSibling?.id==='project-guide-summary'"))
+        if width==390:
+            page.locator("#project-decision-journey details[data-journey-stage='3'] summary").click()
+            stage3=page.locator("#project-decision-journey details[data-journey-stage='3']")
+            check("L03 segmentation not falsely marked completed", "مبدئي" in stage3.inner_text() or "بعد الشرح" in stage3.inner_text())
+            check("stage 3 points to authentic project evidence", stage3.locator("[data-guide-section='evidence']").count()==1)
+            stage3.locator("[data-guide-section='evidence']").click()
+            check("stage-to-guide action opens native Evidence",page.locator("#pc-guide-evidence").get_attribute("open") is not None)
+            page.locator("#project-decision-journey").scroll_into_view_if_needed()
+
         check(f"{width} two sections are separate",page.locator("#project-guide-summary").count()==1 and page.locator("#project-companion-overview").count()==1)
         check(f"{width} native guide CTA",page.locator('button#pc-guide-expand-all').count()==1)
         check(f"{width} five native guide navigation buttons",page.locator(".pc-guide-links button[data-guide-open]").count()==5)
@@ -40,6 +55,8 @@ with sync_playwright() as p:
         check(f"{width} no horizontal overflow",page.evaluate("document.documentElement.scrollWidth<=window.innerWidth+2"))
         page.screenshot(path=str(OUT/f"project-stage1-{width}-ar.png"),full_page=True)
         page.locator("#lang-toggle").click()
+        check(f"{width} eight English stage titles",page.locator("#project-decision-journey details[data-journey-stage] summary").count()==8 and "Market Research" in page.locator("#project-decision-journey details[data-journey-stage='2'] summary").inner_text())
+        check(f"{width} bilingual journey labels", "Evidence" in page.locator("#project-decision-journey details[data-journey-stage='2']").inner_text() or "Market Research" in page.locator("#project-decision-journey details[data-journey-stage='2']").inner_text())
         check(f"{width} English Guide and Companion",page.locator("#project-guide-heading").inner_text()=="Project Guide & Submission Requirements" and page.locator("#project-companion-heading").inner_text()=="From Lecture to Your Group Project")
         page.locator("#theme-toggle").click()
         check(f"{width} dark theme persists",page.locator("body").get_attribute("data-theme")=="dark")

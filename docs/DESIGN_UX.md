@@ -39,6 +39,10 @@ Course Map → Concept Scene and Objective → meaningful authentic Classroom Ca
 
 ## Quiz and certificate
 
+**Approved 26 Oct interaction and certificate rule:** This heading is the sole active UI source for quiz presentation and certificate design. Original embedded answer options and grading indices remain scientifically immutable. Browser presentation balances correct-position letters across A/B/C/D per lecture (deterministic, stable on AR/EN toggle) and dynamically remaps the *displayed* correct letter while radio values and grading reference the source index. Keep all answer text untruncated and questions keyboard-operable; for standard 390×844 and 1440×900 viewports, four choices should be visible without scrolling the options on ordinary-length questions. For very long text or review feedback, permit internal scrolling, never hide answers.
+
+The pass certificate is an A4 landscape, restrained institutional student **self-assessment** document inspired by the provided geometric reference: official portal logo, navy/cyan/amber/orange accents, learner-entered name, correct lecture/topic, date, instructor Dr. Ibrahim Torih, exact score and percentage. Explain successful performance on tested lecture concepts and objectives, not comprehensive mastery or official AASTMT accreditation. Preserve the 80% (15/18) threshold, saved pass, correct print/PDF and nonofficial disclaimer. Screenshot/PDF regression in both languages and common desktop/mobile viewport sizes is required.
+
 - One question per centered screen in quiz modal, progress steps above, Back/Next, answer retention and submit.
 - Feedback includes accurate correct explanation and "Review Concept". That link MUST open in a separate tab/window without losing current quiz position.
 - Quiz pass requirement: 80% = 15/18 currently. Student supplies printable display name. PDF certificate includes chapter number/topic, course Marketing, instructor Dr. Ibrahim Torih, date, score, disclaimer that **this is self-assessment, not an accredited AASTMT qualification**.
@@ -57,10 +61,6 @@ Never substitute stock people/photos for actual documented classroom moments, in
 
 **Lecture-first:** the sticky AASTMT/instructor identity now also displays `Marketing Course`, Lecture selector and visible Print action; there is no standalone Start/Landing page for student navigation. Default entry is Study, showing the preserved one-concept-at-a-time Learning Scene. Top navigation has Concept Scenes, Review & Quiz and Project, with Glossary always accessible as a dialog. Remove separate Concept Map top tab and retain the already built internal, searchable Unit/Concept sidebar in the scene; it remains collapsible on mobile. No course-wide redundant intermediate selection; progress remains local to each lecture. Light/Dark and AR/EN must be audited at the original test widths. Do not interpret green “understood” state as verified mastery.
 
-## Project Application card — staged and scoped (25 Oct 2026)
-
-Owner-approved contrast treatment for the Context → Project bridge only: a pale-aqua/deep-ink card in Light Mode and petrol/off-white in Dark Mode. Existing site brand colors and Alexandria/DM Sans are preserved. Unique scene ID, short call-to-action and non-graded disclosure are prominent. Min action height 44px; keyboard focus visible, mobile button full-width; no horizontal overflow from 320–1440px. HTML lesson, Decision Lab, print and quiz remain untouched. This scoped feature rule and its detailed color/academic acceptance live in `PROJECT_COMPANION.md` rather than a second specification.
-
 ## Product Design audit repair rules — 25 Oct 2026 (PR #22; owner review)
 
 This is the **active source of truth for all Product Design UX repair decisions**. Preserve approved Alexandria/DM Sans, all pre-existing color tokens, the first/base CSS block, institutional branding, bilingual course/assessment payloads, the official original Project Guide and the existing lecture switch/deep links. These rules are confined to the unmerged PR until owner authorization.
@@ -68,7 +68,7 @@ This is the **active source of truth for all Product Design UX repair decisions*
 - **C01:** trap Tab/Shift+Tab in the live quiz modal, make background inert while it is open, focus the first relevant control after step transitions, return keyboard focus on close, preserve grading/answers. Keyboard QA is mandatory.
 - **H01:** current top-nav text in Light Mode uses the existing `--bright` text token (WCAG AA normal-text contrast ≥4.5:1), while its cyan underline, nonactive states, and Dark Mode remain intact.
 - **H02:** one `.active` CSS class, `data-route-active`, `aria-current` and underline must follow the one current Study/Review/Project route, including History navigation.
-- **H03 + O01:** one short study orientation *inside* the existing Study view, an explicitly named next Concept, optional project action, no mandatory intro/landing page and no mastery claim; redundant progress is collapsed, while detailed LP remains accessible through existing controls.
+- **H03 + O01:** one short study orientation *inside* the existing Study view, an explicitly named next Concept, no repeated inline project action (use the eight-stage Group Project tab), no mandatory intro/landing page and no mastery claim; redundant progress is collapsed, while detailed LP remains accessible through existing controls.
 - **H04 (academic gate):** keep the existing approved Unit Case, Decision Lab and Quick Check bodies, options and answers intact. Do not claim that source-level pedagogical overlap is eliminated by styling. Distinct scenario/question rewrites require documented Pearson/Kotler/Armstrong review and instructor signoff prior to publication; this is still **OPEN**.
 - **H05:** only presentation-scoped reading measure/type size and line-height adjustments; no deletion, rewriting, or forced hidden paragraphs.
 - **H06:** isolate the already approved five-step English Marketing Process in correct LTR order in both Arabic and English; keep the underlying wording immutable and allow narrow widths to wrap.

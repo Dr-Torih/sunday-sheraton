@@ -1,0 +1,33 @@
+name: Certificate Owner Preview (review only)
+on:
+  pull_request:
+    paths:
+      - index.html
+      - .github/workflows/certificate-owner-preview.yml
+      - tests/build_offline_preview.py
+      - project-companion.js
+      - project-guide.html
+jobs:
+  owner-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build offline portal preview
+        run: python3 tests/build_offline_preview.py
+      - name: Verify design included
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('qa-artifacts/Sunday-Sheraton-C01-Offline-Preview.html').read_text()
+          assert 'id="certificate-redesign-20261026"' in s
+          assert 'class="cert2026"' in s
+          assert 'البوابة التعليمية التفاعلية · شيراتون' not in s[s.find('class="cert2026"'):s.find('class="award-canvas"')+2000]
+          print("Certificate review source embedded")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: certificate-portal-review
+          path: qa-artifacts/Sunday-Sheraton-C01-Offline-Preview.html
+          retention-days: 30

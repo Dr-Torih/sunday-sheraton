@@ -1,7 +1,7 @@
 name: Portal Visual QA (PR only)
 on:
   pull_request:
-    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_quiz_focus.py','tests/qa_nav_contrast.py','tests/qa_nav_single_active.py','tests/qa_product_design_batch.py','tests/qa_offline_preview.py','tests/build_offline_preview.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
+    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_quiz_focus.py','tests/qa_nav_contrast.py','tests/qa_nav_single_active.py','tests/qa_product_design_batch.py','tests/qa_owner_oct26.py','tests/qa_certificate_redesign.py','tests/qa_lecture03.py','tests/qa_offline_preview.py','tests/build_offline_preview.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
 jobs:
   visual-review:
     runs-on: ubuntu-latest
@@ -14,6 +14,18 @@ jobs:
           python-version: '3.11'
       - run: pip install playwright pymupdf
       - run: python -m playwright install --with-deps chromium
+      - name: Parse-check embedded runtime before browser QA
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          src=Path('index.html').read_text()
+          blocks=re.findall(r'<script\b[^>]*>(.*?)</script>',src,re.S)
+          app=next((x for x in blocks if "const chapters=" in x and "switchLecture(" in x),None)
+          assert app,'Cumulative runtime script not found'
+          Path('/tmp/sunday-runtime.js').write_text(app)
+          PY
+          node --check /tmp/sunday-runtime.js
       - name: Build owner preview as a standalone HTML file
         run: python3 tests/build_offline_preview.py
       - name: Launch local preview and run automated browser QA
@@ -23,11 +35,14 @@ jobs:
           python3 tests/qa_portal_browser.py
           python3 tests/qa_portal_release.py
           python3 tests/qa_bidi_concept_flow.py
+          python3 tests/qa_certificate_redesign.py
+          python3 tests/qa_owner_oct26.py
           python3 tests/qa_project_companion.py
           python3 tests/qa_quiz_focus.py
           python3 tests/qa_nav_contrast.py
           python3 tests/qa_nav_single_active.py
           python3 tests/qa_product_design_batch.py
+          python3 tests/qa_lecture03.py
           python3 tests/qa_offline_preview.py
       - name: Package single-file owner browser preview
         if: always()

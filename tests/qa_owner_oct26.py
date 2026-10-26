@@ -77,7 +77,9 @@ with sync_playwright() as p:
     cert=page.locator("#certificate-print-sheet")
     check("Certificate uses existing AASTMT logo",cert.locator("img.cert2026-logo").count()==1)
     check("Certificate records exact lecture, name and result",all(term in cert.inner_text() for term in ["Test Learning Participant","01","100%","Dr. Ibrahim Torih"]))
-    check("Certificate includes nonofficial disclaimer","not an official" in cert.inner_text().lower() or "لا تُعد شهادة" in cert.inner_text())
+    check("Certificate includes nonofficial disclaimer",
+          "not an official academic certificate or accreditation issued by AASTMT" in cert.locator(".cert2026-notice").inner_text()
+          or "ليست شهادة أو اعتمادًا أكاديميًا رسميًا صادرًا عن الأكاديمية" in cert.locator(".cert2026-notice").inner_text())
     check("Certificate print requested",page.evaluate("Boolean(window.__certPrintCalled)"))
     path=OUT/"owner-lecture-assessment-certificate.pdf"
     page.pdf(path=str(path),print_background=True,prefer_css_page_size=True)

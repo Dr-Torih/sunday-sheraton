@@ -126,3 +126,5 @@ The prior standalone QA packages cannot be used as evidence of the combined code
 ## Certificate first-page repair — 26 Oct 2026
 
 The owner-supplied PDF has a blank portrait first page followed by the landscape certificate. This patch assigns the existing named certificate page to the root print flow too. Frozen lesson/base CSS checks pass. Actual headless browser PDFs are one A4 landscape page across L01/L02/L03, AR/EN and 390/768/1440 widths; print-mode cleanup succeeds with no JS page errors. Headless printing did not reproduce the supplied native-dialog failure on baseline, so these results prove output/regression checks, not final native-dialog acceptance. The existing certificate suite now enables browser headers/footers to cover the supplied configuration. No merge or deployment authorized.
+
+Follow-up: the first PR CI run passed all 71 certificate checks, then stopped in `qa_owner_oct26.py` because its disclaimer assertion expected superseded Arabic wording. Updated that assertion to check the current full nonofficial-accreditation disclaimer inside `.cert2026-notice`; no learner-facing text changed. Full CI rerun required.

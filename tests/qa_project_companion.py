@@ -160,7 +160,13 @@ with sync_playwright() as p:
     page.wait_for_function("() => {const t=document.querySelector('#scene-title'),h=document.querySelector('#sticky-header');return t&&h&&Math.abs(t.getBoundingClientRect().top-h.getBoundingClientRect().bottom-24)<95}")
     scene_name=page.locator("#scene-title").inner_text()
     prior_position=page.locator("#scene-title").evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")
-    page.locator("#site-nav a[href='#project']").click()
+    # The sticky link is already visible. Locator.click() scrolls it into the
+    # root scroll-padding area, moving the reader before navigation. Use a real
+    # pointer click at its visible center so Back is compared to the position
+    # the learner actually left, rather than a test-induced scroll.
+    project_link=page.locator("#site-nav a[href='#project']").bounding_box()
+    check("project navigation link visible in sticky header",project_link is not None and project_link["y"]>=0 and project_link["y"]+project_link["height"]<=900)
+    page.mouse.click(project_link["x"]+project_link["width"]/2,project_link["y"]+project_link["height"]/2)
     page.wait_for_function("document.body.dataset.sitePage==='project'")
     page.go_back(wait_until="domcontentloaded")
     check("browser Back returns to Study",page.locator("body").get_attribute("data-site-page")=="study")

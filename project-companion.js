@@ -514,9 +514,6 @@
     requestAnimationFrame(()=>revealCard(button.dataset.projectShow));
   });
   $('project-companion-cards')?.addEventListener('click',e=>{
-    const go=e.target.closest('[data-guide-section]');if(go){openGuide(go.dataset.guideSection);return}
-  });
-  $('project-companion-cards')?.addEventListener('click',e=>{
     const button=e.target.closest('[data-project-open]');if(!button)return;
     const entry=connections.find(c=>c.id===button.dataset.projectOpen);if(!entry)return;
     const n=Number(entry.id.slice(1,3)),idx=Number(entry.id.slice(-2))-1;

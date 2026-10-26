@@ -35,7 +35,8 @@ for i,q in enumerate(d['quiz'],1):
         assert len(q[lang]['opts'])==4
         assert q[lang]['question'] and q['explanation'][lang]
 # Retained public content fixed hashes checked by verify_study_book.py; no raw source exposure.
-assert 'project-guide.html' in src
+assert Path('project-guide.html').is_file(), 'Canonical Project Guide missing'
+assert 'project-companion.js' in src, 'Project Companion entrypoint not attached'
 with sync_playwright() as p:
     browser=p.chromium.launch(headless=True,args=['--no-sandbox'])
     for w in (390,1440):

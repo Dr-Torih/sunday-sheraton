@@ -196,6 +196,7 @@ with sync_playwright() as p:
     check("browser Back returns to Study",page.locator("body").get_attribute("data-site-page")=="study")
     check("browser Back returns to same lecture",page.locator("#header-lecture-select").input_value()=="2")
     check("browser Back returns to same concept",page.locator("#scene-title").inner_text()==scene_name)
+    page.wait_for_function("(y)=>Math.abs(Math.round(document.querySelector('#scene-title').getBoundingClientRect().top)-y)<160",arg=prior_position)
     check("browser Back restores reader viewport",abs(page.locator("#scene-title").evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")-prior_position)<160)
     page.go_forward(wait_until="domcontentloaded")
     check("browser Forward restores Project view",page.locator("body").get_attribute("data-site-page")=="project")

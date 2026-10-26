@@ -581,6 +581,7 @@
   async function openGuide(id,all=false){
     const loaded=await loadGuide();if(!loaded)return;
     window.__courseWebsite?.open('project',{scroll:false});
+    window.__courseWebsite?.drillProject?.(all?'all':id);
     if(all){guideSections.forEach(([section])=>{const node=$('pc-guide-'+section);if(node)node.open=true})}
     else{const detail=$('pc-guide-'+id);if(!detail)return;detail.open=true}
     requestAnimationFrame(()=>{
@@ -668,5 +669,13 @@
   $('lang-toggle')?.addEventListener('click',()=>queueMicrotask(()=>{render();relabelGuide();renderDecisionJourney()}));
   render();
   renderDecisionJourney();
-  if(new URLSearchParams(location.search).get('page')==='project')loadGuide();
+  if(new URLSearchParams(location.search).get('page')==='project'){
+    const initialSection=new URLSearchParams(location.search).get('section');
+    if(initialSection&&(/^(start|idea|journey|deliverables|evidence|plan|grades|defense|ai|audit|all)$/).test(initialSection)){
+      loadGuide().then(ok=>{if(!ok)return;
+        if(initialSection==='all'){guideSections.forEach(([id])=>{if($('pc-guide-'+id))$('pc-guide-'+id).open=true});return}
+        const el=$('pc-guide-'+initialSection);if(el)el.open=true;
+      });
+    }else loadGuide();
+  }
 })();

@@ -127,9 +127,11 @@ The expanded feature now gives a unique **Concept → Project** application note
 
 Scoped style `#pc-application-contrast-v2` applies only to `#project-application`, inserted after each lesson and before Decision Lab. Light palette: `#e9f8fb` background, `#123044` text, prominent teal border; Dark palette: `#102e3d` background, `#f6fcff` text, turquoise border. The card uses the site's current typefaces, a clear chapter/scene code, a concise action, non-graded disclosure, and accessible >=44px buttons. Contrast requires browser testing (WCAG AA minimum, targeted 7:1 body text). No new default printing of study application notes.
 
-## Stage 2 — Project Missions (NOT AUTHORIZED)
+## Stage 2 — One lecture assignment & light progress review (PEDAGOGY APPROVED; SITE IMPLEMENTATION PENDING)
 
-Use one focused Mission per lecture, with a suggested Output and appropriate template; run a short `Project Pulse` formative discussion in Trainer Studio / ASK, then review progress in the next class. Instructor approval is required for any mandated checkpoint, additional grade, or deadline.
+**Owner approval (26 Oct 2026):** Apply the reusable **Marketing Decision Journey** defined only in the [central Blueprint](https://github.com/Dr-Torih/student-learning-portal/blob/main/docs/BLUEPRINT.md#b1-reusable-project-learning--marketing-decision-journey-owner-approved-2026-10-25-clarified-2026-10-26). This Sunday cohort gets **one integrated project assignment per lecture** and **one brief in-class Project Progress Review**, not 55 separate tasks. The 55 existing L01/L02 Concept → Project notes remain *optional contextual practice*, not weekly deliverables. Each assignment adds a traceable section/decision to the single Marketing Plan, using real evidence and existing Guide requirements rather than a parallel form.
+
+**Implementation gate:** Map Sunday's confirmed lecture objectives, transcripts and already-chosen team ideas before specifying Phase outputs or Sunday assignments. Avoid forcing eight fixed Phases, unlearned decisions, fabricated evidence or retrospective student workload. Reuse the existing Project Guide, original templates and existing navigation: one prominent “next project step” in the Project Companion is preferable to competing calls to action. Keep short answers and checklists student-facing; never add instructor-only time constraints to the portal. No new backend, upload, grading, deadline or mandatory separate Mission screen is authorized. Site changes require academic/AR-EN/Light-Dark/mobile QA and owner acceptance, independent of this documentation commit.
 
 ## Stage 3 — Team Workspace (NOT AUTHORIZED)
 

@@ -22,8 +22,8 @@ jobs:
           from pathlib import Path
           s=Path('qa-artifacts/Sunday-Sheraton-C01-Offline-Preview.html').read_text()
           assert 'id="certificate-redesign-20261026"' in s
-          assert 'class="award-canvas"' in s
-          assert 'البوابة التعليمية التفاعلية · شيراتون' not in s[s.find('class="award-canvas"'):s.find('class="award-canvas"')+2000]
+          assert 'class="cert2026"' in s
+          assert 'البوابة التعليمية التفاعلية · شيراتون' not in s[s.find('class="cert2026"'):s.find('class="award-canvas"')+2000]
           print("Certificate review source embedded")
           PY
       - uses: actions/upload-artifact@v4

@@ -79,3 +79,7 @@ Owner approved Stage 1 and then approved refined UX: Project Guide and Project C
 ## Owner batch authorization — Product Design audit, 25 Oct 2026
 
 The owner authorized working on all remaining Product Design recommendations as one reviewable batch. The current operative UI feature specification is **[DESIGN_UX.md](DESIGN_UX.md#product-design-audit-repair-rules--25-oct-2026-pr-22-owner-review)**; its release test/evidence gate is **[RELEASE_QA.md](RELEASE_QA.md#product-design-audit-integration--pr-22-25-oct-2026)**. PR #22 integrates C01/H01/H02 plus other code-safe UX repairs, but **does not supersede the scientific accuracy law or authorize publication**. H04 content-level edits stay open pending textbook and owner review; O02 reuses approved source takeaways verbatim.
+
+## 2026-10-26 — Certificate blank first page (owner requested)
+
+Scope: repair the Sunday quiz certificate PDF pagination only, preserving its design/content. Apply the existing named certificate page to the document root during certificate printing; do not globally change ordinary book print page size. Prepare a PR for the owner to merge manually. Native print-dialog confirmation remains owner acceptance.

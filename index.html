@@ -1105,7 +1105,9 @@ body.cert-print-mode #certificate-print-sheet .cert2026-seal{position:absolute;t
  font:800 8pt/1.3 var(--arabic);z-index:1}
 body.cert-print-mode #certificate-print-sheet .cert2026-seal strong{font:900 14pt/1.2 var(--latin)}
 @media print{
- body.cert-print-mode,html:has(body.cert-print-mode){width:297mm!important;height:210mm!important;margin:0!important;padding:0!important;background:white!important}
+ /* Keep the root flow on the certificate page too: an unnamed root page
+    before the named sheet otherwise creates a blank portrait first page. */
+ body.cert-print-mode,html:has(body.cert-print-mode){page:cert2026page;width:297mm!important;height:210mm!important;margin:0!important;padding:0!important;background:white!important}
  body.cert-print-mode > :not(#certificate-print-sheet){display:none!important}
  body.cert-print-mode #certificate-print-sheet{break-inside:avoid!important;page-break-inside:avoid!important}
 }

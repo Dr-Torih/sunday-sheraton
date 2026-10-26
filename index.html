@@ -1378,6 +1378,7 @@ function linkLessonTerms(){
  }
  function drawTakeaways(){ $('takeaways').textContent=''; }
  function drawProject(){
+  if(!$('checklist-items'))return; // Eight stage checklist replaced the older view.
   $('checklist-items').innerHTML=D.project[lang].map((x,i)=>`<label class="project-check ${projectDone.has(i)?'done':''}"><input type="checkbox" data-project-index="${i}" ${projectDone.has(i)?'checked':''}><span>${escapeHtml(x)}</span></label>`).join('');
   $('project-progress').textContent=projectDone.size+' / '+D.project[lang].length;
  }
@@ -1523,7 +1524,7 @@ function drawQuiz(){
  $('scene-search').addEventListener('input',e=>drawConceptList(e.target.value));
  $('takeaways').addEventListener('input',e=>{const area=e.target.closest('[data-kt-write]');if(!area)return;ktWrites[area.dataset.ktWrite]=area.value;storage.write('kt-attempts',ktWrites);const btn=area.closest('.takeaway-item').querySelector('[data-kt-reveal]');btn.disabled=!area.value.trim()});
  $('takeaways').addEventListener('click',e=>{const btn=e.target.closest('[data-kt-reveal]');if(!btn)return;const id=btn.dataset.ktReveal;if(ktReveal.has(id)){ktReveal.delete(id)}else{ktReveal.add(id)}const node=$('takeaways').querySelector(`[data-kt-answer="${id}"]`);node.hidden=!ktReveal.has(id);btn.textContent=ktReveal.has(id)?label('إخفاء التفسير','Hide explanation'):label('اكشف التفسير','Reveal explanation')});
- $('checklist-items').addEventListener('change',e=>{const inp=e.target.closest('[data-project-index]');if(!inp)return;const idx=Number(inp.dataset.projectIndex);inp.checked?projectDone.add(idx):projectDone.delete(idx);storage.write('project',[...projectDone]);drawProject()});
+ $('checklist-items')?.addEventListener('change',e=>{const inp=e.target.closest('[data-project-index]');if(!inp)return;const idx=Number(inp.dataset.projectIndex);inp.checked?projectDone.add(idx):projectDone.delete(idx);storage.write('project',[...projectDone]);drawProject()});
  $('glossary-btn').addEventListener('click',()=>openOverlay('glossary-panel'));$('close-glossary').addEventListener('click',()=>closeOverlay('glossary-panel'));
  $('glossary-search').addEventListener('input',e=>drawGlossary(e.target.value));
  setupLearningUI(); setupNewExperience();

@@ -47,6 +47,8 @@ with sync_playwright() as p:
           page.locator("#pc-journey-nav").click()
           check(tag+" jump retains real journey in Project view",page.locator("#project-decision-journey").is_visible() and page.locator("body").get_attribute("data-site-page")=="project")
           page.wait_for_function("document.querySelectorAll('#project-companion-cards .pc-card').length===6",timeout=10000)
+          page.locator("#pc-extra-resources > summary").click()
+          check(tag+" optional examples expanded",page.locator("#pc-extra-resources").get_attribute("open") is not None)
           check(tag+" all original worked cards retained",page.locator("#project-companion-cards .pc-card").count()==6)
           check(tag+" both lectures remain accessible",page.locator("#project-companion-cards .pc-card:visible").count()==6)
           first=page.locator("#project-companion-cards .pc-card:visible").evaluate_all("(cards)=>cards.slice().sort((a,b)=>Number(getComputedStyle(a).order)-Number(getComputedStyle(b).order)).map(el=>el.id).slice(0,3)")

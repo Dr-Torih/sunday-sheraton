@@ -7,13 +7,13 @@ src=Path('index.html').read_text(encoding='utf-8')
 data_match=re.search(r'<script type="application/json" id="embedded-course-data-l03">(.*?)</script>',src,re.S)
 assert data_match,'L03 has not been embedded into existing cumulative site'
 d=json.loads(data_match.group(1))
-assert len(d['scenes'])==24,len(d['scenes'])
+assert len(d['scenes'])==25,len(d['scenes'])
 assert len(d['units'])==6,len(d['units'])
 assert len(d['quiz'])==18,len(d['quiz'])
 assert len(d['project']['ar'])==len(d['project']['en'])==6
 assert len(d['glossary'])>=20
 assert set(x['unit'] for x in d['scenes'])=={1,2,3,4,5,6}
-assert [x['id'] for x in d['scenes']]==[f'L03-C{i:02}' for i in range(1,25)]
+assert [x['id'] for x in d['scenes']]==[f'L03-C{i:02}' for i in range(1,26)]
 for idx,scene in enumerate(d['scenes'],1):
     assert scene['title']['ar'] and scene['title']['en'],idx
     assert scene['objective']['ar'] and scene['objective']['en'],idx
@@ -44,7 +44,7 @@ with sync_playwright() as p:
         page.locator('#lecture-links [data-lecture="3"]').click()
         assert page.locator('#scene-title').is_visible()
         assert page.locator('#header-lecture-select').input_value()=='3'
-        assert page.locator('#concept-list [data-open-scene]').count()==24
+        assert page.locator('#concept-list [data-open-scene]').count()==25
         page.locator('#lang-toggle').click()
         assert page.locator('html').get_attribute('lang')=='en'
         page.locator('#theme-toggle').click()
@@ -54,4 +54,4 @@ with sync_playwright() as p:
         assert page.locator('#scene-title').is_visible()
         page.close()
     browser.close()
-print('PASS L03 24 scenes / 6 units / 18 questions; quiz mapping / bilingual / browser routes')
+print('PASS L03 25 scenes / 6 units / 18 questions; quiz mapping / bilingual / browser routes')

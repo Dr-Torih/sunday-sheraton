@@ -40,6 +40,14 @@ with sync_playwright() as p:
                const opts=[...modal.querySelectorAll('.quiz-option')].map(x=>x.getBoundingClientRect());
                return opts.every(r=>r.top>=box.top-2&&r.bottom<=box.bottom+3);
             }""")
+            if not visible:
+              print("QUESTION VIEWPORT DIAGNOSTIC",json.dumps(page.locator("#quiz-modal").evaluate("""(modal)=>{
+               const sc=modal.querySelector(".quiz-scroll"),r=sc.getBoundingClientRect();
+               return {viewport:innerHeight,panel:modal.querySelector(".quiz-panel").getBoundingClientRect().height,
+                scrollTop:sc.scrollTop,clientHeight:sc.clientHeight,scrollHeight:sc.scrollHeight,
+                scrollRect:{top:r.top,bottom:r.bottom},
+                choiceRects:[...modal.querySelectorAll(".quiz-option")].map(x=>({top:x.getBoundingClientRect().top,bottom:x.getBoundingClientRect().bottom,height:x.getBoundingClientRect().height,text:x.textContent.length}))}
+              }"""),ensure_ascii=False),flush=True)
             check(f"Mobile L{lecture}/Q{idx+1} four options fit without scroll",visible)
         check(f"{width}/L{lecture} balanced correct letters",max(distribution.values())-min(distribution.values())<=1 and len(distribution)==4)
         page.locator("#close-quiz").click()

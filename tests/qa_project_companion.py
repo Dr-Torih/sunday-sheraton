@@ -154,6 +154,43 @@ with sync_playwright() as p:
     check("quick application box visible",page.locator("#project-application").is_visible())
     page.close()
 
+    # P1 screenshot: a closed stage must remain compact beside an open stage.
+    # P1 browser Back: guide drilling stays in Project; returning to Study
+    # restores the actual lecture, concept and reading position.
+    page=browser.new_page(viewport={"width":1440,"height":900})
+    page.goto(BASE+"?page=project",wait_until="networkidle")
+    check("desktop journey has no stretched empty cards",
+          page.locator("#project-decision-journey .mdj-list").evaluate("(e)=>getComputedStyle(e).gridTemplateColumns.split(' ').length === 1"))
+    check("closed project stage is compact",
+          page.locator("#project-decision-journey details[data-journey-stage='2']").evaluate("(e)=>e.getBoundingClientRect().height < 120"))
+    check("8 stage labels are free of collapsed blank panels",
+          page.locator("#project-decision-journey details[data-journey-stage='2']").evaluate("(e)=>e.getBoundingClientRect().height < 120"))
+    stage3=page.locator("#project-decision-journey details[data-journey-stage='3']")
+    stage3.locator("summary").click()
+    stage3.scroll_into_view_if_needed()
+    before=stage3.evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")
+    stage3.locator("[data-guide-section='evidence']").click()
+    page.wait_for_function("document.querySelector('#pc-guide-evidence')?.open === true")
+    page.go_back(wait_until="domcontentloaded")
+    check("back from guide stays within Project",page.locator("body").get_attribute("data-site-page")=="project")
+    check("back from guide returns to same stage",page.locator("#project-decision-journey details[data-journey-stage='3']").get_attribute("open") is not None)
+    check("back from guide restores stage viewport",abs(stage3.evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")-before)<160)
+    page.goto(BASE+"?page=study",wait_until="networkidle")
+    page.locator("#header-lecture-select").select_option("2")
+    for _ in range(5):page.locator("#next-scene").click()
+    scene_name=page.locator("#scene-title").inner_text()
+    prior_position=page.locator("#scene-title").evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")
+    page.locator("#site-nav a[href='#project']").click()
+    page.wait_for_function("document.body.dataset.sitePage==='project'")
+    page.go_back(wait_until="domcontentloaded")
+    check("browser Back returns to Study",page.locator("body").get_attribute("data-site-page")=="study")
+    check("browser Back returns to same lecture",page.locator("#header-lecture-select").input_value()=="2")
+    check("browser Back returns to same concept",page.locator("#scene-title").inner_text()==scene_name)
+    check("browser Back restores reader viewport",abs(page.locator("#scene-title").evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")-prior_position)<160)
+    page.go_forward(wait_until="domcontentloaded")
+    check("browser Forward restores Project view",page.locator("body").get_attribute("data-site-page")=="project")
+    page.close()
+
     def contrast_ratio(page,fg_sel,bg_sel):
         return page.evaluate("""([fgSel,bgSel])=>{
           const parse=(v)=>v.match(/[0-9.]+/g).slice(0,3).map(Number);

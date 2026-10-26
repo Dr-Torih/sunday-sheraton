@@ -183,7 +183,7 @@ with sync_playwright() as p:
         const el=document.querySelector('#project-decision-journey details[data-journey-stage="3"]');
         return {before,after:Math.round(el.getBoundingClientRect().top),scroll:Math.round(scrollY),state:history.state,url:location.href,viewport:innerHeight,docHeight:document.documentElement.scrollHeight,open:el.open}
     }""",before),ensure_ascii=False))
-    page.wait_for_function("(y)=>Math.abs(Math.round(document.querySelector('#project-decision-journey details[data-journey-stage=3]').getBoundingClientRect().top)-y)<160",arg=before)
+    page.wait_for_function("(y)=>Math.abs(Math.round(document.querySelector('#project-decision-journey details[data-journey-stage=\"3\"]').getBoundingClientRect().top)-y)<160",arg=before)
     check("back from guide restores stage viewport",abs(stage3.evaluate("(e)=>Math.round(e.getBoundingClientRect().top)")-before)<160)
     page.goto(BASE+"?page=study",wait_until="networkidle")
     page.locator("#header-lecture-select").select_option("2")

@@ -70,11 +70,12 @@ with sync_playwright() as p:
 
     page=browser.new_page(viewport={"width":1440,"height":900})
     page.goto(BASE+"?page=study",wait_until="networkidle")
-    check("first concept retains short project bridge",page.locator("#project-application").is_visible())
+    check("no repeated project panel inside concepts",page.locator("#project-application").count()==0)
     for _ in range(4):page.locator("#next-scene").click()
-    check("L01-C05 bridge present",page.locator("#project-application").is_visible())
-    page.locator("[data-project-journey]").click()
-    check("bridge opens primary project journey",page.locator("body").get_attribute("data-site-page")=="project" and page.locator("#project-decision-journey").is_visible())
+    check("L01-C05 concept retains teaching content",page.locator("#scene-content").is_visible())
+    check("no repeat project box in L01-C05",page.locator("#project-application").count()==0)
+    page.goto(BASE+"?page=project",wait_until="networkidle")
+    check("eight-stage journey is the primary Project",page.locator("#project-decision-journey").is_visible())
     check("no redundant companion section",page.locator("#project-companion-overview").count()==0)
     check("no redundant quick-links section",page.locator("#pc-quick-links").count()==0)
     check("no redundant checklist",page.locator("#checklist-items").count()==0)
@@ -113,25 +114,18 @@ with sync_playwright() as p:
     check("native guide layout no overflow in English",page.evaluate("document.documentElement.scrollWidth<=innerWidth+2"))
     page.close()
 
-    # FULL-LECTURE APPLICATION COVERAGE (owner-approved extension).
+    # Existing 55 lecture Concepts stay intact, but now have NO redundant project boxes.
     page=browser.new_page(viewport={"width":1440,"height":900})
     page.goto(BASE+"?page=study",wait_until="networkidle")
-    check("new accessible contrast component mounted",page.locator("#pc-application-contrast-v2").count()==1)
     for lecture,total in [(1,25),(2,30)]:
         page.locator("#header-lecture-select").select_option(str(lecture))
-        page.wait_for_function("(n)=>document.querySelector('#header-lecture-select').value===String(n)",arg=lecture)
         for n in range(1,total+1):
-            if n>1:
-                page.locator("#next-scene").click()
-            expect_id=f"L{lecture:02d}-C{n:02d}"
-            check(f"{expect_id} contextual note exists",page.locator("#project-application").is_visible())
-            check(f"{expect_id} mapped to current concept",expect_id in page.locator("#project-application .pc-app-id").inner_text())
-            check(f"{expect_id} distinct learning-to-project explanation",len(page.locator("#project-application .pc-inline-note").inner_text().strip())>35)
-            check(f"{expect_id} one relevant navigable action",page.locator("#project-application button.pc-inline-link").count()==1)
-    check("all 55 concept notes covered",page.locator("#project-application .pc-app-id").inner_text()=="L02-C30")
+            if n>1:page.locator("#next-scene").click()
+            check(f"L{lecture:02d}-C{n:02d} teaching remains",page.locator("#scene-content").is_visible())
+            check(f"L{lecture:02d}-C{n:02d} no duplicate project bridge",page.locator("#project-application").count()==0)
     page.goto(BASE+"?page=project",wait_until="networkidle")
-    check("all 55 notes feed one primary journey",page.locator("#project-decision-journey details[data-journey-stage]").count()==8)
-    check("no parallel examples or legacy checklist",page.locator("#pc-extra-resources,#pc-quick-links,#project-companion-overview,#checklist-items").count()==0)
+    check("eight-stage project is sole cumulative workflow",page.locator("#project-decision-journey details[data-journey-stage]").count()==8)
+    check("no parallel examples/checklist",page.locator("#pc-extra-resources,#pc-quick-links,#project-companion-overview,#checklist-items").count()==0)
     page.close()
 
     # P1 screenshot: a closed stage must remain compact beside an open stage.
@@ -212,34 +206,19 @@ with sync_playwright() as p:
     check("English work instructions are readable","How to write" in stage.inner_text())
     page.close()
 
-    def contrast_ratio(page,fg_sel,bg_sel):
-        return page.evaluate("""([fgSel,bgSel])=>{
-          const parse=(v)=>v.match(/[0-9.]+/g).slice(0,3).map(Number);
-          const linear=(v)=>{const x=v/255;return x<=.04045?x/12.92:Math.pow((x+.055)/1.055,2.4)};
-          const L=(rgb)=>{const a=parse(rgb).map(linear);return .2126*a[0]+.7152*a[1]+.0722*a[2]};
-          const f=L(getComputedStyle(document.querySelector(fgSel)).color);
-          const b=L(getComputedStyle(document.querySelector(bgSel)).backgroundColor);
-          return (Math.max(f,b)+.05)/(Math.min(f,b)+.05);
-        }""",[fg_sel,bg_sel])
-
     for width in [320,390,768,1024,1440]:
         page=browser.new_page(viewport={"width":width,"height":850})
         page.goto(BASE+"?page=study",wait_until="networkidle")
         page.locator("#next-scene").click()
         for theme in ["light","dark"]:
             if page.locator("body").get_attribute("data-theme")!=theme:page.locator("#theme-toggle").click()
-            check(f"{width} {theme} contextual box on L01-C02",page.locator("#project-application").is_visible())
-            check(f"{width} {theme} text contrast >=7",contrast_ratio(page,"#project-application .pc-inline-note","#project-application")>=7)
-            check(f"{width} {theme} heading contrast >=7",contrast_ratio(page,"#project-application h4","#project-application")>=7)
+            check(f"{width} {theme} no old lecture-project panel",page.locator("#project-application").count()==0)
             check(f"{width} {theme} no horizontal overflow",page.evaluate("document.documentElement.scrollWidth<=innerWidth+2"))
-            check(f"{width} {theme} action touch target",page.locator("#project-application button").evaluate("(e)=>e.getBoundingClientRect().height>=44"))
-            if width==390:page.screenshot(path=str(OUT/f"pc-application-l01-c02-390-{theme}.png"))
         page.locator("#header-lecture-select").select_option("2")
         page.locator("#next-scene").click()
-        check(f"{width} dark L02-C02 application visible",page.locator("#project-application").is_visible())
-        check(f"{width} dark L02-C02 no overflow",page.evaluate("document.documentElement.scrollWidth<=innerWidth+2"))
+        check(f"{width} L02 study still visible",page.locator("#scene-content").is_visible())
         page.locator("#lang-toggle").click()
-        check(f"{width} EN L02-C02 application text",len(page.locator("#project-application .pc-inline-note").inner_text())>40)
+        check(f"{width} English study content remains",len(page.locator("#scene-content").inner_text())>40)
         page.close()
     browser.close()
 (OUT/"qa-project-companion.json").write_text(json.dumps(results,ensure_ascii=False,indent=2))

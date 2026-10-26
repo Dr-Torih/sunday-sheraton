@@ -531,7 +531,7 @@
   const guideSections=[
     ['start','مقدمة المشروع','Project Overview'],
     ['idea','فكرة المشروع','Project Idea'],
-    ['journey','رحلة المشروع','Project Journey'],
+    ['journey','خريطة المحاضرات (L01–L06)','Lecture Roadmap (L01–L06)'],
     ['deliverables','التسليمات','Deliverables'],
     ['evidence','البحث والأدلة','Evidence & Research'],
     ['plan','الخطة والقوالب','Plan & Templates'],

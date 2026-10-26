@@ -35,8 +35,8 @@ jobs:
           python3 tests/qa_portal_browser.py
           python3 tests/qa_portal_release.py
           python3 tests/qa_bidi_concept_flow.py
-          python3 tests/qa_project_companion.py
           python3 tests/qa_owner_oct26.py
+          python3 tests/qa_project_companion.py
           python3 tests/qa_quiz_focus.py
           python3 tests/qa_nav_contrast.py
           python3 tests/qa_nav_single_active.py

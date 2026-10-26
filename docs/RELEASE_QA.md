@@ -117,6 +117,11 @@ Reported screen: Lecture 02 · Unit 05 / Concept 19; source stores `Data → Pat
 - Additional acceptance before merge: verify the backdrop dismissal and quiz completion/certificate path via existing QA; visually review screenshots and check for browser console errors. Chromium automated coverage is not proof of VoiceOver, Safari, Firefox or WCAG-wide compliance.
 - **Release status:** branch proposal only. Record CI run and owner review here before merge; do not infer live-site behavior from an unmerged PR.
 
+## Project section navigation QA — owner follow-up, 25 Oct 2026
+
+- `python3 tests/qa_project_navigation.py` checks only three Project section links, no mixed filter/back actions, six unhidden worked cases, link destination existence, visible target heading after click beneath the current sticky header, keyboard focus on heading, page route unchanged, all widths 320/390/768/1440 × Arabic/English × Light/Dark, and native Guide subsection focus/scroll. Screenshots and the JSON report are collected in the existing PR-only browser QA artifact.
+- Original `tests/qa_product_design_batch.py` is updated to assert the revised owner decision rather than retaining obsolete five-button assumptions. No quiz/content/canonical Guide source changed; keep the release integrity gate.
+
 ## Product Design audit integration — PR #22, 25 Oct 2026
 
 The integration branch inherits C01 checks and adds `tests/qa_nav_contrast.py`, `tests/qa_nav_single_active.py`, `tests/qa_product_design_batch.py`, and `tests/qa_offline_preview.py`, run inside the existing GitHub Actions Chromium PR workflow. Real browser acceptance spans 320/390/768/1440px × AR/EN × Light/Dark, Study/Review/Project routing and History, current lecture Project cards, optional both/current filter, return-to-concept navigation, user-led completion, physical text bounds, LTR Marketing Process, and optional previous-unit recall (attempt before original takeaways become visible). Save screenshots and JSON results in the CI artifacts. Existing `tests/verify_study_book.py` protects approved CSS and both course payloads.

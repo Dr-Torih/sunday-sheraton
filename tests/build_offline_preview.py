@@ -2,6 +2,7 @@
 """Build a single-file, browser-openable C01 owner preview; never rewrite production sources."""
 from __future__ import annotations
 import json
+import base64
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +32,15 @@ def build() -> Path:
     offline_companion = companion.replace(GUIDE_REQUEST, OFFLINE_RESPONSE)
     runtime = "<script>\n" + offline_companion + "\n</script>"
     preview = html.replace(SCRIPT_TAG, guide_source + "\n" + runtime)
+    # Embed the approved public gallery WebP crops only in the stand-alone owner preview.
+    # Production keeps the same lightweight relative image URLs under assets/class-moments/.
+    for frame in range(1, 18):
+        rel = f"assets/class-moments/class-moment-{frame:02d}.webp"
+        asset = ROOT / rel
+        if asset.exists():
+            uri = "data:image/webp;base64," + base64.b64encode(asset.read_bytes()).decode("ascii")
+            preview = preview.replace(rel, uri)
+
     assert SCRIPT_TAG not in preview
     assert GUIDE_REQUEST not in preview
     assert guide_literal in preview

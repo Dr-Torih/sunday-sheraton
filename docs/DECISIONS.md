@@ -92,3 +92,7 @@ Owner approved a slow, level, non-clickable photo strip immediately below the Su
 ## 2026-10-28 — Owner gallery frame and control simplification
 
 Replace the back-facing classroom slot 17 with a face-first alternate crop using an already published, owner-supplied shot; remove the gallery Play/Pause control and keep continuous default autoplay. Preserve reduced-motion accessibility (animation off with horizontal manual scroll on opted-in systems), 17 visible image slots, typography, teaching content and lesson interaction. Prepare in review PR without automatic merge; verify face visibility and browser behavior before publication.
+
+## 2026-10-28 — Mobile gallery motion regression correction
+
+Owner reported that classroom photos appeared frozen on mobile and explicitly required automatic motion for students studying on phones. Verified source includes an OS `prefers-reduced-motion` rule that disabled all gallery animation and a 170s mobile cycle that could look stationary. On mobile widths through 650px, default duration is 100s so movement is noticeable; reduced-motion mobile uses slower 175s continuous movement, accepting a documented accessibility trade-off. Tablet and desktop continue to stop animation when reduced motion is preferred, with manual scroll. Preserve no Play/Pause button, non-clickable photos, 17 frames, original teaching data, project and assessment functionality. Test regular mobile and simulated reduced-motion before deployment; commit through review PR, not direct publishing.

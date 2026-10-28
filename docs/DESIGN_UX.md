@@ -84,10 +84,11 @@ Owner gate: full Chromium and content-integrity suite, screenshot review, manual
 ## Class Moments header gallery — owner approved 28 Oct 2026
 
 - Immediately below the shared sticky header, before page content, and in normal document flow.
-- 17 distinct optimized WebP editorial crops from nine owner-provided photos. Faces are not altered. Level, uniform-height cards, restrained rounding, and no rotation.
+- 17 frames from owner-provided classroom photographs. Frame 17 no longer shows the back-facing group composition; it reuses approved image `class-moment-11.webp` with a tighter face-first crop, without changing any students' faces or uploading new photography.
 - Slow, infinitely linear marquee: 176 seconds on desktop, 170 seconds on mobile; duplicate frame group is aria-hidden for a seamless repeat.
-- The photos are not clickable and open no zoom, modal or detail page. One bilingual Pause/Play button remains accessible by keyboard.
-- Reduced-motion preference stops animation and allows manual scroll; strip is hidden when printing; no document-level horizontal overflow.
+- The gallery starts automatically and has no visible or hidden Play/Pause control. Images remain non-clickable and open no zoom, modal or detail page.
+- Reduced-motion preference stops animation and allows manual scroll as an accessibility exception; strip is hidden when printing; no document-level horizontal overflow.
 - Preserve source lectures, AR/EN study content, assessment keys, quiz/certificates, progress, Project Guide and navigation.
 - Gallery images reside under assets/class-moments/; the offline owner-preview generator embeds those files only for local demonstration.
 - Public publishing: before merging, the owner must ensure permissions/appropriate notice for students depicted. Do not add names, grades or private learner records to images/captions. Review PR only; no automatic merge.
+

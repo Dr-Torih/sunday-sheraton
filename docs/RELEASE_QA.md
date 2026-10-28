@@ -137,6 +137,10 @@ The corrected Back interaction passed in CI. The next exposed assertion found al
 
 ## Class Moments verification — 28 Oct 2026
 
-Run tests/qa_class_moments.py under the Portal Visual QA workflow on each PR. Acceptance covers 17 distinct gallery frames from nine photos, loaded image bytes, continuous slow motion, AR/EN label switching, theme, desktop/tablet/mobile dimensions, no zoom, working Pause/Play, reduced-motion accessibility, no horizontal overflow or page errors. The visual QA artifact contains class-moments-desktop.png and class-moments-mobile.png.
+Run tests/qa_class_moments.py under the Portal Visual QA workflow on each PR. Acceptance covers 17 gallery slots from owner-provided photos, loaded image bytes including the replacement face-first frame, continuous slow default autoplay, AR/EN gallery labels, theme, desktop/tablet/mobile dimensions, no zoom, no Pause/Play controls, reduced-motion accessibility, no horizontal overflow or page errors. The visual QA artifact contains class-moments-desktop.png and class-moments-mobile.png.
 
 Keep frozen lesson/data hashes, Project integration, quiz, saved certificate and normal printing intact. GitHub Pages is public: the owner must confirm appropriate permissions for the students photographed before merging. Browser tests cannot establish permission or publication consent.
+
+## Gallery face-first crop & autoplay — 28 Oct 2026
+
+Verify the back-facing `class-moment-17.webp` no longer appears in the gallery: the seventeenth slot reuses an existing face-forward shot, `class-moment-11.webp`, with a distinct face-first composition. The strip must automatically animate in normal-motion desktop/mobile views without any Pause/Play UI or toggled state. Preserve AR/EN, both themes, exactly 17 slots, no image click/zoom, print hiding, no horizontal overflow and OS reduced-motion manual-scroll behavior. `tests/qa_class_moments.py` now asserts these changes. No academic content or assessment code is changed. Owner visual QA and student photo permission remain required for public publishing.

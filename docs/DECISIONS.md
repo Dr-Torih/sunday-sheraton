@@ -88,3 +88,7 @@ Scope: repair the Sunday quiz certificate PDF pagination only, preserving its de
 ## 2026-10-28 — Class Moments header gallery
 
 Owner approved a slow, level, non-clickable photo strip immediately below the Sunday Sheraton portal header. Retains 17 varied editorial crops from nine supplied classroom photos, responsive across AR/EN and Light/Dark, with pause and reduced-motion controls. Feature is isolated from lesson, quiz, certificate and project logic; PR for owner review only. Do not expose learner names, grades, transcripts or unapproved media. Public photo permission is a manual acceptance gate.
+
+## 2026-10-28 — Owner gallery frame and control simplification
+
+Replace the back-facing classroom slot 17 with a face-first alternate crop using an already published, owner-supplied shot; remove the gallery Play/Pause control and keep continuous default autoplay. Preserve reduced-motion accessibility (animation off with horizontal manual scroll on opted-in systems), 17 visible image slots, typography, teaching content and lesson interaction. Prepare in review PR without automatic merge; verify face visibility and browser behavior before publication.

@@ -56,7 +56,7 @@ with sync_playwright() as p:
   page.goto(BASE+"?page=study",wait_until="networkidle")
   track=page.locator(".cm-track")
   check("reduced-motion phone still auto-animates",track.evaluate("(e)=>{const s=getComputedStyle(e);return s.animationName==='cm-slide'&&s.animationPlayState==='running'}"))
-  check("reduced-motion phone slower 135s speed",track.evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-175)<0.1"))
+  check("reduced-motion phone slower 135s speed",track.evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-135)<0.1"))
   check("reduced-motion phone keeps duplicated seamless frames",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display!=='none'"))
   before=track.evaluate("(e)=>getComputedStyle(e).transform")
   page.wait_for_timeout(1200)

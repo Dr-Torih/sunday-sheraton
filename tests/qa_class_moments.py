@@ -30,7 +30,8 @@ with sync_playwright() as p:
     check(device+" 17 accessible images",page.locator(".cm-group").first.locator("img[alt]").count()==17)
     check(device+" no zoom/lightbox or clickable cards",page.locator("#cm-gallery a,#cm-gallery .lightbox,#cm-gallery .cm-photo button").count()==0)
     check(device+" consistent card heights",page.locator(".cm-group").first.locator(".cm-photo").evaluate_all("(els)=>Math.max(...els.map(x=>x.clientHeight))-Math.min(...els.map(x=>x.clientHeight))<=1"))
-    check(device+" slow linear animation",page.locator(".cm-track").evaluate("(e)=>{const s=getComputedStyle(e);return s.animationTimingFunction==='linear'&&Number.parseFloat(s.animationDuration)>=160}"))
+    expected_duration=100 if width<=650 else 176
+    check(device+f" linear animation uses {expected_duration}s contract",page.locator(".cm-track").evaluate("(e,seconds)=>{const s=getComputedStyle(e);return s.animationTimingFunction==='linear'&&Math.abs(Number.parseFloat(s.animationDuration)-seconds)<0.1}",expected_duration))
     check(device+" no unexpected page horizontal overflow",page.evaluate("document.documentElement.scrollWidth<=innerWidth+3"))
     before=page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).transform")
     page.wait_for_timeout(300)

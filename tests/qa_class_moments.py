@@ -65,6 +65,17 @@ with sync_playwright() as p:
   check("reduced-motion phone no pause/play UI",page.locator("#cm-toggle,.cm-control").count()==0)
   page.close()
 
+  for width in (390, 768, 1024):
+    page=browser.new_page(viewport={"width":width,"height":900},reduced_motion="reduce")
+    page.goto(BASE+"?page=study",wait_until="networkidle")
+    track=page.locator(".cm-track")
+    check(f"{width} reduced-motion strip animates",track.evaluate("e=>getComputedStyle(e).animationName==='cm-slide'"))
+    before=track.evaluate("e=>getComputedStyle(e).transform")
+    page.wait_for_timeout(1000)
+    check(f"{width} reduced-motion position changes",before!=track.evaluate("e=>getComputedStyle(e).transform"))
+    check(f"{width} manual horizontal fallback",page.locator(".cm-viewport").evaluate("e=>{e.scrollLeft=200;return e.scrollLeft>0}"))
+    page.close()
+
   # Respect reduced-motion on larger layouts with a manually scrollable strip.
   page=browser.new_page(viewport={"width":1440,"height":900},reduced_motion="reduce")
   page.goto(BASE+"?page=study",wait_until="networkidle")

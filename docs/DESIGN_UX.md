@@ -79,3 +79,15 @@ This is the **active source of truth for all Product Design UX repair decisions*
 - **O03:** current worked cards form 3×2 at desktop where space allows and reflow on mobile; quiz number targets are enlarged without hiding questions or altering assessment state.
 
 Owner gate: full Chromium and content-integrity suite, screenshot review, manual Safari/VoiceOver verification where available, and explicit release authorization. Do not merge this batch merely because checks pass.
+
+
+## Class Moments header gallery — owner approved 28 Oct 2026
+
+- Immediately below the shared sticky header, before page content, and in normal document flow.
+- 17 distinct optimized WebP editorial crops from nine owner-provided photos. Faces are not altered. Level, uniform-height cards, restrained rounding, and no rotation.
+- Slow, infinitely linear marquee: 176 seconds on desktop, 170 seconds on mobile; duplicate frame group is aria-hidden for a seamless repeat.
+- The photos are not clickable and open no zoom, modal or detail page. One bilingual Pause/Play button remains accessible by keyboard.
+- Reduced-motion preference stops animation and allows manual scroll; strip is hidden when printing; no document-level horizontal overflow.
+- Preserve source lectures, AR/EN study content, assessment keys, quiz/certificates, progress, Project Guide and navigation.
+- Gallery images reside under assets/class-moments/; the offline owner-preview generator embeds those files only for local demonstration.
+- Public publishing: before merging, the owner must ensure permissions/appropriate notice for students depicted. Do not add names, grades or private learner records to images/captions. Review PR only; no automatic merge.

@@ -1126,6 +1126,30 @@ body.cert-print-mode #certificate-print-sheet .cert2026-seal strong{font:900 14p
 </style>
 
 <style id="certificate-rtl-correction">body.cert-print-mode #certificate-print-sheet .cert2026[lang="ar"] .cert2026-paper{direction:rtl}body.cert-print-mode #certificate-print-sheet .cert2026[lang="en"] .cert2026-paper{direction:ltr}</style>
+<style id="cm-gallery-style">
+/* Approved October 2026 classroom photo strip, under header. */
+.cm-gallery{--cm-h:158px;--cm-gap:12px;--cm-duration:176s;position:relative;overflow:hidden;isolation:isolate;background:var(--surface,#f7f9fa);border-bottom:1px solid var(--border,#dce2e8);padding:13px 0 14px;direction:ltr}
+.cm-gallery *{box-sizing:border-box}
+.cm-viewport{direction:ltr;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent 0%,#000 3.2%,#000 96.8%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 3.2%,#000 96.8%,transparent 100%)}
+.cm-track{display:flex;align-items:center;width:max-content;gap:0;animation:cm-slide var(--cm-duration) linear infinite;will-change:transform}
+.cm-group{display:flex;align-items:center;gap:var(--cm-gap);padding-inline-end:var(--cm-gap);flex:0 0 auto}
+.cm-photo{position:relative;flex:0 0 auto;height:var(--cm-h);width:var(--cm-w,235px);margin:0;overflow:hidden;background:#d5dce1;border:1px solid #d1dae0;border-radius:8px;box-shadow:0 2px 6px #182d3e13;cursor:default;transform:none!important;user-select:none}
+.cm-photo img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+.cm-photo::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px #ffffff2b;pointer-events:none;border-radius:inherit}
+.cm-control{position:absolute;inset-inline-start:14px;bottom:23px;z-index:2;display:flex;align-items:center;gap:6px;border:1px solid #e8eef2;background:#f9fcfdee;color:#1e4759;box-shadow:0 2px 9px #09192326;border-radius:7px;min-height:33px;padding:4px 9px;cursor:pointer;font:700 11px/1.2 inherit;direction:rtl}
+.cm-control:hover{background:#fff}
+.cm-control:focus-visible{outline:3px solid #098ea5;outline-offset:3px}
+.cm-control .cm-icon{font-size:15px;line-height:1}
+.cm-gallery[dir=rtl] .cm-control{inset-inline-start:14px}
+@keyframes cm-slide{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+.cm-gallery[data-paused=true] .cm-track{animation-play-state:paused}
+body[data-theme=dark] .cm-gallery{background:#122431;border-bottom-color:#33454e}
+body[data-theme=dark] .cm-photo{border-color:#344852;box-shadow:0 2px 9px #06152070}
+body[data-theme=dark] .cm-control{background:#193540ed;border-color:#446472;color:#edf5f8}
+@media(max-width:650px){.cm-gallery{--cm-h:123px;--cm-gap:9px;--cm-duration:170s;padding:10px 0}.cm-photo{width:calc(var(--cm-w,235px)*.74);border-radius:7px}.cm-control{bottom:16px;left:9px;min-height:29px;padding:3px 7px;font-size:10px}.cm-viewport{mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent)}}
+@media(prefers-reduced-motion:reduce){.cm-track{animation:none!important}.cm-viewport{overflow-x:auto;scrollbar-width:thin}.cm-group[aria-hidden=true]{display:none!important}.cm-control{display:none}}
+@media print{.cm-gallery{display:none!important}}
+</style>
 </head>
 <body data-theme="light">
 <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg">
@@ -1168,6 +1192,10 @@ body.cert-print-mode #certificate-print-sheet .cert2026-seal strong{font:900 14p
 </div>
 <div class="site-nav" id="site-nav"><div class="site-nav-inner"><a href="#study" class="navlink active" data-ar="المشاهد التعليمية" data-en="Concept Scenes">المشاهد التعليمية</a><a href="#review" class="navlink" data-ar="المراجعة والاختبار" data-en="Practice & Quiz">المراجعة والاختبار</a><a href="#project" class="navlink" data-ar="مشروع المجموعة" data-en="Group Project">مشروع المجموعة</a><button id="glossary-btn" class="navlink nav-btn"><svg class="svg-icon sm"><use href="#i-glossary"/></svg><span data-ar="المصطلحات" data-en="Glossary">المصطلحات</span></button></div></div>
 </div><!-- /sticky-header -->
+<section id="cm-gallery" class="cm-gallery" aria-label="صور من نقاشات الطلاب داخل المحاضرات" data-paused="false" dir="rtl">
+<div class="cm-viewport" aria-label="شريط صور متحرك ببطء"><div class="cm-track"><div class="cm-group"></div><div class="cm-group" aria-hidden="true"></div></div></div>
+<button class="cm-control" id="cm-toggle" type="button" aria-label="إيقاف حركة الصور" aria-pressed="false"><span class="cm-icon" aria-hidden="true">Ⅱ</span><span class="cm-control-text">إيقاف</span></button>
+</section>
 <main>
 <section class="hero shell" id="overview" hidden aria-hidden="true" aria-labelledby="hero-title">
  <div class="hero-copy">
@@ -2184,4 +2212,36 @@ refreshCompanionScope();
 })();
 </script>
 <script src="project-companion.js" defer></script>
+<script id="cm-gallery-runtime">(()=>{
+'use strict';
+const frames=[{"src":"assets/class-moments/class-moment-01.webp","kind":"wide","ar":"طلاب يتناقشون في مجموعة صغيرة داخل القاعة","en":"Classroom discussion, frame 1"},{"src":"assets/class-moments/class-moment-02.webp","kind":"wide","ar":"عدة مجموعات طلابية تتناقش في الفصل","en":"Classroom discussion, frame 2"},{"src":"assets/class-moments/class-moment-03.webp","kind":"portrait","ar":"لقطة مقربة لأحد المشاركين أثناء حديثه","en":"Classroom discussion, frame 3"},{"src":"assets/class-moments/class-moment-04.webp","kind":"square","ar":"مجموعة طلاب تتبادل الآراء في جانب القاعة","en":"Classroom discussion, frame 4"},{"src":"assets/class-moments/class-moment-05.webp","kind":"wide","ar":"طلاب يتحاورون حول مشروعهم","en":"Classroom discussion, frame 5"},{"src":"assets/class-moments/class-moment-06.webp","kind":"portrait","ar":"لقطة مقربة لأحد المشاركين وهو يستمع","en":"Classroom discussion, frame 6"},{"src":"assets/class-moments/class-moment-07.webp","kind":"square","ar":"مجموعة نقاش أخرى بالقرب من النافذة","en":"Classroom discussion, frame 7"},{"src":"assets/class-moments/class-moment-08.webp","kind":"wide","ar":"طلاب جالسون في حلقة نقاش","en":"Classroom discussion, frame 8"},{"src":"assets/class-moments/class-moment-09.webp","kind":"portrait","ar":"صورة قريبة لطالب يستمع بانتباه","en":"Classroom discussion, frame 9"},{"src":"assets/class-moments/class-moment-10.webp","kind":"square","ar":"أفراد يجلسون في منتصف نقاش طلابي","en":"Classroom discussion, frame 10"},{"src":"assets/class-moments/class-moment-11.webp","kind":"square","ar":"مشاركة طلابية مع إيماءات أثناء الحوار","en":"Classroom discussion, frame 11"},{"src":"assets/class-moments/class-moment-12.webp","kind":"wide","ar":"فريقان طلابيان في نقاش منفصل داخل القاعة","en":"Classroom discussion, frame 12"},{"src":"assets/class-moments/class-moment-13.webp","kind":"square","ar":"نقاش بين عدة طلاب حول طاولة","en":"Classroom discussion, frame 13"},{"src":"assets/class-moments/class-moment-14.webp","kind":"square","ar":"مشاركة أفراد يجلسون في حلقة","en":"Classroom discussion, frame 14"},{"src":"assets/class-moments/class-moment-15.webp","kind":"wide","ar":"مشهد واسع لمناقشة طلابية","en":"Classroom discussion, frame 15"},{"src":"assets/class-moments/class-moment-16.webp","kind":"wide","ar":"مجموعة طلاب تتشارك الحوار وجها لوجه","en":"Classroom discussion, frame 16"},{"src":"assets/class-moments/class-moment-17.webp","kind":"square","ar":"طالبات وطلاب يناقشون مسألة ضمن فرقهم","en":"Classroom discussion, frame 17"}];
+const root=document.getElementById('cm-gallery'),button=document.getElementById('cm-toggle');
+if(!root||!button)return;
+const widthMap={wide:258,square:216,portrait:168};
+const english=()=>document.documentElement.lang==='en';
+for(const group of root.querySelectorAll('.cm-group')){
+ const duplicate=group.getAttribute('aria-hidden')==='true';
+ frames.forEach((shot,i)=>{
+   const figure=document.createElement('figure');figure.className='cm-photo';
+   figure.dataset.frame=String(i+1);figure.style.setProperty('--cm-w',widthMap[shot.kind]+'px');
+   const img=document.createElement('img');img.src=shot.src;img.alt=duplicate?'':(english()?shot.en:shot.ar);
+   img.draggable=false;img.decoding='async';img.loading=duplicate?'lazy':'eager';
+   figure.appendChild(img);group.appendChild(figure);
+ });
+}
+const text=button.querySelector('.cm-control-text'),icon=button.querySelector('.cm-icon');
+function update(){
+ const en=english(),paused=root.dataset.paused==='true';
+ root.dir=document.documentElement.dir==='ltr'?'ltr':'rtl';
+ root.setAttribute('aria-label',en?'Student classroom moments':'صور من نقاشات الطلاب داخل المحاضرات');
+ root.querySelector('.cm-viewport').setAttribute('aria-label',en?'Slow-moving classroom photo strip':'شريط صور متحرك ببطء');
+ button.setAttribute('aria-pressed',String(paused));
+ button.setAttribute('aria-label',paused?(en?'Resume photo movement':'استئناف حركة الصور'):(en?'Pause photo movement':'إيقاف حركة الصور'));
+ text.textContent=paused?(en?'Play':'تشغيل'):(en?'Pause':'إيقاف');icon.textContent=paused?'▶':'Ⅱ';
+ root.querySelectorAll('.cm-group:first-child img').forEach((img,i)=>img.alt=en?frames[i].en:frames[i].ar);
+}
+button.addEventListener('click',()=>{root.dataset.paused=String(root.dataset.paused!=='true');update()});
+new MutationObserver(update).observe(document.documentElement,{attributes:true,attributeFilter:['dir','lang']});
+update();
+})()</script>
 </body></html>

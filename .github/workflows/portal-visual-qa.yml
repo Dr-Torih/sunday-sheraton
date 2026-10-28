@@ -1,7 +1,7 @@
 name: Portal Visual QA (PR only)
 on:
   pull_request:
-    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_quiz_focus.py','tests/qa_nav_contrast.py','tests/qa_nav_single_active.py','tests/qa_product_design_batch.py','tests/qa_owner_oct26.py','tests/qa_certificate_redesign.py','tests/qa_lecture03.py','tests/qa_offline_preview.py','tests/build_offline_preview.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
+    paths: ['index.html','tests/qa_portal_browser.py','tests/qa_portal_release.py','tests/qa_bidi_concept_flow.py','tests/qa_project_companion.py','tests/qa_quiz_focus.py','tests/qa_nav_contrast.py','tests/qa_nav_single_active.py','tests/qa_product_design_batch.py','tests/qa_owner_oct26.py','tests/qa_certificate_redesign.py','tests/qa_lecture03.py','tests/qa_offline_preview.py','tests/qa_class_moments.py','assets/class-moments/**','tests/build_offline_preview.py','project-companion.js','project-guide.html','.github/workflows/portal-visual-qa.yml']
 jobs:
   visual-review:
     runs-on: ubuntu-latest
@@ -43,6 +43,7 @@ jobs:
           python3 tests/qa_nav_single_active.py
           python3 tests/qa_product_design_batch.py
           python3 tests/qa_lecture03.py
+          python3 tests/qa_class_moments.py
           python3 tests/qa_offline_preview.py
       - name: Package single-file owner browser preview
         if: always()

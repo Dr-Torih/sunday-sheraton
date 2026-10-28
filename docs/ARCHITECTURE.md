@@ -91,3 +91,7 @@ On draft PR #18, the immutable two embedded lecture blocks and the original desi
 ## Certificate page selection repair — 26 Oct 2026
 
 Only in `cert-print-mode`, both HTML/body and the certificate sheet use the existing `cert2026page` named A4 landscape page. Keeping the root flow on that page avoids a transition from the ordinary portrait book page before the certificate. Ordinary book printing and certificate markup remain unchanged.
+
+
+### Classroom gallery mobile motion — 28 Oct 2026
+The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.

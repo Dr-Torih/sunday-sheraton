@@ -1143,9 +1143,11 @@ body[data-theme=dark] .cm-photo{border-color:#344852;box-shadow:0 2px 9px #06152
 @media(max-width:650px){.cm-gallery{--cm-h:123px;--cm-gap:9px;--cm-duration:100s;padding:10px 0}.cm-photo{width:calc(var(--cm-w,235px)*.74);border-radius:7px}.cm-viewport{mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent)}}
 /* The mobile gallery is meaningful classroom content: keep its photos moving
    by default even on phones requesting less motion, but reduce their speed.
-   On wider screens, preserve the stationary, manually scrollable fallback. */
-@media(prefers-reduced-motion:reduce) and (min-width:651px){.cm-track{animation:none!important}.cm-viewport{overflow-x:auto;scrollbar-width:thin}.cm-group[aria-hidden=true]{display:none!important}}
-@media(prefers-reduced-motion:reduce) and (max-width:650px){.cm-gallery{--cm-duration:135s}.cm-gallery .cm-track{animation:cm-slide var(--cm-duration) linear infinite!important}}
+   On desktop screens, preserve the stationary, manually scrollable fallback.
+   Touch devices can also swipe if the browser suspends animation. */
+@media(prefers-reduced-motion:reduce) and (min-width:1025px){.cm-track{animation:none!important}.cm-viewport{overflow-x:auto;scrollbar-width:thin}.cm-group[aria-hidden=true]{display:none!important}}
+@media(prefers-reduced-motion:reduce) and (max-width:1024px){.cm-gallery{--cm-duration:135s}.cm-gallery .cm-track{animation:cm-slide var(--cm-duration) linear infinite!important}}
+@media(max-width:1024px){.cm-viewport{overflow-x:auto;touch-action:pan-x pan-y;scrollbar-width:none;-webkit-overflow-scrolling:touch}.cm-viewport::-webkit-scrollbar{display:none}}
 @media print{.cm-gallery{display:none!important}}
 </style>
 </head>

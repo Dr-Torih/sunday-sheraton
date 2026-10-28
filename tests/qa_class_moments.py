@@ -66,10 +66,10 @@ with sync_playwright() as p:
   page.close()
 
   # Respect reduced-motion on larger layouts with a manually scrollable strip.
-  page=browser.new_page(viewport={"width":768,"height":900},reduced_motion="reduce")
+  page=browser.new_page(viewport={"width":1440,"height":900},reduced_motion="reduce")
   page.goto(BASE+"?page=study",wait_until="networkidle")
-  check("reduced motion tablet disables movement",page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationName==='none'"))
-  check("reduced motion tablet has manual scroll and no duplicate cards",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display==='none'"))
+  check("reduced motion desktop disables movement",page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationName==='none'"))
+  check("reduced motion desktop has manual scroll and no duplicate cards",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display==='none'"))
   page.close()
   browser.close()
 (OUT/"class-moments-qa.json").write_text(json.dumps({"total":len(checks),"passed":sum(x["passed"] for x in checks),"checks":checks},ensure_ascii=False,indent=2))

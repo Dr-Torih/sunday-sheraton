@@ -146,3 +146,7 @@ Keep frozen lesson/data hashes, Project integration, quiz, saved certificate and
 Mobile autoplay regression (28 Oct): Test 320px and 390px regular-motion viewports, require a running 100s animation and measurable transform change; at 390px with `reduced_motion=reduce`, require running 135s animation (not static) and no Pause/Play UI; at 768px with reduced motion, retain static manually scrollable strip. Preserve all previous invariants.
 
 Verify the back-facing `class-moment-17.webp` no longer appears in the gallery: the seventeenth slot reuses an existing face-forward shot, `class-moment-11.webp`, with a distinct face-first composition. The strip must automatically animate in normal-motion desktop/mobile views without any Pause/Play UI or toggled state. Preserve AR/EN, both themes, exactly 17 slots, no image click/zoom, print hiding, no horizontal overflow and OS reduced-motion manual-scroll behavior. `tests/qa_class_moments.py` now asserts these changes. No academic content or assessment code is changed. Owner visual QA and student photo permission remain required for public publishing.
+
+
+### Classroom gallery mobile motion — 28 Oct 2026
+The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.

@@ -96,3 +96,7 @@ Replace the back-facing classroom slot 17 with a face-first alternate crop using
 ## 2026-10-28 — Mobile gallery motion regression correction
 
 Owner reported that classroom photos appeared frozen on mobile and explicitly required automatic motion for students studying on phones. Verified source includes an OS `prefers-reduced-motion` rule that disabled all gallery animation and a 170s mobile cycle that could look stationary. On mobile widths through 650px, default duration is 100s so movement is noticeable; reduced-motion mobile uses slower 135s continuous movement, accepting a documented accessibility trade-off. Tablet and desktop continue to stop animation when reduced motion is preferred, with manual scroll. Preserve no Play/Pause button, non-clickable photos, 17 frames, original teaching data, project and assessment functionality. Test regular mobile and simulated reduced-motion before deployment; commit through review PR, not direct publishing.
+
+
+### Classroom gallery mobile motion — 28 Oct 2026
+The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.

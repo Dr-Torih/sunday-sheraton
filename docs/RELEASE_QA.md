@@ -137,7 +137,7 @@ The corrected Back interaction passed in CI. The next exposed assertion found al
 
 ## Class Moments verification — 28 Oct 2026
 
-Run tests/qa_class_moments.py under the Portal Visual QA workflow on each PR. Acceptance covers 17 distinct gallery frames from nine photos, loaded image bytes, continuous slow motion, AR/EN label switching, theme, desktop/tablet/mobile dimensions, no zoom, working Pause/Play, reduced-motion accessibility, no horizontal overflow or page errors. The visual QA artifact contains class-moments-desktop.png and class-moments-mobile.png.
+Run tests/qa_class_moments.py under the Portal Visual QA workflow on each PR. Acceptance covers 17 gallery slots from owner-provided photos, loaded image bytes including the replacement face-first frame, continuous slow default autoplay, AR/EN gallery labels, theme, desktop/tablet/mobile dimensions, no zoom, no Pause/Play controls, reduced-motion accessibility, no horizontal overflow or page errors. The visual QA artifact contains class-moments-desktop.png and class-moments-mobile.png.
 
 Keep frozen lesson/data hashes, Project integration, quiz, saved certificate and normal printing intact. GitHub Pages is public: the owner must confirm appropriate permissions for the students photographed before merging. Browser tests cannot establish permission or publication consent.
 

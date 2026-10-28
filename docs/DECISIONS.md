@@ -83,3 +83,8 @@ The owner authorized working on all remaining Product Design recommendations as 
 ## 2026-10-26 — Certificate blank first page (owner requested)
 
 Scope: repair the Sunday quiz certificate PDF pagination only, preserving its design/content. Apply the existing named certificate page to the document root during certificate printing; do not globally change ordinary book print page size. Prepare a PR for the owner to merge manually. Native print-dialog confirmation remains owner acceptance.
+
+
+## 2026-10-28 — Class Moments header gallery
+
+Owner approved a slow, level, non-clickable photo strip immediately below the Sunday Sheraton portal header. Retains 17 varied editorial crops from nine supplied classroom photos, responsive across AR/EN and Light/Dark, with pause and reduced-motion controls. Feature is isolated from lesson, quiz, certificate and project logic; PR for owner review only. Do not expose learner names, grades, transcripts or unapproved media. Public photo permission is a manual acceptance gate.

@@ -1140,8 +1140,12 @@ body.cert-print-mode #certificate-print-sheet .cert2026-seal strong{font:900 14p
 @keyframes cm-slide{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
 body[data-theme=dark] .cm-gallery{background:#122431;border-bottom-color:#33454e}
 body[data-theme=dark] .cm-photo{border-color:#344852;box-shadow:0 2px 9px #06152070}
-@media(max-width:650px){.cm-gallery{--cm-h:123px;--cm-gap:9px;--cm-duration:170s;padding:10px 0}.cm-photo{width:calc(var(--cm-w,235px)*.74);border-radius:7px}.cm-viewport{mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent)}}
-@media(prefers-reduced-motion:reduce){.cm-track{animation:none!important}.cm-viewport{overflow-x:auto;scrollbar-width:thin}.cm-group[aria-hidden=true]{display:none!important}}
+@media(max-width:650px){.cm-gallery{--cm-h:123px;--cm-gap:9px;--cm-duration:100s;padding:10px 0}.cm-photo{width:calc(var(--cm-w,235px)*.74);border-radius:7px}.cm-viewport{mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 2%,#000 98%,transparent)}}
+/* The mobile gallery is meaningful classroom content: keep its photos moving
+   by default even on phones requesting less motion, but reduce their speed.
+   On wider screens, preserve the stationary, manually scrollable fallback. */
+@media(prefers-reduced-motion:reduce) and (min-width:651px){.cm-track{animation:none!important}.cm-viewport{overflow-x:auto;scrollbar-width:thin}.cm-group[aria-hidden=true]{display:none!important}}
+@media(prefers-reduced-motion:reduce) and (max-width:650px){.cm-gallery{--cm-duration:175s}}
 @media print{.cm-gallery{display:none!important}}
 </style>
 </head>

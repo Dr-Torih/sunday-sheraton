@@ -15,7 +15,7 @@ def check(label,condition):
 
 with sync_playwright() as p:
   browser=p.chromium.launch(headless=True,args=["--no-sandbox"])
-  for width,height,device in [(1440,900,"desktop"),(768,900,"tablet"),(390,844,"mobile")]:
+  for width,height,device in [(1440,900,"desktop"),(768,900,"tablet"),(390,844,"mobile"),(320,720,"small-mobile")]:
     page=browser.new_page(viewport={"width":width,"height":height})
     errors=[]
     page.on("pageerror",lambda exc:errors.append(str(exc)))
@@ -36,6 +36,8 @@ with sync_playwright() as p:
     page.wait_for_timeout(300)
     after=page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).transform")
     check(device+" automatically moves",before!=after)
+    if width<=650:
+      check(device+" mobile motion is clearly visible (100s)",page.locator(".cm-track").evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-100)<0.1"))
     check(device+" no pause/play button",page.locator("#cm-toggle,.cm-control").count()==0)
     check(device+" automatic playback",root.get_attribute("data-paused") is None and page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationPlayState==='running'"))
     page.locator(".cm-photo").first.evaluate("(el)=>el.click()")
@@ -44,14 +46,29 @@ with sync_playwright() as p:
     check(device+" switch to English gallery label",root.get_attribute("aria-label")=="Student classroom moments")
     page.locator("#theme-toggle").click()
     check(device+" no runtime errors on language/theme",not errors)
-    if device!="tablet":
+    if device in ("desktop","mobile"):
       page.screenshot(path=str(OUT/f"class-moments-{device}.png"),full_page=False)
     page.close()
 
+  # Mobile autoplay is explicitly requested even when Reduce Motion is active;
+  # use a slower duration than the 100s default, rather than freezing the images.
   page=browser.new_page(viewport={"width":390,"height":844},reduced_motion="reduce")
   page.goto(BASE+"?page=study",wait_until="networkidle")
-  check("reduced motion disables movement",page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationName==='none'"))
-  check("reduced motion has manual scroll and no duplicate cards",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display==='none'"))
+  track=page.locator(".cm-track")
+  check("reduced-motion phone still auto-animates",track.evaluate("(e)=>{const s=getComputedStyle(e);return s.animationName==='cm-slide'&&s.animationPlayState==='running'}"))
+  check("reduced-motion phone slower 175s speed",track.evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-175)<0.1"))
+  check("reduced-motion phone keeps duplicated seamless frames",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display!=='none'"))
+  before=track.evaluate("(e)=>getComputedStyle(e).transform")
+  page.wait_for_timeout(1200)
+  check("reduced-motion phone image strip position changes",before!=track.evaluate("(e)=>getComputedStyle(e).transform"))
+  check("reduced-motion phone no pause/play UI",page.locator("#cm-toggle,.cm-control").count()==0)
+  page.close()
+
+  # Respect reduced-motion on larger layouts with a manually scrollable strip.
+  page=browser.new_page(viewport={"width":768,"height":900},reduced_motion="reduce")
+  page.goto(BASE+"?page=study",wait_until="networkidle")
+  check("reduced motion tablet disables movement",page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationName==='none'"))
+  check("reduced motion tablet has manual scroll and no duplicate cards",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display==='none'"))
   page.close()
   browser.close()
 (OUT/"class-moments-qa.json").write_text(json.dumps({"total":len(checks),"passed":sum(x["passed"] for x in checks),"checks":checks},ensure_ascii=False,indent=2))

@@ -2225,7 +2225,7 @@ for(const group of root.querySelectorAll('.cm-group')){
    const figure=document.createElement('figure');figure.className='cm-photo';
    figure.dataset.frame=String(i+1);figure.style.setProperty('--cm-w',widthMap[shot.kind]+'px');
    const img=document.createElement('img');img.src=shot.src;img.alt=duplicate?'':(english()?shot.en:shot.ar);
-   img.draggable=false;img.decoding='async';img.loading=i<6?'eager':'lazy';
+   img.draggable=false;img.decoding='async';img.loading=duplicate?'lazy':'eager';
    figure.appendChild(img);group.appendChild(figure);
  });
 }

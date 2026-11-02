@@ -150,3 +150,10 @@ Verify the back-facing `class-moment-17.webp` no longer appears in the gallery: 
 
 ### Classroom gallery mobile motion — 28 Oct 2026
 The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.
+
+## 2026-11-02 — Gallery refresh release gate
+
+- 14 owner-approved WebP images are inserted between existing image slots; expect **31 frames** in each duplicated loop group, not 17.
+- Use `tests/qa_class_moments.py` for file-load proof, interleaved order, noninteractive behavior, accessibility, AR/EN and Light/Dark switches, 320/390/768/1440 widths, mobile continuous motion, reduced-motion paths and console errors.
+- Gallery CSS durations: 235s desktop, 145s phone, 185s reduced-motion mobile/tablet; the prior face-first special crop is at frame 31.
+- Preserve the `index.html` chapter data and base CSS hashes; keep GitHub Pages publishing separate from the owner preview branch until PR review and checks pass.

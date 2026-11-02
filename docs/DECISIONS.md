@@ -100,3 +100,7 @@ Owner reported that classroom photos appeared frozen on mobile and explicitly re
 
 ### Classroom gallery mobile motion — 28 Oct 2026
 The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.
+
+## 2026-11-02 — Owner-approved expansion of Class Moments gallery
+
+Owner reviewed and explicitly approved the independent gallery preview: interleave 14 new classroom photos among 17 existing gallery slots (31 slots total), never as a contiguous new group. New originals were compressed as quality-preserving WebP files at 630×840 for portrait and 800×600 for the one landscape frame, totalling 555,680 bytes. Existing files, original academic content, quiz, logo, languages, and navigation are untouched. Continuously animate on mobile; keep the existing automatic movement, duplicate loop, no play/pause and desktop reduced-motion fallback. The final original slot remains the earlier face-first frame (CSS index moves from 17 to 31). Owner specifically authorized merging and publishing on 2026-11-02, subject to successful regression evidence.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Real-browser acceptance for the owner's non-clickable 17-frame header gallery."""
+"""Real-browser acceptance for the owner's non-clickable 31-frame header gallery."""
 from pathlib import Path
 import json
 from playwright.sync_api import sync_playwright
@@ -23,14 +23,18 @@ with sync_playwright() as p:
     root=page.locator("#cm-gallery")
     root.wait_for(state="visible")
     check(device+" gallery immediately after sticky header",root.evaluate("(e)=>e.previousElementSibling?.id==='sticky-header'"))
-    check(device+" exactly 17 frames",page.locator(".cm-group").first.locator(".cm-photo").count()==17)
-    check(device+" one seamless second frame group",page.locator(".cm-group").nth(1).locator(".cm-photo").count()==17)
+    check(device+" exactly 31 frames",page.locator(".cm-group").first.locator(".cm-photo").count()==31)
+    check(device+" one seamless second frame group",page.locator(".cm-group").nth(1).locator(".cm-photo").count()==31)
     check(device+" all frames load",page.locator(".cm-group").first.locator("img").evaluate_all("(els)=>els.every(i=>i.complete&&i.naturalWidth>100)"))
-    check(device+" back-facing frame replaced",page.locator(".cm-group").first.locator(".cm-photo").nth(16).locator("img").get_attribute("src")=="assets/class-moments/class-moment-11.webp")
-    check(device+" 17 accessible images",page.locator(".cm-group").first.locator("img[alt]").count()==17)
+    expected_new=["5650","5569","5668","5591","5658","5670","5580","5637","5654","5682","5590","5617","5640","5577"]
+    new_sources=page.locator(".cm-group").first.locator("img").evaluate_all("(els)=>els.map(i=>i.getAttribute('src')).filter(s=>s.includes('nov26-img_'))")
+    check(device+" all 14 new shots are interleaved",new_sources==[f"assets/class-moments/nov26-img_{n}.webp" for n in expected_new] and all(page.locator(".cm-group").first.locator("img").nth(2*i+1).get_attribute("src")==new_sources[i] for i in range(14)))
+    check(device+" new images decode as expected",page.locator(".cm-group").first.locator("img").evaluate_all("(els)=>els.filter(i=>i.src.includes('nov26-img_')).every(i=>i.naturalWidth>=600&&i.naturalHeight>=600)"))
+    check(device+" back-facing frame replaced",page.locator(".cm-group").first.locator(".cm-photo").nth(30).locator("img").get_attribute("src")=="assets/class-moments/class-moment-11.webp")
+    check(device+" 31 accessible images",page.locator(".cm-group").first.locator("img[alt]").count()==31)
     check(device+" no zoom/lightbox or clickable cards",page.locator("#cm-gallery a,#cm-gallery .lightbox,#cm-gallery .cm-photo button").count()==0)
     check(device+" consistent card heights",page.locator(".cm-group").first.locator(".cm-photo").evaluate_all("(els)=>Math.max(...els.map(x=>x.clientHeight))-Math.min(...els.map(x=>x.clientHeight))<=1"))
-    expected_duration=100 if width<=650 else 176
+    expected_duration=145 if width<=650 else 235
     check(device+f" linear animation uses {expected_duration}s contract",page.locator(".cm-track").evaluate("(e,seconds)=>{const s=getComputedStyle(e);return s.animationTimingFunction==='linear'&&Math.abs(Number.parseFloat(s.animationDuration)-seconds)<0.1}",expected_duration))
     check(device+" no unexpected page horizontal overflow",page.evaluate("document.documentElement.scrollWidth<=innerWidth+3"))
     before=page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).transform")
@@ -38,7 +42,7 @@ with sync_playwright() as p:
     after=page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).transform")
     check(device+" automatically moves",before!=after)
     if width<=650:
-      check(device+" mobile motion is clearly visible (100s)",page.locator(".cm-track").evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-100)<0.1"))
+      check(device+" mobile motion is clearly visible (145s)",page.locator(".cm-track").evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-145)<0.1"))
     check(device+" no pause/play button",page.locator("#cm-toggle,.cm-control").count()==0)
     check(device+" automatic playback",root.get_attribute("data-paused") is None and page.locator(".cm-track").evaluate("(e)=>getComputedStyle(e).animationPlayState==='running'"))
     page.locator(".cm-photo").first.evaluate("(el)=>el.click()")
@@ -57,7 +61,7 @@ with sync_playwright() as p:
   page.goto(BASE+"?page=study",wait_until="networkidle")
   track=page.locator(".cm-track")
   check("reduced-motion phone still auto-animates",track.evaluate("(e)=>{const s=getComputedStyle(e);return s.animationName==='cm-slide'&&s.animationPlayState==='running'}"))
-  check("reduced-motion phone slower 135s speed",track.evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-135)<0.1"))
+  check("reduced-motion phone slower 185s speed",track.evaluate("(e)=>Math.abs(parseFloat(getComputedStyle(e).animationDuration)-185)<0.1"))
   check("reduced-motion phone keeps duplicated seamless frames",page.locator(".cm-group").nth(1).evaluate("(e)=>getComputedStyle(e).display!=='none'"))
   before=track.evaluate("(e)=>getComputedStyle(e).transform")
   page.wait_for_timeout(1200)

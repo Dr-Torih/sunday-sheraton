@@ -335,16 +335,16 @@
       "id": "L04-C18",
       "unit": 5,
       "title": {
-        "ar": "Customer Fit وBrand Fit وCapabilities",
-        "en": "Customer Fit, Brand Fit and Capabilities"
+        "ar": "Brand Development Matrix وBrand Fit",
+        "en": "Brand Development Matrix and Fit"
       },
       "objective": {
-        "ar": "تحدد معنى Customer Fit وBrand Fit وCapabilities والقرار المرتبط به وما يحتاج Evidence.",
-        "en": "Explain Customer Fit, Brand Fit and Capabilities and identify the relevant evidence-based decision."
+        "ar": "تختار بين Line Extension وBrand Extension وMultibrands وNew Brands، وتقيّم Co-Branding بناءً على Customer Fit وRisk.",
+        "en": "Distinguish four brand-development choices and assess co-branding, brand fit and risks."
       },
       "html": {
-        "ar": "<p class=\"coverage-tag\">استكمال علمي للمذاكرة — لم يشرح بالكامل في القاعة</p><p>نجاح Brand لا يضمن نجاح أي Extension. اسألوا عن Customer Fit وBrand Fit والقدرة على الإنتاج والتوزيع، ثم المخاطر. أمثلة Fire Phone وBIC Perfume وDomty Sandwich بتوضح أسئلة قرار التوسع لكن مش سببًا منفردًا مؤكدًا للنتيجة.</p><p><strong>من المناقشة:</strong> لو عملتم Healthy Desserts من طلبات مخصصة إلى توزيع واسع، اختبروا Repeat Demand والطاقة التشغيلية وسلامة المنتج قبل التوسع.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
-        "en": "<p class=\"coverage-tag\">Academic study extension — not fully delivered</p><p>A recognised brand does not guarantee that extensions will succeed. Examine customer fit, brand-category fit, operational capabilities and risks. Fire Phone, BIC perfume and Domty Sandwich are analytical examples, not proof of single-cause outcomes.</p><p><strong>Classroom/project connection:</strong> Before scaling customised desserts into wider distribution, validate repeat demand, food safety and operational capacity.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+        "ar": "<p class=\"coverage-tag\">استكمال علمي للمذاكرة — لم يشرح بالكامل في القاعة</p><p><strong>Brand Development Matrix:</strong> لو عندك Existing Brand في Existing Product Category وأضفت نكهات أو أحجام، دي <strong>Line Extension</strong>. Existing Brand مع New Category هي <strong>Brand Extension</strong>. New Brand في Existing Category هي <strong>Multibrands</strong>. New Brand مع New Category هي <strong>New Brands</strong>.</p><p><strong>Brand Sponsorship وCo-Branding:</strong> التسويق تحت Manufacturer Brand أوPrivate Label أوLicense أوCo-Brand قرار مختلف عن تطوير البراند. Co-Branding يعني ربط علامتين في عرض مشترك، ويحتاج Fit واتفاقات واضحة ومسؤولية فعلية عن الجودة.</p><p><strong>على مشروع Pure Bite:</strong> إضافة نكهة جديدة تحت Pure Bite في فئة الحلويات أقرب إلى Line Extension؛ إطلاق فئة Snacks جديدة تحت الاسم نفسه قد يكون Brand Extension. دي أمثلة قرارات مستقبلية محتملة، مش خطط معتمدة للفريق.</p><p>نجاح Brand لا يضمن نجاح أي Extension. اسألوا عن Customer Fit وBrand Fit والقدرة على الإنتاج والتوزيع، ثم المخاطر. أمثلة Fire Phone وBIC Perfume وDomty Sandwich بتوضح أسئلة قرار التوسع لكن مش سببًا منفردًا مؤكدًا للنتيجة.</p><p><strong>من المناقشة:</strong> لو عملتم Healthy Desserts من طلبات مخصصة إلى توزيع واسع، اختبروا Repeat Demand والطاقة التشغيلية وسلامة المنتج قبل التوسع.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Academic study extension — not fully delivered</p><p><strong>Brand Development Matrix:</strong> Existing brand + existing category with a new variant is a <strong>line extension</strong>; existing brand + new category is a <strong>brand extension</strong>; new brand + existing category means <strong>multibrands</strong>; new brand + new category is the <strong>new-brand</strong> option.</p><p><strong>Brand Sponsorship and Co-Branding:</strong> Manufacturer brands, private labels, licensed brands and co-branded offers concern sponsorship decisions, distinct from the four development choices. Co-branding requires genuine fit, contractual clarity and shared quality accountability.</p><p><strong>Pure Bite example:</strong> Another dessert flavour under Pure Bite could be a line extension, while moving the name to a new snack category might be a brand extension. These are hypothetical future choices, not claims about team commitments.</p><p>A recognised brand does not guarantee that extensions will succeed. Examine customer fit, brand-category fit, operational capabilities and risks. Fire Phone, BIC perfume and Domty Sandwich are analytical examples, not proof of single-cause outcomes.</p><p><strong>Classroom/project connection:</strong> Before scaling customised desserts into wider distribution, validate repeat demand, food safety and operational capacity.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
       },
       "coverage": "academic-extension"
     },
@@ -721,29 +721,29 @@
     },
     {
       "id": "Q09",
-      "concept": "C11",
+      "concept": "C18",
       "ar": {
-        "question": "Style غير Design في إيه؟",
+        "question": "Pure Bite نزلت نكهة Dessert جديدة بنفس الاسم ونفس فئة المنتج. دي أنهي Strategy؟",
         "opts": [
-          "الجذب البصري مقابل وظيفة الاستخدام",
-          "الاتنين Support",
-          "الاتنين تسعير",
-          "Style هو Warranty"
+          "Line Extension",
+          "Brand Extension",
+          "Multibrands",
+          "New Brands"
         ]
       },
       "en": {
-        "question": "How does style differ from design?",
+        "question": "Pure Bite adds a new dessert flavour using its current name in the same category. What is this?",
         "opts": [
-          "Visual appeal versus use and function",
-          "Both mean support",
-          "Both mean pricing",
-          "Style is warranty"
+          "Line extension",
+          "Brand extension",
+          "Multibrands",
+          "New brands"
         ]
       },
       "answer": 0,
       "explanation": {
-        "ar": "الصحيح: الجذب البصري مقابل وظيفة الاستخدام. راجع الفكرة C11 قبل القرار النهائي.",
-        "en": "Correct: Visual appeal versus use and function. Review concept C11 for the decision rationale."
+        "ar": "دي Line Extension: اسم البراند نفسه وفئة المنتج نفسها، لكن مع Variant جديدة. الكلام مثال افتراضي.",
+        "en": "This is a line extension: the existing brand and category with a new variant. The example is hypothetical."
       }
     },
     {
@@ -1227,6 +1227,41 @@
       "t": "Bundle Pricing",
       "ar": "تسعير باكدج من منتجات",
       "en": "Combined offer price"
+    },
+    {
+      "t": "Brand Development Matrix",
+      "ar": "مصفوفة اسم البراند القديم أو الجديد مقابل فئة المنتج القديمة أو الجديدة",
+      "en": "Decision matrix comparing existing/new brand names and product categories"
+    },
+    {
+      "t": "Line Extension",
+      "ar": "تنويع منتج ضمن نفس فئة البراند",
+      "en": "New variant under an existing brand in its current category"
+    },
+    {
+      "t": "Brand Extension",
+      "ar": "اسم براند قائم يدخل فئة جديدة",
+      "en": "An existing brand name used in a new category"
+    },
+    {
+      "t": "Multibrands",
+      "ar": "براند جديد في فئة منتج قائمة",
+      "en": "Additional brand names within an existing product category"
+    },
+    {
+      "t": "New Brands",
+      "ar": "اسم براند جديد لفئة منتج جديدة",
+      "en": "New brand name for a new product category"
+    },
+    {
+      "t": "Co-Branding",
+      "ar": "اشتراك علامتين في عرض واحد",
+      "en": "Two brands jointly featured in one offer"
+    },
+    {
+      "t": "Brand Sponsorship",
+      "ar": "قرارات تبعية البراند للمصنع أو المتجر أو الترخيص أو الشراكة",
+      "en": "Choosing manufacturer, private, licensed or co-branded sponsorship"
     }
   ],
   "intro": {

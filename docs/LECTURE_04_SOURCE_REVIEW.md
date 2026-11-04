@@ -13,7 +13,7 @@
 | C01–C03 | STP recap, segment attractiveness, positioning and reason to believe | Pearson *Principles of Marketing* (19e), Ch 7 | Distinguish internal positioning statement from external advertisement |
 | C04–C12 | Goods/services, consumer and industrial classifications, 3 levels, quality, feature trade-offs, style/design/packaging/support | Pearson, Ch 8 | Food-safety requirements are not merely consumer preferences |
 | C13–C17 | Brand identity/image, promises, equity and naming | Pearson, Ch 8 | Named business examples illustrate concepts, not causation |
-| C18 | Brand fit and capability | Pearson, Ch 8/9 | Marked academic-extension (instructor prep); do not claim fully delivered |
+| C18 | Brand Development Matrix (line/brand extension, multibrands, new brands), sponsorship, co-branding and fit | Pearson, Ch 8/9 | Academic extension; the four matrix choices are distinct from sponsorship options |
 | C19–C22 | Four PLC stages and responses | Pearson, Ch 9 | PLC is an analytical framework; do not assign a stage without observed evidence |
 | C23–C25 | Price, cost, competition and perceived value | Pearson, Ch 10 | C24 marked extension (markup vs margin example is hypothetical) |
 | C26–C27 | Penetration/skimming; product-mix adjustments | Pearson, Ch 11 | C27 extension (not established as fully taught in audio) |
@@ -31,7 +31,7 @@ The publisher's online table of contents confirms chapter subjects but **does no
 ## Owner acceptance checklist
 - [ ] Confirm speaker name spellings Dr Alaa, Sally, Sary, Hussein and Andrew where material.
 - [ ] Verify Pure Bite (Group 4) name and source attribution (recorded pronunciation) before public merge.
-- [ ] Check bilingual meaning and attribution over all 27 concepts.
+- [ ] Check bilingual meaning and attribution over all 27 concepts and 50 glossary terms.
 - [ ] Confirm no private source document, attendance, scores or raw interviews made public.
 - [ ] Review all 18 correct answers, explanations and concept links.
 - [ ] Validate browser/mobile, progress, bilingual toggle, theme, print, 80% quiz/certificate and full regression.

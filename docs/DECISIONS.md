@@ -104,3 +104,12 @@ The photo strip continues its slow motion through 1024px under reduced-motion se
 ## 2026-11-02 — Owner-approved expansion of Class Moments gallery
 
 Owner reviewed and explicitly approved the independent gallery preview: interleave 14 new classroom photos among 17 existing gallery slots (31 slots total), never as a contiguous new group. New originals were compressed as quality-preserving WebP files at 630×840 for portrait and 800×600 for the one landscape frame, totalling 555,680 bytes. Existing files, original academic content, quiz, logo, languages, and navigation are untouched. Continuously animate on mobile; keep the existing automatic movement, duplicate loop, no play/pause and desktop reduced-motion fallback. The final original slot remains the earlier face-first frame (CSS index moves from 17 to 31). Owner specifically authorized merging and publishing on 2026-11-02, subject to successful regression evidence.
+
+## Lecture 04 — Owner-review draft, 4 November 2026
+
+- **Approved mission:** Append the fourth Sunday Sheraton lecture to the existing cumulative index, keeping L01–L03 content and original identity untouched.
+- **Content:** 27 bilingual concepts in 8 units; 18 new practice questions, 8 unit-specific cases, 8 checkpoints, 4 decision labs, 8 sets of takeaways and 43 glossary terms. Covers STP recap, product/service levels, quality and individual product decisions, branding, PLC and pricing.
+- **Classroom attribution:** At instructor's express direction, identify only source-supported names: Pure Bite (Group 4; Dr Alaa and Sally), instant-noodle presenter Sary, orange-oil exporter Group 1 presenter Hussein, Andrew's family Homewear example. No formal brand name invented for teams whose name is absent from source.
+- **Claims/evidence:** Team-reported survey percentages and indicative price are flagged as preliminary/unverified. Technical claims around allergen safety, nutrition and pricing remain subject to evidence. C18, C24, C27 are academic study extensions, not falsely framed as fully delivered classroom content.
+- **Privacy:** No raw transcript, protected instructor file, photos, grades, attendance, student contact information or student identifiers. First-name attributions only with owner direction.
+- **Release:** Feature branch and Pull Request for academic, mobile, quiz and privacy review; **no automatic merge or public deployment**. Detailed source map at [LECTURE_04_SOURCE_REVIEW.md](LECTURE_04_SOURCE_REVIEW.md).

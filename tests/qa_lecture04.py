@@ -21,6 +21,18 @@ for i,scene in enumerate(d["scenes"],1):
         assert len(body)>320,("short content",i,lang)
         assert not any(x in body.lower() for x in ("trainer private","attendance pin","raw transcript","private grade","instructor script"))
 assert sum(x["coverage"]=="academic-extension" for x in d["scenes"])>=3
+# Owner-authorized attribution: named classroom projects and actual speakers.
+all_ar=" ".join(x["html"]["ar"] for x in d["scenes"])
+all_en=" ".join(x["html"]["en"] for x in d["scenes"])
+for project in ("Pure Bite","النودلز","زيت البرتقال","Homewear"):
+    assert project in all_ar,("missing project",project)
+for speaker in ("علاء","سالي","ساري","حسين","أندرو"):
+    assert speaker in all_ar,("missing source-supported speaker",speaker)
+for name in ("Pure Bite","Sary","Hussein","Andrew"):
+    assert name in all_en,("missing English attribution",name)
+assert "Group 1" in all_en and "Group 4" in all_en
+assert "USD 17,000" in all_en and "team-reported" in all_en
+
 for i,q in enumerate(d["quiz"],1):
     assert q["id"]==f"Q{i:02}"
     assert re.fullmatch("C\\d\\d",q["concept"])

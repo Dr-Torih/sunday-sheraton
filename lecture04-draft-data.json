@@ -1,0 +1,1236 @@
+{
+  "units": [
+    {
+      "id": 1,
+      "ar": "STP والانتقال إلى العرض التسويقي",
+      "en": "From STP to Market Offering"
+    },
+    {
+      "id": 2,
+      "ar": "Products, Services and Product Levels",
+      "en": "Products, Services and Product Levels"
+    },
+    {
+      "id": 3,
+      "ar": "Quality وقرارات المنتج",
+      "en": "Quality and Individual Product Decisions"
+    },
+    {
+      "id": 4,
+      "ar": "Branding Fundamentals",
+      "en": "Branding Fundamentals"
+    },
+    {
+      "id": 5,
+      "ar": "Brand Strategy & Decisions",
+      "en": "Brand Strategy and Decisions"
+    },
+    {
+      "id": 6,
+      "ar": "Product Life Cycle",
+      "en": "Product Life Cycle"
+    },
+    {
+      "id": 7,
+      "ar": "Pricing Fundamentals",
+      "en": "Pricing Fundamentals"
+    },
+    {
+      "id": 8,
+      "ar": "Pricing Strategies",
+      "en": "Pricing Strategies"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "L04-C01",
+      "unit": 1,
+      "title": {
+        "ar": "Targeting بعد Segmentation",
+        "en": "Targeting after Segmentation"
+      },
+      "objective": {
+        "ar": "تحدد معنى Targeting بعد Segmentation والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Targeting after Segmentation and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Segmentation بتكشف اختلاف الـNeeds وBuying Behavior. بعد كده Targeting تختار المجموعات التي تتمتع بفرصة جذابة ويُمكن للشركة خدمتها فعلًا. قارن Size وGrowth وCompetition، وبعدين Strategic Fit وResources.</p><p><strong>من المناقشة:</strong> في مشروع Healthy Desserts فرّقوا بين مستهلك لديه احتياج غذائي محدد ومشتري هدية، ثم اختبروا قدرة الخدمة والطلب لكل فئة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Segmentation identifies meaningful differences in needs and buying behavior. Targeting compares segment attractiveness—size, growth and competition—alongside strategic fit and resources. A large segment is not automatically a feasible choice.</p><p><strong>Classroom/project connection:</strong> For a healthy-dessert concept, distinguish the end user with a dietary need from a gift buyer; validate demand and ability to serve each group.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C02",
+      "unit": 1,
+      "title": {
+        "ar": "Positioning وDifferentiation",
+        "en": "Positioning and Differentiation"
+      },
+      "objective": {
+        "ar": "تحدد معنى Positioning وDifferentiation والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Positioning and Differentiation and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Positioning هي الصورة التي نريد بناءها في ذهن العميل مقارنة بالبدائل. Differentiation توفر فرقًا مهمًا يساعد على تحقيق الصورة. مش لازم تكون الشركة الوحيدة بالميزة، لكن لازم تقدّم Benefit حقيقية يدركها الـTarget.</p><p><strong>من المناقشة:</strong> اتناقشنا في الارتباط التاريخي بين Volvo وSafety باعتباره مثالًا على تكوين Association، وليس إثبات تفوق مطلق في كل اختبار اليوم.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Positioning describes the intended place in customers' minds relative to alternatives. Differentiation supports that position with a relevant, deliverable benefit. A distinction need not be unique worldwide, but it must matter to the target.</p><p><strong>Classroom/project connection:</strong> Volvo's historical safety association illustrates positioning, not a universal claim of superiority in every modern safety test.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C03",
+      "unit": 1,
+      "title": {
+        "ar": "Positioning Statement وRTB",
+        "en": "Positioning Statement and RTB"
+      },
+      "objective": {
+        "ar": "تحدد معنى Positioning Statement وRTB والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Positioning Statement and RTB and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>الـPositioning Statement وثيقة داخلية تحدد Target وBrand وCategory وPoint of Difference وReason to Believe. الـRTB يعني دليلًا قابلًا للتحقق، مش مجرد وعد. Product وPrice وPlace وPromotion لازم يشتغلوا في اتجاه الوعد نفسه.</p><p><strong>من المناقشة:</strong> اكتبوا جملة المشروع ثم عمود Evidence منفصل. أي ادعاء غذائي من نوع Free From أو عدد السعرات يحتاج تحققًا ومعلومات دقيقة عن Cross-Contact.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A positioning statement guides internal decisions using target, brand, category, point of difference and reason to believe. RTB requires credible support. Product, Price, Place and Promotion should reinforce the same promise.</p><p><strong>Classroom/project connection:</strong> Draft the positioning statement with a separate evidence column. Free-from or nutrition claims require validation, accurate ingredients and cross-contact controls.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C04",
+      "unit": 2,
+      "title": {
+        "ar": "Product وService وExperience",
+        "en": "Goods, Services and Experience"
+      },
+      "objective": {
+        "ar": "تحدد معنى Product وService وExperience والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Goods, Services and Experience and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Product في Marketing معناها Offering يحقق Value. Goods ملموسة، وServices منافع أو أنشطة، وتجربة العميل ممكن تجمع الاثنين. اللي العميل يفتكره مش شكل المنتج وحده، لكن كمان الدعم والتعامل بعد البيع.</p><p><strong>من المناقشة:</strong> iPhone جهاز ملموس، ودعم Apple الفني مثال لخدمة تكمل التجربة، من غير ما نفترض إن كل إصلاح مجاني أو متاح بشروط موحدة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A marketing offering provides value through tangible goods, intangible services or a combination. The experience includes purchase and post-purchase interaction, not simply the physical item or its appearance.</p><p><strong>Classroom/project connection:</strong> An iPhone is a tangible good; Apple support can augment the experience without implying all repairs are free or universally available.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C05",
+      "unit": 2,
+      "title": {
+        "ar": "Consumer vs Industrial Products",
+        "en": "Consumer and Industrial Product Classifications"
+      },
+      "objective": {
+        "ar": "تحدد معنى Consumer vs Industrial Products والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Consumer and Industrial Product Classifications and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Consumer Products تشمل Convenience وShopping وSpecialty وUnsought؛ التصنيف حسب طريقة الشراء. Industrial Products تشمل Materials &amp; Parts وCapital Items وSupplies &amp; Services بحسب دورها في التشغيل أو التصنيع.</p><p><strong>من المناقشة:</strong> عبوة نودلز للمستهلك غالبًا Convenience Product، بينما الدقيق الذي يشتريه المصنع مادة Industrial. ما تخلطوش بين نوع العميل وطبيعة الشيء وحدها.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Consumer products are classified by buying behavior as convenience, shopping, specialty or unsought. Industrial products are used in business operations as materials and parts, capital items or supplies and services.</p><p><strong>Classroom/project connection:</strong> A noodle pack sold to consumers is often a convenience good, whereas flour purchased by its manufacturer is an industrial material.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C06",
+      "unit": 2,
+      "title": {
+        "ar": "Core وActual وAugmented",
+        "en": "Three Product Levels"
+      },
+      "objective": {
+        "ar": "تحدد معنى Core وActual وAugmented والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Three Product Levels and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Core Customer Value هو السبب الأساسي للشراء، وActual Product هو المنتج بمواصفاته وDesign وBrand وPackaging، وAugmented Product خدمات أو منافع تكمّل التجربة. الثلاثة مستويات تساعدنا نصمم Offer كاملة.</p><p><strong>من المناقشة:</strong> في مثال الفندق: الراحة والنوم Core، الغرفة Actual، وخدمة إضافية مناسبة Augmented. في الحلوى: المتعة الملائمة لاحتياج محدد Core، والوصفة والعبوة Actual.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Core value is the underlying benefit sought, actual product refers to the specified offer, and the augmented product consists of supporting benefits and services. The three levels are different perspectives on the same purchase.</p><p><strong>Classroom/project connection:</strong> For a hotel, rest is core value, the room is the actual offer and useful support is augmentation. For desserts, define the desired benefit, actual tested product and realistic support.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C07",
+      "unit": 3,
+      "title": {
+        "ar": "Quality Level للعميل المستهدف",
+        "en": "Quality Level for the Target"
+      },
+      "objective": {
+        "ar": "تحدد معنى Quality Level للعميل المستهدف والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Quality Level for the Target and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>الجودة مش مساوية لزيادة Options أو أعلى سعر. Quality Level لازم يناسب الـTarget والـPositioning مع الالتزام بمعايير السلامة والمتطلبات الإلزامية. قدّم ما يحتاجه العميل وقِس مطابقة المنتج للمواصفات.</p><p><strong>من المناقشة:</strong> لو مشروع النودلز قال مغذٍ أو أفضل صحيًا، العبارة تحتاج مواصفات وتحليلًا يدعمها، مش انطباعًا من المكونات فقط.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Quality level should fit target needs and positioning rather than simply maximising options or price. Applicable safety and mandatory standards remain essential regardless of the intended market segment.</p><p><strong>Classroom/project connection:</strong> A noodle product claimed to be nutritious needs defined criteria and suitable supporting tests, not assumptions based on ingredients alone.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C08",
+      "unit": 3,
+      "title": {
+        "ar": "Quality Consistency عبر Batches",
+        "en": "Quality Consistency across Batches"
+      },
+      "objective": {
+        "ar": "تحدد معنى Quality Consistency عبر Batches والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Quality Consistency across Batches and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>حتى لو أول Batch ممتازة، مش معناه إن كل دفعة بنفس المواصفات. Quality Consistency تتطلب Recipe وProcess Standard وفحوصًا تمنع التفاوت غير المقبول. المثال التشغيلي Toyota Jidoka يوضح أهمية اكتشاف الخطأ أثناء التصنيع.</p><p><strong>من المناقشة:</strong> لو غيّرتوا مصنع التصنيع بالغير أثناء Growth، لازم تتأكدوا من بقاء الطعم والتركيب والوزن والسلامة ضمن الحدود المحددة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>One successful batch does not prove repeatable quality. Consistency requires clear specifications, controlled processes and checks that detect deviations. Toyota's Jidoka illustrates in-process problem detection, not a guarantee of zero defects.</p><p><strong>Classroom/project connection:</strong> When moving to another contract manufacturer during growth, check that taste, formulation, weight and safety specifications remain consistent.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C09",
+      "unit": 3,
+      "title": {
+        "ar": "Feature مقابل Customer Benefit",
+        "en": "Features versus Benefits"
+      },
+      "objective": {
+        "ar": "تحدد معنى Feature مقابل Customer Benefit والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Features versus Benefits and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>الـFeature خاصية في المنتج، بينما Benefit هي القيمة التي يحصل عليها العميل منها. Night Mode مثلًا خاصية، والمنفعة صورة أوضح في إضاءة منخفضة لمن يحتاجها. لا تعاملوا كثرة الميزات كأنها تلقائيًا ميزة تنافسية.</p><p><strong>من المناقشة:</strong> الخضار المجفف أو Mushroom Powder في النودلز خصائص مقترحة؛ اختبروا الطعم والتغذية والتكلفة قبل إصدار أي وعد.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A feature is an attribute; a benefit is how it improves the buyer's experience. Night Mode is a camera feature and improved low-light photos are its benefit for relevant users. More features are not automatically more valuable.</p><p><strong>Classroom/project connection:</strong> Dried vegetables or mushroom powder are proposed noodle features. Test taste, nutrition and cost before claiming a meaningful customer benefit.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C10",
+      "unit": 3,
+      "title": {
+        "ar": "Feature Trade-off",
+        "en": "Feature Trade-offs and Marketing Myopia"
+      },
+      "objective": {
+        "ar": "تحدد معنى Feature Trade-off والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Feature Trade-offs and Marketing Myopia and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>كل Feature جديدة لها Cost وقد تعقّد الاستخدام. اسألوا هل الـTarget يقدّر فائدتها بما يكفي؟ التطوير الذي يتجاهل الحاجة الأساسية ممكن يدخل في Marketing Myopia. قرار إضافة ميزة لازم يتقاس لا يتاخد بالانبهار بالتكنولوجيا.</p><p><strong>من المناقشة:</strong> Kinect وS Pen اتناقشوا كمثالين على الاختيارات التقنية؛ قرار الشركة وحده لا يثبت نسب استخدام أو دوافع مالية محددة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Features add cost and sometimes complexity. A sound trade-off asks whether the target values the incremental benefit. Excessive attention to technical attributes can distract from the customer problem and create marketing myopia.</p><p><strong>Classroom/project connection:</strong> Kinect and S Pen were used to discuss feature decisions. A product change alone does not establish exact adoption rates or private cost calculations.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C11",
+      "unit": 3,
+      "title": {
+        "ar": "Style وDesign وPackaging",
+        "en": "Style, Design and Packaging"
+      },
+      "objective": {
+        "ar": "تحدد معنى Style وDesign وPackaging والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Style, Design and Packaging and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Style يجذب بصريًا، Design يهتم بوظيفة المنتج وراحة الاستخدام، وPackaging يحميه ويقدّمه ويحمل المعلومات. الثلاثة مترابطين لكن مش نفس الشيء. في المنتجات الغذائية سلامة العبوة ووضوح البيانات أهم من الجمال وحده.</p><p><strong>من المناقشة:</strong> مثال الحذاء وضح الفرق بين شكل يلفت النظر وراحة في المشي وعلبة تحمي أثناء النقل. جرّبوا نفس المنطق في شكل عبوة الغذاء وتوصيلها.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Style creates visual appeal, design supports function and use, while packaging protects, presents and communicates information. These are related but distinct product decisions. For food, safety and reliable information matter beyond appearance.</p><p><strong>Classroom/project connection:</strong> The shoe example distinguished visual styling, functional comfort and the protective role of a box. Apply this to the proposed food packaging and delivery journey.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C12",
+      "unit": 3,
+      "title": {
+        "ar": "Product Support Services",
+        "en": "Product Support Services"
+      },
+      "objective": {
+        "ar": "تحدد معنى Product Support Services والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Product Support Services and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>بعد البيع، Customer Support وWarranty وReturns ممكن تكمل تجربة العميل. لكن الوعد لازم يكون واضحًا وقابلًا للتنفيذ؛ وجود دعم لا يعني إن كل إصلاح مجاني. كمان سياسة الإرجاع تختلف حسب المنتج والسوق والقانون.</p><p><strong>من المناقشة:</strong> ناقشنا Genius Bar وخدمة الدعم؛ وفي مشروع غذائي ممكن يكون الدعم ردًا دقيقًا على سؤال مكونات أو مشكلة طلب لا أكثر.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Post-purchase support, warranty and returns can add value when terms are clear and operationally realistic. Support is not synonymous with free repairs, and applicable return conditions may differ by product and market.</p><p><strong>Classroom/project connection:</strong> Genius Bar illustrated ongoing service. For a food venture, reliable ingredient enquiries and order-issue handling may be more relevant than an elaborate support promise.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C13",
+      "unit": 4,
+      "title": {
+        "ar": "Brand أكبر من Logo",
+        "en": "Brand versus Logo"
+      },
+      "objective": {
+        "ar": "تحدد معنى Brand أكبر من Logo والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Brand versus Logo and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>الـLogo رمز للتعرف على العلامة، لكن Brand تشمل Associations وMemories وCustomer Experience. Recognition مش بالضرورة Trust. البراند بتتبني من التفاعل المتكرر وما يشعر به العميل، مش من تصميم أو حملة فقط.</p><p><strong>من المناقشة:</strong> حكاية شوكولاتة قديمة في القاعة وضحت Nostalgia المرتبطة بالاسم. ده مثال على ذاكرة المشاركين، مش دليل عن كل المستهلكين.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A logo helps identify an offering, while a brand includes associations, memories and customer experiences. Recognition alone does not establish trust. Customer responses emerge from repeated interactions rather than visual design alone.</p><p><strong>Classroom/project connection:</strong> A classroom discussion of an older chocolate brand illustrated nostalgia among participants, not a representative measure of public sentiment.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C14",
+      "unit": 4,
+      "title": {
+        "ar": "Brand Identity وBrand Image",
+        "en": "Brand Identity versus Brand Image"
+      },
+      "objective": {
+        "ar": "تحدد معنى Brand Identity وBrand Image والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Brand Identity versus Brand Image and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Brand Identity هي الصورة التي تحاول الشركة توصيلها، وBrand Image هي التي تكونت فعليًا في ذهن العملاء. Marketing تقلل Gap بينهم عن طريق Surveys وReviews وتجربة أكثر اتساقًا، مش تغيير ألوان الحملة بس.</p><p><strong>من المناقشة:</strong> حالة Volkswagen 2015 استُخدمت لتوضيح خطر التعارض بين الرسالة والواقع. لا نخلط بين مؤشر نقاط Impression وبين Percentage أو Trust مستقل.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Brand identity is what the organisation intends to project; brand image is what people actually perceive. The gap is evaluated through customer evidence and addressed through experience, not merely a new visual campaign.</p><p><strong>Classroom/project connection:</strong> The 2015 Volkswagen case demonstrated a conflict between claims and reality. A change in impression-index points is not automatically a percentage or an independent trust score.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C15",
+      "unit": 4,
+      "title": {
+        "ar": "Brand Promise وTouchpoints",
+        "en": "Brand Promise and Touchpoints"
+      },
+      "objective": {
+        "ar": "تحدد معنى Brand Promise وTouchpoints والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Brand Promise and Touchpoints and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>الـBrand Promise هو الوعد الذي يجعل العميل يتوقع تجربة معينة. لازم الحجز والشراء والتسليم والدعم يحققوا الوعد نفسه. لو حصل خطأ كبير، الاعتذار لوحده مش كفاية من غير تصحيح فعلي للإجراءات.</p><p><strong>من المناقشة:</strong> واقعة United Express Flight 3411 سنة 2017 ناقشناها كاختبار لوعد Friendly Service. حالة واحدة لا تُمثل كل رحلات الشركة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A brand promise creates customer expectations. Ordering, fulfilment and support should deliver consistently. Following a serious failure, real process correction matters more than a slogan or apology alone.</p><p><strong>Classroom/project connection:</strong> The 2017 United Express Flight 3411 incident was analysed as a test of a friendly-service promise; it cannot describe every airline encounter.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C16",
+      "unit": 4,
+      "title": {
+        "ar": "Customer-Based Brand Equity",
+        "en": "Customer-Based Brand Equity"
+      },
+      "objective": {
+        "ar": "تحدد معنى Customer-Based Brand Equity والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Customer-Based Brand Equity and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Brand Equity هنا مش القيمة المالية للشركة؛ المقصود تأثير معرفة اسم البراند في استجابة العميل. نقدر نختبر الفرق بين Blind وBranded Conditions بقدر من الضبط، لكن لا نقول إن كل الناس تفضّل علامة واحدة.</p><p><strong>من المناقشة:</strong> ناقشنا دراسة Coca-Cola وPepsi المنشورة سنة 2004 لتوضيح تأثير Brand Cue. النتائج تخص تجربة محددة ولا تثبت كل سلوك شراء.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Customer-based brand equity is the difference in response associated with brand knowledge, not necessarily a firm's financial valuation. Blind and branded comparisons can help isolate a brand cue, subject to study limitations.</p><p><strong>Classroom/project connection:</strong> A 2004 Coca-Cola/Pepsi experiment was discussed to illustrate brand cues. Its sample and design limit generalisation.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C17",
+      "unit": 5,
+      "title": {
+        "ar": "Brand Name Selection",
+        "en": "Brand Name Selection"
+      },
+      "objective": {
+        "ar": "تحدد معنى Brand Name Selection والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Brand Name Selection and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>اختيار الاسم يراعي Memorable وMeaningful وDistinctive وProtectable. لو هتصدر، اختبر النطق والمعنى في السوق الجديد. التشابه القانوني محتاج فحص العلامة والفئة المختارة، ولا تستخدم Registered Claim قبل التحقق.</p><p><strong>من المناقشة:</strong> فوري وفيزيتا وبيقولك أمثلة اتناقشت عن سهولة الربط بالمعنى أو الشخصية المحلية، ونزاع أسماء كولا أوضح خطر التشابه الصوتي.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A brand name should be memorable, meaningful, distinctive and legally protectable where relevant. Test pronunciation and cultural meaning in export markets. Registration status must be verified rather than assumed.</p><p><strong>Classroom/project connection:</strong> Fawry, Vezeeta and Bey2ollak illustrated naming associations; a cola naming dispute illustrated why phonetic similarity can matter.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C18",
+      "unit": 5,
+      "title": {
+        "ar": "Customer Fit وBrand Fit وCapabilities",
+        "en": "Customer Fit, Brand Fit and Capabilities"
+      },
+      "objective": {
+        "ar": "تحدد معنى Customer Fit وBrand Fit وCapabilities والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Customer Fit, Brand Fit and Capabilities and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">استكمال علمي للمذاكرة — لم يشرح بالكامل في القاعة</p><p>نجاح Brand لا يضمن نجاح أي Extension. اسألوا عن Customer Fit وBrand Fit والقدرة على الإنتاج والتوزيع، ثم المخاطر. أمثلة Fire Phone وBIC Perfume وDomty Sandwich بتوضح أسئلة قرار التوسع لكن مش سببًا منفردًا مؤكدًا للنتيجة.</p><p><strong>من المناقشة:</strong> لو عملتم Healthy Desserts من طلبات مخصصة إلى توزيع واسع، اختبروا Repeat Demand والطاقة التشغيلية وسلامة المنتج قبل التوسع.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Academic study extension — not fully delivered</p><p>A recognised brand does not guarantee that extensions will succeed. Examine customer fit, brand-category fit, operational capabilities and risks. Fire Phone, BIC perfume and Domty Sandwich are analytical examples, not proof of single-cause outcomes.</p><p><strong>Classroom/project connection:</strong> Before scaling customised desserts into wider distribution, validate repeat demand, food safety and operational capacity.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "academic-extension"
+    },
+    {
+      "id": "L04-C19",
+      "unit": 6,
+      "title": {
+        "ar": "PLC: Introduction",
+        "en": "PLC Introduction"
+      },
+      "objective": {
+        "ar": "تحدد معنى PLC: Introduction والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain PLC Introduction and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>مرحلة Introduction هدفها Awareness وTrial وجمع Feedback. في البداية المبيعات قد تكون محدودة وغير مضمونة، والـMarketing Objective مش مجرد إطلاق إعلان. اعتبروا أول Batch فرصة تعلم وليس دليل نجاح نهائي.</p><p><strong>من المناقشة:</strong> فكرة النودلز الجديدة لازم تختبر Trial الحقيقي، مش تكتفي بأن مجموعة صغيرة قالت إنها معجبة بالفكرة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>During introduction, awareness, trial and feedback are central. Sales may be limited or irregular. A first batch is a learning opportunity rather than definitive evidence of success.</p><p><strong>Classroom/project connection:</strong> For the proposed noodles, validate actual trial behaviour instead of equating expressed interest with sales.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C20",
+      "unit": 6,
+      "title": {
+        "ar": "PLC: Growth",
+        "en": "PLC Growth"
+      },
+      "objective": {
+        "ar": "تحدد معنى PLC: Growth والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain PLC Growth and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>عند Growth الطلب يزيد لكن معه تحدي Capacity وDistribution وQuality Consistency والمنافسين. المصنع الخارجي قد يؤخر Batch، والانتقال لمصنع آخر بدون Specification قد يغيّر الجودة. الـContingency Plan لها قيمة عملية.</p><p><strong>من المناقشة:</strong> ناقشنا أثر انتظار 60 يومًا للتشغيل كمثال من خبرة العمل؛ الرقم حالة محددة لا تعميم على كل المصانع.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>During growth, demand, competitors and capacity pressures can increase. Contract-manufacturer delays or supplier changes may disrupt fulfilment and consistency. Prepare contingency plans and validate repeat demand.</p><p><strong>Classroom/project connection:</strong> A contract-manufacturing wait discussed in class illustrated lead-time risk; it is one case, not an industry-wide constant.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C21",
+      "unit": 6,
+      "title": {
+        "ar": "PLC: Maturity",
+        "en": "PLC Maturity"
+      },
+      "objective": {
+        "ar": "تحدد معنى PLC: Maturity والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain PLC Maturity and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>في Maturity نمو المبيعات قد يتباطأ وتزيد البدائل. نركز على Improve وDifferentiate وDefend ونقيس Profitability مش Sales وحدها. Market جديد ممكن يكون في مرحلة مختلفة عن السوق المحلي، فلا تخلطوا المنحنيات.</p><p><strong>من المناقشة:</strong> في مشروع التصدير، اختبروا السوق المستهدف مستقلًا عن مصر قبل ما تقولوا المنتج Mature عالميًا.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>At maturity, sales growth may slow and substitutes intensify. Evaluate profitability, defend value and test improvement. A product can be mature domestically yet newly introduced in another country.</p><p><strong>Classroom/project connection:</strong> For an export project, analyse the destination market separately instead of assigning a single worldwide life-cycle stage.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C22",
+      "unit": 6,
+      "title": {
+        "ar": "PLC: Decline",
+        "en": "PLC Decline and Renewal"
+      },
+      "objective": {
+        "ar": "تحدد معنى PLC: Decline والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain PLC Decline and Renewal and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>لو المبيعات تقل لازم نفهم هل الاتجاه مستمر أو Seasonality. البدائل تشمل Reposition وRejuvenate وHarvest أو Discontinue، وكل قرار يحتاج Evidence وتكلفة ومخاطرة. الـPLC نموذج قرار مش قانون يلزم كل منتج بمسار واحد.</p><p><strong>من المناقشة:</strong> ناقشنا iPod وبدائل التكنولوجيا، ومعنى Product Extension لبعض العلامات القديمة؛ المثال مش بيانات رسمية للمنحنى.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>A decline requires evidence that demand has genuinely weakened rather than merely fluctuated seasonally. Options include repositioning, rejuvenation, harvesting or discontinuation. PLC is a useful model, not an inevitable curve.</p><p><strong>Classroom/project connection:</strong> The iPod and older brands were discussed to illustrate changing alternatives and renewal, not as verified product sales-curve datasets.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C23",
+      "unit": 7,
+      "title": {
+        "ar": "Pricing: Cost وCompetition وValue",
+        "en": "Pricing Decision Inputs"
+      },
+      "objective": {
+        "ar": "تحدد معنى Pricing: Cost وCompetition وValue والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Pricing Decision Inputs and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>السعر لازم يجمع Costs وComparable Competition وCustomer-Perceived Value. يتأثر بالـTarget والـPositioning وبسلسلة البيع من المنتج للموزع للمستهلك. نسأل: كلفته كام؟ البديل بكام؟ والعميل شايف Benefit تستاهل إيه؟</p><p><strong>من المناقشة:</strong> للمنتجات الغذائية، سعر الرف النهائي قد يختلف عن سعر بيع المصنع بسبب الشحن والتاجر والتجزئة.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Pricing balances costs, relevant competitive alternatives and customer-perceived value. Targeting, positioning and channel economics also matter. Ask what the offer costs, what alternatives buyers compare and what benefit they value.</p><p><strong>Classroom/project connection:</strong> For packaged food, final shelf price can differ from the producer's sale price due to distribution and retail economics.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C24",
+      "unit": 7,
+      "title": {
+        "ar": "Unit Economics وMargin",
+        "en": "Cost, Markup and Margin"
+      },
+      "objective": {
+        "ar": "تحدد معنى Unit Economics وMargin والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Cost, Markup and Margin and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">استكمال علمي للمذاكرة — لم يشرح بالكامل في القاعة</p><p>تقييم السعر يبدأ بتحديد Unit Cost والخامات والتشغيل والتعبئة والهالك والنقل حسب القناة. Markup نسبة الزيادة إلى Cost، وMargin نسبة الربح إلى Selling Price. لو Cost=80 وPrice=100، Markup=25% وGross Margin=20% قبل مصاريف أخرى.</p><p><strong>من المناقشة:</strong> الأرقام مثال تعليمي للحساب وليست تكلفة لأي مشروع من الفرق. النموذج يحتاج تعيين وحدة البيع الفعلية.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Academic study extension — not fully delivered</p><p>Price analysis begins with relevant unit costs, including production, waste and channel expenses. Markup uses cost as the denominator; margin uses selling price. If cost is 80 and price 100, markup is 25% and gross margin 20% before other expenses.</p><p><strong>Classroom/project connection:</strong> These are illustrative arithmetic values, not actual project costs. Each team must define its own sellable unit.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "academic-extension"
+    },
+    {
+      "id": "L04-C25",
+      "unit": 7,
+      "title": {
+        "ar": "Comparable Alternatives وWillingness to Pay",
+        "en": "Competition and Perceived Value"
+      },
+      "objective": {
+        "ar": "تحدد معنى Comparable Alternatives وWillingness to Pay والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Competition and Perceived Value and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>متقارنش سعر Pack صغيرة بـPack أكبر بدون تعديل. شوف الحجم والمواصفات والمكونات وشروط البيع. Willingness to Pay تحتاج سؤال بحث أو اختبار فعلـي؛ Value-Based Pricing ليست مرادفًا للسعر الغالي ولا ضمان قبول العميل.</p><p><strong>من المناقشة:</strong> في Oil Export، FOB وCIF يغيّرا المقارنة بسبب مسؤوليات النقل والتأمين. لذلك Benchmark بلا Incoterm واضح مضلل.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Compare equivalent product sizes, specifications and buying conditions. Willingness to pay requires research or a market test. Value-based pricing is not simply setting a high price or assuming every buyer will accept it.</p><p><strong>Classroom/project connection:</strong> For industrial oil exports, FOB and CIF can imply different responsibilities and costs. Price benchmarks require consistent trade terms.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C26",
+      "unit": 8,
+      "title": {
+        "ar": "Penetration vs Skimming",
+        "en": "Penetration versus Skimming"
+      },
+      "objective": {
+        "ar": "تحدد معنى Penetration vs Skimming والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Penetration versus Skimming and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">اتشرح واتناقش في القاعة</p><p>Penetration تبدأ بسعر دخول منخفض نسبيًا لتشجيع تجربة وانتشار، أما Skimming فبسعر مرتفع نسبيًا لفئة مستعدة تدفع. اختيار الاستراتيجية يتطلب Price Sensitivity وUnit Economics وPositioning واختبار Demand وCompetitive Response.</p><p><strong>من المناقشة:</strong> اتناقشنا في أمثلة هواتف توضح السعر المرتفع أول الإطلاق؛ ده لا يعني إن كل الهواتف تستخدم Skimming أو إنها تربح تلقائيًا.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Covered in the classroom</p><p>Penetration uses a relatively low entry price to encourage adoption; skimming starts higher for buyers willing to pay more. Strategy selection depends on sensitivity, economics, positioning, demand and competitive reaction.</p><p><strong>Classroom/project connection:</strong> The class used smartphone examples to illustrate high-entry pricing. This does not mean every smartphone launch follows skimming or automatically succeeds.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "delivered"
+    },
+    {
+      "id": "L04-C27",
+      "unit": 8,
+      "title": {
+        "ar": "Product Mix وPrice Adjustments",
+        "en": "Product-Mix Pricing and Adjustments"
+      },
+      "objective": {
+        "ar": "تحدد معنى Product Mix وPrice Adjustments والقرار المرتبط به وما يحتاج Evidence.",
+        "en": "Explain Product-Mix Pricing and Adjustments and identify the relevant evidence-based decision."
+      },
+      "html": {
+        "ar": "<p class=\"coverage-tag\">استكمال علمي للمذاكرة — لم يشرح بالكامل في القاعة</p><p>للاستكمال العلمي: Product Line Pricing للأحجام والمستويات، Optional Products للإضافات، وBundle لمجموعة أصناف. Discounts وPromotional وSegmented وGeographic Adjustments تحتاج قواعد واضحة ومراجعة Margin وشروط السوق والقانون.</p><p><strong>من المناقشة:</strong> هذه التفاصيل وردت في مادة المدرب ولم يظهر شرحها كاملًا بتفريغ المحاضرة، لذلك موسومة Study Extension؛ لا ننسبها إلى شرح القاعة حرفيًا.</p><p><strong>على مشروعك:</strong> اكتب قرارًا محددًا تستطيع اختباره، والبيانات الناقصة وطريقة جمعها. ما تخلطش بين Assumption وFact أو بين فكرة المنتج ونتيجة Market Research.</p>",
+        "en": "<p class=\"coverage-tag\">Academic study extension — not fully delivered</p><p>Academic extension: product-line, optional-product and bundle pricing address different versions, extras and combinations. Discounts, promotions, segmented and geographic adjustments need clear terms, margin checks and legal review.</p><p><strong>Classroom/project connection:</strong> These topics appear in the instructor preparation but were not fully explained in the transcript; they are labelled as study extension.</p><p><strong>Apply it:</strong> State a testable decision, the missing evidence and how you would gather it. Keep assumptions distinct from observed market findings.</p>"
+      },
+      "coverage": "academic-extension"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "Q01",
+      "concept": "C01",
+      "ar": {
+        "question": "بعد Segmentation نختار Target إزاي؟",
+        "opts": [
+          "بعد مقارنة الجاذبية والقدرات",
+          "نختار كل السوق",
+          "نختار أكبر شريحة تلقائيًا",
+          "نبدأ بإعلان قبل الدراسة"
+        ]
+      },
+      "en": {
+        "question": "How should a target be chosen after segmentation?",
+        "opts": [
+          "After assessing attractiveness and capacity",
+          "Target the entire market",
+          "Choose the biggest automatically",
+          "Advertise before evaluating"
+        ]
+      },
+      "answer": 0,
+      "explanation": {
+        "ar": "الصحيح: بعد مقارنة الجاذبية والقدرات. راجع الفكرة C01 قبل القرار النهائي.",
+        "en": "Correct: After assessing attractiveness and capacity. Review concept C01 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q02",
+      "concept": "C03",
+      "ar": {
+        "question": "RTB في Positioning Statement معناه إيه؟",
+        "opts": [
+          "اسم جذاب",
+          "دليل موثوق على الوعد",
+          "شعار طويل",
+          "تخمين الفريق"
+        ]
+      },
+      "en": {
+        "question": "What does RTB mean in a positioning statement?",
+        "opts": [
+          "A catchy name",
+          "Credible evidence for the promise",
+          "A long slogan",
+          "The team's assumption"
+        ]
+      },
+      "answer": 1,
+      "explanation": {
+        "ar": "الصحيح: دليل موثوق على الوعد. راجع الفكرة C03 قبل القرار النهائي.",
+        "en": "Correct: Credible evidence for the promise. Review concept C03 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q03",
+      "concept": "C04",
+      "ar": {
+        "question": "Product مع Service داعمة مثال على إيه؟",
+        "opts": [
+          "سلعة فقط",
+          "سعر فقط",
+          "تجربة تجمع Goods وService",
+          "بحث ثانوي"
+        ]
+      },
+      "en": {
+        "question": "A product with support service illustrates what?",
+        "opts": [
+          "Goods only",
+          "Price only",
+          "An experience combining goods and service",
+          "Secondary research"
+        ]
+      },
+      "answer": 2,
+      "explanation": {
+        "ar": "الصحيح: تجربة تجمع Goods وService. راجع الفكرة C04 قبل القرار النهائي.",
+        "en": "Correct: An experience combining goods and service. Review concept C04 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q04",
+      "concept": "C06",
+      "ar": {
+        "question": "إيه الفرق بين Core وActual؟",
+        "opts": [
+          "الاتنين Logo",
+          "Core يساوي سعر العبوة",
+          "Actual يعني شريحة السوق",
+          "Core المنفعة وActual الشكل المقدم"
+        ]
+      },
+      "en": {
+        "question": "What distinguishes core from actual product?",
+        "opts": [
+          "Both mean logo",
+          "Core is packaging price",
+          "Actual means segment",
+          "Core is the benefit; actual is the offered form"
+        ]
+      },
+      "answer": 3,
+      "explanation": {
+        "ar": "الصحيح: Core المنفعة وActual الشكل المقدم. راجع الفكرة C06 قبل القرار النهائي.",
+        "en": "Correct: Core is the benefit; actual is the offered form. Review concept C06 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q05",
+      "concept": "C07",
+      "ar": {
+        "question": "Quality Level المناسب يحدده إيه؟",
+        "opts": [
+          "احتياجات Target والاشتراطات",
+          "أكبر عدد Features",
+          "أعلى سعر دائمًا",
+          "رأي المؤسس وحده"
+        ]
+      },
+      "en": {
+        "question": "What determines suitable quality level?",
+        "opts": [
+          "Target needs and mandatory requirements",
+          "Largest feature count",
+          "Highest price always",
+          "Only founder's opinion"
+        ]
+      },
+      "answer": 0,
+      "explanation": {
+        "ar": "الصحيح: احتياجات Target والاشتراطات. راجع الفكرة C07 قبل القرار النهائي.",
+        "en": "Correct: Target needs and mandatory requirements. Review concept C07 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q06",
+      "concept": "C08",
+      "ar": {
+        "question": "ليه اختبار تغيير المصنع مهم؟",
+        "opts": [
+          "لتغيير الألوان",
+          "للحفاظ على Quality Consistency",
+          "لإلغاء المعايير",
+          "لرفع سعر بلا دليل"
+        ]
+      },
+      "en": {
+        "question": "Why test a manufacturing change?",
+        "opts": [
+          "To change colours",
+          "To preserve quality consistency",
+          "To remove standards",
+          "To raise price blindly"
+        ]
+      },
+      "answer": 1,
+      "explanation": {
+        "ar": "الصحيح: للحفاظ على Quality Consistency. راجع الفكرة C08 قبل القرار النهائي.",
+        "en": "Correct: To preserve quality consistency. Review concept C08 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q07",
+      "concept": "C09",
+      "ar": {
+        "question": "Feature مختلفة عن Benefit إزاي؟",
+        "opts": [
+          "هما نفس السعر",
+          "Feature هو Logo",
+          "الخاصية مقابل قيمة الاستخدام",
+          "Benefit هو خامة التصنيع فقط"
+        ]
+      },
+      "en": {
+        "question": "How is a feature different from a benefit?",
+        "opts": [
+          "They both mean price",
+          "Feature is logo",
+          "Attribute versus value in use",
+          "Benefit is only raw material"
+        ]
+      },
+      "answer": 2,
+      "explanation": {
+        "ar": "الصحيح: الخاصية مقابل قيمة الاستخدام. راجع الفكرة C09 قبل القرار النهائي.",
+        "en": "Correct: Attribute versus value in use. Review concept C09 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q08",
+      "concept": "C10",
+      "ar": {
+        "question": "إمتى نضيف Feature؟",
+        "opts": [
+          "لأن المنافس عنده",
+          "أي Feature ممكنة لازم نضيفها",
+          "عشان تبدو متطورة فقط",
+          "لما Benefit للـTarget تبرر التكلفة"
+        ]
+      },
+      "en": {
+        "question": "When should a new feature be added?",
+        "opts": [
+          "Because a rival has it",
+          "Every possible feature should be added",
+          "Only to look advanced",
+          "When target benefit justifies cost"
+        ]
+      },
+      "answer": 3,
+      "explanation": {
+        "ar": "الصحيح: لما Benefit للـTarget تبرر التكلفة. راجع الفكرة C10 قبل القرار النهائي.",
+        "en": "Correct: When target benefit justifies cost. Review concept C10 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q09",
+      "concept": "C11",
+      "ar": {
+        "question": "Style غير Design في إيه؟",
+        "opts": [
+          "الجذب البصري مقابل وظيفة الاستخدام",
+          "الاتنين Support",
+          "الاتنين تسعير",
+          "Style هو Warranty"
+        ]
+      },
+      "en": {
+        "question": "How does style differ from design?",
+        "opts": [
+          "Visual appeal versus use and function",
+          "Both mean support",
+          "Both mean pricing",
+          "Style is warranty"
+        ]
+      },
+      "answer": 0,
+      "explanation": {
+        "ar": "الصحيح: الجذب البصري مقابل وظيفة الاستخدام. راجع الفكرة C11 قبل القرار النهائي.",
+        "en": "Correct: Visual appeal versus use and function. Review concept C11 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q10",
+      "concept": "C12",
+      "ar": {
+        "question": "هل الدعم يعني Warranty مجانية دائمًا؟",
+        "opts": [
+          "نعم دائمًا",
+          "لا؛ سياسات مختلفة بشروط واضحة",
+          "لو Logo معروف",
+          "لو سعر المنتج غالٍ"
+        ]
+      },
+      "en": {
+        "question": "Does support always mean a free warranty?",
+        "opts": [
+          "Always yes",
+          "No; they have different terms",
+          "If the logo is famous",
+          "If the price is high"
+        ]
+      },
+      "answer": 1,
+      "explanation": {
+        "ar": "الصحيح: لا؛ سياسات مختلفة بشروط واضحة. راجع الفكرة C12 قبل القرار النهائي.",
+        "en": "Correct: No; they have different terms. Review concept C12 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q11",
+      "concept": "C13",
+      "ar": {
+        "question": "ليه Brand مش مجرد Logo؟",
+        "opts": [
+          "لأن التعرف يعني الثقة",
+          "لأن شكلها يكفي",
+          "لأنها Associations وتجارب وذكريات",
+          "لأنها الاسم القانوني فقط"
+        ]
+      },
+      "en": {
+        "question": "Why is a brand more than a logo?",
+        "opts": [
+          "Because recognition equals trust",
+          "Because appearance is enough",
+          "Because it includes associations and experiences",
+          "Because it is only a legal name"
+        ]
+      },
+      "answer": 2,
+      "explanation": {
+        "ar": "الصحيح: لأنها Associations وتجارب وذكريات. راجع الفكرة C13 قبل القرار النهائي.",
+        "en": "Correct: Because it includes associations and experiences. Review concept C13 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q12",
+      "concept": "C14",
+      "ar": {
+        "question": "Brand Image نقيسها منين؟",
+        "opts": [
+          "من رغبة الإدارة فقط",
+          "من ألوان الشعار",
+          "من سعر المنافس",
+          "من Customer Perceptions الحقيقية"
+        ]
+      },
+      "en": {
+        "question": "How should brand image be assessed?",
+        "opts": [
+          "From management aspirations only",
+          "From logo colours",
+          "From competitor price",
+          "From actual customer perceptions"
+        ]
+      },
+      "answer": 3,
+      "explanation": {
+        "ar": "الصحيح: من Customer Perceptions الحقيقية. راجع الفكرة C14 قبل القرار النهائي.",
+        "en": "Correct: From actual customer perceptions. Review concept C14 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q13",
+      "concept": "C15",
+      "ar": {
+        "question": "Brand Promise يتقاس فين؟",
+        "opts": [
+          "في كل Customer Touchpoint",
+          "الإعلان فقط",
+          "الفاتورة فقط",
+          "اسم المنتج فقط"
+        ]
+      },
+      "en": {
+        "question": "Where is a brand promise tested?",
+        "opts": [
+          "Across every customer touchpoint",
+          "Only ads",
+          "Only the receipt",
+          "Only the name"
+        ]
+      },
+      "answer": 0,
+      "explanation": {
+        "ar": "الصحيح: في كل Customer Touchpoint. راجع الفكرة C15 قبل القرار النهائي.",
+        "en": "Correct: Across every customer touchpoint. Review concept C15 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q14",
+      "concept": "C16",
+      "ar": {
+        "question": "إيه دليل Brand Equity؟",
+        "opts": [
+          "طباعة Logo",
+          "تغيّر الاستجابة بسبب Brand Knowledge",
+          "تكلفة الاسم",
+          "وجود Domain"
+        ]
+      },
+      "en": {
+        "question": "What would demonstrate brand equity?",
+        "opts": [
+          "Printing a logo",
+          "Customer response changes with brand knowledge",
+          "Cost of naming",
+          "Owning a domain"
+        ]
+      },
+      "answer": 1,
+      "explanation": {
+        "ar": "الصحيح: تغيّر الاستجابة بسبب Brand Knowledge. راجع الفكرة C16 قبل القرار النهائي.",
+        "en": "Correct: Customer response changes with brand knowledge. Review concept C16 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q15",
+      "concept": "C17",
+      "ar": {
+        "question": "Brand Name نختاره بناء على إيه؟",
+        "opts": [
+          "التشابه مع المنافس",
+          "رأي المؤسس فقط",
+          "Memorable وMeaningful وDistinctive وProtectable",
+          "عدد الحروف فقط"
+        ]
+      },
+      "en": {
+        "question": "How should a brand name be selected?",
+        "opts": [
+          "Similarity to a rival",
+          "Founder taste alone",
+          "Memorability, meaning, distinctiveness, protectability",
+          "Only letter count"
+        ]
+      },
+      "answer": 2,
+      "explanation": {
+        "ar": "الصحيح: Memorable وMeaningful وDistinctive وProtectable. راجع الفكرة C17 قبل القرار النهائي.",
+        "en": "Correct: Memorability, meaning, distinctiveness, protectability. Review concept C17 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q16",
+      "concept": "C20",
+      "ar": {
+        "question": "قبل Scale في Growth لازم إيه؟",
+        "opts": [
+          "أول Batch تبيع فقط",
+          "حملة كبيرة فقط",
+          "تجاهل المورد",
+          "Repeat Demand مع Capacity وConsistency"
+        ]
+      },
+      "en": {
+        "question": "What precedes scaling in growth?",
+        "opts": [
+          "One initial batch sells",
+          "A big campaign alone",
+          "Ignore the supplier",
+          "Repeat demand plus capacity and consistency"
+        ]
+      },
+      "answer": 3,
+      "explanation": {
+        "ar": "الصحيح: Repeat Demand مع Capacity وConsistency. راجع الفكرة C20 قبل القرار النهائي.",
+        "en": "Correct: Repeat demand plus capacity and consistency. Review concept C20 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q17",
+      "concept": "C24",
+      "ar": {
+        "question": "Cost=80 وPrice=100؛ Gross Margin كام؟",
+        "opts": [
+          "20%",
+          "25%",
+          "80%",
+          "100%"
+        ]
+      },
+      "en": {
+        "question": "Cost=80, Price=100. What is gross margin?",
+        "opts": [
+          "20%",
+          "25%",
+          "80%",
+          "100%"
+        ]
+      },
+      "answer": 0,
+      "explanation": {
+        "ar": "الصحيح: 20%. راجع الفكرة C24 قبل القرار النهائي.",
+        "en": "Correct: 20%. Review concept C24 for the decision rationale."
+      }
+    },
+    {
+      "id": "Q18",
+      "concept": "C26",
+      "ar": {
+        "question": "Penetration غير Skimming إزاي؟",
+        "opts": [
+          "الاتنين عروض مؤقتة",
+          "دخول نسبيًا أقل مقابل دخول أعلى",
+          "الاتنين يضمنوا Profit",
+          "الاتنين Cost فقط"
+        ]
+      },
+      "en": {
+        "question": "How does penetration differ from skimming?",
+        "opts": [
+          "Both are temporary offers",
+          "Relatively lower versus higher entry price",
+          "Both guarantee profit",
+          "Both depend only on cost"
+        ]
+      },
+      "answer": 1,
+      "explanation": {
+        "ar": "الصحيح: دخول نسبيًا أقل مقابل دخول أعلى. راجع الفكرة C26 قبل القرار النهائي.",
+        "en": "Correct: Relatively lower versus higher entry price. Review concept C26 for the decision rationale."
+      }
+    }
+  ],
+  "project": {
+    "ar": [
+      "حددنا Target وPositioning Statement وRTB قابلة للتحقق.",
+      "قسمنا Offering إلى Core وActual وAugmented.",
+      "حددنا Quality Level وConsistency وFeatures المهمة للعميل.",
+      "راجعنا Style وDesign وPackaging وSupport وخطة الاختبار.",
+      "وضحنا Brand Identity وBrand Promise وطريقة قياس Brand Image.",
+      "راجعنا اختيار الاسم وBrand Fit والقدرة على التوسع.",
+      "قدّرنا مرحلة PLC وفرّقنا Assumptions عن السوق الفعلي.",
+      "جمعنا Cost وCompetitors وValue واخترنا Pricing Strategy مبدئية مدعومة."
+    ],
+    "en": [
+      "Define the target, positioning statement and verifiable RTB.",
+      "Identify core, actual and augmented product layers.",
+      "Specify quality level, consistency and valued features.",
+      "Review style, design, packaging and support with test plans.",
+      "Clarify identity, promise and how actual brand image will be assessed.",
+      "Test the brand name, extension fit and operating capability.",
+      "Estimate PLC stage and distinguish assumptions from actual market evidence.",
+      "Combine cost, alternatives and perceived value for a provisional pricing choice."
+    ]
+  },
+  "glossary": [
+    {
+      "t": "Market Targeting",
+      "ar": "اختيار شريحة حسب الجاذبية والقدرة",
+      "en": "Evaluating and choosing segments to serve"
+    },
+    {
+      "t": "Positioning",
+      "ar": "الصورة المقصودة مقارنة بالبدائل",
+      "en": "Intended market position relative to alternatives"
+    },
+    {
+      "t": "Differentiation",
+      "ar": "فرق له منفعة مهمة للعميل",
+      "en": "A customer-relevant difference"
+    },
+    {
+      "t": "Positioning Statement",
+      "ar": "صياغة Target والفئة والفرق والدليل",
+      "en": "Internal target, category, difference and proof statement"
+    },
+    {
+      "t": "Reason to Believe",
+      "ar": "دليل يدعم الوعد",
+      "en": "Evidence supporting a claimed benefit"
+    },
+    {
+      "t": "Marketing Mix",
+      "ar": "Product وPrice وPlace وPromotion",
+      "en": "Product, Price, Place and Promotion decisions"
+    },
+    {
+      "t": "Goods",
+      "ar": "منتجات ملموسة",
+      "en": "Tangible products"
+    },
+    {
+      "t": "Services",
+      "ar": "منافع أو أنشطة غير ملموسة",
+      "en": "Intangible activities or benefits"
+    },
+    {
+      "t": "Customer Experience",
+      "ar": "تجربة العميل خلال التعامل",
+      "en": "Interactions across the customer journey"
+    },
+    {
+      "t": "Convenience Product",
+      "ar": "شراء سريع بمقارنة محدودة",
+      "en": "Low-effort frequent purchase"
+    },
+    {
+      "t": "Shopping Product",
+      "ar": "شراء يحتاج بحثًا ومقارنة",
+      "en": "Purchase involving comparison"
+    },
+    {
+      "t": "Specialty Product",
+      "ar": "منتج له أهمية خاصة تستحق البحث",
+      "en": "Distinctive purchase with special effort"
+    },
+    {
+      "t": "Unsought Product",
+      "ar": "شراء لا يفكر فيه العميل عادة",
+      "en": "Offering not normally sought"
+    },
+    {
+      "t": "Industrial Product",
+      "ar": "منتجات تستخدم في العمل أو التصنيع",
+      "en": "Products for production or operations"
+    },
+    {
+      "t": "Core Customer Value",
+      "ar": "المنفعة الأساسية المطلوبة",
+      "en": "Underlying benefit sought"
+    },
+    {
+      "t": "Actual Product",
+      "ar": "المنتج بمواصفاته وتصميمه",
+      "en": "Specified actual offering"
+    },
+    {
+      "t": "Augmented Product",
+      "ar": "منافع وخدمات داعمة",
+      "en": "Additional supporting services"
+    },
+    {
+      "t": "Quality Level",
+      "ar": "الجودة الملائمة للمستهدف",
+      "en": "Level of quality for target needs"
+    },
+    {
+      "t": "Quality Consistency",
+      "ar": "تكرار مطابقة المواصفات",
+      "en": "Repeatable conformance to specifications"
+    },
+    {
+      "t": "Feature Trade-off",
+      "ar": "منفعة الإضافة مقابل تكلفتها",
+      "en": "Incremental benefit versus cost"
+    },
+    {
+      "t": "Product Design",
+      "ar": "شكل الاستخدام ووظيفته",
+      "en": "Functional design of the offering"
+    },
+    {
+      "t": "Packaging",
+      "ar": "حماية وعرض ومعلومات المنتج",
+      "en": "Product protection and information"
+    },
+    {
+      "t": "Customer Support",
+      "ar": "مساندة العميل بعد البيع",
+      "en": "Post-purchase assistance"
+    },
+    {
+      "t": "Brand Identity",
+      "ar": "الصورة التي تقدمها الشركة",
+      "en": "Intended brand meaning"
+    },
+    {
+      "t": "Brand Image",
+      "ar": "تصورات العملاء الفعلية",
+      "en": "Actual customer perceptions"
+    },
+    {
+      "t": "Brand Promise",
+      "ar": "القيمة أو التجربة الموعودة",
+      "en": "Promised experience or value"
+    },
+    {
+      "t": "Brand Equity",
+      "ar": "تغير الاستجابة بمعرفة البراند",
+      "en": "Differential response to brand knowledge"
+    },
+    {
+      "t": "Brand Name Selection",
+      "ar": "اختيار اسم ملائم ومميز وقابل للحماية",
+      "en": "Choosing an appropriate protectable name"
+    },
+    {
+      "t": "Brand Fit",
+      "ar": "ملاءمة المنتج الجديد لصورة البراند",
+      "en": "Fit of an extension with the brand"
+    },
+    {
+      "t": "Product Life Cycle",
+      "ar": "إطار مراحل تطور السوق للمنتج",
+      "en": "Framework for changing product-market stages"
+    },
+    {
+      "t": "Introduction Stage",
+      "ar": "Awareness وTrial",
+      "en": "Awareness and trial stage"
+    },
+    {
+      "t": "Growth Stage",
+      "ar": "زيادة الطلب وتحدي القدرة التشغيلية",
+      "en": "Demand acceleration and scaling"
+    },
+    {
+      "t": "Maturity Stage",
+      "ar": "تباطؤ النمو وزيادة البدائل",
+      "en": "Slower growth and more alternatives"
+    },
+    {
+      "t": "Decline Stage",
+      "ar": "تراجع يتطلب تشخيصًا",
+      "en": "Declining demand requiring diagnosis"
+    },
+    {
+      "t": "Cost-Based Pricing",
+      "ar": "التسعير من منظور التكاليف",
+      "en": "Pricing from relevant costs"
+    },
+    {
+      "t": "Competition-Based Pricing",
+      "ar": "التسعير وفق بدائل قابلة للمقارنة",
+      "en": "Pricing using comparable alternatives"
+    },
+    {
+      "t": "Customer-Perceived Value",
+      "ar": "القيمة التي يدركها العميل",
+      "en": "Benefits perceived against sacrifices"
+    },
+    {
+      "t": "Markup",
+      "ar": "ربح نسبة إلى التكلفة",
+      "en": "Profit expressed relative to cost"
+    },
+    {
+      "t": "Gross Margin",
+      "ar": "ربح نسبة إلى سعر البيع",
+      "en": "Profit expressed relative to selling price"
+    },
+    {
+      "t": "Willingness to Pay",
+      "ar": "المبلغ المستعد العميل لدفعه",
+      "en": "Amount a buyer is prepared to pay"
+    },
+    {
+      "t": "Market Skimming",
+      "ar": "دخول بسعر مرتفع نسبيًا",
+      "en": "Relatively high introductory price"
+    },
+    {
+      "t": "Market Penetration",
+      "ar": "دخول بسعر منخفض نسبيًا",
+      "en": "Relatively low introductory price"
+    },
+    {
+      "t": "Bundle Pricing",
+      "ar": "تسعير باكدج من منتجات",
+      "en": "Combined offer price"
+    }
+  ],
+  "intro": {
+    "ar": "<p>Lecture 04 — Products, Branding & Pricing لمجموعة Sunday Sheraton. دي نسخة مذاكرة تفاعلية مبنية على شرح القاعة وعناصر ملف المحاضر، وليست التسجيل الخام أو Instructor Script.</p><p>بعض التفاصيل العلمية في Brand Fit وUnit Economics وProduct-Mix Pricing واردة في مادة التحضير واستُكملت للمذاكرة؛ موضحة داخل المشاهد. أفكار الفرق تطبيقات افتراضية لا تمثل بيانات عملاء محققة، وأي Claims غذائية أو قانونية تحتاج اختبارًا متخصصًا.</p>",
+    "en": "<p>Sunday Sheraton Lecture 04 covers products, brands and pricing, building on classroom STP recap. This student study material summarises instruction rather than exposing private transcripts.</p><p>Selected preparation-only topics are marked as academic study extensions. The anonymised team scenarios are hypotheses, not proven market findings. Food, safety and legal claims require appropriate validation.</p>"
+  }
+}

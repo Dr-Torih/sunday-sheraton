@@ -108,7 +108,7 @@ Owner reviewed and explicitly approved the independent gallery preview: interlea
 ## Lecture 04 — Owner-review draft, 4 November 2026
 
 - **Approved mission:** Append the fourth Sunday Sheraton lecture to the existing cumulative index, keeping L01–L03 content and original identity untouched.
-- **Content:** 27 bilingual concepts in 8 units; 18 new practice questions, 8 unit-specific cases, 8 checkpoints, 4 decision labs, 8 sets of takeaways and 43 glossary terms. Covers STP recap, product/service levels, quality and individual product decisions, branding, PLC and pricing.
+- **Content:** 27 bilingual concepts in 8 units; 18 new practice questions, 8 unit-specific cases, 8 checkpoints, 4 decision labs, 8 sets of takeaways and 50 glossary terms. Covers STP recap, product/service levels, quality and individual product decisions, branding, PLC and pricing.
 - **Classroom attribution:** At instructor's express direction, identify only source-supported names: Pure Bite (Group 4; Dr Alaa and Sally), instant-noodle presenter Sary, orange-oil exporter Group 1 presenter Hussein, Andrew's family Homewear example. No formal brand name invented for teams whose name is absent from source.
 - **Claims/evidence:** Team-reported survey percentages and indicative price are flagged as preliminary/unverified. Technical claims around allergen safety, nutrition and pricing remain subject to evidence. C18, C24, C27 are academic study extensions, not falsely framed as fully delivered classroom content.
 - **Privacy:** No raw transcript, protected instructor file, photos, grades, attendance, student contact information or student identifiers. First-name attributions only with owner direction.

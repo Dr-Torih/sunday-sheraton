@@ -2,7 +2,7 @@
 
 **Course:** Marketing — AASTMT Sheraton, Sunday group  
 **Instructor:** Dr. Ibrahim Torih  
-**Current published site:** cumulative lectures L01–L03; **Lecture 04:** staged for owner review on a feature branch (not merged or published). Historic v3.1 documentation remains a baseline reference  
+**Current published site (as documented in this repository):** cumulative lectures L01–L03; **Lecture 04 academic content:** OWNER-APPROVED by the instructor on 2026-11-07. The implementation/publishing status remains separate and must be verified before claiming a live release. Historic v3.1 documentation remains a baseline reference  
 **Source of truth for the runnable student book:** `index.html` in this cohort repository  
 **Cross-cohort education governance (separate, private):** [student-learning-portal](https://github.com/Dr-Torih/student-learning-portal).
 
@@ -15,11 +15,11 @@ One cumulative, responsive, bilingual Arabic/English **student study book**, **n
 | Lecture 01 | Marketing Foundations & Customer Value | 25 | 6 | 18 | 65 |
 | Lecture 02 | Understanding the Market & Consumer Behavior | 30 | 6 | 18 | 83 |
 | Lecture 03 | Segmentation, Targeting & Positioning | 25 | 6 | 18 | 30 |
-| Lecture 04 (PR draft) | Products, Branding & Pricing | 27 | 8 | 18 | 50 |
+| Lecture 04 (academic content approved; technical release pending verification) | Products, Branding & Pricing | 27 | 8 | 18 | 50 |
 
 The approved experience includes contextual explanations, verified classroom cases and links, concept navigation, formative Quick Checks, decision labs, personal review, progress tracking, dark/light theme, bilingual switches, print modes and self-assessment quiz records.
 
-**Invariant: There is only ONE cumulative student-facing `index.html` per cohort.** Clicking a lecture button changes the chapter inside the SAME page; do not create `lecture-03.html` or publish a lecture-per-file structure. Lecture 01–03 are available in the current main site. The Lecture 04 review branch enables Lecture 04 and includes classroom-faithful bilingual content; future lectures remain unavailable. The review branch has **not** been published.
+**Invariant: There is only ONE cumulative student-facing `index.html` per cohort.** Clicking a lecture button changes the chapter inside the SAME page; do not create `lecture-03.html` or publish a lecture-per-file structure. Lecture 01–03 are available in the current main site. The Lecture 04 candidate branch includes classroom-faithful bilingual content and was **academically approved by the instructor on 2026-11-07**; it is no longer awaiting the instructor's academic content approval. This does **not** itself authorize code merge, satisfy technical QA, or prove public deployment; future lectures remain unavailable until technically released.
 
 ## Repository responsibility & privacy
 

@@ -113,3 +113,11 @@ Owner reviewed and explicitly approved the independent gallery preview: interlea
 - **Claims/evidence:** Team-reported survey percentages and indicative price are flagged as preliminary/unverified. Technical claims around allergen safety, nutrition and pricing remain subject to evidence. C18, C24, C27 are academic study extensions, not falsely framed as fully delivered classroom content.
 - **Privacy:** No raw transcript, protected instructor file, photos, grades, attendance, student contact information or student identifiers. First-name attributions only with owner direction.
 - **Release:** Feature branch and Pull Request for academic, mobile, quiz and privacy review; **no automatic merge or public deployment**. Detailed source map at [LECTURE_04_SOURCE_REVIEW.md](LECTURE_04_SOURCE_REVIEW.md).
+
+
+## 2026-11-07 — Lecture 04 academic approval by course instructor
+
+- **Explicit owner decision:** Dr. Ibrahim Torih confirmed Lecture 04 is approved and directed that it no longer be treated as pending his academic review. Preserve the historical November 4 draft record as a dated stage; academic approval is now final for that reviewed scope.
+- **Scope of approval:** academic/content acceptance of Lecture 04, not an independent finding that all code, scientific QA, accessibility, bilingual behavior, quiz mappings or release checks have passed. Later changes to approved content still require separately scoped owner review.
+- **Release boundary:** documentation-only status update. No Lecture 04 runtime files, learner data, branch ancestry, CI or published site changed by recording this decision. Code merge and deployment remain independently gated; do not call it published without direct verification.
+- **Source:** explicit owner instruction during the Sunday Lecture 05 preparation discussion, 2026-11-07 (Africa/Cairo).

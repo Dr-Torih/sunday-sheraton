@@ -95,3 +95,9 @@ Only in `cert-print-mode`, both HTML/body and the certificate sheet use the exis
 
 ### Classroom gallery mobile motion — 28 Oct 2026
 The photo strip continues its slow motion through 1024px under reduced-motion settings, with horizontal touch scrolling available if the browser suspends animations. Desktop reduced-motion remains manually scrollable. Battery-saving behavior varies by device and cannot be overridden by the site; physical-device validation remains necessary.
+
+## November 9, 2026 — Approved Project Kit download in the single-page course portal (review branch)
+
+The existing `#project` page in root `index.html` is the home for the official Marketing Project Kit. The HTML adds one branded, bilingual same-origin ZIP download (the immutable `resources/marketing-project-kit/Marketing_Project_Kit_MASTER_2026-11-09.zip`). The legacy guide DOM `#project-guide-summary` is hidden and inert, while `project-companion.js` still injects the already-approved `#project-decision-journey` with eight expandable phases and local-only progress. Stage guide links now return to the kit download rather than pulling up old instructions. The master archive must not be edited to make a portal release. Student-facing URL and lecture/certificate runtime remain unchanged.
+
+No automatic merge: this is a branch candidate until owner browser review and regression acceptance.

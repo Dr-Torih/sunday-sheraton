@@ -723,7 +723,7 @@
         const open=exists?opened.includes(String(stage.id)):stage.id===1;
         const checks=stage.check[locale()];
         const checklist=checks.map((value,i)=>'<label><input type="checkbox" data-journey-check="'+stage.id+':'+i+'"'+(hasTick(stage.id,i)?' checked':'')+'><span>'+mixed(value)+'</span></label>').join('');
-        const sourceButtons='<button type="button" data-guide-section="'+esc(stage.guide)+'">'+esc(t('راجع الدليل المعتمد','Open official Guide'))+'</button>';
+        const sourceButtons='<a class="mdj-kit-link" href="#marketing-project-kit">'+esc(t('العودة لتحميل الـProject Kit','Return to the Project Kit download'))+'</a>';
         const pagePlan=stage.id!==8?'':'<div class="mdj-page-plan"><h4>'+esc(t('توزيع مقترح لـ18 صفحة داخل التقرير','Suggested allocation for 18 report pages'))+'</h4><dl>'+
            finalPages.map(row=>'<dt>'+esc(label(row))+'</dt><dd>'+row.n+'</dd>').join('')+
            '<dt class="mdj-total">'+esc(t('الإجمالي المقترح','Suggested total'))+'</dt><dd class="mdj-total">18</dd></dl></div>';
@@ -758,13 +758,5 @@
   $('lang-toggle')?.addEventListener('click',()=>queueMicrotask(()=>{render();relabelGuide();renderDecisionJourney();refreshStageLabels()}));
   render();
   renderDecisionJourney();
-  if(new URLSearchParams(location.search).get('page')==='project'){
-    const initialSection=new URLSearchParams(location.search).get('section');
-    if(initialSection&&(/^(start|idea|journey|deliverables|evidence|plan|grades|defense|ai|audit|all)$/).test(initialSection)){
-      loadGuide().then(ok=>{if(!ok)return;
-        if(initialSection==='all'){guideSections.forEach(([id])=>{if($('pc-guide-'+id))$('pc-guide-'+id).open=true});return}
-        const el=$('pc-guide-'+initialSection);if(el)el.open=true;
-      });
-    }else loadGuide();
-  }
+  // Do not auto-load the obsolete guide. The approved Project Kit is now the student-facing source of truth.
 })();

@@ -140,3 +140,14 @@ Owner reviewed and explicitly approved the independent gallery preview: interlea
 **Implementation:** The approved ZIP remains unchanged in `resources/marketing-project-kit/`. The single `index.html` adds a bilingual, accessible download card; the former guide is hidden and inactive; `project-companion.js` retains all eight phase explanations and checklists and redirects stage reference links to the approved kit rather than the obsolete guide. Obsolete guide files remain in Git history (not deleted). No changes to lecture JSON, original base CSS, quizzes or assessments.
 
 **Release:** Pull Request only. Review at laptop, verify the download and both languages/themes/mobile layouts, run static integrity and end-to-end QA, then obtain explicit owner merge/publish permission. Do not deploy this PR automatically.
+
+## 2026-11-10 — Sunday Lecture 05 candidate; final instructor source
+
+Owner requested preparation of the Sunday cohort's fifth and final taught Marketing lecture **inside the existing portal** using the established study-book pattern. This approves authoring a review branch, not a public merge or publishing.
+
+- Inputs: supplied 58-page private trainer preparation PDF and both parts of the actual Sunday classroom transcription. Keep them private; no raw scripts or transcripts in public files.
+- Added an embedded fifth chapter with 26 bilingual Concept Scenes in 7 Units, 18 review questions, 60 glossary terms, 7 unit mini-cases, 8 checkpoints, 4 decision labs and existing learning/progress/quiz UI. Reused the approved brand and runtime without editing L01–L04 academic payloads.
+- Classroom-delivered material (C01–C24) is distinguished from preparation-based academic reinforcement (C25–C26). Instructor stories and student projects are summarized without publishing individual participant names or unsupported allegations about named businesses.
+- Marketing Budget and KPI math are deliberately taught with **two separate hypothetical café examples**: 500→600 monthly orders in the Action Plan and 100→120 in the KPI exercise; no invented real campaign results.
+- Integrated the approved Project Kit only through existing Project link/reminder; no edit to its original ZIP. Existing Lecture 06 option remains not released.
+- Academic traceability, legal/ethical caveats and official sources are in [LECTURE_05_SOURCE_MAP.md](LECTURE_05_SOURCE_MAP.md). Dedicated QA in `tests/qa_lecture05.py` plus standard browser regression is mandatory. **Branch/PR only until instructor acceptance and explicit merge authorization.**

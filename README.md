@@ -57,3 +57,8 @@ This repository's `main` branch may be configured as a GitHub Pages source. **Ne
 **Append the next approved lecture to the EXISTING bilingual single-file study book, preserve every previously approved content byte and all runtime behavior, document the change, and prove the regression checks passed.**
 
 _Handoff documentation merged to main on 22 Oct 2026. The existing main index.html was preserved, including newer Open Graph metadata. GitHub Pages deployment is monitored separately and must not be assumed complete merely from a merge._
+
+
+## Sunday Lecture 05 — review candidate (10 Nov 2026)
+
+The final taught lecture covers **Place, Distribution & Logistics; Promotion and IMC; Marketing Action Plan, Budget and KPIs**. The review branch adds **26 bilingual concepts, 7 units, 18 self-assessment questions** to the **same** `index.html` and preserves the approved Project Kit. The instructor's private PDF and classroom transcript remain outside the public repository. See [Lecture 05 source and coverage map](docs/LECTURE_05_SOURCE_MAP.md). **This section does not claim deployment.**
